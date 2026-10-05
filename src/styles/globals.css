@@ -1,0 +1,99 @@
+/*
+ * Global base styles: a small reset plus defaults for plain HTML elements.
+ * Component-specific styles belong in each component's .module.css file.
+ *
+ * Uses logical properties (block = vertical, inline = horizontal in reading
+ * direction) so everything flips correctly for right-to-left Hebrew.
+ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  min-block-size: 100vh;
+  background-color: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  line-height: var(--leading-normal);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-heading);
+  font-weight: var(--weight-bold);
+  line-height: var(--leading-tight);
+  text-wrap: balance;
+}
+
+h1 {
+  font-size: var(--text-3xl);
+}
+
+h2 {
+  font-size: var(--text-2xl);
+}
+
+h3 {
+  font-size: var(--text-xl);
+}
+
+p {
+  text-wrap: pretty;
+}
+
+a {
+  color: var(--color-accent);
+  text-underline-offset: 0.2em;
+}
+
+a:hover {
+  color: var(--color-accent-strong);
+}
+
+img,
+video,
+svg {
+  display: block;
+  max-inline-size: 100%;
+  block-size: auto;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Visible outline for keyboard users only, not on mouse click */
+:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+/* Respect users who ask their OS for less motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
