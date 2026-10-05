@@ -30,7 +30,8 @@ Dependencies are kept minimal. A new one is added only when there's a concrete n
 
 - Every page lives under a language prefix: `/he/...` and `/en/...`.
 - URL path segments are in English in both languages (`/he/courses/...`) so shared links stay readable.
-- Visiting `/` redirects based on browser language, remembered in a cookie. **Fallback: English.**
+- Visiting `/` (or any path without a language, e.g. `/about`) redirects to a language: the one used last time (a cookie, updated on every visit to a `/he` or `/en` page), else the browser's language settings, else **English**. This runs in `src/proxy.ts`.
+- Supported languages, the default and text direction are defined once in `src/i18n/config.ts`.
 - There is always a language switcher. If the current page has no version in the other language, the switcher goes to that language's section page (e.g. `/he/events`).
 - Header, nav and footer direction follows the URL (`he` → RTL, `en` → LTR).
 - All CSS uses **logical properties** (`padding-inline`, `margin-inline-start`, `text-align: start`) so layouts flip automatically for RTL.
