@@ -3,7 +3,7 @@
 The single place for what we've decided about this website and why.
 Update it whenever a decision is made or changed.
 
-_Last updated: 2026-10-05_
+_Last updated: 2026-10-06_
 
 ---
 
@@ -88,6 +88,9 @@ Content types do **not** share one template. Each collection has its own schema 
 
 - **Sessions:** private one-on-one sessions. One page covering all session types. Booking is through an inquiry/contact flow.
 - **Events:** workshops and events are the same type (`events`, route `/events`). No `kind` field for now; it's easy to add if labels like "Retreat" are wanted.
+  - A `summary` field holds the short text shown on the event's card in the list.
+  - **An event gets its own detail page only if its file has a body.** A small event (e.g. a free drop-in sit) can be frontmatter only: its card shows everything and isn't a link.
+  - The CTA is optional: no `cta` means no button.
 - **Courses:** public page (description, syllabus, price) lives in `content/`. Each course has a stable `id` separate from its URL slug, so future purchases stay linked if the URL changes. **Paid lesson content never goes in `content/`**, because anything there becomes a public page.
 - **Practices:** video only (embedded, e.g. YouTube), through a single `<MediaEmbed>` component so the video host can change in one place.
 - **Articles:** possible future collection. Not built now.
@@ -163,6 +166,7 @@ src/
 ## 10. Still open
 
 - Challenge day pages: separate routes vs. one growing page (decide when building it).
+- **Past events going stale:** pages are built ahead of time, so an event that has ended stays listed as upcoming until the next build. Options: filter by date at build time plus an automatic nightly rebuild, or Next.js Incremental Static Regeneration (pages regenerate in the background, e.g. daily). Decide when building events.
 - Fonts, colours, imagery: placeholders until the identity develops (they live in `tokens.css`).
 - Hosting: confirm Vercel when we first deploy.
 - Providers: mailing list, email sending, payments, auth, video (each decided when needed).
