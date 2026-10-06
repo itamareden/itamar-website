@@ -167,6 +167,7 @@ src/
 ## 10. Still open
 
 - Challenge day pages: separate routes vs. one growing page (decide when building it).
+- How visitors reach the self-guided challenge: it is **not in the main nav**; it will likely be promoted through a popup. The `/challenge` page exists so the popup and outside links have somewhere to point.
 - **Past events going stale:** pages are built ahead of time, so an event that has ended stays listed as upcoming until the next build. Options: filter by date at build time plus an automatic nightly rebuild, or Next.js Incremental Static Regeneration (pages regenerate in the background, e.g. daily). Decide when building events.
 - Fonts, colours, imagery: placeholders until the identity develops (they live in `tokens.css`).
 - Hosting: confirm Vercel when we first deploy.
