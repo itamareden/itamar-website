@@ -1,8 +1,12 @@
-export default function Home() {
+import { getDictionary } from "@/dictionaries";
+
+export default async function Home() {
+  const dict = await getDictionary();
+
   return (
     <main>
-      <h1>Itamar Eden</h1>
-      <p>Meditation, breath, movement and embodiment.</p>
+      <h1>{dict.site.name}</h1>
+      <p>{dict.site.tagline}</p>
     </main>
   );
 }
