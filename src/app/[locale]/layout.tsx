@@ -1,9 +1,12 @@
 import type { Metadata } from "next";
+import { SiteFooter } from "@/components/SiteFooter/SiteFooter";
+import { SiteHeader } from "@/components/SiteHeader/SiteHeader";
 import { getDictionary } from "@/dictionaries";
 import { getDirection, locales } from "@/i18n/config";
 import { getLocale } from "@/i18n/get-locale";
 import "@/styles/tokens.css";
 import "@/styles/globals.css";
+import styles from "./layout.module.css";
 
 export async function generateMetadata(): Promise<Metadata> {
   const dict = await getDictionary();
@@ -26,7 +29,11 @@ export default async function RootLayout({ children }: LayoutProps<"/[locale]">)
 
   return (
     <html lang={locale} dir={getDirection(locale)}>
-      <body>{children}</body>
+      <body className={styles.body}>
+        <SiteHeader />
+        <main className={styles.main}>{children}</main>
+        <SiteFooter />
+      </body>
     </html>
   );
 }
