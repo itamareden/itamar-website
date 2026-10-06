@@ -14,8 +14,7 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: space-between;
-  gap: var(--space-4) var(--space-8);
+  gap: var(--space-4) var(--space-6);
   max-inline-size: var(--content-width);
   margin-inline: auto;
   padding: var(--space-6) var(--gutter);
@@ -31,6 +30,11 @@
 
 .name:hover {
   color: var(--color-accent);
+}
+
+/* Pushes the nav (and the language switcher after it) to the ending side. */
+.nav {
+  margin-inline-start: auto;
 }
 
 .navList {

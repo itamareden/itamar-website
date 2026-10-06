@@ -13,6 +13,13 @@ export const defaultLocale: Locale = "en";
 // Remembers the visitor's language so "/" sends them back to it.
 export const localeCookie = "locale";
 
+// Each language's name in that language, as shown in the language
+// switcher (a Hebrew reader looks for "עברית", not "Hebrew").
+export const localeNames: Record<Locale, string> = {
+  en: "English",
+  he: "עברית",
+};
+
 const direction: Record<Locale, "ltr" | "rtl"> = {
   en: "ltr",
   he: "rtl",

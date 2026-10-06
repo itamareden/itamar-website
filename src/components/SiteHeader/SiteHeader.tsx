@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { LanguageSwitcher } from "@/components/LanguageSwitcher/LanguageSwitcher";
 import { getDictionary, type Dictionary } from "@/dictionaries";
 import { getLocale } from "@/i18n/get-locale";
 import styles from "./SiteHeader.module.css";
@@ -25,7 +26,7 @@ export async function SiteHeader() {
           {dict.site.name}
         </Link>
 
-        <nav>
+        <nav className={styles.nav}>
           <ul className={styles.navList}>
             {navItems.map(({ key, path }) => (
               <li key={key}>
@@ -36,6 +37,8 @@ export async function SiteHeader() {
             ))}
           </ul>
         </nav>
+
+        <LanguageSwitcher />
       </div>
     </header>
   );
