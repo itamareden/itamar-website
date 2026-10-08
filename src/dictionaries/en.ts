@@ -22,6 +22,11 @@ export const en = {
     challenge: "5-Day Challenge",
     contact: "Contact",
   },
+  notFound: {
+    title: "Page not found",
+    text: "The page you're looking for doesn't exist or has moved.",
+    home: "Back to the home page",
+  },
 };
 
 export type Dictionary = typeof en;

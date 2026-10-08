@@ -38,6 +38,7 @@ Dependencies are kept minimal. A new one is added only when there's a concrete n
 - Interface text (nav labels, buttons, form labels) lives in two typed dictionaries, `en` and `he`. A missing translation is a TypeScript error.
 - English words inside Hebrew text work automatically (the browser's bidirectional text algorithm). For rare edge cases, a small `<En>…</En>` component marks a phrase as English.
 - Each language may need its own font. The Hebrew font must also include good Latin letters.
+- **404 page:** `app/[locale]/not-found.tsx`, reached through a catch-all route (`app/[locale]/[...rest]`), so unknown URLs get a localized 404 inside the header and footer. Known limitation, accepted on purpose: because the root layout lives in `[locale]`, Next can't server-render the 404. It sends status 404 with an empty HTML shell, and the browser builds the page once JavaScript loads. Alternatives considered: `global-not-found.tsx` (experimental; renders outside the layout, so the language must be passed in separately) and a pass-through `app/layout.tsx` (would lose `next/root-params`).
 
 ## 4. Content model
 

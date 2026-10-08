@@ -21,4 +21,9 @@ export const he: Dictionary = {
     challenge: "אתגר 5 ימים",
     contact: "צרו קשר",
   },
+  notFound: {
+    title: "הדף לא נמצא",
+    text: "הדף שחיפשת לא קיים או שהועבר למקום אחר.",
+    home: "חזרה לדף הבית",
+  },
 };
