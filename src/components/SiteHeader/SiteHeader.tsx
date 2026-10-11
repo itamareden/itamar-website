@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher/LanguageSwitcher";
+import { MobileMenu } from "@/components/MobileMenu/MobileMenu";
 import { getDictionary, type Dictionary } from "@/dictionaries";
 import { getLocale } from "@/i18n/get-locale";
 import styles from "./SiteHeader.module.css";
@@ -19,6 +20,12 @@ export async function SiteHeader() {
   const locale = await getLocale();
   const dict = await getDictionary();
 
+  // Ready-made links, used by both the desktop nav and the mobile menu.
+  const links = navItems.map(({ key, path }) => ({
+    href: `/${locale}${path}`,
+    label: dict.nav[key],
+  }));
+
   return (
     <header className={styles.header}>
       <div className={styles.inner}>
@@ -26,19 +33,22 @@ export async function SiteHeader() {
           {dict.site.name}
         </Link>
 
+        {/* Wide screens: the full nav and the language switcher. */}
         <nav className={styles.nav}>
           <ul className={styles.navList}>
-            {navItems.map(({ key, path }) => (
-              <li key={key}>
-                <Link href={`/${locale}${path}`} className={styles.navLink}>
-                  {dict.nav[key]}
+            {links.map(({ href, label }) => (
+              <li key={href}>
+                <Link href={href} className={styles.navLink}>
+                  {label}
                 </Link>
               </li>
             ))}
           </ul>
         </nav>
+        <LanguageSwitcher className={styles.desktopOnly} />
 
-        <LanguageSwitcher />
+        {/* Small screens: a menu button instead. */}
+        <MobileMenu items={links} openLabel={dict.menu.open} closeLabel={dict.menu.close} />
       </div>
     </header>
   );

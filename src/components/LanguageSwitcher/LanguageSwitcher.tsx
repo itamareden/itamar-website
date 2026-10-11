@@ -18,12 +18,13 @@ import styles from "./LanguageSwitcher.module.css";
  * - A language change is a good moment for a full page load: lang, dir
  *   and fonts on <html> all change together.
  */
-export function LanguageSwitcher() {
+// className lets the parent adjust the layout (e.g. inside the mobile menu).
+export function LanguageSwitcher({ className }: { className?: string }) {
   const pathname = usePathname(); // e.g. "/he/about"
   const [, current, ...rest] = pathname.split("/"); // ["", "he", "about"]
 
   return (
-    <div className={styles.switcher}>
+    <div className={className ? `${styles.switcher} ${className}` : styles.switcher}>
       {locales
         .filter((locale) => locale !== current)
         .map((locale) => (

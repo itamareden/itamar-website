@@ -1,25 +1,32 @@
 /*
- * The photo fills the first screen; the header sits on top of it.
+ * Wide screens: the photo fills the first screen and the text sits on it,
+ * on the physical RIGHT in both languages (not "end"), because it belongs
+ * to the photo's composition: the person sits on the left and the open
+ * forest is on the right.
  *
- * The text block is placed on the physical RIGHT in both languages
- * (not "end"), because it belongs to the photo's composition: the person
- * sits on the left and the open forest is on the right.
+ * Upright screens: the photo still fills the screen, centred on the person,
+ * with the text across the bottom.
  */
 
 .hero {
-  position: relative; /* anchor for the fill image and the text */
+  position: relative; /* anchor for the photo and the text */
   min-block-size: max(32rem, 100svh); /* svh: the visible height on phones, without the browser bars */
-  overflow: hidden;
   color: var(--color-on-photo);
+}
+
+.media {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
 }
 
 .image {
   object-fit: cover;
-  object-position: 30% 40%; /* keeps the person in frame when the screen is narrow */
+  object-position: 30% 40%;
 }
 
 /* Darkens the edges behind the text and the header so both stay readable. */
-.hero::after {
+.media::after {
   content: "";
   position: absolute;
   inset: 0;
@@ -34,7 +41,7 @@
   z-index: 1; /* above the shading */
   right: clamp(var(--gutter), 10vw, 12rem); /* about 10% in from the edge */
   left: auto;
-  bottom: clamp(var(--space-8), 6vw, 5rem);
+  bottom: clamp(var(--space-12), 9vw, 8rem);
   max-inline-size: min(40rem, calc(100% - 2 * var(--gutter)));
 }
 
@@ -73,16 +80,80 @@
   display: block;
 }
 
-/* Phones: the photo is narrow, so the text spans the width at the bottom. */
-@media (max-width: 40rem) {
-  .hero::after {
+/* The colour of "to life", as a solid button. */
+.cta {
+  display: inline-block;
+  margin-block-start: clamp(var(--space-6), 2.6vw, var(--space-8));
+  padding: 0.72em 1.36em;
+  border-radius: var(--radius-pill);
+  background: var(--color-on-photo-accent);
+  color: var(--color-band);
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: var(--text-base);
+  text-decoration: none;
+  box-shadow: 0 8px 24px -8px rgb(20 15 10 / 0.5);
+  transition: background-color var(--transition-fast);
+}
+
+.cta:hover {
+  background: var(--color-on-photo);
+}
+
+.cta:focus-visible {
+  outline: 2px solid var(--color-on-photo);
+  outline-offset: 3px;
+}
+
+/*
+ * Upright screens (phones, and tablets held upright): the photo is pinned
+ * on the person and the text spans the width at the bottom. Chosen by the
+ * screen's shape, not its width, so an upright iPad gets this layout too.
+ */
+@media (max-width: 40rem), (max-aspect-ratio: 1/1) {
+  /*
+   * Pins the person to the exact centre of the screen.
+   * object-position can't do that: a percentage picks a crop, and where
+   * the person lands then depends on the screen's shape. Instead the photo
+   * keeps the full height, its natural width (16:9), and is shifted so
+   * the point --focus-x across it (the person, ~33% from the left) sits
+   * at the middle of the screen.
+   * !important is needed to override the inline size and position that
+   * next/image's `fill` puts on the <img>.
+   */
+  .image {
+    --focus-x: 33%;
+
+    inset: 0 auto auto 50% !important;
+    inline-size: auto !important;
+    block-size: 100% !important;
+    aspect-ratio: 16 / 9;
+    max-inline-size: none; /* the global img rule caps images at 100% wide */
+    transform: translateX(calc(-1 * var(--focus-x)));
+  }
+
+  .media::after {
     background:
       linear-gradient(to top, rgb(28 22 14 / 0.65) 0%, rgb(28 22 14 / 0.25) 45%, transparent 70%),
       linear-gradient(to bottom, rgb(28 22 14 / 0.35) 0%, transparent 18%);
   }
 
   .text {
-    left: var(--gutter);
-    right: var(--gutter);
+    left: clamp(var(--gutter), 6vw, 4rem);
+    right: clamp(var(--gutter), 6vw, 4rem);
+    bottom: var(--space-12);
+  }
+
+  .title {
+    font-size: clamp(2.6rem, 8vw, 6rem); /* ~42px on phones, ~82px on an upright iPad */
+  }
+
+  .cta {
+    font-size: clamp(1rem, 2.2vw, 1.4rem);
+  }
+
+  .lines {
+    font-size: clamp(0.875rem, 2.6vw, 1.45rem); /* 14px on phones, ~23px on an upright iPad */
+    max-inline-size: 34ch;
   }
 }

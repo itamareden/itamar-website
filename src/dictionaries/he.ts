@@ -21,6 +21,10 @@ export const he: Dictionary = {
     challenge: "אתגר 5 ימים",
     contact: "צרו קשר",
   },
+  menu: {
+    open: "פתיחת תפריט",
+    close: "סגירת תפריט",
+  },
   home: {
     heroTitle: "לחזור",
     heroTitleEmphasis: "לחיים.",
@@ -28,6 +32,7 @@ export const he: Dictionary = {
       "ללמוד להקשיב לקול הפנימי ולהוביל את עצמך.",
       "לשחרר ולבטוח, כדרך חיים.",
     ],
+    heroCta: "להתחיל את האתגר החינמי",
     heroImageAlt:
       "איתמר יושב בישיבה מזרחית על סלע בנחל ביער, ידיים מחבקות את הגוף, עיניים עצומות",
   },

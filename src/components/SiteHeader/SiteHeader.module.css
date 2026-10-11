@@ -1,9 +1,9 @@
 /*
- * Desktop layout only for now: the name on the starting side, nav on the
- * ending side. "Start" and "end" follow reading direction, so in Hebrew
- * the name sits on the right without any RTL-specific rules.
- * A collapsible mobile menu comes in a later step; until then the nav
- * simply wraps onto more lines on narrow screens.
+ * The name on the starting side, nav on the ending side. "Start" and
+ * "end" follow reading direction, so in Hebrew the name sits on the
+ * right without any RTL-specific rules.
+ * Below 60rem the nav and language switcher are hidden and MobileMenu
+ * shows a menu button instead (60rem is repeated in MobileMenu.module.css).
  *
  * The header's colours are local variables (--header-*), which the
  * language switcher inside it also reads. That way the "on a photo"
@@ -16,6 +16,8 @@
   --header-line: var(--color-border);
   --header-hover: var(--color-accent);
 
+  position: relative; /* the mobile menu panel hangs from the bottom of the header */
+  z-index: 10;
   border-block-end: 1px solid var(--header-line);
 }
 
@@ -28,11 +30,11 @@ body:has([data-hero]) .header {
   --header-text: var(--color-on-photo);
   --header-text-muted: var(--color-on-photo);
   --header-shadow: 0 1px 12px rgb(20 15 10 / 0.45); /* keeps text readable over bright leaves */
+  --header-icon-shadow: 0 1px 6px rgb(20 15 10 / 0.5);
   --header-line: color-mix(in srgb, var(--color-on-photo) 35%, transparent);
   --header-hover: var(--color-on-photo-accent);
 
   position: absolute;
-  z-index: 10;
   inset-block-start: 0;
   inset-inline: 0;
   border-block-end: none;
@@ -48,6 +50,8 @@ body:has([data-hero]) .header {
 }
 
 .name {
+  position: relative;
+  z-index: 2; /* stays above the mobile menu backdrop */
   font-family: var(--font-heading);
   font-size: var(--text-xl);
   font-weight: var(--weight-heading);
@@ -83,4 +87,23 @@ body:has([data-hero]) .header {
 
 .navLink:hover {
   color: var(--header-text);
+}
+
+/* Below 60rem the mobile menu takes over (see MobileMenu.module.css). */
+@media (max-width: 59.99rem) {
+  .nav,
+  .desktopOnly {
+    display: none;
+  }
+}
+
+/* Phones: a slimmer header bar. */
+@media (max-width: 40rem) {
+  .inner {
+    padding-block: var(--space-4);
+  }
+
+  .name {
+    font-size: var(--text-lg);
+  }
 }

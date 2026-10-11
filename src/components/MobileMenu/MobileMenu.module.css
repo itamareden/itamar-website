@@ -1,0 +1,127 @@
+/*
+ * Shown only below 60rem; above that the header shows the full nav.
+ * (Media queries can't read CSS variables, so 60rem is repeated in
+ * SiteHeader.module.css. Keep the two in sync.)
+ */
+.menu {
+  margin-inline-start: auto; /* pushes the button to the ending side */
+}
+
+@media (min-width: 60rem) {
+  .menu {
+    display: none;
+  }
+}
+
+.button {
+  position: relative;
+  z-index: 2; /* stays above the backdrop, so it can close the menu */
+  display: grid;
+  place-items: center;
+  padding: var(--space-2);
+  margin-inline-end: calc(-1 * var(--space-2)); /* aligns the icon with the edge */
+  border: none;
+  background: none;
+  color: var(--header-text, var(--color-text));
+  cursor: pointer;
+}
+
+.button svg {
+  inline-size: 24px;
+  block-size: 24px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.75;
+  stroke-linecap: round;
+  filter: drop-shadow(var(--header-icon-shadow, 0 0 0 transparent));
+}
+
+.button:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+/* Dims the page behind the panel; tapping it closes the menu. */
+.backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  background: rgb(28 22 14 / 0.25);
+  animation: fade-in 200ms ease-out;
+}
+
+/*
+ * The panel hangs under the header, only as tall as its links.
+ * It always uses the normal page colours, even when the header is on a
+ * photo, so it re-sets the header colour variables for its contents.
+ */
+.panel {
+  --header-text: var(--color-text);
+  --header-line: var(--color-border);
+  --header-hover: var(--color-accent);
+  --header-shadow: none;
+
+  position: absolute;
+  z-index: 2;
+  inset-block-start: 100%;
+  inset-inline-end: var(--gutter); /* a compact card under the button */
+  inline-size: min(17rem, calc(100% - 2 * var(--gutter)));
+  padding: var(--space-2) var(--space-6) var(--space-4);
+  border-radius: var(--radius-md);
+  background: var(--color-background);
+  color: var(--color-text);
+  box-shadow: 0 16px 40px -12px rgb(30 20 10 / 0.35), 0 0 0 1px rgb(51 40 31 / 0.06);
+  animation: drop-in 220ms ease-out;
+}
+
+.list {
+  padding: 0;
+  list-style: none;
+}
+
+.list li + li {
+  border-block-start: 1px solid var(--color-border);
+}
+
+.link {
+  display: block;
+  padding-block: 0.6rem;
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+.link:hover {
+  color: var(--color-accent);
+}
+
+/* In the panel, the language link sits below the list, separated by a line. */
+.switcher {
+  margin-block-start: var(--space-2);
+  padding-block-start: var(--space-3);
+  padding-inline-start: 0;
+  border-inline-start: none;
+  border-block-start: 1px solid var(--color-border);
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes drop-in {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+}
+
+/* Visitors who ask their system for less motion get no animation. */
+@media (prefers-reduced-motion: reduce) {
+  .backdrop,
+  .panel {
+    animation: none;
+  }
+}

@@ -22,6 +22,11 @@ export const en = {
     challenge: "5-Day Challenge",
     contact: "Contact",
   },
+  // Mobile menu button (read by screen readers; the button itself shows an icon).
+  menu: {
+    open: "Open menu",
+    close: "Close menu",
+  },
   // Homepage hero. Short enough to live here until the homepage gets
   // its own content file.
   home: {
@@ -31,6 +36,7 @@ export const en = {
       "Learning to listen to your inner voice and being your own guide.",
       "Letting go and trusting as a way of life.",
     ],
+    heroCta: "Start the free challenge",
     heroImageAlt:
       "Itamar sitting cross-legged on a rock in a forest stream, arms wrapped around himself, eyes closed",
   },
