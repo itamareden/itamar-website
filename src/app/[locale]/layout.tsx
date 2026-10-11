@@ -4,6 +4,7 @@ import { SiteHeader } from "@/components/SiteHeader/SiteHeader";
 import { getDictionary } from "@/dictionaries";
 import { getDirection, locales } from "@/i18n/config";
 import { getLocale } from "@/i18n/get-locale";
+import { fontVariables } from "@/styles/fonts";
 import "@/styles/tokens.css";
 import "@/styles/globals.css";
 import styles from "./layout.module.css";
@@ -28,7 +29,7 @@ export default async function RootLayout({ children }: LayoutProps<"/[locale]">)
   const locale = await getLocale();
 
   return (
-    <html lang={locale} dir={getDirection(locale)}>
+    <html lang={locale} dir={getDirection(locale)} className={fontVariables}>
       <body className={styles.body}>
         <SiteHeader />
         <main className={styles.main}>{children}</main>

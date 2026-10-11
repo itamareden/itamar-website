@@ -36,7 +36,7 @@ h2,
 h3,
 h4 {
   font-family: var(--font-heading);
-  font-weight: var(--weight-bold);
+  font-weight: var(--weight-heading);
   line-height: var(--leading-tight);
   text-wrap: balance;
 }

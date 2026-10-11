@@ -7,27 +7,45 @@
  * Tokens are named by ROLE (what they're for), not by value:
  * `--color-accent`, not `--color-green`.
  *
- * All values below are neutral placeholders until the visual
- * direction is decided.
+ * Visual direction: warm ivory and umber with a berry accent, plus soft
+ * rose/sand washes for colour sections.
  */
 
 :root {
   /* ---- Colour ---- */
-  --color-background: #fbfaf8; /* page background */
-  --color-surface: #f2f0ec; /* cards, panels, raised areas */
-  --color-text: #1f1f1d; /* main text */
-  --color-text-muted: #5f5d58; /* secondary text, captions */
-  --color-border: #dedad3; /* dividers, outlines */
-  --color-accent: #5b6b57; /* links, buttons, highlights */
-  --color-accent-strong: #44523f; /* accent on hover/press */
+  --color-background: #f8f2ec; /* page background (ivory) */
+  --color-surface: #efe2dc; /* cards, panels, raised areas */
+  --color-text: #33281f; /* main text (umber) */
+  --color-text-muted: #5b4e45; /* secondary text, captions */
+  --color-border: #dccfc4; /* dividers, outlines */
+  --color-accent: #a54173; /* links, buttons, highlights (berry) */
+  --color-accent-strong: #86325c; /* accent on hover/press */
   --color-on-accent: #ffffff; /* text placed on top of the accent */
-  --color-focus: #3b6ea8; /* keyboard focus outline */
+  --color-focus: #86325c; /* keyboard focus outline */
+
+  /* Colour sections: two soft colour fields blended over a warm base */
+  --color-wash-base: #efe2dc;
+  --color-wash-rose: #e7cfd2;
+  --color-wash-sand: #e9d9bd;
+
+  /* Dark bands (e.g. a full-width section with light text) */
+  --color-band: #33281f;
+  --color-on-band: #f3dfdd;
+
+  /* Text placed directly on photos */
+  --color-on-photo: #fbf3ee;
+  --color-on-photo-accent: #f0e2c8; /* the emphasised line of a headline */
 
   /* ---- Typography: families ---- */
-  /* System fonts for now; both stacks include fonts with Hebrew glyphs. */
-  --font-body: system-ui, "Segoe UI", Roboto, "Noto Sans Hebrew", Arial,
+  /*
+   * The --font-* variables on the right come from src/styles/fonts.ts.
+   * English first; the Hebrew font is next in line, so any Hebrew words
+   * inside English text still get a matching Hebrew font.
+   */
+  --font-body: var(--font-manrope), var(--font-assistant), system-ui,
     sans-serif;
-  --font-heading: var(--font-body);
+  --font-heading: var(--font-playfair), var(--font-frank-ruhl), Georgia,
+    serif;
 
   /* ---- Typography: sizes (rem = relative to the browser's base size) ---- */
   --text-sm: 0.875rem;
@@ -43,6 +61,7 @@
 
   --weight-normal: 400;
   --weight-bold: 600;
+  --weight-heading: 400; /* the display serifs look best unbolded */
 
   /* ---- Spacing scale ---- */
   --space-1: 0.25rem;
@@ -68,9 +87,13 @@
 }
 
 /*
- * Per-language overrides. When a Hebrew font is chosen, it goes here,
- * and every component picks it up automatically.
+ * Per-language overrides: on Hebrew pages the Hebrew fonts come first
+ * (English words inside Hebrew text then fall back to the English fonts).
+ * Every component picks this up automatically.
  */
 :root:lang(he) {
-  --font-body: system-ui, "Segoe UI", "Noto Sans Hebrew", Arial, sans-serif;
+  --font-body: var(--font-assistant), var(--font-manrope), system-ui,
+    sans-serif;
+  --font-heading: var(--font-frank-ruhl), var(--font-playfair), Georgia,
+    serif;
 }
