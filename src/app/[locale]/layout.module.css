@@ -9,10 +9,38 @@
   flex-direction: column;
 }
 
+/*
+ * Main is a three-column grid: a gutter, the centred content column and
+ * another gutter. Everything sits in the content column by default; an
+ * element marked data-full-bleed spans all three columns, edge to edge
+ * (e.g. a full-width photo).
+ */
 .main {
   flex: 1;
-  inline-size: 100%;
-  max-inline-size: var(--content-width);
-  margin-inline: auto;
-  padding: var(--space-12) var(--gutter);
+  display: grid;
+  grid-template-columns:
+    [full-start] minmax(var(--gutter), 1fr)
+    [content-start] min(100% - 2 * var(--gutter), var(--content-width))
+    [content-end] minmax(var(--gutter), 1fr)
+    [full-end];
+  align-content: start;
+  padding-block: var(--space-12);
+}
+
+.main > * {
+  grid-column: content;
+}
+
+.main > [data-full-bleed] {
+  grid-column: full;
+}
+
+/* A page that opens with a hero starts at the very top, under the header. */
+.main:has(> [data-hero]:first-child) {
+  padding-block-start: 0;
+}
+
+/* Breathing room after a full-width section. */
+.main > [data-full-bleed] + * {
+  margin-block-start: var(--space-12);
 }

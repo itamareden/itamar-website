@@ -16,11 +16,23 @@ export const en = {
     home: "Home",
     about: "About",
     sessions: "Private sessions",
-    events: "Workshops & events",
+    events: "Events",
     courses: "Courses",
     practices: "Practices",
     challenge: "5-Day Challenge",
     contact: "Contact",
+  },
+  // Homepage hero. Short enough to live here until the homepage gets
+  // its own content file.
+  home: {
+    heroTitle: "Coming back",
+    heroTitleEmphasis: "to life.",
+    heroLines: [
+      "Learning to listen to your inner voice and being your own guide.",
+      "Letting go and trusting as a way of life.",
+    ],
+    heroImageAlt:
+      "Itamar sitting cross-legged on a rock in a forest stream, arms wrapped around himself, eyes closed",
   },
   notFound: {
     title: "Page not found",

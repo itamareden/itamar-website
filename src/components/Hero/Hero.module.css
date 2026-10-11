@@ -1,0 +1,88 @@
+/*
+ * The photo fills the first screen; the header sits on top of it.
+ *
+ * The text block is placed on the physical RIGHT in both languages
+ * (not "end"), because it belongs to the photo's composition: the person
+ * sits on the left and the open forest is on the right.
+ */
+
+.hero {
+  position: relative; /* anchor for the fill image and the text */
+  min-block-size: max(32rem, 100svh); /* svh: the visible height on phones, without the browser bars */
+  overflow: hidden;
+  color: var(--color-on-photo);
+}
+
+.image {
+  object-fit: cover;
+  object-position: 30% 40%; /* keeps the person in frame when the screen is narrow */
+}
+
+/* Darkens the edges behind the text and the header so both stay readable. */
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to left, rgb(28 22 14 / 0.55) 0%, rgb(28 22 14 / 0.15) 45%, transparent 70%),
+    linear-gradient(to top, rgb(28 22 14 / 0.35) 0%, transparent 45%),
+    linear-gradient(to bottom, rgb(28 22 14 / 0.35) 0%, transparent 18%);
+}
+
+.text {
+  position: absolute;
+  z-index: 1; /* above the shading */
+  right: clamp(var(--gutter), 10vw, 12rem); /* about 10% in from the edge */
+  left: auto;
+  bottom: clamp(var(--space-8), 6vw, 5rem);
+  max-inline-size: min(40rem, calc(100% - 2 * var(--gutter)));
+}
+
+.title {
+  font-size: clamp(2.6rem, 5.4vw, 5.1rem);
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  color: var(--color-on-photo);
+  text-shadow: 0 2px 24px rgb(20 15 10 / 0.45); /* separates the letters from the busy photo */
+}
+
+.title em {
+  display: block;
+  margin-block-start: 0.1em;
+  font-weight: 500; /* slightly thicker strokes carry the colour better */
+  color: var(--color-on-photo-accent);
+}
+
+/* Hebrew has no italic: emphasis is the colour alone. */
+.title em:lang(he) {
+  font-style: normal;
+}
+
+.lines {
+  margin-block-start: clamp(var(--space-4), 2.4vw, var(--space-8));
+  max-inline-size: 38ch;
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: clamp(0.95rem, 1.2vw, 1.125rem);
+  line-height: 1.6;
+  color: var(--color-on-photo);
+  text-shadow: 0 1px 12px rgb(20 15 10 / 0.4);
+}
+
+.lines span {
+  display: block;
+}
+
+/* Phones: the photo is narrow, so the text spans the width at the bottom. */
+@media (max-width: 40rem) {
+  .hero::after {
+    background:
+      linear-gradient(to top, rgb(28 22 14 / 0.65) 0%, rgb(28 22 14 / 0.25) 45%, transparent 70%),
+      linear-gradient(to bottom, rgb(28 22 14 / 0.35) 0%, transparent 18%);
+  }
+
+  .text {
+    left: var(--gutter);
+    right: var(--gutter);
+  }
+}

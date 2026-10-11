@@ -4,10 +4,38 @@
  * the name sits on the right without any RTL-specific rules.
  * A collapsible mobile menu comes in a later step; until then the nav
  * simply wraps onto more lines on narrow screens.
+ *
+ * The header's colours are local variables (--header-*), which the
+ * language switcher inside it also reads. That way the "on a photo"
+ * version below only has to swap the variables.
  */
 
 .header {
-  border-block-end: 1px solid var(--color-border);
+  --header-text: var(--color-text);
+  --header-text-muted: var(--color-text-muted);
+  --header-line: var(--color-border);
+  --header-hover: var(--color-accent);
+
+  border-block-end: 1px solid var(--header-line);
+}
+
+/*
+ * When the page opens with a hero photo, the header lies transparently on
+ * top of it with light text. :has() checks the whole page for an element
+ * marked data-hero, so no page has to tell the header anything.
+ */
+body:has([data-hero]) .header {
+  --header-text: var(--color-on-photo);
+  --header-text-muted: var(--color-on-photo);
+  --header-shadow: 0 1px 12px rgb(20 15 10 / 0.45); /* keeps text readable over bright leaves */
+  --header-line: color-mix(in srgb, var(--color-on-photo) 35%, transparent);
+  --header-hover: var(--color-on-photo-accent);
+
+  position: absolute;
+  z-index: 10;
+  inset-block-start: 0;
+  inset-inline: 0;
+  border-block-end: none;
 }
 
 .inner {
@@ -15,21 +43,21 @@
   flex-wrap: wrap;
   align-items: center;
   gap: var(--space-4) var(--space-6);
-  max-inline-size: var(--content-width);
-  margin-inline: auto;
-  padding: var(--space-6) var(--gutter);
+  /* Full width: the name and nav sit near the screen edges, not in the content column */
+  padding: var(--space-6) clamp(var(--gutter), 4vw, 4rem);
 }
 
 .name {
   font-family: var(--font-heading);
-  font-size: var(--text-lg);
+  font-size: var(--text-xl);
   font-weight: var(--weight-heading);
-  color: var(--color-text);
+  color: var(--header-text);
   text-decoration: none;
+  text-shadow: var(--header-shadow, none);
 }
 
 .name:hover {
-  color: var(--color-accent);
+  color: var(--header-hover);
 }
 
 /* Pushes the nav (and the language switcher after it) to the ending side. */
@@ -46,11 +74,13 @@
 }
 
 .navLink {
-  color: var(--color-text-muted);
+  color: var(--header-text-muted);
+  font-weight: 500;
   text-decoration: none;
+  text-shadow: var(--header-shadow, none);
   transition: color var(--transition-fast);
 }
 
 .navLink:hover {
-  color: var(--color-text);
+  color: var(--header-text);
 }

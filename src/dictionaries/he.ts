@@ -15,11 +15,21 @@ export const he: Dictionary = {
     home: "בית",
     about: "אודות",
     sessions: "מפגשים אישיים",
-    events: "סדנאות ואירועים",
+    events: "אירועים",
     courses: "קורסים",
     practices: "תרגולים",
     challenge: "אתגר 5 ימים",
     contact: "צרו קשר",
+  },
+  home: {
+    heroTitle: "לחזור",
+    heroTitleEmphasis: "לחיים.",
+    heroLines: [
+      "ללמוד להקשיב לקול הפנימי ולהוביל את עצמך.",
+      "לשחרר ולבטוח, כדרך חיים.",
+    ],
+    heroImageAlt:
+      "איתמר יושב בישיבה מזרחית על סלע בנחל ביער, ידיים מחבקות את הגוף, עיניים עצומות",
   },
   notFound: {
     title: "הדף לא נמצא",
