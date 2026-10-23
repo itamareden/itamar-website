@@ -11,6 +11,30 @@ import { he } from "./he";
  */
 export type ChallengeMode = "group" | "email";
 
+/*
+ * The five day pages, in order. The slug is the page address
+ * (/he/challenge/day-1-breath) and is the same in every language.
+ * Unguessable on purpose: no page may mention a later day's theme.
+ */
+export const challengeDays = [
+  { number: 1, slug: "day-1-breath" },
+  { number: 2, slug: "day-2-body-sensations" },
+  { number: 3, slug: "day-3-observing-thoughts" },
+  { number: 4, slug: "day-4-movement-meditation" },
+  { number: 5, slug: "day-5-letting-go" },
+] as const;
+
+export type ChallengeDaySlug = (typeof challengeDays)[number]["slug"];
+
+type Video = { title: string; playbackId: string };
+
+export type ChallengeDay = {
+  title: string;
+  text: string;
+  video: Video;
+  meditation: { title: string; src: string };
+};
+
 type Step = { title: string; text: string };
 
 // A heading whose second part is set apart (italic in English, colour in Hebrew).
@@ -53,6 +77,23 @@ export type ChallengeContent = {
   guide: { kicker: string; heading: Heading; text: string; imageAlt: string };
   faq: { title: string; items: { question: string; answer: string }[] };
   closing: { heading: Heading; text: string };
+
+  // Text shared by the welcome page and the day pages.
+  practice: {
+    kicker: string; // "5-Day Challenge"
+    dayOfTotal: (day: number, total: number) => string; // "Day 3 of 5"
+    progressLabel: string; // screen-reader name of the progress bar
+    dayDone: string; // "completed", read out for each day's dot
+    dayNotDone: string;
+    dayComplete: string;
+    meditationHeading: string;
+    nextNote: string; // under each day except the last
+    player: { play: string; pause: string; back: string; forward: string; seek: string };
+  };
+  welcome: { heading: Heading; text: string; videos: Video[]; nextNote: string };
+  days: Record<ChallengeDaySlug, ChallengeDay>;
+  // After the last meditation, on the day 5 page.
+  finale: { heading: Heading; text: string; video: Video; nextHeading: string };
 };
 
 const content: Record<Locale, ChallengeContent> = { en, he };

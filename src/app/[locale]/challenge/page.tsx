@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { getChallenge, type ChallengeContent } from "@/content/challenge";
+import { getChallenge } from "@/content/challenge";
 import { getDictionary } from "@/dictionaries";
 import type { Locale } from "@/i18n/config";
 import { getLocale } from "@/i18n/get-locale";
+import { Heading } from "./_components/Heading";
 import { SignupForm } from "./_components/SignupForm";
 import { WhatsAppIcon } from "./_components/WhatsAppIcon";
 import styles from "./page.module.css";
@@ -28,13 +29,6 @@ function formatDate(isoDate: string, locale: Locale) {
   }).format(new Date(`${isoDate}T00:00:00Z`));
 }
 
-function Heading({ heading }: { heading: ChallengeContent["hero"]["heading"] }) {
-  return (
-    <>
-      {heading.title} <em>{heading.emphasis}</em>
-    </>
-  );
-}
 
 function LockIcon() {
   return (

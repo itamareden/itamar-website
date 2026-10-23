@@ -1,4 +1,5 @@
 import type { ChallengeContent } from ".";
+import { STAND_IN_AUDIO, STAND_IN_VIDEO } from "./stand-in-media";
 
 // Draft copy, to be refined.
 export const he: ChallengeContent = {
@@ -66,5 +67,69 @@ export const he: ChallengeContent = {
   closing: {
     heading: { title: "מוכנים", emphasis: "להתחיל?" },
     text: "חמישה ימים, בערך רבע שעה בכל יום.",
+  },
+  practice: {
+    kicker: "אתגר 5 ימים",
+    dayOfTotal: (day, total) => `יום ${day} מתוך ${total}`,
+    progressLabel: "ההתקדמות באתגר",
+    dayDone: "הושלם",
+    dayNotDone: "עוד לא הושלם",
+    dayComplete: "היום הושלם. יפה מאוד.",
+    meditationHeading: "המדיטציה של היום",
+    nextNote: "התרגול של מחר יישלח אליכם בבוקר.",
+    player: {
+      play: "הפעלה",
+      pause: "השהיה",
+      back: "10 שניות אחורה",
+      forward: "10 שניות קדימה",
+      seek: "מיקום במדיטציה",
+    },
+  },
+  welcome: {
+    heading: { title: "ברוכים", emphasis: "הבאים." },
+    text: "לפני שמתחילים: שני סרטונים קצרים. הראשון מספר על האתגר, והשני מלמד איך מודטים.",
+    videos: [
+      { title: "פתיחה", playbackId: STAND_IN_VIDEO },
+      { title: "איך מודטים", playbackId: STAND_IN_VIDEO },
+    ],
+    nextNote: "התרגול של היום הראשון יישלח אליכם בבוקר.",
+  },
+  days: {
+    "day-1-breath": {
+      title: "נשימה",
+      text: "כמה מילים על התרגול של היום יבואו כאן.",
+      video: { title: "יום 1: נשימה", playbackId: STAND_IN_VIDEO },
+      meditation: { title: "מדיטציה: נשימה", src: STAND_IN_AUDIO },
+    },
+    "day-2-body-sensations": {
+      title: "תחושות גוף",
+      text: "כמה מילים על התרגול של היום יבואו כאן.",
+      video: { title: "יום 2: תחושות גוף", playbackId: STAND_IN_VIDEO },
+      meditation: { title: "מדיטציה: תחושות גוף", src: STAND_IN_AUDIO },
+    },
+    "day-3-observing-thoughts": {
+      title: "התבוננות במחשבות",
+      text: "כמה מילים על התרגול של היום יבואו כאן.",
+      video: { title: "יום 3: התבוננות במחשבות", playbackId: STAND_IN_VIDEO },
+      meditation: { title: "מדיטציה: התבוננות במחשבות", src: STAND_IN_AUDIO },
+    },
+    "day-4-movement-meditation": {
+      title: "מדיטציה בתנועה",
+      text: "כמה מילים על התרגול של היום יבואו כאן.",
+      video: { title: "יום 4: מדיטציה בתנועה", playbackId: STAND_IN_VIDEO },
+      meditation: { title: "מדיטציה בתנועה", src: STAND_IN_AUDIO },
+    },
+    "day-5-letting-go": {
+      title: "לשחרר",
+      text: "כמה מילים על התרגול של היום יבואו כאן.",
+      video: { title: "יום 5: לשחרר", playbackId: STAND_IN_VIDEO },
+      meditation: { title: "מדיטציה: לשחרר", src: STAND_IN_AUDIO },
+    },
+  },
+  finale: {
+    heading: { title: "מילים", emphasis: "לסיום" },
+    text: "סיימתם חמישה ימים של תרגול. כמה מחשבות אחרונות, ומה אפשר לעשות מכאן.",
+    video: { title: "מילים לסיום", playbackId: STAND_IN_VIDEO },
+    nextHeading: "להמשיך מכאן",
   },
 };

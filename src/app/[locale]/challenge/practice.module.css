@@ -1,0 +1,366 @@
+/*
+ * The welcome page and the day pages: a calm single column, sized for
+ * phones first (most people open these links from WhatsApp or email).
+ */
+
+.page {
+  display: grid;
+  gap: clamp(var(--space-8), 5vw, var(--space-12));
+  inline-size: 100%;
+  max-inline-size: 46rem;
+  margin-inline: auto;
+}
+
+.top {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.kicker {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+.kicker:lang(he) {
+  font-size: 0.9rem;
+  letter-spacing: 0.02em;
+}
+
+.title {
+  font-size: clamp(2.4rem, 6vw, 3.6rem);
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+}
+
+.title em {
+  color: var(--color-accent);
+}
+
+.text {
+  max-inline-size: 46ch;
+  color: var(--color-text-muted);
+}
+
+.block {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.blockTitle {
+  font-size: clamp(1.4rem, 3vw, 1.8rem);
+}
+
+/* "Tomorrow's practice will be sent to you" */
+.next {
+  padding: var(--space-4) var(--space-6);
+  border-radius: 14px;
+  background: var(--color-wash-base);
+  color: var(--color-text-muted);
+  text-align: center;
+}
+
+/* ---------- progress bar ---------- */
+
+.progress {
+  display: grid;
+  gap: var(--space-2);
+  margin-block: var(--space-2);
+}
+
+.progressRow {
+  display: flex;
+  justify-content: space-between;
+  font-size: var(--text-sm);
+  font-weight: var(--weight-bold);
+}
+
+.progressPercent {
+  color: var(--color-accent);
+  font-variant-numeric: tabular-nums;
+}
+
+/*
+ * One bar in five segments, one per day. A completed day's segment fills
+ * from its start (left in English, right in Hebrew); a skipped day stays
+ * empty; the current page's day is outlined. Day numbers sit underneath.
+ */
+.segments {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 4px;
+  padding-block-end: 1.2rem; /* room for the day numbers */
+}
+
+.segment {
+  position: relative;
+  block-size: 8px;
+  border-radius: var(--radius-pill);
+  background: var(--color-border);
+}
+
+.segment::before {
+  content: "";
+  position: absolute;
+  inset-block: 0;
+  inset-inline-start: 0;
+  inline-size: 0;
+  border-radius: inherit;
+  background: var(--color-accent);
+  transition: inline-size 0.8s ease;
+}
+
+.segment[data-done="true"]::before {
+  inline-size: 100%;
+}
+
+.segment[data-current="true"] {
+  box-shadow: 0 0 0 2px var(--color-background), 0 0 0 3.5px var(--color-accent);
+}
+
+.segmentNumber {
+  position: absolute;
+  inset-block-start: calc(100% + 0.3rem);
+  inset-inline: 0;
+  text-align: center;
+  font-size: 0.75rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-text-muted);
+}
+
+.segment[data-current="true"] .segmentNumber {
+  font-weight: var(--weight-bold);
+  color: var(--color-accent);
+}
+
+.progressDone {
+  font-size: var(--text-sm);
+  font-weight: var(--weight-bold);
+  color: var(--color-accent);
+}
+
+/* ---------- video ---------- */
+
+/* A container, so the extra buttons below can react to the player's own width. */
+.videoBlock {
+  container-type: inline-size;
+  display: grid;
+  gap: var(--space-2);
+}
+
+.video {
+  overflow: hidden;
+  border-radius: 14px;
+  background: var(--color-band); /* shows while the player loads */
+  aspect-ratio: 16 / 9;
+}
+
+/* Our ±10 s buttons, for players narrower than 470px (Mux shows its own above that). */
+.videoSkips {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-8);
+}
+
+@container (min-width: 470px) {
+  .videoSkips {
+    display: none;
+  }
+}
+
+/* ---------- audio player ---------- */
+
+.audio {
+  display: grid;
+  gap: var(--space-4);
+  padding: clamp(var(--space-6), 4vw, var(--space-8));
+  border-radius: 20px;
+  background:
+    radial-gradient(ellipse 70% 80% at 15% 20%, var(--color-wash-rose) 0%, transparent 70%),
+    radial-gradient(ellipse 60% 70% at 90% 90%, var(--color-wash-sand) 0%, transparent 70%),
+    var(--color-wash-base);
+}
+
+.audioTitle {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  text-align: center;
+}
+
+.audioControls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-6);
+}
+
+.audioControls button {
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: none;
+  cursor: pointer;
+  color: var(--color-text);
+}
+
+.audioControls button:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 3px;
+}
+
+.skip {
+  display: grid;
+  place-items: center;
+  inline-size: 3rem;
+  block-size: 3rem;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--color-text);
+  cursor: pointer;
+}
+
+.skip:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 3px;
+}
+
+.skip:hover {
+  background: rgb(51 40 31 / 0.06);
+}
+
+.skip svg {
+  inline-size: 2rem;
+  block-size: 2rem;
+}
+
+.skip path {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.skip text {
+  font: 700 6.5px var(--font-body);
+  fill: currentColor;
+}
+
+.playButton {
+  inline-size: 4.25rem;
+  block-size: 4.25rem;
+  border-radius: 50%;
+  background: var(--color-accent);
+  box-shadow: 0 10px 24px -10px rgb(134 50 92 / 0.6);
+  transition: background-color var(--transition-fast);
+}
+
+.audioControls .playButton {
+  color: var(--color-on-accent);
+}
+
+.playButton:hover {
+  background: var(--color-accent-strong);
+}
+
+.playButton svg {
+  inline-size: 1.75rem;
+  block-size: 1.75rem;
+  fill: currentColor;
+}
+
+.timeline {
+  display: grid;
+  gap: var(--space-1);
+}
+
+/* The seek bar: played part in the accent colour, the rest pale. */
+.seek {
+  appearance: none;
+  inline-size: 100%;
+  block-size: 6px;
+  margin: 0;
+  border-radius: var(--radius-pill);
+  background: linear-gradient(
+    to right,
+    var(--color-accent) var(--played),
+    rgb(51 40 31 / 0.15) var(--played)
+  );
+  cursor: pointer;
+}
+
+.seek::-webkit-slider-thumb {
+  appearance: none;
+  inline-size: 16px;
+  block-size: 16px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  box-shadow: 0 0 0 3px var(--color-background);
+}
+
+.seek::-moz-range-thumb {
+  inline-size: 16px;
+  block-size: 16px;
+  border: 0;
+  border-radius: 50%;
+  background: var(--color-accent);
+  box-shadow: 0 0 0 3px var(--color-background);
+}
+
+.seek:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 4px;
+}
+
+.times {
+  display: flex;
+  justify-content: space-between;
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------- day 5: closing thoughts and what's next ---------- */
+
+.finale {
+  display: grid;
+  gap: var(--space-4);
+  padding-block-start: var(--space-8);
+  border-block-start: 1px solid var(--color-border);
+}
+
+.nextLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  padding: 0;
+  list-style: none;
+}
+
+.nextLinks a {
+  display: inline-block;
+  padding: 0.7em 1.3em;
+  border: 1px solid var(--color-text);
+  border-radius: var(--radius-pill);
+  color: var(--color-text);
+  font-weight: var(--weight-bold);
+  text-decoration: none;
+  transition: background-color var(--transition-fast), color var(--transition-fast);
+}
+
+.nextLinks a:hover {
+  background: var(--color-text);
+  color: var(--color-background);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .segment::before,
+  .playButton,
+  .nextLinks a {
+    transition: none;
+  }
+}
