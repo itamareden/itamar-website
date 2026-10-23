@@ -40,7 +40,13 @@
   padding-block-start: 0;
 }
 
-/* Breathing room after a full-width section. */
-.main > [data-full-bleed] + * {
+/* Breathing room after a full-width section. :where() gives the rule zero
+   specificity, so a page can set its own spacing with a single class. */
+:where(.main > [data-full-bleed] + *) {
   margin-block-start: var(--space-12);
+}
+
+/* A page that ends with a full-width section runs straight into the footer. */
+.main:has(> [data-full-bleed]:last-child) {
+  padding-block-end: 0;
 }

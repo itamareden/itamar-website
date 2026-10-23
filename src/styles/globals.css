@@ -97,3 +97,9 @@ select {
     scroll-behavior: auto !important;
   }
 }
+
+/* Hebrew has no italic: never let the browser fake one by slanting letters.
+   Emphasis in Hebrew comes from colour or weight instead. */
+:lang(he) em {
+  font-style: normal;
+}
