@@ -1,5 +1,5 @@
 import type { ChallengeContent } from ".";
-import { STAND_IN_AUDIO, STAND_IN_VIDEO } from "./stand-in-media";
+import { STAND_IN_AUDIO } from "./stand-in-media";
 
 // Draft copy, to be refined.
 export const he: ChallengeContent = {
@@ -89,8 +89,8 @@ export const he: ChallengeContent = {
     heading: { title: "ברוכים", emphasis: "הבאים." },
     text: "לפני שמתחילים: שני סרטונים קצרים. הראשון מספר על האתגר, והשני מלמד איך מודטים.",
     videos: [
-      { title: "פתיחה", playbackId: STAND_IN_VIDEO },
-      { title: "איך מודטים", playbackId: STAND_IN_VIDEO },
+      { title: "פתיחה", playbackId: "jU02ElGb64oIl8XdY9YOg00EZ7MsOg7AYNlKshxgui3Mc" },
+      { title: "איך מודטים", playbackId: "1IzatIQ8exQiFJ8pabhYec4Y71H9q01rUgzxCfxsgATU" },
     ],
     nextNote: "התרגול של היום הראשון יישלח אליכם בבוקר.",
   },
@@ -98,38 +98,50 @@ export const he: ChallengeContent = {
     "day-1-breath": {
       title: "נשימה",
       text: "כמה מילים על התרגול של היום יבואו כאן.",
-      video: { title: "יום 1: נשימה", playbackId: STAND_IN_VIDEO },
-      meditation: { title: "מדיטציה: נשימה", src: STAND_IN_AUDIO },
+      video: { title: "יום 1: נשימה", playbackId: "dVJkKAGdccC00PP5fXaghjuffWoFzkkuey2H02q6dg81I" },
+      meditation: {
+        title: "מדיטציה: נשימה",
+        src: "https://pub-cd5e8ba8d8ae441fbf5afc33f306d770.r2.dev/meditations/Day%201%20-%20Breath%20Meditation.mp3",
+      },
     },
     "day-2-body-sensations": {
       title: "תחושות גוף",
       text: "כמה מילים על התרגול של היום יבואו כאן.",
-      video: { title: "יום 2: תחושות גוף", playbackId: STAND_IN_VIDEO },
-      meditation: { title: "מדיטציה: תחושות גוף", src: STAND_IN_AUDIO },
+      video: { title: "יום 2: תחושות גוף", playbackId: "01hl02bTQBqRMgXTW5IAHQ00fMuePe02CDyLtnAmXNPHrW4" },
+      meditation: {
+        title: "מדיטציה: תחושות גוף",
+        src: "https://pub-cd5e8ba8d8ae441fbf5afc33f306d770.r2.dev/meditations/Day%202%20-%20Body%20Meditation.mp3",
+      },
     },
     "day-3-observing-thoughts": {
       title: "התבוננות במחשבות",
       text: "כמה מילים על התרגול של היום יבואו כאן.",
-      video: { title: "יום 3: התבוננות במחשבות", playbackId: STAND_IN_VIDEO },
-      meditation: { title: "מדיטציה: התבוננות במחשבות", src: STAND_IN_AUDIO },
+      video: { title: "יום 3: התבוננות במחשבות", playbackId: "MERgEDAQlwnf6nTAl4f00zUJTOhcF800xhLCpEDIQyqog" },
+      meditation: {
+        title: "מדיטציה: התבוננות במחשבות",
+        src: "https://pub-cd5e8ba8d8ae441fbf5afc33f306d770.r2.dev/meditations/Day%203%20-%20Thoughts%20Meditation.mp3",
+      },
     },
     "day-4-movement-meditation": {
       title: "מדיטציה בתנועה",
       text: "כמה מילים על התרגול של היום יבואו כאן.",
-      video: { title: "יום 4: מדיטציה בתנועה", playbackId: STAND_IN_VIDEO },
+      video: { title: "יום 4: מדיטציה בתנועה", playbackId: "qc01m3PdqQPqvtbN775agYvU1yYqD400jc8eElNqLOruc" },
       meditation: { title: "מדיטציה בתנועה", src: STAND_IN_AUDIO },
     },
     "day-5-letting-go": {
       title: "לשחרר",
       text: "כמה מילים על התרגול של היום יבואו כאן.",
-      video: { title: "יום 5: לשחרר", playbackId: STAND_IN_VIDEO },
-      meditation: { title: "מדיטציה: לשחרר", src: STAND_IN_AUDIO },
+      video: { title: "יום 5: לשחרר", playbackId: "xeT3cyDt3UJVPATFYijw01WNmNvPE1Hrx4hOJQJZm3AA" },
+      meditation: {
+        title: "מדיטציה: לשחרר",
+        src: "https://pub-cd5e8ba8d8ae441fbf5afc33f306d770.r2.dev/meditations/Day%205%20-%20Letting%20Go%20Meditation.mp3",
+      },
     },
   },
   finale: {
     heading: { title: "מילים", emphasis: "לסיום" },
     text: "סיימתם חמישה ימים של תרגול. כמה מחשבות אחרונות, ומה אפשר לעשות מכאן.",
-    video: { title: "מילים לסיום", playbackId: STAND_IN_VIDEO },
+    video: { title: "מילים לסיום", playbackId: "WqffablRmnedvWRIBWBuVtO8ex700H02EhryLa2QECrS4" },
     nextHeading: "להמשיך מכאן",
   },
 };
