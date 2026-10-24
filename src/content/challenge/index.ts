@@ -33,6 +33,8 @@ export type ChallengeDay = {
   text: string;
   video: Video;
   meditation: { title: string; src: string };
+  // Under the meditation: a list of things to carry into the rest of the day.
+  forTheDay: string[];
 };
 
 type Step = { title: string; text: string };
@@ -87,10 +89,18 @@ export type ChallengeContent = {
     dayNotDone: string;
     dayComplete: string;
     meditationHeading: string;
+    forTheDayHeading: string;
+    untilTomorrow: string; // small heading above nextNote
     nextNote: string; // under each day except the last
     player: { play: string; pause: string; back: string; forward: string; seek: string };
   };
-  welcome: { heading: Heading; text: string; videos: Video[]; nextNote: string };
+  welcome: {
+    heading: Heading;
+    text: string;
+    videos: Video[];
+    prepare: { heading: string; items: string[] }; // under the last video
+    nextNote: string;
+  };
   days: Record<ChallengeDaySlug, ChallengeDay>;
   // After the last meditation, on the day 5 page.
   finale: { heading: Heading; text: string; video: Video; nextHeading: string };

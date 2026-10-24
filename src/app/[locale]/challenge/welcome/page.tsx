@@ -3,6 +3,7 @@ import { getChallenge } from "@/content/challenge";
 import { getDictionary } from "@/dictionaries";
 import { getLocale } from "@/i18n/get-locale";
 import { Heading } from "../_components/Heading";
+import { NextNote } from "../_components/NextNote";
 import { VideoPlayer } from "../_components/VideoPlayer";
 import styles from "../practice.module.css";
 
@@ -38,7 +39,16 @@ export default async function WelcomePage() {
         </section>
       ))}
 
-      <p className={styles.next}>{c.welcome.nextNote}</p>
+      <section className={`${styles.block} ${styles.listBlock}`}>
+        <h2 className={styles.blockTitle}>{c.welcome.prepare.heading}</h2>
+        <ul className={styles.ringList}>
+          {c.welcome.prepare.items.map((item) => (
+            <li key={item}>{item}</li>
+          ))}
+        </ul>
+      </section>
+
+      <NextNote heading={c.practice.untilTomorrow} text={c.welcome.nextNote} />
     </article>
   );
 }

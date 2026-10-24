@@ -53,13 +53,104 @@
   font-size: clamp(1.4rem, 3vw, 1.8rem);
 }
 
-/* "Tomorrow's practice will be sent to you" */
+/* ---------- lists under the players (day: for the day; welcome: preparing) ---------- */
+
+/* Extra room after the player above, on top of the page's usual gap. */
+.listBlock {
+  margin-block-start: var(--space-8);
+}
+
+.ringList {
+  display: grid;
+  gap: var(--space-4);
+  padding: 0;
+  list-style: none;
+}
+
+/* Each item behind a small berry ring, aligned with the first line. */
+.ringList li {
+  position: relative;
+  padding-inline-start: 1.75rem;
+}
+
+.ringList li::before {
+  content: "";
+  position: absolute;
+  inset-inline-start: 0.2rem;
+  inset-block-start: 0.55em;
+  inline-size: 0.6rem;
+  block-size: 0.6rem;
+  border: 2px solid var(--color-accent);
+  border-radius: 50%;
+}
+
+/* ---------- "Until tomorrow": the close of days 1-4 and the welcome page ---------- */
+
+/*
+ * A sunrise card in soft berry, a touch lighter at the bottom centre where
+ * the sun comes up. It breaks the page's cream.
+ */
 .next {
-  padding: var(--space-4) var(--space-6);
-  border-radius: 14px;
-  background: var(--color-wash-base);
-  color: var(--color-text-muted);
+  display: grid;
+  justify-items: center;
+  gap: var(--space-2);
+  margin-block-start: var(--space-8); /* extra room after the list above */
+  padding: clamp(var(--space-8), 6vw, var(--space-12)) var(--space-6);
+  border-radius: 20px;
+  background: radial-gradient(
+    ellipse 90% 110% at 50% 100%,
+    var(--color-sunrise-glow) 0%,
+    var(--color-sunrise) 55%
+  );
   text-align: center;
+}
+
+/* Phones: edge to edge, down to the footer. The negative margins pull the
+   card out over the page's side gutters and the space <main> keeps at its
+   bottom (the card is always the page's last element). */
+@media (max-width: 40rem) {
+  .next {
+    margin-inline: calc(-1 * var(--gutter));
+    margin-block-end: calc(-1 * var(--space-12));
+    border-radius: 0;
+  }
+}
+
+/* The sun, with a thin bright line running out to each side. */
+.nextMark {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  inline-size: min(100%, 22rem);
+  margin-block-end: var(--space-2);
+  color: var(--color-on-sunrise);
+}
+
+.nextMark::before,
+.nextMark::after {
+  content: "";
+  flex: 1;
+  block-size: 1.5px;
+  background: currentColor;
+  opacity: 0.7;
+}
+
+.nextMark svg {
+  inline-size: 3rem;
+  block-size: auto;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.75;
+  stroke-linecap: round;
+  filter: drop-shadow(0 0 6px rgb(255 250 240 / 0.8));
+}
+
+.nextHeading {
+  font-size: clamp(1.6rem, 4vw, 2rem);
+}
+
+.nextText {
+  max-inline-size: 34ch;
 }
 
 /* ---------- progress bar ---------- */

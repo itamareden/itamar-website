@@ -76,6 +76,8 @@ export const en: ChallengeContent = {
     dayNotDone: "not completed yet",
     dayComplete: "Day complete. Well done.",
     meditationHeading: "Today's meditation",
+    forTheDayHeading: "Taking the experience with you for the day",
+    untilTomorrow: "Until tomorrow",
     nextNote: "Tomorrow's practice will be sent to you in the morning.",
     player: {
       play: "Play",
@@ -92,6 +94,14 @@ export const en: ChallengeContent = {
       { title: "Introduction", playbackId: STAND_IN_VIDEO },
       { title: "How to meditate", playbackId: STAND_IN_VIDEO },
     ],
+    prepare: {
+      heading: "How to prepare for the journey",
+      items: [
+        "Choose a regular time of day to practise, for example right after you wake up.",
+        "Find a quiet corner where no one will disturb you for fifteen minutes.",
+        "Have headphones ready, and a cushion or a comfortable chair to sit on.",
+      ],
+    },
     nextNote: "Your first day's practice will be sent to you in the morning.",
   },
   days: {
@@ -100,30 +110,39 @@ export const en: ChallengeContent = {
       text: "A few words about today's practice go here.",
       video: { title: "Day 1: Breath", playbackId: STAND_IN_VIDEO },
       meditation: { title: "Meditation: Breath", src: STAND_IN_AUDIO },
+      forTheDay: [
+        "Pause once or twice during the day and take three slow breaths.",
+        "Notice your breath in moments of transition: before a conversation, while waiting, in a queue.",
+        "Before sleep, recall one moment today when you felt your breath.",
+      ],
     },
     "day-2-body-sensations": {
       title: "Body sensations",
       text: "A few words about today's practice go here.",
       video: { title: "Day 2: Body sensations", playbackId: STAND_IN_VIDEO },
       meditation: { title: "Meditation: Body sensations", src: STAND_IN_AUDIO },
+      forTheDay: ["Something small to try during the day goes here.", "And another.", "And another."],
     },
     "day-3-observing-thoughts": {
       title: "Observing thoughts",
       text: "A few words about today's practice go here.",
       video: { title: "Day 3: Observing thoughts", playbackId: STAND_IN_VIDEO },
       meditation: { title: "Meditation: Observing thoughts", src: STAND_IN_AUDIO },
+      forTheDay: ["Something small to try during the day goes here.", "And another.", "And another."],
     },
     "day-4-movement-meditation": {
       title: "Movement meditation",
       text: "A few words about today's practice go here.",
       video: { title: "Day 4: Movement meditation", playbackId: STAND_IN_VIDEO },
       meditation: { title: "Movement meditation", src: STAND_IN_AUDIO },
+      forTheDay: ["Something small to try during the day goes here.", "And another.", "And another."],
     },
     "day-5-letting-go": {
       title: "Letting go",
       text: "A few words about today's practice go here.",
       video: { title: "Day 5: Letting go", playbackId: STAND_IN_VIDEO },
       meditation: { title: "Meditation: Letting go", src: STAND_IN_AUDIO },
+      forTheDay: ["Something small to try during the day goes here.", "And another.", "And another."],
     },
   },
   finale: {

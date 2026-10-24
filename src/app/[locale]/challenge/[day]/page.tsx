@@ -7,6 +7,7 @@ import { getLocale } from "@/i18n/get-locale";
 import { AudioPlayer } from "../_components/AudioPlayer";
 import { DayProgress } from "../_components/DayProgress";
 import { Heading } from "../_components/Heading";
+import { NextNote } from "../_components/NextNote";
 import { VideoPlayer } from "../_components/VideoPlayer";
 import styles from "../practice.module.css";
 
@@ -77,6 +78,15 @@ export default async function DayPage(props: PageProps<"/[locale]/challenge/[day
         />
       </section>
 
+      <section className={`${styles.block} ${styles.listBlock}`}>
+        <h2 className={styles.blockTitle}>{c.practice.forTheDayHeading}</h2>
+        <ul className={styles.ringList}>
+          {day.forTheDay.map((item) => (
+            <li key={item}>{item}</li>
+          ))}
+        </ul>
+      </section>
+
       {isLast ? (
         <section className={styles.finale}>
           <h2 className={styles.title}>
@@ -99,7 +109,7 @@ export default async function DayPage(props: PageProps<"/[locale]/challenge/[day
           </ul>
         </section>
       ) : (
-        <p className={styles.next}>{c.practice.nextNote}</p>
+        <NextNote heading={c.practice.untilTomorrow} text={c.practice.nextNote} />
       )}
     </article>
   );

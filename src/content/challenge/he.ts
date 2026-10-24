@@ -76,6 +76,8 @@ export const he: ChallengeContent = {
     dayNotDone: "עוד לא הושלם",
     dayComplete: "היום הושלם. יפה מאוד.",
     meditationHeading: "המדיטציה של היום",
+    forTheDayHeading: "לקחת את החוויה איתכם להמשך היום",
+    untilTomorrow: "נתראה מחר",
     nextNote: "התרגול של מחר יישלח אליכם בבוקר.",
     player: {
       play: "הפעלה",
@@ -92,6 +94,14 @@ export const he: ChallengeContent = {
       { title: "פתיחה", playbackId: "jU02ElGb64oIl8XdY9YOg00EZ7MsOg7AYNlKshxgui3Mc" },
       { title: "איך מודטים", playbackId: "1IzatIQ8exQiFJ8pabhYec4Y71H9q01rUgzxCfxsgATU" },
     ],
+    prepare: {
+      heading: "איך להתכונן למסע",
+      items: [
+        "לבחור זמן קבוע ביום לתרגול, למשל מיד אחרי שמתעוררים.",
+        "למצוא פינה שקטה שבה אף אחד לא יפריע לכם לרבע שעה.",
+        "להכין אוזניות וכרית או כיסא נוח לישיבה.",
+      ],
+    },
     nextNote: "התרגול של היום הראשון יישלח אליכם בבוקר.",
   },
   days: {
@@ -103,6 +113,11 @@ export const he: ChallengeContent = {
         title: "מדיטציה: נשימה",
         src: "https://pub-cd5e8ba8d8ae441fbf5afc33f306d770.r2.dev/meditations/Day%201%20-%20Breath%20Meditation.mp3",
       },
+      forTheDay: [
+        "לעצור פעם או פעמיים במהלך היום ולקחת שלוש נשימות איטיות.",
+        "לשים לב לנשימה ברגעים של מעבר: לפני שיחה, בהמתנה, בתור.",
+        "לפני השינה, להיזכר ברגע אחד היום שבו הרגשתם את הנשימה.",
+      ],
     },
     "day-2-body-sensations": {
       title: "תחושות גוף",
@@ -112,6 +127,7 @@ export const he: ChallengeContent = {
         title: "מדיטציה: תחושות גוף",
         src: "https://pub-cd5e8ba8d8ae441fbf5afc33f306d770.r2.dev/meditations/Day%202%20-%20Body%20Meditation.mp3",
       },
+      forTheDay: ["דבר קטן לנסות במהלך היום יבוא כאן.", "ועוד אחד.", "ועוד אחד."],
     },
     "day-3-observing-thoughts": {
       title: "התבוננות במחשבות",
@@ -121,12 +137,14 @@ export const he: ChallengeContent = {
         title: "מדיטציה: התבוננות במחשבות",
         src: "https://pub-cd5e8ba8d8ae441fbf5afc33f306d770.r2.dev/meditations/Day%203%20-%20Thoughts%20Meditation.mp3",
       },
+      forTheDay: ["דבר קטן לנסות במהלך היום יבוא כאן.", "ועוד אחד.", "ועוד אחד."],
     },
     "day-4-movement-meditation": {
       title: "מדיטציה בתנועה",
       text: "כמה מילים על התרגול של היום יבואו כאן.",
       video: { title: "יום 4: מדיטציה בתנועה", playbackId: "qc01m3PdqQPqvtbN775agYvU1yYqD400jc8eElNqLOruc" },
       meditation: { title: "מדיטציה בתנועה", src: STAND_IN_AUDIO },
+      forTheDay: ["דבר קטן לנסות במהלך היום יבוא כאן.", "ועוד אחד.", "ועוד אחד."],
     },
     "day-5-letting-go": {
       title: "לשחרר",
@@ -136,6 +154,7 @@ export const he: ChallengeContent = {
         title: "מדיטציה: לשחרר",
         src: "https://pub-cd5e8ba8d8ae441fbf5afc33f306d770.r2.dev/meditations/Day%205%20-%20Letting%20Go%20Meditation.mp3",
       },
+      forTheDay: ["דבר קטן לנסות במהלך היום יבוא כאן.", "ועוד אחד.", "ועוד אחד."],
     },
   },
   finale: {
