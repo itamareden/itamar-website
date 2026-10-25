@@ -2,8 +2,11 @@ import type { Metadata } from "next";
 import { getChallenge } from "@/content/challenge";
 import { getDictionary } from "@/dictionaries";
 import { getLocale } from "@/i18n/get-locale";
+import { Emphasis } from "../_components/Emphasis";
+import { Flourish } from "../_components/Flourish";
 import { Heading } from "../_components/Heading";
 import { NextNote } from "../_components/NextNote";
+import { RingList } from "../_components/RingList";
 import { VideoPlayer } from "../_components/VideoPlayer";
 import styles from "../practice.module.css";
 
@@ -12,7 +15,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const dict = await getDictionary();
   return {
     title: `${c.practice.kicker} · ${dict.site.name}`,
-    description: c.welcome.text,
+    description: c.welcome.text.join(" "),
     // Shared by link only: keep it out of search results.
     robots: { index: false, follow: false },
   };
@@ -29,7 +32,14 @@ export default async function WelcomePage() {
         <h1 className={styles.title}>
           <Heading heading={c.welcome.heading} />
         </h1>
-        <p className={styles.text}>{c.welcome.text}</p>
+        <div className={styles.intro}>
+          {c.welcome.text.map((paragraph) => (
+            <p key={paragraph}>
+              <Emphasis text={paragraph} />
+            </p>
+          ))}
+        </div>
+        <Flourish />
       </header>
 
       {c.welcome.videos.map((video) => (
@@ -39,13 +49,12 @@ export default async function WelcomePage() {
         </section>
       ))}
 
-      <section className={`${styles.block} ${styles.listBlock}`}>
+      {/* The ornament gives the list its room, so no extra listBlock margin. */}
+      <Flourish />
+
+      <section className={styles.block}>
         <h2 className={styles.blockTitle}>{c.welcome.prepare.heading}</h2>
-        <ul className={styles.ringList}>
-          {c.welcome.prepare.items.map((item) => (
-            <li key={item}>{item}</li>
-          ))}
-        </ul>
+        <RingList items={c.welcome.prepare.items} />
       </section>
 
       <NextNote heading={c.practice.untilTomorrow} text={c.welcome.nextNote} />

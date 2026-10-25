@@ -89,7 +89,9 @@ export const en: ChallengeContent = {
   },
   welcome: {
     heading: { title: "Welcome,", emphasis: "let's begin." },
-    text: "Before we begin: two short videos. The first is about the challenge, the second shows you how to meditate.",
+    text: [
+      "Before we begin: two short videos. The first is about the challenge, the second shows you how to meditate.",
+    ],
     videos: [
       { title: "Introduction", playbackId: STAND_IN_VIDEO },
       { title: "How to meditate", playbackId: STAND_IN_VIDEO },
@@ -97,9 +99,25 @@ export const en: ChallengeContent = {
     prepare: {
       heading: "How to prepare for the journey",
       items: [
-        "Choose a regular time of day to practise, for example right after you wake up.",
-        "Find a quiet corner where no one will disturb you for fifteen minutes.",
-        "Have headphones ready, and a cushion or a comfortable chair to sit on.",
+        {
+          title: "Find your corner",
+          text: [
+            "Look for a quiet, pleasant place where you can take a few minutes for yourself. If you can, practise in the same place throughout the challenge. Over time it can become a familiar spot that invites you to pause and reconnect with yourself.",
+          ],
+        },
+        {
+          title: "Make yourself comfortable",
+          text: [
+            "You can sit on a cushion, a mat or a chair. Find a position that feels comfortable and that you can stay in for a few minutes without effort. No special posture is needed, just a place where you can feel at ease.",
+          ],
+        },
+        {
+          title: "Take a moment to set an intention",
+          text: [
+            "Before setting out, you might pause and ask yourself: what would I like to meet or discover on this journey? Perhaps there's something you'd like to bring into your life, or simply a wish to give yourself a little more time.",
+            "**An intention has power.** It can remind us why we chose to set out, and help us return to it even on busy days. If you like, light a candle or some incense, sit with your intention for a few moments, and even write it down.",
+          ],
+        },
       ],
     },
     nextNote: "Your first day's practice will be sent to you in the morning.",
@@ -107,7 +125,7 @@ export const en: ChallengeContent = {
   days: {
     "day-1-breath": {
       title: "Breath",
-      text: "A few words about today's practice go here.",
+      text: ["A few words about today's practice go here."],
       video: { title: "Day 1: Breath", playbackId: STAND_IN_VIDEO },
       meditation: { title: "Meditation: Breath", src: STAND_IN_AUDIO },
       forTheDay: [
@@ -118,28 +136,28 @@ export const en: ChallengeContent = {
     },
     "day-2-body-sensations": {
       title: "Body sensations",
-      text: "A few words about today's practice go here.",
+      text: ["A few words about today's practice go here."],
       video: { title: "Day 2: Body sensations", playbackId: STAND_IN_VIDEO },
       meditation: { title: "Meditation: Body sensations", src: STAND_IN_AUDIO },
       forTheDay: ["Something small to try during the day goes here.", "And another.", "And another."],
     },
     "day-3-observing-thoughts": {
       title: "Observing thoughts",
-      text: "A few words about today's practice go here.",
+      text: ["A few words about today's practice go here."],
       video: { title: "Day 3: Observing thoughts", playbackId: STAND_IN_VIDEO },
       meditation: { title: "Meditation: Observing thoughts", src: STAND_IN_AUDIO },
       forTheDay: ["Something small to try during the day goes here.", "And another.", "And another."],
     },
     "day-4-movement-meditation": {
       title: "Movement meditation",
-      text: "A few words about today's practice go here.",
+      text: ["A few words about today's practice go here."],
       video: { title: "Day 4: Movement meditation", playbackId: STAND_IN_VIDEO },
       meditation: { title: "Movement meditation", src: STAND_IN_AUDIO },
       forTheDay: ["Something small to try during the day goes here.", "And another.", "And another."],
     },
     "day-5-letting-go": {
       title: "Letting go",
-      text: "A few words about today's practice go here.",
+      text: ["A few words about today's practice go here."],
       video: { title: "Day 5: Letting go", playbackId: STAND_IN_VIDEO },
       meditation: { title: "Meditation: Letting go", src: STAND_IN_AUDIO },
       forTheDay: ["Something small to try during the day goes here.", "And another.", "And another."],

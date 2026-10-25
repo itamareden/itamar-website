@@ -6,8 +6,11 @@ import { getDictionary } from "@/dictionaries";
 import { getLocale } from "@/i18n/get-locale";
 import { AudioPlayer } from "../_components/AudioPlayer";
 import { DayProgress } from "../_components/DayProgress";
+import { Emphasis } from "../_components/Emphasis";
+import { Flourish } from "../_components/Flourish";
 import { Heading } from "../_components/Heading";
 import { NextNote } from "../_components/NextNote";
+import { RingList } from "../_components/RingList";
 import { VideoPlayer } from "../_components/VideoPlayer";
 import styles from "../practice.module.css";
 
@@ -62,7 +65,14 @@ export default async function DayPage(props: PageProps<"/[locale]/challenge/[day
           notDoneLabel={c.practice.dayNotDone}
         />
         <h1 className={styles.title}>{day.title}</h1>
-        <p className={styles.text}>{day.text}</p>
+        <div className={styles.intro}>
+          {day.text.map((paragraph) => (
+            <p key={paragraph}>
+              <Emphasis text={paragraph} />
+            </p>
+          ))}
+        </div>
+        <Flourish />
       </header>
 
       <VideoPlayer playbackId={day.video.playbackId} title={day.video.title} labels={c.practice.player} />
@@ -80,15 +90,12 @@ export default async function DayPage(props: PageProps<"/[locale]/challenge/[day
 
       <section className={`${styles.block} ${styles.listBlock}`}>
         <h2 className={styles.blockTitle}>{c.practice.forTheDayHeading}</h2>
-        <ul className={styles.ringList}>
-          {day.forTheDay.map((item) => (
-            <li key={item}>{item}</li>
-          ))}
-        </ul>
+        <RingList items={day.forTheDay} />
       </section>
 
       {isLast ? (
         <section className={styles.finale}>
+          <Flourish />
           <h2 className={styles.title}>
             <Heading heading={c.finale.heading} />
           </h2>

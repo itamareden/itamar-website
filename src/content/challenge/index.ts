@@ -28,13 +28,16 @@ export type ChallengeDaySlug = (typeof challengeDays)[number]["slug"];
 
 type Video = { title: string; playbackId: string };
 
+// One item of a ringed list: a plain line, or a short title with paragraphs below.
+export type ListItem = string | { title: string; text: string[] };
+
 export type ChallengeDay = {
   title: string;
-  text: string;
+  text: string[]; // one entry per paragraph
   video: Video;
   meditation: { title: string; src: string };
   // Under the meditation: a list of things to carry into the rest of the day.
-  forTheDay: string[];
+  forTheDay: ListItem[];
 };
 
 type Step = { title: string; text: string };
@@ -96,9 +99,10 @@ export type ChallengeContent = {
   };
   welcome: {
     heading: Heading;
-    text: string;
+    text: string[]; // one entry per paragraph
     videos: Video[];
-    prepare: { heading: string; items: string[] }; // under the last video
+    // Under the last video: each item a short title with a paragraph or two below.
+    prepare: { heading: string; items: ListItem[] };
     nextNote: string;
   };
   days: Record<ChallengeDaySlug, ChallengeDay>;
