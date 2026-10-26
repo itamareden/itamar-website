@@ -24,3 +24,26 @@ export async function subscribe(_previous: SignupState, formData: FormData): Pro
   // returns { status: "success" }.
   return { status: "not-ready" };
 }
+
+/*
+ * "How was the journey?" on the closing page: every field is optional,
+ * but at least one must be filled in (the page also keeps Send disabled
+ * until then; this check is for anything sent some other way).
+ */
+
+export type ShareState = { status: "idle" | "success" | "empty" | "not-ready" };
+
+export async function shareExperience(_previous: ShareState, formData: FormData): Promise<ShareState> {
+  const fields = ["day", "takeAway", "improve", "contact"].map((name) => {
+    const value = formData.get(name);
+    return typeof value === "string" ? value.trim() : "";
+  });
+
+  if (fields.every((value) => value === "")) {
+    return { status: "empty" };
+  }
+
+  // No email service is connected yet. Once one is chosen, the answers are
+  // emailed to Itamar here and this returns { status: "success" }.
+  return { status: "not-ready" };
+}

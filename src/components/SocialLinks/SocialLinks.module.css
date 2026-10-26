@@ -1,0 +1,46 @@
+/*
+ * A row of round buttons in the site's own berry, each network's mark in
+ * cream. One colour for all, so the row sits quietly in any page or footer.
+ * The names are read out by screen readers and shown on hover.
+ */
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-4);
+  padding: 0;
+  list-style: none;
+}
+
+.link {
+  display: grid;
+  place-items: center;
+  inline-size: 2.8rem;
+  block-size: 2.8rem;
+  border-radius: 50%;
+  background: #a54173d9; /* the berry accent at 85%, a touch softer than the buttons */
+  color: var(--color-on-photo);
+  transition: background-color var(--transition-fast), transform var(--transition-fast);
+}
+
+.link svg {
+  inline-size: 1.3rem;
+  block-size: 1.3rem;
+  fill: currentColor;
+}
+
+.link:hover {
+  background: var(--color-accent-strong);
+  transform: translateY(-2px);
+}
+
+.link:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .link {
+    transition: none;
+  }
+}

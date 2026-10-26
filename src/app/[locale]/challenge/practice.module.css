@@ -488,45 +488,479 @@
 
 /* ---------- day 5: closing thoughts and what's next ---------- */
 
-.finale {
+/* ---------- day 5: the card that leads to the closing page ---------- */
+
+.teaser {
   display: grid;
+  margin-block-start: var(--space-8); /* extra room after the list above */
+  overflow: hidden;
+  border-radius: 22px;
+  background: var(--color-band);
+  color: var(--color-on-band);
+  text-decoration: none;
+  box-shadow: 0 24px 40px -24px rgb(51 40 31 / 0.7);
+}
+
+.teaser:focus-visible {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 4px;
+}
+
+/* The video still, with a berry play mark in the middle. */
+.teaserStill {
+  position: relative;
+  display: grid;
+  place-items: center;
+  aspect-ratio: 16 / 9;
+  max-inline-size: 100%;
+  background: var(--color-text-muted); /* shows while the still loads */
+}
+
+.teaserStill img {
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.teaser:hover .teaserStill img {
+  transform: scale(1.03);
+}
+
+.teaserPlay {
+  position: relative; /* above the still */
+  display: grid;
+  place-items: center;
+  inline-size: 4.25rem;
+  block-size: 4.25rem;
+  border-radius: 50%;
+  background: var(--color-accent);
+  box-shadow: 0 10px 24px -8px rgb(0 0 0 / 0.5);
+}
+
+.teaserPlay svg {
+  inline-size: 1.75rem;
+  block-size: 1.75rem;
+  fill: var(--color-on-accent);
+}
+
+.teaserBody {
+  display: grid;
+  gap: var(--space-2);
+  padding: var(--space-6);
+}
+
+.teaserKicker {
+  font-size: var(--text-sm);
+  font-weight: var(--weight-bold);
+  color: var(--color-on-photo-accent);
+}
+
+.teaserTitle {
+  font-family: var(--font-heading);
+  font-size: clamp(1.8rem, 5vw, 2.2rem);
+  line-height: 1.1;
+  color: var(--color-on-photo);
+}
+
+.teaserText {
+  font-size: 1.125rem;
+}
+
+/* Looks like a button; the whole card is the actual link. */
+.teaserButton {
+  justify-self: start;
+  margin-block-start: var(--space-3);
+  padding: 0.75em 1.6em;
+  border-radius: var(--radius-pill);
+  background: var(--color-accent);
+  color: var(--color-on-accent);
+  font-weight: var(--weight-bold);
+  transition: background-color var(--transition-fast);
+}
+
+.teaserButton::after {
+  content: " →";
+}
+
+.teaserButton:lang(he)::after {
+  content: " ←";
+}
+
+.teaser:hover .teaserButton {
+  background: var(--color-accent-strong);
+}
+
+/* ---------- closing page: "How was the journey?" ---------- */
+
+/* A <details>: closed, only the summary shows (title, a line, a pill);
+   tapping it opens the form below on the same page. */
+.share {
+  margin-block-start: var(--space-8); /* room after the dark band */
+  padding: clamp(var(--space-6), 4vw, var(--space-8));
+  border-radius: 20px;
+  background:
+    radial-gradient(ellipse 70% 80% at 15% 15%, var(--color-wash-rose) 0%, transparent 70%),
+    radial-gradient(ellipse 60% 70% at 90% 90%, var(--color-wash-sand) 0%, transparent 70%),
+    var(--color-wash-base);
+}
+
+.shareSummary {
+  display: grid;
+  gap: var(--space-2);
+  list-style: none;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent; /* no blue flash on phones */
+}
+
+/* A tap or click shows no ring; keyboard focus still does (below). */
+.shareSummary:focus:not(:focus-visible) {
+  outline: none;
+}
+
+.shareSummary::-webkit-details-marker {
+  display: none;
+}
+
+.shareSummary:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 6px;
+  border-radius: 8px;
+}
+
+.shareInvite {
+  color: var(--color-text-muted);
+  font-size: 1.125rem;
+}
+
+.shareToggle {
+  justify-self: start;
+  margin-block-start: var(--space-2);
+  padding: 0.7em 1.8em;
+  border-radius: var(--radius-pill);
+  background: var(--color-accent);
+  color: var(--color-on-accent);
+  font-weight: var(--weight-bold);
+  transition: background-color var(--transition-fast);
+}
+
+.shareSummary:hover .shareToggle {
+  background: var(--color-accent-strong);
+}
+
+/* Once open, the form takes over and the pill goes away. */
+.share[open] .shareToggle {
+  display: none;
+}
+
+.shareForm {
+  display: grid;
+  gap: var(--space-4);
+  margin-block-start: var(--space-6);
+}
+
+.shareIntro {
+  color: var(--color-text-muted);
+  font-size: 1.125rem;
+}
+
+.shareField {
+  display: grid;
+  gap: var(--space-2);
+  min-inline-size: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.shareField > label,
+.shareField > legend {
+  padding: 0;
+  margin-block-end: var(--space-2);
+  font-weight: var(--weight-bold);
+}
+
+/* Text fields only: the day chips hold radio inputs that must stay hidden. */
+.shareField textarea,
+.shareField input[type="text"] {
+  inline-size: 100%;
+  padding: 0.7em 0.85em;
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  background: var(--color-background);
+  color: var(--color-text);
+  font: inherit;
+}
+
+.shareField textarea {
+  resize: vertical;
+}
+
+.shareField textarea:focus-visible,
+.shareField input[type="text"]:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+/* The day choices: radio buttons dressed as chips. */
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.chip {
+  position: relative; /* holds the hidden radio */
+  -webkit-tap-highlight-color: transparent;
+  padding: 0.35em 1em;
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  background: var(--color-background);
+  cursor: pointer;
+}
+
+.chip input {
+  position: absolute;
+  inset: 0;
+  inline-size: 100%;
+  block-size: 100%;
+  margin: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.chip:has(input:checked) {
+  border-color: var(--color-accent);
+  background: var(--color-accent);
+  color: var(--color-on-accent);
+}
+
+.chip:has(input:focus-visible) {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+/* Send and "not now", side by side in the middle of the card. */
+.shareActions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
   gap: var(--space-4);
 }
 
-/* Inside this section the gap is small, so give the ornament the same room
-   below it as it has elsewhere on the page. */
-.finale > .flourish {
-  margin-block-end: var(--space-8);
-}
-
-.nextLinks {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-3);
-  padding: 0;
-  list-style: none;
-}
-
-.nextLinks a {
-  display: inline-block;
-  padding: 0.7em 1.3em;
-  border: 1px solid var(--color-text);
+/* Berry and the same size as the "write to me" button that opened the form. */
+.shareButton {
+  padding: 0.7em 1.8em;
+  border: none;
   border-radius: var(--radius-pill);
+  background: var(--color-accent);
+  color: var(--color-on-accent);
+  font: inherit;
+  font-weight: var(--weight-bold);
+  cursor: pointer;
+  transition: background-color var(--transition-fast);
+}
+
+.shareButton:hover:not(:disabled) {
+  background: var(--color-accent-strong);
+}
+
+/* Wider screens: about 30% wider, same height. */
+@media (min-width: 40rem) {
+  .shareButton {
+    padding-inline: 2.8em;
+  }
+}
+
+.shareClose {
+  padding: 0.8em 0.4em;
+  border: none;
+  background: none;
+  color: var(--color-text-muted);
+  font: inherit;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  cursor: pointer;
+}
+
+.shareClose:hover {
   color: var(--color-text);
+}
+
+.shareClose:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 3px;
+}
+
+/* After sending: the same card, only a thank-you. */
+.shareThanks {
+  display: grid;
+  gap: var(--space-2);
+}
+
+/* Until a question is answered (or while sending). */
+.shareButton:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.shareButton:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 3px;
+}
+
+.shareMessage {
+  font-weight: var(--weight-bold);
+  color: var(--color-accent-strong);
+}
+
+/* ---------- closing page: social icons ---------- */
+
+.social {
+  justify-items: center;
+  padding-block-end: var(--space-8);
+  text-align: center;
+}
+
+/* In the body font, like the "share your experience" card's title above. */
+.social .blockTitle {
+  font-family: var(--font-body);
+}
+
+/* ---------- closing page: "the journey continues" band ---------- */
+
+/* Deep umber with a berry glow from the top; edge to edge on phones. */
+.band {
+  display: grid;
+  justify-items: center;
+  gap: var(--space-6);
+  padding: clamp(var(--space-8), 7vw, var(--space-12)) clamp(var(--space-6), 5vw, var(--space-12));
+  margin-block-start: var(--space-8); /* about 4rem from the video, with the page's gap */
+  border-radius: 24px;
+  background:
+    radial-gradient(ellipse 70% 60% at 50% 0%, rgb(165 65 115 / 0.45), transparent 70%),
+    var(--color-band);
+  color: var(--color-on-band);
+  text-align: center;
+}
+
+@media (max-width: 40rem) {
+  .band {
+    margin-inline: calc(-1 * var(--gutter));
+    border-radius: 0;
+  }
+}
+
+.band .flourish {
+  margin: 0;
+  color: var(--color-on-photo-accent);
+}
+
+.bandTitle {
+  font-size: clamp(2.2rem, 6vw, 3rem);
+  line-height: 1.1;
+  color: var(--color-on-photo);
+}
+
+.bandTitle em {
+  color: var(--color-on-photo-accent);
+}
+
+/* The note, in a soft rose frame. */
+.note {
+  display: grid;
+  gap: var(--space-4);
+  inline-size: 100%;
+  padding: var(--space-6);
+  border: 1px solid var(--color-on-photo-accent);
+  border-radius: 18px;
+  background: rgb(248 242 236 / 0.06);
+  font-size: 1.125rem;
+  text-align: start;
+}
+
+/* The note's paragraphs sit closer together than the photo row above them. */
+.noteText {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.noteHead {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.noteAvatar {
+  flex: none;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.noteName {
+  font-family: var(--font-heading);
+  font-size: 1.3rem;
+  color: var(--color-on-photo);
+}
+
+.noteRole {
+  font-size: var(--text-sm);
+  opacity: 0.8;
+}
+
+.bandButtons {
+  display: grid;
+  gap: var(--space-3);
+  inline-size: min(100%, 26rem);
+}
+
+.bandPrimary,
+.bandSecondary {
+  display: block;
+  /* 18px text; the smaller top/bottom padding keeps the buttons the same
+     height as before (about 57px). In rem, so it doesn't grow with the text. */
+  padding: 0.85rem 1.5rem;
+  font-size: 1.125rem;
+  line-height: 1.65;
+  border-radius: var(--radius-pill);
   font-weight: var(--weight-bold);
   text-decoration: none;
   transition: background-color var(--transition-fast), color var(--transition-fast);
 }
 
-.nextLinks a:hover {
-  background: var(--color-text);
-  color: var(--color-background);
+.bandPrimary {
+  background: var(--color-on-photo);
+  color: var(--color-accent-strong);
+  box-shadow: 0 12px 26px -14px rgb(0 0 0 / 0.6);
+}
+
+.bandPrimary:hover {
+  background: #fff;
+}
+
+/* Soft rose: lighter than the band, quieter than the main button. */
+.bandSecondary {
+  background: var(--color-on-photo-accent);
+  color: var(--color-text);
+}
+
+.bandSecondary:hover {
+  background: var(--color-wash-rose);
+}
+
+.bandPrimary:focus-visible,
+.bandSecondary:focus-visible {
+  outline: 2px solid var(--color-on-photo);
+  outline-offset: 3px;
 }
 
 @media (prefers-reduced-motion: reduce) {
   .segment::before,
   .playButton,
-  .nextLinks a {
+  .teaserButton,
+  .teaserStill img,
+  .shareButton,
+  .bandPrimary,
+  .bandSecondary {
     transition: none;
   }
 }

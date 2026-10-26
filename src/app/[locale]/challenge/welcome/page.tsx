@@ -45,7 +45,7 @@ export default async function WelcomePage() {
       {c.welcome.videos.map((video) => (
         <section key={video.title} className={styles.block}>
           <h2 className={styles.blockTitle}>{video.title}</h2>
-          <VideoPlayer playbackId={video.playbackId} title={video.title} labels={c.practice.player} />
+          <VideoPlayer {...video} labels={c.practice.player} />
         </section>
       ))}
 

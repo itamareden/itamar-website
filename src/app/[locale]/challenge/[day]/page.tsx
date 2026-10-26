@@ -1,14 +1,13 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { notFound } from "next/navigation";
-import { challengeDays, getChallenge } from "@/content/challenge";
+import { challengeDays, closingSlug, getChallenge } from "@/content/challenge";
 import { getDictionary } from "@/dictionaries";
 import { getLocale } from "@/i18n/get-locale";
 import { AudioPlayer } from "../_components/AudioPlayer";
+import { ClosingTeaser } from "../_components/ClosingTeaser";
 import { DayProgress } from "../_components/DayProgress";
 import { Emphasis } from "../_components/Emphasis";
 import { Flourish } from "../_components/Flourish";
-import { Heading } from "../_components/Heading";
 import { NextNote } from "../_components/NextNote";
 import { RingList } from "../_components/RingList";
 import { VideoPlayer } from "../_components/VideoPlayer";
@@ -75,7 +74,7 @@ export default async function DayPage(props: PageProps<"/[locale]/challenge/[day
         <Flourish />
       </header>
 
-      <VideoPlayer playbackId={day.video.playbackId} title={day.video.title} labels={c.practice.player} />
+      <VideoPlayer {...day.video} labels={c.practice.player} />
 
       <section className={styles.block}>
         <h2 className={styles.blockTitle}>{c.practice.meditationHeading}</h2>
@@ -94,27 +93,11 @@ export default async function DayPage(props: PageProps<"/[locale]/challenge/[day
       </section>
 
       {isLast ? (
-        <section className={styles.finale}>
-          <Flourish />
-          <h2 className={styles.title}>
-            <Heading heading={c.finale.heading} />
-          </h2>
-          <p className={styles.text}>{c.finale.text}</p>
-          <VideoPlayer playbackId={c.finale.video.playbackId} title={c.finale.video.title} labels={c.practice.player} />
-
-          <h3 className={styles.blockTitle}>{c.finale.nextHeading}</h3>
-          <ul className={styles.nextLinks}>
-            <li>
-              <Link href={`/${locale}/sessions`}>{dict.nav.sessions}</Link>
-            </li>
-            <li>
-              <Link href={`/${locale}/events`}>{dict.nav.events}</Link>
-            </li>
-            <li>
-              <Link href={`/${locale}`}>{dict.nav.home}</Link>
-            </li>
-          </ul>
-        </section>
+        <ClosingTeaser
+          href={`/${locale}/challenge/${closingSlug}`}
+          video={c.finale.video}
+          {...c.finale.teaser}
+        />
       ) : (
         <NextNote heading={c.practice.untilTomorrow} text={c.practice.nextNote} />
       )}

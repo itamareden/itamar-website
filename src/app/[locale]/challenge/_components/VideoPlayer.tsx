@@ -9,6 +9,7 @@ import { SkipIcon } from "./SkipIcon";
 type VideoPlayerProps = {
   playbackId: string;
   title: string;
+  thumbnailTime?: number; // the second whose frame is the cover picture
   labels: { back: string; forward: string };
 };
 
@@ -21,7 +22,7 @@ const SKIP_SECONDS = 10;
  * The lazy version only loads the player's code when the video scrolls
  * near the screen, so a page with two videos still opens quickly.
  */
-export function VideoPlayer({ playbackId, title, labels }: VideoPlayerProps) {
+export function VideoPlayer({ playbackId, title, thumbnailTime, labels }: VideoPlayerProps) {
   // The player element itself, to read and set its position.
   const playerRef = useRef<ComponentRef<typeof MuxPlayer>>(null);
   const positionKey = `video:${playbackId}`;
@@ -37,6 +38,7 @@ export function VideoPlayer({ playbackId, title, labels }: VideoPlayerProps) {
         <MuxPlayer
           ref={playerRef}
           playbackId={playbackId}
+          thumbnailTime={thumbnailTime}
           streamType="on-demand"
           title={title}
           metadata={{ video_title: title }}

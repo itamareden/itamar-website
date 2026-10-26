@@ -26,7 +26,12 @@ export const challengeDays = [
 
 export type ChallengeDaySlug = (typeof challengeDays)[number]["slug"];
 
-type Video = { title: string; playbackId: string };
+// The closing words, after day 5: /he/challenge/closing-words.
+export const closingSlug = "closing-words";
+
+// thumbnailTime: the second of the video whose frame is its cover picture
+// (leave it out to let Mux choose).
+type Video = { title: string; playbackId: string; thumbnailTime?: number };
 
 // One item of a ringed list: a plain line, or a short title with paragraphs below.
 export type ListItem = string | { title: string; text: string[] };
@@ -107,7 +112,43 @@ export type ChallengeContent = {
   };
   days: Record<ChallengeDaySlug, ChallengeDay>;
   // After the last meditation, on the day 5 page.
-  finale: { heading: Heading; text: string; video: Video; nextHeading: string };
+  finale: {
+    // The card at the bottom of day 5 that leads to the closing page
+    // (its title is the video's title, its picture a still from the video).
+    teaser: { kicker: string; text: string; button: string };
+    progressLabel: string; // beside the progress bar on the closing page
+    heading: Heading;
+    text: string[]; // one entry per paragraph
+    video: Video;
+    // "How was the journey?" form; the day choices are the day titles.
+    share: {
+      heading: string; // closed: the card's title
+      invite: string; // closed: the line under it
+      toggle: string; // closed: the button that opens the form
+      text: string; // open: above the questions
+      dayQuestion: string;
+      takeAway: string;
+      improve: string;
+      contact: string;
+      button: string;
+      close: string; // closes the form without sending
+      success: string; // after sending: the card's title
+      successText: string; // after sending: the line under it
+      notReady: string; // shown until an email service is connected
+    };
+    // The dark "the journey continues" band: a short note from Itamar
+    // and two buttons (a first conversation, then events).
+    continue: {
+      heading: Heading;
+      name: string;
+      role: string;
+      imageAlt: string;
+      note: string[]; // one entry per paragraph
+      primary: string;
+      secondary: string;
+    };
+    socialHeading: string;
+  };
 };
 
 const content: Record<Locale, ChallengeContent> = { en, he };

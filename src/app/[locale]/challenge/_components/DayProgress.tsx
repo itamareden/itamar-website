@@ -4,7 +4,7 @@ import { useCompletedDays } from "../_lib/progress";
 import styles from "../practice.module.css";
 
 type DayProgressProps = {
-  day: number; // the day this page belongs to
+  day: number; // the day this page belongs to (0 on the closing page: none outlined)
   total: number;
   label: string; // "Day 3 of 5"
   barLabel: string; // name of the bar for screen readers
