@@ -59,7 +59,7 @@ export default async function DayPage(props: PageProps<"/[locale]/challenge/[day
           label={c.practice.dayOfTotal(entry.number, total)}
           barLabel={c.practice.progressLabel}
           completeLabel={c.practice.dayComplete}
-          dayNames={challengeDays.map((d) => `${c.journey.day} ${d.number}`)}
+          dayNames={challengeDays.map((d) => `${c.practice.day} ${d.number}`)}
           doneLabel={c.practice.dayDone}
           notDoneLabel={c.practice.dayNotDone}
         />

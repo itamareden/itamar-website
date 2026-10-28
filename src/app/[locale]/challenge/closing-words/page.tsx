@@ -38,7 +38,7 @@ export default async function ClosingPage() {
           label={c.finale.progressLabel}
           barLabel={c.practice.progressLabel}
           completeLabel={c.practice.dayComplete}
-          dayNames={challengeDays.map((d) => `${c.journey.day} ${d.number}`)}
+          dayNames={challengeDays.map((d) => `${c.practice.day} ${d.number}`)}
           doneLabel={c.practice.dayDone}
           notDoneLabel={c.practice.dayNotDone}
         />

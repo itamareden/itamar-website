@@ -15,6 +15,7 @@
   /* ---- Colour ---- */
   --color-background: #f8f2ec; /* page background (ivory) */
   --color-surface: #efe2dc; /* cards, panels, raised areas */
+  --color-card: #ffffff; /* white tiles and cards on the ivory page */
   --color-text: #33281f; /* main text (umber) */
   --color-text-muted: #5b4e45; /* secondary text, captions */
   --color-border: #dccfc4; /* dividers, outlines */

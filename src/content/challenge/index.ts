@@ -46,7 +46,6 @@ export type ChallengeDay = {
 };
 
 type Step = { title: string; text: string };
-
 // A heading whose second part is set apart (italic in English, colour in Hebrew).
 type Heading = { title: string; emphasis: string };
 
@@ -56,10 +55,23 @@ export type ChallengeContent = {
     startDate: string | null; // "YYYY-MM-DD", or null while the date isn't set
     whatsappUrl: string; // the group's invite link
   };
-  hero: { eyebrow: string; heading: Heading; text: string; imageAlt: string };
+  hero: {
+    eyebrow: string;
+    heading: Heading;
+    text: string;
+    imageAlt: string;
+    // The short facts under the join card: a big value and a line below it.
+    facts: { value: string; label: string }[];
+  };
   group: {
     starts: string; // followed by the formatted start date
-    startsSoon: string; // shown while startDate is null
+    startsSoon: string; // shown while startDate is null (or has passed)
+    // The closing band in group mode: a label, then the date as the title
+    // with a countdown line, or a "coming soon" title while there's no date.
+    nextKicker: string;
+    startsHeading: (formattedDate: string) => Heading;
+    countdown: (days: number) => string; // 0 = today, 1 = tomorrow
+    soonHeading: Heading;
     meta: string;
     button: string;
     steps: Step[];
@@ -75,22 +87,46 @@ export type ChallengeContent = {
     notReady: string; // shown until an email service is connected
     steps: Step[];
   };
-  how: { kicker: string; heading: Heading };
-  journey: {
+  // Right after the hero: a few lines the reader may recognise themselves in.
+  isThisYou: { heading: Heading; items: string[]; text: string };
+  // A personal note from Itamar, in his own voice.
+  note: {
+    opening: string; // the first line, set larger
+    text: string[]; // one entry per paragraph
+    closing: string; // the last line, set large like the opening
+  };
+  // The dark band: what the reader gets out of the five days, one tool a day.
+  // Each item: a one-word theme (shown as the card's title) and a line below it.
+  takeaways: {
     kicker: string;
     heading: Heading;
     text: string;
-    welcome: Step;
-    day: string; // "Day", followed by the number
-    hidden: string;
+    items: { label: string; text: string }[];
   };
-  guide: { kicker: string; heading: Heading; text: string; imageAlt: string };
-  faq: { title: string; items: { question: string; answer: string }[] };
+  how: { kicker: string; heading: Heading };
+  guide: {
+    kicker: string;
+    heading: Heading;
+    text: string[]; // one entry per paragraph
+    imageAlt: string;
+  };
+  // Common beliefs that keep people from meditating, each with a short answer.
+  misconceptions: {
+    kicker: string;
+    heading: Heading;
+    items: { myth: string; truth: string }[];
+  };
+  // groupOnly: shown only in group mode (e.g. questions about the WhatsApp group).
+  faq: {
+    title: string;
+    items: { question: string; answer: string; groupOnly?: boolean }[];
+  };
   closing: { heading: Heading; text: string };
 
   // Text shared by the welcome page and the day pages.
   practice: {
     kicker: string; // "5-Day Challenge"
+    day: string; // "Day", followed by the number (the progress bar's day names)
     dayOfTotal: (day: number, total: number) => string; // "Day 3 of 5"
     progressLabel: string; // screen-reader name of the progress bar
     dayDone: string; // "completed", read out for each day's dot

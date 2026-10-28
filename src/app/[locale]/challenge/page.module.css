@@ -62,7 +62,7 @@
   font: 700 var(--text-base) / 1.2 var(--font-body);
   text-decoration: none;
   cursor: pointer;
-  box-shadow: 0 10px 24px -10px rgb(134 50 92 / 0.6);
+  box-shadow: 0 10px 24px -10px color-mix(in srgb, var(--color-accent-strong) 60%, transparent);
   transition: background-color var(--transition-fast);
 }
 
@@ -118,8 +118,8 @@
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(to top, rgb(28 22 14 / 0.7) 0%, rgb(28 22 14 / 0.25) 45%, transparent 70%),
-    linear-gradient(to bottom, rgb(28 22 14 / 0.35) 0%, transparent 20%);
+    linear-gradient(to top, color-mix(in srgb, var(--color-band) 70%, transparent) 0%, color-mix(in srgb, var(--color-band) 25%, transparent) 45%, transparent 70%),
+    linear-gradient(to bottom, color-mix(in srgb, var(--color-band) 35%, transparent) 0%, transparent 20%);
 }
 
 .heroText {
@@ -147,7 +147,7 @@
   line-height: 0.98;
   letter-spacing: -0.02em;
   color: var(--color-on-photo);
-  text-shadow: 0 2px 24px rgb(20 15 10 / 0.45);
+  text-shadow: 0 2px 24px color-mix(in srgb, var(--color-band) 45%, transparent);
 }
 
 .heroTitle em {
@@ -162,7 +162,7 @@
   font-weight: 500;
   font-size: clamp(1rem, 1.4vw, 1.15rem);
   line-height: 1.6;
-  text-shadow: 0 1px 12px rgb(20 15 10 / 0.4);
+  text-shadow: 0 1px 12px color-mix(in srgb, var(--color-band) 40%, transparent);
 }
 
 /* ---------- action card ---------- */
@@ -180,7 +180,7 @@
   padding: clamp(var(--space-6), 3vw, 2.25rem);
   border-radius: 18px;
   background: var(--color-background);
-  box-shadow: 0 24px 60px -24px rgb(40 25 15 / 0.45);
+  box-shadow: 0 24px 60px -24px color-mix(in srgb, var(--color-band) 45%, transparent);
   scroll-margin-block-start: var(--space-8); /* when the closing button jumps here */
 }
 
@@ -198,6 +198,45 @@
 .cardMeta {
   margin-block-start: var(--space-2);
   font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+/* ---------- facts under the card: small white tiles in one row ---------- */
+
+.facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  max-inline-size: 52rem;
+  margin-block-start: var(--space-6);
+  padding: 0;
+  list-style: none;
+}
+
+.facts li {
+  flex: 1 1 0;
+  min-inline-size: 7.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-1);
+  padding: var(--space-3) var(--space-2);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  background: var(--color-card);
+  text-align: center;
+}
+
+.factValue {
+  font-family: var(--font-heading);
+  font-size: clamp(1.35rem, 2.2vw, 1.7rem);
+  line-height: 1.1;
+  color: var(--color-accent);
+}
+
+.factLabel {
+  font-size: 0.8rem;
+  line-height: 1.35;
   color: var(--color-text-muted);
 }
 
@@ -219,7 +258,7 @@
   padding: 0.85rem 1rem;
   border: 1px solid var(--color-border);
   border-radius: 12px;
-  background: #fff;
+  background: var(--color-card);
   font: 500 var(--text-base) / 1.2 var(--font-body);
   color: var(--color-text);
 }
@@ -259,11 +298,200 @@
   font-weight: var(--weight-bold);
 }
 
+/* ---------- "sound familiar?": on the wash band, one narrow column;
+   the title and closing line centred, the list not ---------- */
+
+.isThisYouBand {
+  margin-block-start: clamp(3rem, 7vw, 5rem);
+}
+
+.isThisYou {
+  display: grid;
+  gap: var(--space-6);
+  max-inline-size: 40rem;
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.isThisYou .sectionTitle,
+.isThisYouText {
+  text-align: center;
+}
+
+.isThisYouText strong {
+  color: var(--color-accent);
+}
+
+/* Solid dots instead of the day pages' rings. */
+.isThisYou ul li::before {
+  background: var(--color-accent);
+}
+
+.isThisYouText {
+  font-family: var(--font-heading);
+  font-size: clamp(1.3rem, 2vw, 1.55rem);
+  line-height: 1.4;
+}
+
+/* ---------- a personal note: one narrow column with a spoken opening line ---------- */
+
+.note {
+  display: grid;
+  gap: var(--space-4);
+  inline-size: 100%;
+  max-inline-size: 40rem;
+  margin-inline: auto;
+  padding-block: 0 clamp(3.5rem, 8vw, 6rem);
+  font-size: 1.125rem;
+  line-height: 1.8;
+  color: var(--color-text-muted);
+}
+
+/* The flourish sits flush at the top. */
+.note > :first-child {
+  margin: 0 0 var(--space-4);
+}
+
+.noteOpening {
+  font-family: var(--font-heading);
+  font-size: clamp(1.5rem, 2.6vw, 1.95rem);
+  line-height: 1.35;
+  color: var(--color-text);
+}
+
+.note strong {
+  color: var(--color-accent);
+}
+
+/* The last line mirrors the opening, under a short berry line. */
+.noteClosing {
+  margin-block-start: var(--space-4);
+  font-family: var(--font-heading);
+  font-size: clamp(1.4rem, 2.4vw, 1.8rem);
+  line-height: 1.4;
+  color: var(--color-text);
+}
+
+/* A short line, centred above the closing words. */
+.noteClosing::before {
+  content: "";
+  display: block;
+  inline-size: 3rem;
+  block-size: 2px;
+  margin: 0 auto var(--space-6);
+  background: var(--color-accent);
+}
+
+.noteClosing strong {
+  font-weight: inherit;
+}
+
+/* ---------- what you'll take with you: the dark band, umber with a berry
+   glow from the top (like "the journey continues" on the closing page) ---------- */
+
+.takeaways {
+  padding-block: clamp(3.5rem, 8vw, 6.5rem);
+  background:
+    radial-gradient(ellipse 70% 60% at 50% 0%, color-mix(in srgb, var(--color-accent) 45%, transparent), transparent 70%),
+    var(--color-band);
+  color: var(--color-on-band);
+}
+
+/* One centred column; the heading block centred, the list not. */
+.takeawaysInner {
+  display: grid;
+  max-inline-size: 60rem;
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.takeawaysInner > :not(ul) {
+  text-align: center;
+}
+
+/* The flourish on top, in soft rose. */
+.takeawaysInner > :first-child {
+  margin: 0 0 var(--space-6);
+  color: var(--color-on-photo-accent);
+}
+
+/* Bigger than the other sections' kickers: it names what the band is about. */
+.takeawaysKicker {
+  margin-block-end: var(--space-2);
+  font-size: clamp(1.25rem, 2.2vw, 1.6rem);
+  font-weight: 700;
+  color: var(--color-on-photo-accent);
+}
+
+.takeawaysInner .sectionTitle {
+  color: var(--color-on-photo);
+}
+
+/* The whole title in cream; the rose is kept for the kicker above it. */
+.takeawaysInner .sectionTitle em {
+  color: inherit;
+}
+
+.takeawaysText {
+  max-inline-size: 46ch;
+  margin: var(--space-4) auto var(--space-8);
+  opacity: 0.85;
+}
+
+/* Well clear of the cards (the button adds its own margin on top of this). */
+.takeawaysAction {
+  margin-block-start: var(--space-8);
+}
+
+/* The tools: soft see-through cards with a rose rim (like the note on the
+   closing page), the theme word on top. 3 + 2 on wide screens, centred. */
+.tools {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-4);
+  padding: 0;
+  list-style: none;
+}
+
+.tools li {
+  flex: 1 1 15rem;
+  max-inline-size: 18rem;
+  display: grid;
+  align-content: start;
+  gap: var(--space-2);
+  padding: var(--space-6);
+  border: 1px solid color-mix(in srgb, var(--color-on-photo-accent) 35%, transparent);
+  border-radius: 18px;
+  background:
+    radial-gradient(ellipse 90% 70% at 50% 0%, color-mix(in srgb, var(--color-accent) 22%, transparent), transparent 75%),
+    color-mix(in srgb, var(--color-on-photo) 5%, transparent);
+  text-align: center;
+}
+
+.tools h3 {
+  font-size: 1.6rem;
+  line-height: 1.1;
+  color: var(--color-on-photo-accent);
+}
+
+.tools p {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: var(--color-on-band);
+}
+
+@media (max-width: 45rem) {
+  .tools li {
+    max-inline-size: none;
+  }
+}
+
 /* ---------- how it works: a real sequence, so numbered ---------- */
 
 .steps {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: var(--space-8);
   margin-block-start: var(--space-8);
   padding: 0;
@@ -298,70 +526,14 @@
   color: var(--color-text-muted);
 }
 
-/* ---------- journey: welcome open, days revealed on the day ---------- */
+/* ---------- the warm rose-and-sand wash band (the note, the misconceptions) ---------- */
 
-.journey {
+.washBand {
   padding-block: clamp(3.5rem, 8vw, 7rem);
   background:
     radial-gradient(ellipse 55% 65% at 18% 25%, var(--color-wash-rose) 0%, transparent 70%),
     radial-gradient(ellipse 50% 60% at 88% 75%, var(--color-wash-sand) 0%, transparent 70%),
     var(--color-wash-base);
-}
-
-.days {
-  display: grid;
-  grid-template-columns: repeat(6, minmax(0, 1fr));
-  gap: var(--space-3);
-  margin-block-start: var(--space-8);
-  padding: 0;
-  list-style: none;
-}
-
-.day {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-2);
-  min-block-size: 9rem;
-  padding: var(--space-4);
-  border: 1px dashed rgb(51 40 31 / 0.22);
-  border-radius: 14px;
-  background: rgb(255 255 255 / 0.45);
-}
-
-.dayName {
-  font-family: var(--font-heading);
-  font-size: 1.5rem;
-  line-height: 1;
-}
-
-.dayText {
-  margin-block-start: auto;
-  font-size: 0.85rem;
-  line-height: 1.45;
-  color: var(--color-text-muted);
-}
-
-.dayOpen {
-  border: 0;
-  background: var(--color-band);
-  color: var(--color-on-band);
-}
-
-.dayOpen .dayName {
-  color: var(--color-on-photo-accent);
-}
-
-.dayOpen .dayText {
-  color: var(--color-on-band);
-}
-
-.lock {
-  inline-size: 1.1rem;
-  block-size: 1.1rem;
-  fill: none;
-  stroke: var(--color-text-muted);
-  stroke-width: 1.6;
-  stroke-linecap: round;
 }
 
 /* ---------- who's guiding ---------- */
@@ -382,11 +554,67 @@
   border-radius: var(--radius-sm);
 }
 
+.guideText {
+  display: grid;
+  gap: var(--space-4);
+  max-inline-size: 52ch;
+  margin-block-start: var(--space-6);
+  font-size: 1.08rem;
+  line-height: 1.75;
+  color: var(--color-text-muted);
+}
+
+.guideText strong {
+  color: var(--color-text);
+}
+
+/* ---------- misconceptions: white cards, the belief in quotes on top,
+   3 + 2 on wide screens, centred ---------- */
+
+.myths {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-4);
+  margin-block-start: var(--space-8);
+  padding: 0;
+  list-style: none;
+}
+
+.myths li {
+  flex: 1 1 15rem;
+  max-inline-size: 22rem;
+  display: grid;
+  align-content: start;
+  gap: var(--space-3);
+  padding: var(--space-6);
+  border: 1px solid var(--color-border);
+  border-radius: 18px;
+  background: var(--color-card);
+}
+
+.myths h3 {
+  font-size: 1.35rem;
+  line-height: 1.25;
+  color: var(--color-accent);
+}
+
+.myths p {
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--color-text-muted);
+}
+
+@media (max-width: 45rem) {
+  .myths li {
+    max-inline-size: none;
+  }
+}
+
 /* ---------- questions ---------- */
 
 .faq {
   max-inline-size: 46rem;
-  padding-block-start: 0;
 }
 
 .faq .sectionTitle {
@@ -444,7 +672,8 @@
   text-align: center;
 }
 
-.closing .sectionTitle em {
+.closing .sectionTitle em,
+.closing .kicker {
   color: var(--color-on-photo-accent);
 }
 
@@ -459,6 +688,44 @@
 @media (max-width: 45rem) {
   .photo {
     min-block-size: 37.5rem;
+  }
+
+  /* No tiles on phones: two columns with a thin divider between them.
+     With an odd count, the last fact takes the whole row. */
+  .facts {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-6) 0;
+  }
+
+  .facts li {
+    min-inline-size: 0;
+    align-items: flex-start;
+    padding: 0 var(--space-4);
+    border: 0;
+    border-radius: 0;
+    background: none;
+    text-align: start;
+  }
+
+  .facts li:nth-child(odd) {
+    padding-inline-start: 0;
+  }
+
+  .facts li:nth-child(even) {
+    border-inline-start: 1px solid var(--color-border);
+  }
+
+  .facts li:nth-child(odd):last-child {
+    grid-column: 1 / -1;
+  }
+
+  .factValue {
+    font-size: 1.9rem;
+  }
+
+  .factLabel {
+    font-size: var(--text-sm);
   }
 
   .steps {
@@ -477,32 +744,6 @@
     grid-row: span 2;
     margin: 0;
     font-size: 2rem;
-  }
-
-  .days {
-    grid-template-columns: minmax(0, 1fr);
-    gap: var(--space-2);
-  }
-
-  .day {
-    flex-direction: row;
-    align-items: center;
-    gap: var(--space-4);
-    min-block-size: 0;
-    padding: 0.85rem var(--space-4);
-  }
-
-  .dayName {
-    min-inline-size: 4.2em;
-    font-size: 1.25rem;
-  }
-
-  .dayText {
-    margin: 0;
-  }
-
-  .lock {
-    margin-inline-start: auto;
   }
 
   .guide {

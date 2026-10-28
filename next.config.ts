@@ -6,6 +6,9 @@ const nextConfig: NextConfig = {
   // Next blocks this by default; it has no effect on the live site.
   allowedDevOrigins: ["10.100.102.*"],
   images: {
+    // 75 is Next's default; 90 is kept for large photos where softness shows
+    // (the challenge hero). Next 16 only serves the qualities listed here.
+    qualities: [75, 90],
     // Video stills from Mux (e.g. the closing video's card on day 5).
     // No `search` key, so the ?time=… that picks the frame is allowed.
     remotePatterns: [{ protocol: "https", hostname: "image.mux.com", pathname: "/**" }],
