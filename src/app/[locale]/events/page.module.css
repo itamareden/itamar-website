@@ -1,0 +1,104 @@
+/*
+ * /events: a short header, then one card per event. Two cards a row on
+ * wide screens, one on phones.
+ */
+
+.page {
+  display: grid;
+  gap: var(--space-8);
+  padding-block: clamp(2.5rem, 6vw, 4.5rem) clamp(3.5rem, 8vw, 6rem);
+}
+
+.header {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.title {
+  font-size: clamp(2.4rem, 5vw, 3.6rem);
+  letter-spacing: -0.01em;
+}
+
+.intro {
+  max-inline-size: 46ch;
+  font-size: 1.125rem;
+  color: var(--color-text-muted);
+}
+
+.empty {
+  padding: var(--space-8);
+  border: 1px dashed var(--color-border);
+  border-radius: 18px;
+  color: var(--color-text-muted);
+  text-align: center;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 24rem), 1fr));
+  gap: var(--space-6);
+  padding: 0;
+  list-style: none;
+}
+
+/* Umber with a berry glow from the top, like the site's dark bands. */
+.card {
+  display: grid;
+  align-content: start;
+  gap: var(--space-3);
+  padding: clamp(var(--space-6), 4vw, 2.5rem);
+  border-radius: 22px;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 0%, color-mix(in srgb, var(--color-accent) 40%, transparent), transparent 70%),
+    var(--color-band);
+  color: var(--color-on-band);
+}
+
+.label {
+  font-size: var(--text-sm);
+  font-weight: var(--weight-bold);
+  color: var(--color-on-photo-accent);
+}
+
+.cardTitle {
+  font-size: clamp(2rem, 4vw, 2.6rem);
+  line-height: 1.1;
+  color: var(--color-on-photo);
+}
+
+.when {
+  font-weight: 600;
+  color: var(--color-on-photo);
+}
+
+.summary {
+  line-height: 1.7;
+  opacity: 0.85;
+}
+
+.more {
+  justify-self: start;
+  margin-block-start: var(--space-3);
+  padding: 0.7em 1.4em;
+  border-radius: var(--radius-pill);
+  background: var(--color-on-photo);
+  color: var(--color-accent-strong);
+  font-weight: var(--weight-bold);
+  text-decoration: none;
+  transition: background-color var(--transition-fast);
+}
+
+.more:hover {
+  background: var(--color-card);
+}
+
+.more:focus-visible {
+  outline: 2px solid var(--color-on-photo);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .more {
+    transition: none;
+  }
+}

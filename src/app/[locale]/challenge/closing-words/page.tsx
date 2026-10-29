@@ -4,7 +4,7 @@ import { getDictionary } from "@/dictionaries";
 import { getLocale } from "@/i18n/get-locale";
 import { ContinueBand } from "../_components/ContinueBand";
 import { DayProgress } from "../_components/DayProgress";
-import { Emphasis } from "../_components/Emphasis";
+import { Emphasis } from "@/components/Emphasis/Emphasis";
 import { Flourish } from "../_components/Flourish";
 import { SocialLinks } from "@/components/SocialLinks/SocialLinks";
 import { Heading } from "../_components/Heading";

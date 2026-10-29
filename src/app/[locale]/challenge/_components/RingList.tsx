@@ -1,6 +1,6 @@
 import type { ListItem } from "@/content/challenge";
 import styles from "../practice.module.css";
-import { Emphasis } from "./Emphasis";
+import { Emphasis } from "@/components/Emphasis/Emphasis";
 
 /*
  * A list with a small berry ring before each item. Items are either a

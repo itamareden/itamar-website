@@ -6,7 +6,7 @@ import { getLocale } from "@/i18n/get-locale";
 import { AudioPlayer } from "../_components/AudioPlayer";
 import { ClosingTeaser } from "../_components/ClosingTeaser";
 import { DayProgress } from "../_components/DayProgress";
-import { Emphasis } from "../_components/Emphasis";
+import { Emphasis } from "@/components/Emphasis/Emphasis";
 import { Flourish } from "../_components/Flourish";
 import { NextNote } from "../_components/NextNote";
 import { RingList } from "../_components/RingList";

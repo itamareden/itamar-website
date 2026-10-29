@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { getChallenge } from "@/content/challenge";
 import { getDictionary } from "@/dictionaries";
 import { getLocale } from "@/i18n/get-locale";
-import { Emphasis } from "../_components/Emphasis";
+import { Emphasis } from "@/components/Emphasis/Emphasis";
 import { Flourish } from "../_components/Flourish";
 import { Heading } from "../_components/Heading";
 import { NextNote } from "../_components/NextNote";

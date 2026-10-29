@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import type { ChallengeContent } from "@/content/challenge";
 import styles from "../practice.module.css";
-import { Emphasis } from "./Emphasis";
+import { Emphasis } from "@/components/Emphasis/Emphasis";
 import { Flourish } from "./Flourish";
 import { Heading } from "./Heading";
 

@@ -5,7 +5,7 @@ import { getChallenge } from "@/content/challenge";
 import { getDictionary } from "@/dictionaries";
 import type { Locale } from "@/i18n/config";
 import { getLocale } from "@/i18n/get-locale";
-import { Emphasis } from "./_components/Emphasis";
+import { Emphasis } from "@/components/Emphasis/Emphasis";
 import { Flourish } from "./_components/Flourish";
 import { Heading } from "./_components/Heading";
 import { RingList } from "./_components/RingList";
