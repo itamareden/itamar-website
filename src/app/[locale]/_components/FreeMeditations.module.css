@@ -1,0 +1,133 @@
+/*
+ * Homepage free meditations: a short header, then a card per meditation.
+ * Same dark cards as the events list; two a row on wide screens, one on phones.
+ */
+
+.section {
+  display: grid;
+  gap: var(--space-8);
+  padding-block: clamp(2.5rem, 6vw, 4.5rem);
+}
+
+.header {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.title {
+  font-size: clamp(2rem, 4.4vw, 3rem);
+  letter-spacing: -0.01em;
+}
+
+.intro {
+  max-inline-size: 46ch;
+  font-size: 1.125rem;
+  color: var(--color-text-muted);
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 24rem), 1fr));
+  gap: var(--space-6);
+  padding: 0;
+  list-style: none;
+}
+
+/* A photo across the top, then the text. */
+.card {
+  display: grid;
+  align-content: start;
+  overflow: hidden; /* clips the photo to the rounded corners */
+  border-radius: 22px;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 0%, color-mix(in srgb, var(--color-accent) 40%, transparent), transparent 70%),
+    var(--color-band);
+  color: var(--color-on-band);
+}
+
+.media {
+  position: relative;
+  aspect-ratio: 16 / 9;
+}
+
+.image {
+  object-fit: cover;
+}
+
+.body {
+  display: grid;
+  align-content: start;
+  gap: var(--space-2);
+  padding: clamp(var(--space-4), 2.6vw, var(--space-6));
+}
+
+.label {
+  font-size: var(--text-sm);
+  font-weight: var(--weight-bold);
+  color: var(--color-on-photo-accent);
+}
+
+.cardTitle {
+  font-size: clamp(1.6rem, 3vw, 2rem);
+  line-height: 1.1;
+  color: var(--color-on-photo);
+}
+
+.summary {
+  line-height: 1.7;
+  opacity: 0.85;
+}
+
+.listen {
+  justify-self: start;
+  margin-block-start: var(--space-2);
+  padding: 0.55em 1.3em;
+  border-radius: var(--radius-pill);
+  background: var(--color-on-photo);
+  color: var(--color-accent-strong);
+  font-weight: var(--weight-bold);
+  text-decoration: none;
+  transition: background-color var(--transition-fast);
+}
+
+.listen:hover {
+  background: var(--color-card);
+}
+
+.listen:focus-visible {
+  outline: 2px solid var(--color-on-photo);
+  outline-offset: 3px;
+}
+
+/*
+ * Wide cards: the button moves beside the text, to the end side (the left
+ * in Hebrew), so the card is shorter. Measured on the card, not the screen.
+ */
+.card {
+  container-type: inline-size;
+}
+
+@container (min-width: 30rem) {
+  .body {
+    grid-template-columns: 1fr auto;
+    column-gap: var(--space-6);
+  }
+
+  .body > * {
+    grid-column: 1;
+  }
+
+  .body > .listen {
+    grid-column: 2;
+    grid-row: 1 / span 3;
+    align-self: end;
+    margin-block-start: 0;
+    padding-inline: 2.5em; /* ~50% wider than the stacked button */
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .listen {
+    transition: none;
+  }
+}
