@@ -89,7 +89,7 @@
   background: var(--color-on-photo-accent);
   color: var(--color-band);
   font-family: var(--font-body);
-  font-weight: 700;
+  font-weight: 800; /* the heaviest Manrope and Assistant have */
   font-size: var(--text-base);
   text-decoration: none;
   box-shadow: 0 8px 24px -8px rgb(20 15 10 / 0.5);
