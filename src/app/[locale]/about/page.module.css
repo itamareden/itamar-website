@@ -29,10 +29,12 @@
   color: var(--color-accent);
 }
 
-/* The warm rose-and-sand wash, as on the challenge and course pages. */
+/* The warm rose-and-sand wash, as on the challenge and course pages.
+   Its top fades in from the ivory page, so there's no hard edge. */
 .wash {
   padding-block: clamp(4rem, 9vw, 7.5rem);
   background:
+    linear-gradient(to bottom, var(--color-background), transparent 30%),
     radial-gradient(ellipse 55% 65% at 18% 25%, var(--color-wash-rose) 0%, transparent 70%),
     radial-gradient(ellipse 50% 60% at 88% 75%, var(--color-wash-sand) 0%, transparent 70%),
     var(--color-wash-base);
@@ -102,7 +104,8 @@
   font-weight: inherit;
 }
 
-/* One large rounded corner, at the bottom end, as on the course page. */
+/* No frame: the inner edge (toward the text, on the right in Hebrew) and
+   the bottom melt into the page. Stays in view while the text scrolls. */
 .helloImage {
   position: sticky;
   inset-block-start: var(--space-8, 2rem);
@@ -111,9 +114,13 @@
   aspect-ratio: 4 / 5;
   object-fit: cover;
   object-position: 50% 25%;
-  border-radius: 26px;
-  border-end-end-radius: 120px;
-  box-shadow: 0 30px 60px -36px color-mix(in srgb, var(--color-band) 60%, transparent);
+  border-radius: 90px;
+  /* The third layer fades the corners further than the edges. */
+  mask-image:
+    linear-gradient(to left, transparent 0%, black 45%, black 85%, transparent 100%),
+    linear-gradient(to top, transparent 0%, black 40%, black 88%, transparent 100%),
+    radial-gradient(ellipse at center, black 60%, transparent 100%);
+  mask-composite: intersect;
 }
 
 /* ---------- why and for whom ---------- */
@@ -151,17 +158,19 @@
   color: var(--color-text);
 }
 
-/* The large rounded corner at the bottom end (bottom left in Hebrew),
-   which also hides the chest in that corner. */
+/* No frame: the inner edge (toward the text, on the left in Hebrew) and
+   the bottom melt into the wash, which also hides the chest there. */
 .whyImage {
   inline-size: 100%;
   block-size: auto;
   aspect-ratio: 4 / 5;
   object-fit: cover;
   object-position: 50% 30%;
-  border-radius: 26px;
-  border-end-end-radius: 160px;
-  box-shadow: 0 30px 60px -36px color-mix(in srgb, var(--color-band) 60%, transparent);
+  border-radius: 32px;
+  mask-image:
+    linear-gradient(to right, transparent 0%, black 30%, black 92%, transparent 100%),
+    linear-gradient(to top, transparent 0%, black 30%, black 94%, transparent 100%);
+  mask-composite: intersect;
 }
 
 /* ---------- where to go next: the dark band ---------- */
@@ -255,16 +264,37 @@
     grid-template-columns: minmax(0, 1fr);
   }
 
-  .helloImage,
   .whyImage {
     max-inline-size: 24rem;
     justify-self: center;
+    border-radius: 0;
+    mask-image: linear-gradient(to top, transparent 0%, black 30%, black 80%, transparent 100%);
   }
 
-  /* The hello portrait comes first, above the text, and scrolls normally. */
+  /* The hello portrait spans the screen edge to edge right under the
+     header, and fades into the page; the greeting sits on its faded part. */
   .helloImage {
     position: static;
     order: -1;
+    inline-size: calc(100% + 2 * var(--gutter));
+    max-inline-size: none;
+    margin-block-start: calc(-1 * var(--space-12));
+    margin-inline: calc(-1 * var(--gutter));
+    border-radius: 0;
+    mask-image: linear-gradient(to top, transparent 0%, black 40%);
+  }
+
+  .hello {
+    gap: 0;
+  }
+
+  .story {
+    position: relative;
+    margin-block-start: -5rem;
+  }
+
+  .storyHeader > :first-child {
+    justify-self: center;
   }
 }
 
