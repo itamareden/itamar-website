@@ -100,6 +100,32 @@
   background: var(--color-on-photo);
 }
 
+/* An arrow pointing the reading direction, nudged forward on hover. */
+.cta::after {
+  content: "→";
+  display: inline-block;
+  margin-inline-start: 0.5em;
+  transition: transform var(--transition-fast);
+}
+
+.cta:lang(he)::after {
+  content: "←";
+}
+
+.cta:hover::after {
+  transform: translateX(0.25em);
+}
+
+.cta:lang(he):hover::after {
+  transform: translateX(-0.25em);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cta::after {
+    transition: none;
+  }
+}
+
 .cta:focus-visible {
   outline: 2px solid var(--color-on-photo);
   outline-offset: 3px;
