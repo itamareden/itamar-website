@@ -1,0 +1,76 @@
+/*
+ * Homepage tools: a short header, then a light card per tool.
+ * Three a row on wide screens (the last two centred), one on phones.
+ */
+
+.section {
+  display: grid;
+  gap: var(--space-8);
+  padding-block: clamp(2.5rem, 6vw, 4.5rem);
+}
+
+.header {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.title {
+  font-size: clamp(2rem, 4.4vw, 3rem);
+  letter-spacing: -0.01em;
+}
+
+.intro {
+  max-inline-size: 46ch;
+  font-size: 1.125rem;
+  color: var(--color-text-muted);
+}
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-5, 1.25rem);
+  padding: 0;
+  list-style: none;
+}
+
+/* White, with a berry line along the top. */
+.card {
+  display: grid;
+  align-content: start;
+  gap: var(--space-3);
+  flex: 1 1 18rem;
+  max-inline-size: calc((100% - 2 * var(--space-5, 1.25rem)) / 3);
+  padding: clamp(var(--space-5, 1.25rem), 2.6vw, var(--space-8));
+  border-block-start: 3px solid var(--color-accent);
+  border-radius: 18px;
+  background: var(--color-card);
+  box-shadow: 0 20px 40px -30px color-mix(in srgb, var(--color-band) 50%, transparent);
+}
+
+.cardTitle {
+  font-size: clamp(1.4rem, 2.4vw, 1.7rem);
+  line-height: 1.15;
+}
+
+.cardText {
+  line-height: 1.7;
+  color: var(--color-text-muted);
+}
+
+.link {
+  justify-self: start;
+  font-weight: var(--weight-bold);
+  color: var(--color-accent);
+  text-decoration: none;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 52rem) {
+  .card {
+    max-inline-size: none;
+  }
+}
