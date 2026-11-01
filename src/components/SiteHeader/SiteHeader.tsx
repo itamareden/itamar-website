@@ -3,6 +3,7 @@ import { LanguageSwitcher } from "@/components/LanguageSwitcher/LanguageSwitcher
 import { MobileMenu } from "@/components/MobileMenu/MobileMenu";
 import { getDictionary, type Dictionary } from "@/dictionaries";
 import { getLocale } from "@/i18n/get-locale";
+import { NavList } from "./NavList";
 import styles from "./SiteHeader.module.css";
 
 // Order of the links in the nav. Labels come from the dictionary,
@@ -35,15 +36,7 @@ export async function SiteHeader() {
 
         {/* Wide screens: the full nav and the language switcher. */}
         <nav className={styles.nav}>
-          <ul className={styles.navList}>
-            {links.map(({ href, label }) => (
-              <li key={href}>
-                <Link href={href} className={styles.navLink}>
-                  {label}
-                </Link>
-              </li>
-            ))}
-          </ul>
+          <NavList links={links} />
         </nav>
         <LanguageSwitcher className={styles.desktopOnly} />
 

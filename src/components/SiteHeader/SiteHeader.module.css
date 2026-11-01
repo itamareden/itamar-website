@@ -13,12 +13,12 @@
 .header {
   --header-text: var(--color-text);
   --header-text-muted: var(--color-text-muted);
-  --header-line: var(--color-border);
+  --header-line: color-mix(in srgb, var(--color-accent) 45%, transparent);
   --header-hover: var(--color-accent);
 
   position: relative; /* the mobile menu panel hangs from the bottom of the header */
   z-index: 10;
-  border-block-end: 1px solid var(--header-line);
+  border-block-end: 2px solid var(--header-line);
 }
 
 /*
@@ -87,6 +87,14 @@ body:has([data-hero]) .header {
 
 .navLink:hover {
   color: var(--header-text);
+}
+
+/* The page you're on: full colour, with a thin underline in the accent
+   (berry on the ivory header, rose over a photo). */
+.navLink[aria-current="page"] {
+  color: var(--header-text);
+  text-decoration: underline 2px var(--header-hover);
+  text-underline-offset: 0.45em;
 }
 
 /* Below 60rem the mobile menu takes over (see MobileMenu.module.css). */

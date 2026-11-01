@@ -96,6 +96,13 @@
   color: var(--color-accent);
 }
 
+/* The page you're on, in berry with a thin underline. */
+.link[aria-current="page"] {
+  color: var(--color-accent);
+  text-decoration: underline 2px;
+  text-underline-offset: 0.4em;
+}
+
 /* In the panel, the language link sits below the list, separated by a line. */
 .switcher {
   margin-block-start: var(--space-2);

@@ -1,0 +1,574 @@
+/*
+ * The Sessions page. Its own design, not a template.
+ * Phone layout below 44rem.
+ */
+
+/* ---------- shared ---------- */
+
+/* Content column inside full-width sections. */
+.inner {
+  max-inline-size: var(--content-width);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.center {
+  display: grid;
+  justify-items: center;
+  gap: var(--space-3);
+  text-align: center;
+}
+
+.center > :first-child:not(p, h2) {
+  margin: 0 0 var(--space-2);
+}
+
+.kicker {
+  font-weight: var(--weight-bold);
+  color: var(--color-accent);
+}
+
+.sectionTitle {
+  font-size: clamp(2.1rem, 4.4vw, 3.2rem);
+  letter-spacing: -0.01em;
+}
+
+.sectionTitle em {
+  color: var(--color-accent);
+}
+
+/* The warm rose-and-sand wash, fading in from the ivory page. */
+.wash {
+  margin-block-start: 0;
+  padding-block: clamp(4rem, 9vw, 7.5rem);
+  background:
+    linear-gradient(to bottom, var(--color-background), transparent 30%),
+    radial-gradient(ellipse 55% 65% at 18% 25%, var(--color-wash-rose) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 60% at 88% 75%, var(--color-wash-sand) 0%, transparent 70%),
+    var(--color-wash-base);
+}
+
+/* Umber with a berry glow from the top. */
+.dark {
+  margin-block-start: 0;
+  padding-block: clamp(4rem, 9vw, 7.5rem);
+  background:
+    radial-gradient(ellipse 70% 60% at 50% 0%, color-mix(in srgb, var(--color-accent) 45%, transparent), transparent 70%),
+    var(--color-band);
+  color: var(--color-on-band);
+}
+
+.dark .sectionTitle {
+  color: var(--color-on-photo);
+}
+
+.dark .sectionTitle em {
+  color: var(--color-on-photo-accent);
+}
+
+.darkKicker {
+  font-size: clamp(1.1rem, 1.8vw, 1.3rem);
+  font-weight: var(--weight-bold);
+  color: var(--color-on-photo-accent);
+}
+
+/* WhatsApp buttons: berry on the page, cream on the dark band. */
+.button,
+.buttonLight {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 0.85rem 1.9rem;
+  border-radius: var(--radius-pill);
+  font-size: 1.125rem;
+  font-weight: var(--weight-bold);
+  text-decoration: none;
+  box-shadow: 0 14px 28px -14px color-mix(in srgb, black 55%, transparent);
+  cursor: pointer;
+  transition: background-color var(--transition-fast);
+}
+
+.button {
+  background: var(--color-accent);
+  color: var(--color-on-photo);
+}
+
+.button:hover {
+  background: var(--color-accent-strong);
+}
+
+.buttonLight {
+  background: var(--color-on-photo);
+  color: var(--color-accent-strong);
+}
+
+.buttonLight:hover {
+  background: var(--color-card);
+}
+
+.button:focus-visible,
+.buttonLight:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+.buttonIcon {
+  inline-size: 1.3em;
+  block-size: 1.3em;
+}
+
+/* ---------- the opening: text beside a session in progress ---------- */
+
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: center;
+  padding-block-end: clamp(4rem, 8vw, 6rem);
+}
+
+.heroText {
+  display: grid;
+  justify-items: start;
+  gap: var(--space-5, 1.25rem);
+}
+
+.title {
+  font-size: clamp(2.6rem, 5.6vw, 4.2rem);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+
+/* The second line in berry, on a line of its own. */
+.title em {
+  display: block;
+  color: var(--color-accent);
+}
+
+.lead {
+  max-inline-size: 34rem;
+  font-size: clamp(1.15rem, 1.6vw, 1.3rem);
+  line-height: 1.8;
+  color: var(--color-text-muted);
+}
+
+.heroActions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3) var(--space-5, 1.25rem);
+  margin-block-start: var(--space-2);
+}
+
+.heroNote {
+  color: var(--color-text-muted);
+}
+
+/* A wide crop that keeps both faces; one large rounded corner at the bottom
+   end (bottom left in Hebrew), and a soft shadow. */
+.heroImage {
+  inline-size: 100%;
+  block-size: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  object-position: 62% 55%;
+  border-radius: 26px;
+  border-end-end-radius: 120px;
+  box-shadow: 0 30px 60px -36px color-mix(in srgb, var(--color-band) 60%, transparent);
+  /* A light fade on every edge, so it softens into the page. */
+  mask-image:
+    linear-gradient(to left, transparent 0%, black 3%, black 97%, transparent 100%),
+    linear-gradient(to top, transparent 0%, black 3%, black 97%, transparent 100%);
+  mask-composite: intersect;
+}
+
+/* ---------- what you might take with you ---------- */
+
+.gains {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-3);
+  max-inline-size: 56rem;
+  margin-block-start: var(--space-6);
+  padding: 0;
+  list-style: none;
+}
+
+/* See-through pills with a rose tick. */
+.gains li {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 0.7rem 1.3rem;
+  border: 1px solid color-mix(in srgb, var(--color-on-photo-accent) 30%, transparent);
+  border-radius: var(--radius-pill);
+  background: color-mix(in srgb, var(--color-on-photo) 6%, transparent);
+  font-size: 1.1rem;
+}
+
+.gains li::before {
+  content: "✓";
+  color: var(--color-on-photo-accent);
+}
+
+/* ---------- what a session looks like ---------- */
+
+.flow {
+  display: grid;
+  gap: clamp(2.5rem, 5vw, 4rem);
+  padding-block: clamp(4rem, 9vw, 7rem);
+}
+
+/* Four in a row, with a thin line linking the icons; two a row on tablets. */
+.steps {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+  padding: 0;
+  list-style: none;
+}
+
+.steps::before {
+  content: "";
+  position: absolute;
+  inset-inline: 12%;
+  inset-block-start: calc(clamp(6rem, 9vw, 7.5rem) / 2);
+  border-block-start: 1px dashed color-mix(in srgb, var(--color-accent) 40%, transparent);
+}
+
+.step {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  align-content: start;
+  gap: var(--space-3);
+  text-align: center;
+}
+
+.stepIcon {
+  display: grid;
+  place-items: center;
+  inline-size: clamp(6rem, 9vw, 7.5rem);
+  aspect-ratio: 1;
+  margin-block-end: var(--space-2);
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at 35% 30%,
+    var(--color-wash-rose),
+    color-mix(in srgb, var(--color-accent) 14%, var(--color-background))
+  );
+  color: var(--color-accent);
+}
+
+.stepIcon svg {
+  inline-size: 62%;
+  block-size: 62%;
+  stroke-width: 1;
+}
+
+.step h3 {
+  font-size: clamp(1.4rem, 2.2vw, 1.7rem);
+}
+
+.step p {
+  line-height: 1.75;
+  color: var(--color-text-muted);
+}
+
+/* ---------- three ways to meet ---------- */
+
+.formats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-5, 1.25rem);
+  margin-block-start: clamp(2.5rem, 5vw, 3.5rem);
+  padding: 0;
+  list-style: none;
+}
+
+.format {
+  display: grid;
+  align-content: start;
+  gap: var(--space-3);
+  padding: clamp(1.5rem, 3vw, 2.25rem);
+  border-radius: 22px;
+  background: color-mix(in srgb, var(--color-card) 70%, transparent);
+  box-shadow: 0 24px 44px -34px color-mix(in srgb, var(--color-band) 55%, transparent);
+}
+
+.format h3 {
+  font-size: clamp(1.6rem, 2.6vw, 2rem);
+}
+
+.length {
+  justify-self: start;
+  padding: 0.2rem 0.85rem;
+  border-radius: var(--radius-pill);
+  background: color-mix(in srgb, var(--color-accent) 12%, transparent);
+  font-size: 0.95rem;
+  font-weight: var(--weight-bold);
+  color: var(--color-accent-strong);
+}
+
+.format p:last-child {
+  line-height: 1.75;
+  color: var(--color-text-muted);
+}
+
+.formatsNote {
+  margin-block-start: var(--space-6);
+  text-align: center;
+  color: var(--color-text-muted);
+}
+
+/* ---------- what people say ---------- */
+
+.voices {
+  display: grid;
+  gap: clamp(2rem, 4vw, 3rem);
+  padding-block-start: clamp(4rem, 8vw, 6rem);
+}
+
+.voicesTitle {
+  text-align: center;
+}
+
+/* Two side by side, the same height; one on phones. */
+.quotes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 22rem), 1fr));
+  gap: var(--space-5, 1.25rem);
+  max-inline-size: 64rem;
+  margin-inline: auto;
+  padding: 0;
+  list-style: none;
+}
+
+/* A white card with one large rounded corner, like the photos. The first
+   card rounds its bottom right corner and the second its top left, so the
+   pair mirrors each other diagonally; stacked on phones, all round the
+   bottom left. */
+.quote {
+  position: relative;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  gap: var(--space-4);
+  block-size: 100%;
+  margin: 0;
+  padding: clamp(1.75rem, 3.5vw, 2.5rem);
+  border-radius: 26px;
+  border-end-start-radius: 110px;
+  background: var(--color-card);
+  box-shadow: 0 24px 44px -34px color-mix(in srgb, var(--color-band) 55%, transparent);
+}
+
+.quotes li:nth-child(even) .quote {
+  border-end-start-radius: 26px;
+  border-start-end-radius: 110px;
+}
+
+/* A berry pushpin at the top centre, as if the card were pinned to a board:
+   a glossy round head, and the shadow it casts on the card, falling down and
+   to one side the way light from above would throw it. */
+.quote::after {
+  content: "";
+  position: absolute;
+  inset-block-start: 0.65rem;
+  inset-inline-start: 50%;
+  translate: 50% 0;
+  inline-size: 1.4rem;
+  block-size: 1.4rem;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at 35% 30%,
+    color-mix(in srgb, var(--color-on-photo) 70%, var(--color-accent)) 0%,
+    var(--color-accent) 45%,
+    var(--color-accent-strong) 100%
+  );
+  box-shadow:
+    -8px 10px 7px -1px color-mix(in srgb, var(--color-band) 38%, transparent),
+    -3px 4px 3px color-mix(in srgb, var(--color-band) 45%, transparent),
+    -1px 1px 1px color-mix(in srgb, var(--color-band) 35%, transparent),
+    inset 0 -2px 3px color-mix(in srgb, var(--color-band) 30%, transparent);
+}
+
+/* The strongest line, under a berry quote mark. */
+.quoteHeadline {
+  font-family: var(--font-heading);
+  font-size: clamp(1.45rem, 2.6vw, 1.8rem);
+  line-height: 1.35;
+  color: var(--color-accent-strong);
+}
+
+.quoteHeadline::before {
+  content: "”";
+  display: block;
+  block-size: 1.7rem;
+  font-size: 3.6rem;
+  line-height: 1;
+  color: var(--color-accent);
+}
+
+.quote blockquote {
+  margin: 0;
+  font-size: 1.05rem;
+  line-height: 1.85;
+  color: var(--color-text-muted);
+}
+
+.quote figcaption {
+  padding-block-start: var(--space-4);
+  border-block-start: 1px solid var(--color-border);
+  color: var(--color-text-muted);
+}
+
+.quote figcaption strong {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 400;
+  color: var(--color-accent);
+}
+
+@media (max-width: 52rem) {
+  .quotes {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .quote,
+  .quotes li:nth-child(even) .quote {
+    border-radius: 26px;
+    border-end-end-radius: 110px;
+  }
+}
+
+/* ---------- before we breathe ---------- */
+
+.care {
+  display: grid;
+  gap: var(--space-3);
+  inline-size: min(100%, 46rem);
+  margin: clamp(4rem, 8vw, 6rem) auto 0;
+  padding: clamp(1.5rem, 3vw, 2.25rem);
+  border: 1px solid color-mix(in srgb, var(--color-accent) 30%, transparent);
+  border-inline-start: 4px solid var(--color-accent);
+  border-radius: 18px;
+  line-height: 1.8;
+  color: var(--color-text-muted);
+}
+
+.care h2 {
+  font-size: clamp(1.5rem, 2.4vw, 1.8rem);
+  color: var(--color-text);
+}
+
+/* ---------- questions ---------- */
+
+.faq {
+  inline-size: min(100%, 46rem);
+  margin-inline: auto;
+  padding-block: clamp(4rem, 8vw, 6rem);
+}
+
+.faq .sectionTitle {
+  margin-block-end: var(--space-6);
+}
+
+.faq details {
+  border-block-start: 1px solid var(--color-border);
+}
+
+.faq details:last-child {
+  border-block-end: 1px solid var(--color-border);
+}
+
+.faq summary {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-4);
+  padding-block: var(--space-4);
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  list-style: none;
+  cursor: pointer;
+}
+
+.faq summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq summary::after {
+  content: "+";
+  font-family: var(--font-body);
+  font-size: 1.4rem;
+  line-height: 1;
+  color: var(--color-accent);
+  transition: transform 200ms ease;
+}
+
+.faq details[open] summary::after {
+  transform: rotate(45deg);
+}
+
+.faq details p {
+  max-inline-size: 52ch;
+  padding-block-end: var(--space-4);
+  color: var(--color-text-muted);
+}
+
+/* ---------- the closing band ---------- */
+
+.closingText {
+  max-inline-size: 40ch;
+  font-size: 1.1rem;
+  opacity: 0.85;
+}
+
+.closing .buttonLight {
+  margin-block-start: var(--space-4);
+}
+
+/* ---------- tablets and phones ---------- */
+
+@media (max-width: 60rem) {
+  .steps {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    row-gap: clamp(2.5rem, 5vw, 3.5rem);
+  }
+
+  .steps::before {
+    display: none;
+  }
+
+  .formats {
+    grid-template-columns: minmax(0, 1fr);
+    max-inline-size: 34rem;
+    margin-inline: auto;
+  }
+}
+
+@media (max-width: 44rem) {
+  .hero {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  /* The photo comes first, above the text, fading only at the bottom. */
+  .heroImage {
+    order: -1;
+    border-radius: 0;
+    mask-image: linear-gradient(to top, transparent 0%, black 25%);
+  }
+
+  .steps {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .faq summary::after,
+  .button,
+  .buttonLight {
+    transition: none;
+  }
+}

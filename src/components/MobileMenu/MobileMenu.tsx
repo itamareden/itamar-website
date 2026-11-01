@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useId, useRef, useState } from "react";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher/LanguageSwitcher";
 import styles from "./MobileMenu.module.css";
@@ -25,6 +26,7 @@ export function MobileMenu({ items, openLabel, closeLabel }: MobileMenuProps) {
   const [open, setOpen] = useState(false);
   const buttonRef = useRef<HTMLButtonElement>(null);
   const panelId = useId(); // unique id linking the button to the panel it controls
+  const pathname = usePathname(); // to mark the link to the current page
 
   // While open: Escape closes the menu, and the page behind doesn't scroll.
   useEffect(() => {
@@ -75,7 +77,12 @@ export function MobileMenu({ items, openLabel, closeLabel }: MobileMenuProps) {
               <ul className={styles.list}>
                 {items.map(({ href, label }) => (
                   <li key={href}>
-                    <Link href={href} className={styles.link} onClick={() => setOpen(false)}>
+                    <Link
+                      href={href}
+                      className={styles.link}
+                      aria-current={pathname === href || pathname.startsWith(`${href}/`) ? "page" : undefined}
+                      onClick={() => setOpen(false)}
+                    >
                       {label}
                     </Link>
                   </li>
