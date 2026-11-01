@@ -24,41 +24,58 @@ export default async function AboutPage() {
 
   return (
     <>
-      {/* Hello and my journey: one text column beside the warm portrait,
-          which stays in view while the text scrolls past. */}
-      <section className={`${styles.hello} ${styles.split}`}>
-        <div className={styles.story}>
-          <div className={styles.helloText}>
-            <h1 className={styles.title}>{a.hello.title}</h1>
-            {a.hello.text.map((paragraph) => (
-              <p key={paragraph}>
-                <Emphasis text={paragraph} />
-              </p>
-            ))}
-          </div>
-
-          <header className={styles.storyHeader}>
-            <Flourish />
-            <h2 className={styles.sectionTitle}>{a.journey.title}</h2>
-          </header>
-          {a.journey.text.map((paragraph) => (
-            <p key={paragraph}>
-              <Emphasis text={paragraph} />
-            </p>
-          ))}
-          <p className={styles.storyClosing}>
-            <Emphasis text={a.journey.closing} />
-          </p>
-        </div>
+      {/* A wide photo across the top, under the header, fading into the
+          page, with the greeting on its faded part. */}
+      <section className={styles.top} data-full-bleed data-hero>
         <Image
-          src="/images/about/hello.jpg"
+          src="/images/about/palo-santo.jpg"
           alt={a.hello.imageAlt}
-          width={1100}
-          height={1622}
-          sizes="(max-width: 44rem) 90vw, 40vw"
+          fill
+          sizes="100vw"
+          quality={90}
           loading="eager"
-          className={styles.helloImage}
+          fetchPriority="high"
+          className={styles.topImage}
         />
+        <div className={styles.topInner}>
+          <h1 className={styles.title}>{a.hello.title}</h1>
+        </div>
+      </section>
+
+      {/* Hello: the opening, in one centred reading column. */}
+      <section className={`${styles.story} ${styles.hello}`}>
+        {a.hello.text.map((paragraph) => (
+          <p key={paragraph}>
+            <Emphasis text={paragraph} />
+          </p>
+        ))}
+      </section>
+
+      {/* A band of bare feet on a forest path: a pause before the journey. */}
+      <div className={styles.band} data-full-bleed>
+        <Image
+          src="/images/about/barefoot-path.jpg"
+          alt={a.journey.imageAlt}
+          fill
+          sizes="100vw"
+          className={styles.bandImage}
+        />
+      </div>
+
+      {/* My journey: the same reading column, ending on a larger line. */}
+      <section className={`${styles.story} ${styles.journey}`}>
+        <header className={styles.storyHeader}>
+          <Flourish />
+          <h2 className={styles.sectionTitle}>{a.journey.title}</h2>
+        </header>
+        {a.journey.text.map((paragraph) => (
+          <p key={paragraph}>
+            <Emphasis text={paragraph} />
+          </p>
+        ))}
+        <p className={styles.storyClosing}>
+          <Emphasis text={a.journey.closing} />
+        </p>
       </section>
 
       {/* Why and for whom: the black-and-white portrait beside the text, on the wash. */}
