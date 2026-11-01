@@ -9,9 +9,9 @@ import type { ToolIconName } from "@/components/ToolIcon/ToolIcon";
  */
 export const sessions = {
   settings: {
-    // Itamar's WhatsApp chat link (https://wa.me/<number>). While it's
-    // empty, the buttons show but aren't links.
-    whatsappUrl: "",
+    // Itamar's WhatsApp chat link, opening with a short first message.
+    // While it's empty, the buttons show but aren't links.
+    whatsappUrl: `https://wa.me/972546353567?text=${encodeURIComponent("היי איתמר, הגעתי מהאתר ואשמח לשמוע על מפגש")}`,
   },
   description:
     "מפגשי נשימה, מדיטציה וחיבור לגוף עם איתמר אדן: אישיים, זוגיים וקבוצתיים, בקופנגן ובאונליין.",
