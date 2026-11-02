@@ -28,14 +28,14 @@ const he: MeditationsContent = {
   listen: "לתרגול",
   meditations: [
     {
-      label: "מדיטציה מודרכת · באנגלית",
+      label: "באנגלית",
       title: "לקבל את היום",
       summary: "להתחיל את הבוקר מתוך שלווה ונוכחות.",
       url: "https://insighttimer.com/itamar_eden/video-guided-meditations/the-pai-sessions-welcoming-the-day",
       image: "/images/home/meditations/sunrise-meadow.jpg", // Dawid Zawiła, https://unsplash.com/photos/-G3rw6Y02D0
     },
     {
-      label: "מדיטציה מודרכת · באנגלית",
+      label: "באנגלית",
       title: "אני אוהב את עצמי",
       summary: "לפתוח את הלב אל עצמך ולהרגיש בבית בתוך עצמך.",
       url: "https://insighttimer.com/itamar_eden/video-guided-meditations/i-love-myself",

@@ -28,8 +28,8 @@ export default async function AboutPage() {
 
   return (
     <>
-      {/* A wide photo across the top, under the header, fading into the
-          page, with the greeting on its faded part. */}
+      {/* The palo santo photo filling the first screen, with the greeting and
+          one line on it, on the right as on the homepage. */}
       <section className={styles.top} data-full-bleed data-hero>
         <Image
           src="/images/about/palo-santo.jpg"
@@ -42,7 +42,10 @@ export default async function AboutPage() {
           className={styles.topImage}
         />
         <div className={styles.topInner}>
-          <h1 className={styles.title}>{a.hello.title}</h1>
+          <h1 className={styles.title}>
+            {a.hello.title} <em>{a.hello.emphasis}</em>
+          </h1>
+          <p className={styles.lead}>{a.hello.lead}</p>
         </div>
       </section>
 
@@ -93,13 +96,15 @@ export default async function AboutPage() {
 
       {/* A band of bare feet on a forest path: a pause after the journey. */}
       <div className={styles.band} data-full-bleed>
-        <Image
-          src="/images/about/barefoot-path.jpg"
-          alt={a.journey.imageAlt}
-          fill
-          sizes="100vw"
-          className={styles.bandImage}
-        />
+        <div className={styles.bandFrame}>
+          <Image
+            src="/images/about/barefoot-path.jpg"
+            alt={a.journey.imageAlt}
+            fill
+            sizes="(max-width: 44rem) 100vw, 85vw"
+            className={styles.bandImage}
+          />
+        </div>
       </div>
 
       {/* My tools: one per row, a large icon beside each, alternating sides. */}

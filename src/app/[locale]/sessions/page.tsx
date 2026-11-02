@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { ToolIcon } from "@/components/ToolIcon/ToolIcon";
+import { Voices } from "@/components/Voices/Voices";
 import { Flourish } from "@/app/[locale]/challenge/_components/Flourish";
 import { WhatsAppIcon } from "@/app/[locale]/challenge/_components/WhatsAppIcon";
 import { sessions as s } from "@/content/sessions/he";
+import { getVoices } from "@/content/voices";
 import { getDictionary } from "@/dictionaries";
 import { getLocale } from "@/i18n/get-locale";
 import styles from "./page.module.css";
@@ -32,7 +34,9 @@ function WhatsAppButton({ className }: { className: string }) {
 // Hebrew only for now; the English page keeps its placeholder.
 export default async function SessionsPage() {
   const dict = await getDictionary();
-  if ((await getLocale()) !== "he") return <h1>{dict.nav.sessions}</h1>;
+  const locale = await getLocale();
+  if (locale !== "he") return <h1>{dict.nav.sessions}</h1>;
+  const voices = getVoices(locale);
 
   return (
     <>
@@ -121,25 +125,8 @@ export default async function SessionsPage() {
         </div>
       </section>
 
-      {/* What people say: a soft gradient card per quote, its strongest line on top. */}
-      <section className={styles.voices}>
-        <h2 className={`${styles.sectionTitle} ${styles.voicesTitle}`}>
-          {s.voices.title} <em>{s.voices.emphasis}</em>
-        </h2>
-        <ul className={styles.quotes}>
-          {s.voices.items.map((voice) => (
-            <li key={voice.name}>
-              <figure className={styles.quote}>
-                <p className={styles.quoteHeadline}>{voice.headline}</p>
-                <blockquote>{voice.text}</blockquote>
-                <figcaption>
-                  <strong>{voice.name}</strong> · {voice.detail}
-                </figcaption>
-              </figure>
-            </li>
-          ))}
-        </ul>
-      </section>
+      {/* What people say, shared with the homepage. */}
+      {voices && <Voices content={voices} />}
 
       {/* Before we breathe: the health note, in a quiet bordered card. */}
       <section className={styles.care}>

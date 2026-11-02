@@ -1,17 +1,25 @@
 /*
- * Homepage tools: a short header, then a light card per tool.
- * Three a row on wide screens (the last two centred), one on phones.
+ * Homepage tools: a short header, then one strip of five slim cards, each
+ * centred under its icon. Three a row on tablets, two on phones.
  */
 
 .section {
   display: grid;
   gap: var(--space-8);
-  padding-block: clamp(2.5rem, 6vw, 4.5rem);
+  padding-block: clamp(2rem, 4vw, 3rem) clamp(1.5rem, 3vw, 2.5rem);
 }
 
+/* Centred, like the strip of cards under it. */
 .header {
   display: grid;
+  justify-items: center;
   gap: var(--space-3);
+  text-align: center;
+}
+
+/* The flourish above the heading, as the divider from the section before. */
+.header > :first-child {
+  margin: 0 0 var(--space-3);
 }
 
 .title {
@@ -26,40 +34,60 @@
 }
 
 .cards {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: var(--space-5, 1.25rem);
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: var(--space-4);
   padding: 0;
   list-style: none;
 }
 
-/* White, with a berry line along the top. */
+/* White, with its icon in a soft rose circle at the top. */
 .card {
   display: grid;
+  justify-items: center;
   align-content: start;
-  gap: var(--space-3);
-  flex: 1 1 18rem;
-  max-inline-size: calc((100% - 2 * var(--space-5, 1.25rem)) / 3);
-  padding: clamp(var(--space-5, 1.25rem), 2.6vw, var(--space-8));
-  border-block-start: 3px solid var(--color-accent);
+  gap: var(--space-2);
+  padding: var(--space-6) var(--space-4);
+  text-align: center;
   border-radius: 18px;
   background: var(--color-card);
   box-shadow: 0 20px 40px -30px color-mix(in srgb, var(--color-band) 50%, transparent);
 }
 
+.icon {
+  display: grid;
+  place-items: center;
+  inline-size: 4.5rem;
+  aspect-ratio: 1;
+  margin-block-end: var(--space-1, 0.25rem);
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at 35% 30%,
+    var(--color-wash-rose),
+    color-mix(in srgb, var(--color-accent) 14%, var(--color-background))
+  );
+  color: var(--color-accent);
+}
+
+.icon svg {
+  inline-size: 64%;
+  block-size: 64%;
+  stroke-width: 1.1;
+}
+
 .cardTitle {
-  font-size: clamp(1.4rem, 2.4vw, 1.7rem);
+  font-size: clamp(1.25rem, 1.8vw, 1.45rem);
   line-height: 1.15;
 }
 
 .cardText {
-  line-height: 1.7;
+  font-size: 0.95rem;
+  line-height: 1.6;
   color: var(--color-text-muted);
 }
 
 .link {
-  justify-self: start;
+  justify-self: center;
   font-weight: var(--weight-bold);
   color: var(--color-accent);
   text-decoration: none;
@@ -69,8 +97,34 @@
   text-decoration: underline;
 }
 
-@media (max-width: 52rem) {
+@media (max-width: 60rem) {
+  .cards {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+
+  /* Three on top, two centred below. */
   .card {
-    max-inline-size: none;
+    grid-column: span 2;
+  }
+
+  .card:nth-child(4) {
+    grid-column: 2 / span 2;
   }
 }
+
+@media (max-width: 40rem) {
+  .cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .card,
+  .card:nth-child(4) {
+    grid-column: auto;
+  }
+
+  /* The fifth one spans the row. */
+  .card:last-child {
+    grid-column: 1 / -1;
+  }
+}
+

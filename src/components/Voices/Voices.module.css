@@ -1,0 +1,180 @@
+/*
+ * What people say: a white card per quote, pinned at the top centre, its
+ * strongest line large above the full text. Used on the Sessions page and
+ * the homepage.
+ */
+
+.sectionTitle {
+  font-size: clamp(2.1rem, 4.4vw, 3.2rem);
+  letter-spacing: -0.01em;
+}
+
+.sectionTitle em {
+  color: var(--color-accent);
+}
+
+.voices {
+  display: grid;
+  gap: clamp(2rem, 4vw, 3rem);
+  padding-block-start: clamp(3rem, 6vw, 4.5rem);
+}
+
+.voicesTitle {
+  text-align: center;
+}
+
+/* Full stories (Sessions): one per row, at a comfortable reading width. */
+.quotes {
+  display: grid;
+  gap: clamp(2rem, 4vw, 3rem);
+  max-inline-size: 60rem;
+  margin-inline: auto;
+  padding: 0;
+  list-style: none;
+}
+
+/* A white card with one large rounded corner, like the photos: the bottom
+   right on odd cards, the top left on even ones. In a full story the
+   headline and name sit on the start side, the text beside them; on phones
+   they stack, and every card rounds the bottom left. */
+.quote {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.4fr);
+  grid-template-areas:
+    "head text"
+    "name text";
+  grid-template-rows: 1fr auto;
+  gap: var(--space-4) clamp(2rem, 4vw, 3.5rem);
+  align-items: start;
+  block-size: 100%;
+  margin: 0;
+  padding: clamp(1.75rem, 3.5vw, 2.5rem);
+  border-radius: 26px;
+  border-end-start-radius: 110px;
+  background: var(--color-card);
+  box-shadow: 0 24px 44px -34px color-mix(in srgb, var(--color-band) 55%, transparent);
+}
+
+.quotes li:nth-child(even) .quote {
+  border-end-start-radius: 26px;
+  border-start-end-radius: 110px;
+}
+
+/* A berry pushpin at the top centre, as if the card were pinned to a board:
+   a glossy round head, and the shadow it casts on the card, falling down and
+   to one side the way light from above would throw it. */
+.quote::after {
+  content: "";
+  position: absolute;
+  inset-block-start: 0.65rem;
+  inset-inline-start: 50%;
+  translate: 50% 0;
+  inline-size: 1.4rem;
+  block-size: 1.4rem;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at 35% 30%,
+    color-mix(in srgb, var(--color-on-photo) 70%, var(--color-accent)) 0%,
+    var(--color-accent) 45%,
+    var(--color-accent-strong) 100%
+  );
+  box-shadow:
+    -8px 10px 7px -1px color-mix(in srgb, var(--color-band) 38%, transparent),
+    -3px 4px 3px color-mix(in srgb, var(--color-band) 45%, transparent),
+    -1px 1px 1px color-mix(in srgb, var(--color-band) 35%, transparent),
+    inset 0 -2px 3px color-mix(in srgb, var(--color-band) 30%, transparent);
+}
+
+/* The strongest line, under a berry quote mark. */
+.quoteHeadline {
+  grid-area: head;
+  font-family: var(--font-heading);
+  font-size: clamp(1.45rem, 2.6vw, 1.8rem);
+  line-height: 1.35;
+  color: var(--color-accent-strong);
+}
+
+.quoteHeadline::before {
+  content: "”";
+  display: block;
+  block-size: 1.7rem;
+  font-size: 3.6rem;
+  line-height: 1;
+  color: var(--color-accent);
+}
+
+.quote blockquote {
+  grid-area: text;
+  align-self: center;
+  margin: 0;
+  font-size: 1.05rem;
+  line-height: 1.85;
+  color: var(--color-text-muted);
+}
+
+.quote figcaption {
+  grid-area: name;
+  padding-block-start: var(--space-4);
+  border-block-start: 1px solid var(--color-border);
+  color: var(--color-text-muted);
+}
+
+.quote figcaption strong {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 400;
+  color: var(--color-accent);
+}
+
+/* Short pull quotes (homepage): only the line and the name, three in a row.
+   Corners: bottom right, bottom left, top left. */
+.short {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 19rem), 1fr));
+  gap: var(--space-5, 1.25rem);
+  max-inline-size: var(--content-width);
+}
+
+.short .quote {
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-areas:
+    "head"
+    "name";
+}
+
+.short li:nth-child(3n + 2) .quote {
+  border-radius: 26px;
+  border-end-end-radius: 110px;
+}
+
+.short li:nth-child(3n) .quote {
+  border-radius: 26px;
+  border-start-end-radius: 110px;
+}
+
+.short .quoteHeadline {
+  font-size: clamp(1.55rem, 2.8vw, 2rem);
+}
+
+@media (max-width: 52rem) {
+  .quotes {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .quote {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas:
+      "head"
+      "text"
+      "name";
+    grid-template-rows: auto;
+  }
+
+  .quote,
+  .quotes li:nth-child(even) .quote,
+  .short li:nth-child(n) .quote {
+    border-radius: 26px;
+    border-end-end-radius: 110px;
+  }
+}
+
