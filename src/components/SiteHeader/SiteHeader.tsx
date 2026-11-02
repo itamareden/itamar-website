@@ -4,6 +4,7 @@ import { MobileMenu } from "@/components/MobileMenu/MobileMenu";
 import { getDictionary, type Dictionary } from "@/dictionaries";
 import { getLocale } from "@/i18n/get-locale";
 import { NavList } from "./NavList";
+import { ScrollHeader } from "./ScrollHeader";
 import styles from "./SiteHeader.module.css";
 
 // Order of the links in the nav. Labels come from the dictionary,
@@ -28,7 +29,7 @@ export async function SiteHeader() {
   }));
 
   return (
-    <header className={styles.header}>
+    <ScrollHeader className={styles.header}>
       <div className={styles.inner}>
         <Link href={`/${locale}`} className={styles.name}>
           {dict.site.name}
@@ -43,6 +44,6 @@ export async function SiteHeader() {
         {/* Small screens: a menu button instead. */}
         <MobileMenu items={links} openLabel={dict.menu.open} closeLabel={dict.menu.close} />
       </div>
-    </header>
+    </ScrollHeader>
   );
 }

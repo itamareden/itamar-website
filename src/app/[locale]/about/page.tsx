@@ -123,7 +123,9 @@ export default async function AboutPage() {
                 </span>
                 <div className={styles.toolText}>
                   <h3>{tool.title}</h3>
-                  <p>{tool.text}</p>
+                  {tool.text.map((paragraph) => (
+                    <p key={paragraph}>{paragraph}</p>
+                  ))}
                 </div>
               </li>
             ))}

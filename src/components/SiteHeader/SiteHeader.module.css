@@ -16,9 +16,14 @@
   --header-line: color-mix(in srgb, var(--color-accent) 45%, transparent);
   --header-hover: var(--color-accent);
 
-  position: relative; /* the mobile menu panel hangs from the bottom of the header */
+  /* Sticky: it keeps its place in the page at the top, and can stay pinned
+     to the top of the screen further down (see the scroll states below).
+     The mobile menu panel hangs from its bottom. */
+  position: sticky;
+  inset-block-start: 0;
   z-index: 10;
   border-block-end: 2px solid var(--header-line);
+  background: var(--color-background);
 }
 
 /*
@@ -38,6 +43,49 @@ body:has([data-hero]) .header {
   inset-block-start: 0;
   inset-inline: 0;
   border-block-end: none;
+  background: transparent;
+}
+
+/*
+ * Away from the top (set by ScrollHeader): scrolling down slides the header
+ * up out of sight, scrolling up brings it back, pinned to the top. Pinned,
+ * it always uses the plain ivory look, also on pages with a hero photo.
+ */
+.header[data-scroll] {
+  transition: transform 260ms ease;
+}
+
+.header[data-scroll="hidden"] {
+  transform: translateY(-100%);
+}
+
+.header[data-scroll="shown"] {
+  box-shadow: 0 10px 30px -22px color-mix(in srgb, var(--color-band) 60%, transparent);
+}
+
+body:has([data-hero]) .header[data-scroll] {
+  --header-text: var(--color-text);
+  --header-text-muted: var(--color-text-muted);
+  --header-shadow: none;
+  --header-icon-shadow: none;
+  --header-line: color-mix(in srgb, var(--color-accent) 45%, transparent);
+  --header-hover: var(--color-accent);
+
+  position: fixed;
+  border-block-end: 2px solid var(--header-line);
+  background: var(--color-background);
+}
+
+/* Over a hero photo the header has already scrolled off with the page, so
+   leaving the top hides it at once rather than sliding it across the screen. */
+body:has([data-hero]) .header[data-instant] {
+  transition: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .header[data-scroll] {
+    transition: none;
+  }
 }
 
 .inner {
