@@ -100,7 +100,7 @@
 }
 
 .lead {
-  max-inline-size: 30ch;
+  max-inline-size: 42ch;
   font-weight: 500;
   font-size: clamp(1rem, 1.3vw, 1.2rem);
   line-height: 1.6;
@@ -115,14 +115,14 @@
   display: grid;
   gap: var(--space-4);
   margin-block-start: clamp(3rem, 7vw, 5.5rem);
-  padding-block-end: clamp(4rem, 8vw, 6rem);
+  padding-block-end: clamp(5rem, 11vw, 8.5rem);
 }
 
 /* The first line leads, larger and in the heading font. */
 .intro {
   display: grid;
   gap: var(--space-3);
-  max-inline-size: 46rem;
+  max-inline-size: 60rem;
   font-size: 1.2rem;
   line-height: 1.85;
   color: var(--color-text-muted);
@@ -142,6 +142,19 @@
   color: var(--color-accent);
 }
 
+/* A short rose line above it, closing the intro before the cards. */
+.question::before {
+  content: "";
+  display: block;
+  inline-size: 6rem;
+  block-size: 2px;
+  margin-inline: auto;
+  margin-block-end: 3.5rem;
+  border-radius: 1px;
+  background: var(--color-accent);
+  opacity: 0.5;
+}
+
 /* Three soft gradient cards across the width; stacked on phones. */
 .jump {
   display: grid;
@@ -149,53 +162,75 @@
   gap: var(--space-4);
 }
 
+/* The title and line on the start side, a round arrow button on the end side. */
 .jump a {
   display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
   align-content: start;
-  gap: var(--space-2);
-  min-block-size: 9.5rem;
-  padding: var(--space-5, 1.25rem) var(--space-6);
-  border-radius: 20px;
+  column-gap: var(--space-4);
+  row-gap: var(--space-2);
+  padding: var(--space-6) 1.75rem;
+  border-radius: 22px;
   color: var(--color-text);
   text-decoration: none;
   transition: transform var(--transition-fast), box-shadow var(--transition-fast);
 }
 
+/* Deeper at the top, fading almost to the page color at the bottom. */
 .jump a:nth-child(1) {
-  background: linear-gradient(150deg, var(--color-wash-rose), color-mix(in srgb, var(--color-wash-sand) 70%, var(--color-background)));
+  background: linear-gradient(175deg, color-mix(in srgb, var(--color-accent) 18%, var(--color-wash-rose)), color-mix(in srgb, var(--color-wash-sand) 20%, var(--color-background)));
 }
 
 .jump a:nth-child(2) {
-  background: linear-gradient(150deg, var(--color-wash-sand), color-mix(in srgb, var(--color-wash-rose) 60%, var(--color-background)));
+  background: linear-gradient(175deg, #d9c4d8, color-mix(in srgb, #d9c4d8 22%, var(--color-background)));
 }
 
 .jump a:nth-child(3) {
-  background: linear-gradient(150deg, color-mix(in srgb, var(--color-accent) 18%, var(--color-background)), var(--color-wash-base));
+  background: linear-gradient(175deg, #ebc8ba, color-mix(in srgb, #ebc8ba 22%, var(--color-background)));
 }
 
 .jump strong {
   font-family: var(--font-heading);
-  font-size: clamp(1.4rem, 2.2vw, 1.7rem);
-  font-weight: 400;
+  font-size: clamp(1.5rem, 2.4vw, 1.85rem);
+  font-weight: 700;
+  letter-spacing: -0.01em;
 }
 
 .jump span {
-  font-size: 1rem;
+  grid-column: 1;
+  font-size: 1.05rem;
   line-height: 1.6;
   color: var(--color-text-muted);
 }
 
-/* The arrow, at the bottom of each card. */
+/* The arrow button: a cream circle with a bold berry arrow, filled berry on
+   hover. The arrow is an SVG, so its stroke can be thick; the colors in it
+   are --color-accent and --color-on-photo. */
 .jump a::after {
-  content: "↓";
-  align-self: end;
-  margin-block-start: var(--space-2);
-  color: var(--color-accent);
+  content: "";
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  align-self: center;
+  inline-size: 2.75rem;
+  block-size: 2.75rem;
+  border-radius: 50%;
+  background: var(--color-background)
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23a54173' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 5v14M6 13l6 6 6-6'/%3E%3C/svg%3E")
+    center / 1.25rem no-repeat;
+  box-shadow: 0 6px 14px -8px color-mix(in srgb, var(--color-band) 50%, transparent);
+  transition: transform var(--transition-fast), background-color var(--transition-fast);
 }
 
 .jump a:hover {
   transform: translateY(-2px);
   box-shadow: 0 18px 32px -24px color-mix(in srgb, var(--color-band) 55%, transparent);
+}
+
+.jump a:hover::after {
+  background: var(--color-accent)
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fbf3ee' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 5v14M6 13l6 6 6-6'/%3E%3C/svg%3E")
+    center / 1.25rem no-repeat;
+  transform: translateY(2px);
 }
 
 /* Room above each part when a button scrolls to it. */
