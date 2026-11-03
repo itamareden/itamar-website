@@ -41,7 +41,7 @@
   list-style: none;
 }
 
-/* White, with its icon in a soft rose circle at the top. */
+/* White, with its icon at the top, in a soft circle of the tool's own tone. */
 .card {
   display: grid;
   justify-items: center;
@@ -63,16 +63,29 @@
   border-radius: 50%;
   background: radial-gradient(
     circle at 35% 30%,
-    var(--color-wash-rose),
-    color-mix(in srgb, var(--color-accent) 14%, var(--color-background))
+    color-mix(in srgb, var(--tone, var(--color-accent)) 12%, var(--color-card)),
+    color-mix(in srgb, var(--tone, var(--color-accent)) 24%, var(--color-background))
   );
-  color: var(--color-accent);
+  color: var(--tone, var(--color-accent));
+}
+
+/* With a drawing: a bigger circle, so the fine lines read. */
+.withDrawing {
+  --size: 7rem;
+  inline-size: var(--size);
+  block-size: var(--size);
+  margin-block-end: var(--space-3);
+}
+
+.drawing {
+  inline-size: calc(var(--size) * 0.8);
+  block-size: calc(var(--size) * 0.72);
+  object-fit: contain;
 }
 
 .icon svg {
-  inline-size: 64%;
-  block-size: 64%;
-  stroke-width: 1.1;
+  inline-size: 56%;
+  block-size: 56%;
 }
 
 .cardTitle {
@@ -112,19 +125,44 @@
   }
 }
 
+/* Phones: one tool per row, the icon beside its name and text. */
 @media (max-width: 40rem) {
   .cards {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-3);
   }
 
   .card,
   .card:nth-child(4) {
     grid-column: auto;
+    grid-template-columns: auto minmax(0, 1fr);
+    grid-template-rows: auto 1fr;
+    column-gap: var(--space-4);
+    justify-items: start;
+    padding: var(--space-5, 1.25rem);
+    text-align: start;
   }
 
-  /* The fifth one spans the row. */
-  .card:last-child {
-    grid-column: 1 / -1;
+  .icon {
+    grid-row: 1 / span 2;
+    inline-size: 3.75rem;
+    margin: 0;
+  }
+
+  /* Reading size on phones, matching the About page. */
+  .cardText {
+    font-size: 1.1rem;
+  }
+
+  .cardTitle {
+    font-size: 1.4rem;
+  }
+
+  .withDrawing {
+    --size: 4.75rem;
+    inline-size: var(--size);
+    margin: 0 0 0 var(--space-2);
+    margin-inline: 0 var(--space-2);
   }
 }
 

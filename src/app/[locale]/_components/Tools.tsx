@@ -1,6 +1,7 @@
+import Image from "next/image";
 import Link from "next/link";
 import { Flourish } from "@/app/[locale]/challenge/_components/Flourish";
-import { ToolIcon } from "@/components/ToolIcon/ToolIcon";
+import { TOOL_TONES, ToolIcon } from "@/components/ToolIcon/ToolIcon";
 import type { ToolsContent } from "@/content/tools";
 import styles from "./Tools.module.css";
 
@@ -18,9 +19,16 @@ export function Tools({ content, href }: { content: ToolsContent; href: string }
       <ul className={styles.cards}>
         {content.tools.map((tool) => (
           <li key={tool.title} className={styles.card}>
-            <span className={styles.icon}>
-              <ToolIcon name={tool.icon} />
-            </span>
+            {/* A drawing in a berry circle where there is one, else the icon in its tone. */}
+            {tool.drawing ? (
+              <span className={`${styles.icon} ${styles.withDrawing}`}>
+                <Image src={tool.drawing} alt="" width={600} height={600} sizes="6rem" className={styles.drawing} />
+              </span>
+            ) : (
+              <span className={styles.icon} style={{ "--tone": TOOL_TONES[tool.icon] } as React.CSSProperties}>
+                <ToolIcon name={tool.icon} />
+              </span>
+            )}
             <h3 className={styles.cardTitle}>{tool.title}</h3>
             <p className={styles.cardText}>{tool.card}</p>
           </li>

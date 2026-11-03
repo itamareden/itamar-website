@@ -229,6 +229,15 @@
 }
 
 @media (max-width: 44rem) {
+  /* Reading size on phones, matching the tools and the About page. */
+  .wayText {
+    font-size: 1.1rem;
+  }
+
+  .wayLabel {
+    font-size: 1rem;
+  }
+
   .hello {
     grid-template-columns: minmax(0, 1fr);
   }

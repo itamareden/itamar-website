@@ -333,7 +333,11 @@
   color: var(--color-accent);
 }
 
+/* --tool-circle: the circle size, 15% larger on phones (below), where the
+   drawings need it. */
 .tools {
+  --tool-circle: clamp(8rem, 14vw, 10.5rem);
+
   display: grid;
   gap: clamp(3rem, 6vw, 4.5rem);
   max-inline-size: 58rem;
@@ -346,33 +350,46 @@
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
   gap: clamp(2rem, 5vw, 4rem);
-  align-items: start; /* the icon level with the tool name, not the middle of a long text */
+  align-items: center; /* the circle in the middle of its whole text */
 }
 
-/* Every second tool puts its icon on the other side. */
+/* Every second tool puts its icon on the other side; the columns swap too,
+   so the text keeps the flexible column and stays inside the page. */
+.tool:nth-child(even) {
+  grid-template-columns: minmax(0, 1fr) auto;
+}
+
 .tool:nth-child(even) .toolIcon {
   order: 2;
 }
 
-/* A large soft rose circle with the drawing in berry. */
+/* A large soft circle in the tool's own tone (--tone), the icon in it. */
 .toolIcon {
   display: grid;
   place-items: center;
-  inline-size: clamp(8rem, 14vw, 10.5rem);
-  aspect-ratio: 1;
+  /* A fixed height too, so a tall drawing can't stretch the circle. */
+  inline-size: var(--tool-circle);
+  block-size: var(--tool-circle);
   border-radius: 50%;
   background: radial-gradient(
     circle at 35% 30%,
-    var(--color-wash-rose),
-    color-mix(in srgb, var(--color-accent) 14%, var(--color-background))
+    color-mix(in srgb, var(--tone, var(--color-accent)) 12%, var(--color-card)),
+    color-mix(in srgb, var(--tone, var(--color-accent)) 24%, var(--color-background))
   );
-  color: var(--color-accent);
+  color: var(--tone, var(--color-accent));
+}
+
+/* A drawing in the circle instead of an icon: it fits at its own shape,
+   tall ones by height and wide ones (like lying down) by width. */
+.toolIconDrawing {
+  inline-size: calc(var(--tool-circle) * 0.82);
+  block-size: calc(var(--tool-circle) * 0.7);
+  object-fit: contain;
 }
 
 .toolIcon svg {
-  inline-size: 64%;
-  block-size: 64%;
-  stroke-width: 0.9;
+  inline-size: 50%;
+  block-size: 50%;
 }
 
 .toolText {
@@ -526,6 +543,10 @@
 /* ---------- phones ---------- */
 
 @media (max-width: 44rem) {
+  .tools {
+    --tool-circle: clamp(9.2rem, 16.1vw, 12rem);
+  }
+
   .bandFrame {
     inset-inline: 0;
     mask-image: none;
@@ -544,8 +565,9 @@
   }
 
   /* Shorter on phones, so the upright crop keeps the open arms in view. */
+  /* The whole first screen, as on desktop and the homepage. */
   .top {
-    min-block-size: 62svh;
+    min-block-size: max(32rem, 100svh);
   }
 
   /* Centred on the hand, the smoke and the candle. */
@@ -566,7 +588,8 @@
   }
 
   /* Icon above the text, centred. */
-  .tool {
+  .tool,
+  .tool:nth-child(even) {
     grid-template-columns: minmax(0, 1fr);
     justify-items: center;
     text-align: center;

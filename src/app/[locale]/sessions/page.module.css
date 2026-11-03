@@ -263,9 +263,8 @@
 }
 
 .stepIcon svg {
-  inline-size: 62%;
-  block-size: 62%;
-  stroke-width: 1;
+  inline-size: 52%;
+  block-size: 52%;
 }
 
 .step h3 {

@@ -118,8 +118,13 @@ export default async function AboutPage() {
           <ul className={styles.tools}>
             {tools.tools.map((tool) => (
               <li key={tool.title} className={styles.tool}>
+                {/* One colour for every circle here: the berry of meditation. */}
                 <span className={styles.toolIcon}>
-                  <ToolIcon name={tool.icon} />
+                  {tool.drawing ? (
+                    <Image src={tool.drawing} alt="" width={600} height={600} sizes="11rem" className={styles.toolIconDrawing} />
+                  ) : (
+                    <ToolIcon name={tool.icon} />
+                  )}
                 </span>
                 <div className={styles.toolText}>
                   <h3>{tool.title}</h3>
