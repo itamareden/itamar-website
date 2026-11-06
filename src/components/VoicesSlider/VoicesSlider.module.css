@@ -1,0 +1,234 @@
+/*
+ * What people say on the Sessions page: a warm paper band with two whole
+ * cards in view (one and the edge of the next on phones). A closed card shows
+ * the start of the story, fading out.
+ */
+
+.band {
+  margin-block-start: 0;
+  padding-block: clamp(4rem, 8vw, 6rem);
+  background: var(--color-paper);
+}
+
+.inner {
+  display: grid;
+  gap: clamp(2rem, 4vw, 2.75rem);
+  max-inline-size: var(--content-width);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.title {
+  font-size: clamp(2.1rem, 4.4vw, 3.2rem);
+  letter-spacing: -0.01em;
+  text-align: center;
+}
+
+.title em {
+  color: var(--color-accent);
+}
+
+/* Swipeable. The room at the bottom keeps the card shadows from being cut off. */
+.track {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.375rem;
+  margin: 0;
+  padding: 0 0 2.5rem;
+  overflow-x: auto;
+  overflow-y: hidden;
+  list-style: none;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+
+.track::-webkit-scrollbar {
+  display: none;
+}
+
+.track:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 4px;
+}
+
+.slide {
+  flex: 0 0 calc((100% - 1.375rem) / 2);
+  min-inline-size: 0;
+  scroll-snap-align: start;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  box-sizing: border-box;
+  min-block-size: var(--card-height);
+  margin: 0;
+  padding: clamp(1.625rem, 3.4vw, 2.375rem);
+  border-radius: 12px;
+  background: var(--color-card);
+  box-shadow: 0 26px 46px -30px color-mix(in srgb, var(--color-band) 60%, transparent);
+}
+
+/* The English card, in the site's English fonts. */
+.card:lang(en) {
+  --font-body: var(--font-manrope), var(--font-assistant), system-ui, sans-serif;
+  --font-heading: var(--font-playfair), var(--font-frank-ruhl), Georgia, serif;
+
+  font-family: var(--font-body);
+}
+
+.headline {
+  font-family: var(--font-heading);
+  font-size: clamp(1.4rem, 2.3vw, 1.65rem);
+  line-height: 1.35;
+}
+
+/* A large soft quote mark above the line, turned to match the language. */
+.headline::before {
+  content: "”";
+  display: block;
+  block-size: 2.1rem;
+  font-size: 3.8rem;
+  line-height: 1;
+  color: var(--color-wash-rose);
+}
+
+.card:lang(en) .headline::before {
+  content: "“";
+}
+
+.story {
+  display: grid;
+  gap: var(--space-3);
+  margin: 0;
+  font-size: 1.02rem;
+  line-height: 1.8;
+  color: var(--color-text-muted);
+}
+
+.story strong {
+  color: var(--color-text);
+}
+
+.card:not(.open) .story {
+  max-block-size: 9.5rem;
+  overflow: hidden;
+  mask-image: linear-gradient(to bottom, black 55%, transparent);
+}
+
+/* On the right on every card, also the English one. */
+.more {
+  align-self: flex-start;
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  font-family: var(--font-assistant), system-ui, sans-serif;
+  font-size: 0.98rem;
+  font-weight: 600;
+  color: var(--color-accent-strong);
+  cursor: pointer;
+}
+
+.card:lang(en) .more {
+  align-self: flex-end;
+}
+
+.more:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.more:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+/* Pushed to the bottom, so the names line up across the cards. */
+.card figcaption {
+  margin-block-start: auto;
+  padding-block-start: var(--space-3);
+  border-block-start: 1px solid var(--color-border);
+  line-height: 1.5;
+  color: var(--color-text-muted);
+}
+
+.card figcaption strong {
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: var(--color-text);
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-6);
+}
+
+.arrow {
+  display: grid;
+  place-items: center;
+  inline-size: 58px;
+  block-size: 58px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: var(--color-accent);
+  box-shadow: 0 12px 22px -12px color-mix(in srgb, var(--color-band) 70%, transparent);
+  color: var(--color-on-photo);
+  cursor: pointer;
+  transition: background-color var(--transition-fast);
+}
+
+.arrow:hover {
+  background: var(--color-accent-strong);
+}
+
+.arrow:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+.arrow svg {
+  inline-size: 28px;
+  block-size: 14px;
+}
+
+.previous svg {
+  transform: scaleX(-1);
+}
+
+.dots {
+  display: flex;
+  gap: 0.625rem;
+}
+
+.dot,
+.dotOn {
+  inline-size: 8px;
+  block-size: 8px;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--color-band) 22%, var(--color-paper));
+  transition:
+    background-color var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+.dotOn {
+  background: var(--color-accent);
+  transform: scale(1.25);
+}
+
+@media (max-width: 52rem) {
+  .slide {
+    flex-basis: 86%;
+  }
+
+  .arrow {
+    inline-size: 48px;
+    block-size: 48px;
+  }
+}

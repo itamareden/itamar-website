@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import { Emphasis } from "@/components/Emphasis/Emphasis";
 import { ToolIcon } from "@/components/ToolIcon/ToolIcon";
-import { Voices } from "@/components/Voices/Voices";
+import { VoicesSlider } from "@/components/VoicesSlider/VoicesSlider";
 import { Flourish } from "@/app/[locale]/challenge/_components/Flourish";
 import { WhatsAppIcon } from "@/app/[locale]/challenge/_components/WhatsAppIcon";
 import { sessions as s } from "@/content/sessions/he";
@@ -40,100 +41,147 @@ export default async function SessionsPage() {
 
   return (
     <>
-      {/* The opening: title, lead and the WhatsApp button beside a session in progress. */}
-      <section className={styles.hero}>
-        <div className={styles.heroText}>
-          <p className={styles.kicker}>{s.hero.eyebrow}</p>
-          <h1 className={styles.title}>
-            {s.hero.title} <em>{s.hero.emphasis}</em>
-          </h1>
-          <p className={styles.lead}>{s.hero.lead}</p>
-          <div className={styles.heroActions}>
-            <WhatsAppButton className={styles.button} />
-            <span className={styles.heroNote}>{s.hero.note}</span>
-          </div>
-        </div>
+      {/* The opening: a session in progress fills the screen, the text on it.
+          data-hero lets the header sit on top of it in light text. */}
+      <section className={styles.hero} data-full-bleed data-hero>
         <Image
-          src="/images/sessions/session.jpg"
+          src="/images/sessions/session-hero.jpg"
           alt={s.hero.imageAlt}
-          width={2400}
-          height={1350}
-          sizes="(max-width: 44rem) 100vw, 45vw"
+          fill
+          sizes="100vw"
           quality={90}
           loading="eager"
           fetchPriority="high"
           className={styles.heroImage}
         />
-      </section>
-
-      {/* What you might take with you: the dark band, a rose tick per line. */}
-      <section className={styles.dark} data-full-bleed>
-        <div className={`${styles.inner} ${styles.center}`}>
-          <p className={styles.darkKicker}>{s.gains.kicker}</p>
-          <h2 className={styles.sectionTitle}>
-            {s.gains.title} <em>{s.gains.emphasis}</em>
-          </h2>
-          <ul className={styles.gains}>
-            {s.gains.items.map((item) => (
-              <li key={item}>{item}</li>
-            ))}
-          </ul>
+        <div className={styles.heroInner}>
+          <div className={styles.heroText}>
+            <p className={styles.eyebrow}>{s.hero.eyebrow}</p>
+            <h1 className={styles.title}>
+              {s.hero.title} <em>{s.hero.emphasis}</em>
+            </h1>
+            <p className={styles.lead}>{s.hero.lead}</p>
+            <WhatsAppButton className={`${styles.button} ${styles.heroButton}`} />
+          </div>
         </div>
       </section>
 
-      {/* What a session looks like: four steps, each with its tool's icon. */}
-      <section className={styles.flow}>
-        <header className={styles.center}>
-          <Flourish />
-          <p className={styles.kicker}>{s.flow.kicker}</p>
-          <h2 className={styles.sectionTitle}>
-            {s.flow.title} <em>{s.flow.emphasis}</em>
-          </h2>
-        </header>
-        <ol className={styles.steps}>
-          {s.flow.steps.map((step) => (
-            <li key={step.title} className={styles.step}>
-              <span className={styles.stepIcon}>
-                <ToolIcon name={step.icon} />
-              </span>
-              <h3>{step.title}</h3>
-              <p>{step.text}</p>
-            </li>
+      {/* A personal note from Itamar: three beats along a wave, like one breath. */}
+      <section className={styles.note}>
+        <div className={styles.noteColumn}>
+          {s.note.map((beat) => (
+            <div key={beat.paragraphs[0]} className={styles.beat}>
+              {beat.lead && (
+                <p className={styles.beatLead}>
+                  <Emphasis text={beat.lead} />
+                </p>
+              )}
+              {beat.paragraphs.map((paragraph) => (
+                <p key={paragraph}>
+                  <Emphasis text={paragraph} />
+                </p>
+              ))}
+            </div>
           ))}
-        </ol>
+        </div>
       </section>
 
-      {/* Three ways to meet: soft gradient cards on the wash. */}
-      <section className={styles.wash} data-full-bleed>
-        <div className={styles.inner}>
-          <header className={styles.center}>
-            <p className={styles.kicker}>{s.formats.kicker}</p>
-            <h2 className={styles.sectionTitle}>
-              {s.formats.title} <em>{s.formats.emphasis}</em>
-            </h2>
-          </header>
-          <ul className={styles.formats}>
-            {s.formats.items.map((format) => (
-              <li key={format.title} className={styles.format}>
-                <h3>{format.title}</h3>
-                <p className={styles.length}>{format.length}</p>
-                <p>{format.text}</p>
+      {/* What can open up: five qualities on the wash, under a leaf shadow. */}
+      <section className={`${styles.wash} ${styles.gainsBand}`} data-full-bleed>
+        <div className={`${styles.inner} ${styles.center}`}>
+          <Flourish />
+          <p className={styles.kicker}>{s.gains.kicker}</p>
+          <h2 className={styles.sectionTitle}>
+            {s.gains.title} <em>{s.gains.emphasis}</em>
+          </h2>
+          <p className={styles.gainsLead}>{s.gains.lead}</p>
+          <ul className={styles.gains}>
+            {s.gains.items.map((item) => (
+              <li key={item.title} className={styles.gain}>
+                {item.image ? (
+                  <Image src={item.image} alt="" width={512} height={512} className={styles.gainImage} />
+                ) : (
+                  <span className={styles.gainIcon}>
+                    <ToolIcon name={item.icon} />
+                  </span>
+                )}
+                <h3>{item.title}</h3>
+                <p>{item.text}</p>
               </li>
             ))}
           </ul>
-          <p className={styles.formatsNote}>{s.formats.note}</p>
         </div>
       </section>
 
       {/* What people say, shared with the homepage. */}
-      {voices && <Voices content={voices} />}
+      {voices && <VoicesSlider content={voices} />}
 
-      {/* Before we breathe: the health note, in a quiet bordered card. */}
-      <section className={styles.care}>
-        <h2>{s.care.title}</h2>
-        {s.care.text.map((paragraph) => (
-          <p key={paragraph}>{paragraph}</p>
-        ))}
+      {/* Two ways to meet: open rows on the wash, the length set large. */}
+      <section className={`${styles.wash} ${styles.formatsBand}`} data-full-bleed>
+        <div className={styles.inner}>
+          <header className={styles.center}>
+            <p className={`${styles.kicker} ${styles.formatsKicker}`}>{s.formats.kicker}</p>
+            <h2 className={styles.sectionTitle}>
+              {s.formats.title} <em>{s.formats.emphasis}</em>
+            </h2>
+            <p className={styles.formatsPlace}>{s.formats.place}</p>
+          </header>
+          <ul className={styles.formats}>
+            {s.formats.items.map((format) => (
+              <li key={format.title} className={styles.format}>
+                <p className={styles.length}>
+                  <bdi dir="ltr">{format.length}</bdi>
+                  <span>{format.unit}</span>
+                </p>
+                <div className={styles.formatBody}>
+                  <h3>{format.title}</h3>
+                  {format.subtitle && (
+                    <p className={styles.formatSubtitle}>{format.subtitle}</p>
+                  )}
+                  <p>{format.text}</p>
+                  <p className={styles.formatWho}>{format.format}</p>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      {/* A breathwork session: five steps along its curve, which rises to the
+          breath, drops to the rest and comes back. */}
+      <section className={styles.flow}>
+        <header className={styles.center}>
+          <p className={styles.kicker}>{s.flow.kicker}</p>
+          <h2 className={styles.sectionTitle}>
+            {s.flow.title} {s.flow.emphasis}
+          </h2>
+        </header>
+        <div className={styles.stepsTrack}>
+          <svg
+            className={styles.curve}
+            viewBox="0 0 1000 300"
+            preserveAspectRatio="none"
+            fill="none"
+            stroke="currentColor"
+            strokeOpacity={0.4}
+            strokeWidth={1.5}
+            aria-hidden="true"
+          >
+            <path
+              vectorEffect="non-scaling-stroke"
+              d="M1000 185C960 183 930 180 900 175C830 163 770 155 700 135C630 115 570 14 500 14C400 14 400 230 300 230C230 230 180 130 100 120C65 116 30 115 0 115"
+            />
+          </svg>
+          <ol className={styles.steps}>
+            {s.flow.steps.map((step) => (
+              <li key={step.title} className={styles.step}>
+                <h3>{step.title}</h3>
+                {step.length && <p className={styles.stepLength}>{step.length}</p>}
+                <p>{step.text}</p>
+              </li>
+            ))}
+          </ol>
+        </div>
       </section>
 
       {/* Questions. */}
@@ -142,13 +190,26 @@ export default async function SessionsPage() {
         {s.faq.items.map((item) => (
           <details key={item.question}>
             <summary>{item.question}</summary>
-            <p>{item.answer}</p>
+            {item.answer.map((paragraph) => (
+              <p key={paragraph}>
+                <Emphasis text={paragraph} />
+              </p>
+            ))}
           </details>
         ))}
+        <p className={styles.faqNote}>{s.faq.note}</p>
       </section>
 
-      {/* The closing band: one line and the WhatsApp button. */}
+      {/* The closing band: a quiet room behind one line and the WhatsApp button. */}
       <section className={`${styles.dark} ${styles.closing}`} data-full-bleed>
+        <Image
+          src="/images/sessions/closing-room.jpg"
+          alt=""
+          fill
+          sizes="100vw"
+          quality={85}
+          className={styles.closingImage}
+        />
         <div className={`${styles.inner} ${styles.center}`}>
           <h2 className={styles.sectionTitle}>
             {s.closing.title} <em>{s.closing.emphasis}</em>

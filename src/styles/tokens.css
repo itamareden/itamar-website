@@ -28,6 +28,7 @@
   --color-wash-base: #efe2dc;
   --color-wash-rose: #e7cfd2;
   --color-wash-sand: #e9d9bd;
+  --color-paper: #f1e9e0; /* a flat warm band */
 
   /* Sunrise: a soft berry (a lighter cousin of the accent); the glow is the same
      berry at 56% opacity, so the cream page shows through and lightens it */

@@ -66,12 +66,6 @@
   color: var(--color-on-photo-accent);
 }
 
-.darkKicker {
-  font-size: clamp(1.1rem, 1.8vw, 1.3rem);
-  font-weight: var(--weight-bold);
-  color: var(--color-on-photo-accent);
-}
-
 /* WhatsApp buttons: berry on the page, cream on the dark band. */
 .button,
 .buttonLight {
@@ -117,99 +111,252 @@
   block-size: 1.3em;
 }
 
-/* ---------- the opening: text beside a session in progress ---------- */
+/* ---------- the opening: a session in progress, full screen ---------- */
 
+/*
+ * The two people sit in the middle and left of the photo, and its right
+ * side is darkened in the photo itself, so the text goes there: the start
+ * side in Hebrew, with the reading flow.
+ */
 .hero {
-  display: grid;
-  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
-  gap: clamp(2rem, 5vw, 4rem);
+  position: relative;
+  display: flex;
   align-items: center;
-  padding-block-end: clamp(4rem, 8vw, 6rem);
+  min-block-size: max(36rem, 100svh); /* svh: the visible height on phones */
+  overflow: hidden;
+  color: var(--color-on-photo);
+}
+
+.heroImage {
+  object-fit: cover;
+  object-position: 50% 25%; /* wide screens trim top and bottom; this keeps his head and her face */
+}
+
+/* A light shade at the top, so the header reads over the photo. */
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, color-mix(in srgb, var(--color-band) 40%, transparent), transparent 20%);
+}
+
+.heroInner {
+  position: relative;
+  z-index: 1; /* above the shading */
+  display: flex;
+  justify-content: flex-start; /* the right edge, in Hebrew */
+  inline-size: 100%;
+  /* Room at the top for the header, which sits over the photo. Close to the
+     right edge rather than the content column, clear of his shoulder. */
+  padding: 7rem clamp(var(--gutter), 5vw, 6rem) clamp(3rem, 8vw, 5.5rem);
 }
 
 .heroText {
   display: grid;
   justify-items: start;
   gap: var(--space-5, 1.25rem);
+  max-inline-size: 34rem;
+}
+
+.eyebrow {
+  font-size: 0.95rem;
+  font-weight: var(--weight-bold);
+  color: var(--color-on-photo-accent);
 }
 
 .title {
-  font-size: clamp(2.6rem, 5.6vw, 4.2rem);
-  line-height: 1.05;
+  font-size: clamp(2.8rem, 6vw, 4.8rem);
+  line-height: 1.02;
   letter-spacing: -0.02em;
+  color: var(--color-on-photo);
+  text-shadow: 0 2px 30px color-mix(in srgb, var(--color-band) 45%, transparent);
 }
 
-/* The second line in berry, on a line of its own. */
+/* The second line in rose, on a line of its own. */
 .title em {
   display: block;
-  color: var(--color-accent);
+  font-style: normal;
+  color: var(--color-on-photo-accent);
 }
 
 .lead {
-  max-inline-size: 34rem;
-  font-size: clamp(1.15rem, 1.6vw, 1.3rem);
-  line-height: 1.8;
-  color: var(--color-text-muted);
+  max-inline-size: 32rem;
+  font-size: clamp(1.05rem, 1.5vw, 1.2rem);
+  line-height: 1.75;
+  text-shadow: 0 1px 12px color-mix(in srgb, var(--color-band) 50%, transparent);
 }
 
-.heroActions {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: var(--space-3) var(--space-5, 1.25rem);
+.heroButton {
   margin-block-start: var(--space-2);
 }
 
-.heroNote {
+/* ---------- a personal note from Itamar ---------- */
+
+.note {
+  margin-block-start: 0;
+  padding-block: clamp(4rem, 8vw, 6.5rem);
+}
+
+.noteColumn {
+  position: relative;
+  display: grid;
+  gap: var(--space-6);
+  inline-size: min(100%, 48rem);
+  margin-inline: auto;
+  padding-inline-start: 5rem;
+  font-size: 1.2rem;
+  line-height: 1.85;
   color: var(--color-text-muted);
 }
 
-/* A wide crop that keeps both faces; one large rounded corner at the bottom
-   end (bottom left in Hebrew), and a soft shadow. */
-.heroImage {
-  inline-size: 100%;
-  block-size: auto;
-  aspect-ratio: 4 / 3;
-  object-fit: cover;
-  object-position: 62% 55%;
-  border-radius: 26px;
-  border-end-end-radius: 120px;
-  box-shadow: 0 30px 60px -36px color-mix(in srgb, var(--color-band) 60%, transparent);
-  /* A light fade on every edge, so it softens into the page. */
-  mask-image:
-    linear-gradient(to left, transparent 0%, black 3%, black 97%, transparent 100%),
-    linear-gradient(to top, transparent 0%, black 3%, black 97%, transparent 100%);
-  mask-composite: intersect;
+/* A wave down the start edge: one breath through the three beats. A single
+   drawing stretched to the height, so it is unbroken and ends where the spiral begins. */
+.noteColumn::before {
+  content: "";
+  position: absolute;
+  inset-block: var(--space-2) -0.75rem;
+  inset-inline-start: var(--space-2);
+  inline-size: 1.5rem;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 600' preserveAspectRatio='none'%3E%3Cpath d='M12 0C24 20 24 40 12 60S0 100 12 120S24 160 12 180S0 220 12 240S24 280 12 300S0 340 12 360S24 400 12 420S0 460 12 480S24 520 12 540S0 580 12 600' fill='none' stroke='%23a54173' stroke-opacity='.45' stroke-width='1.5' vector-effect='non-scaling-stroke'/%3E%3C/svg%3E") center / 100% 100% no-repeat;
 }
 
-/* ---------- what you might take with you ---------- */
+/* The wave's end, curling gently inward. Offset so its first point meets the
+   wave's centre line; the curl opens toward the page edge (Hebrew layout). */
+.noteColumn::after {
+  content: "";
+  position: absolute;
+  inset-block-start: calc(100% + 0.75rem);
+  inset-inline-start: calc(var(--space-2) - 0.75rem);
+  inline-size: 2.25rem;
+  block-size: 2.875rem;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 36 46'%3E%3Cpath d='M12 0C19 12 30 18 30 30 30 40 20 44 13 41 6 38 5 28 12 24 18 21 24 26 23 31 22 36 16 36 15 32' fill='none' stroke='%23a54173' stroke-opacity='.45' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E") center / contain no-repeat;
+}
 
+.beat {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.beat strong {
+  color: var(--color-text);
+}
+
+/* A beat's opening line, in the heading font. */
+.beatLead {
+  font-family: var(--font-heading);
+  font-size: clamp(1.45rem, 2.4vw, 1.8rem);
+  line-height: 1.5;
+  color: var(--color-text);
+}
+
+/* The very first line is the largest, with "magic" in berry. */
+.beat:first-child .beatLead {
+  font-size: clamp(2rem, 3.8vw, 2.7rem);
+  line-height: 1.2;
+  text-wrap: balance;
+}
+
+.beat:first-child strong {
+  font-weight: inherit;
+  color: var(--color-accent);
+}
+
+
+/* ---------- what can open up ---------- */
+
+/* A soft shadow of leaves in the corner, as if from a window. */
+.gainsBand {
+  position: relative;
+  overflow: hidden;
+}
+
+.gainsBand::before {
+  content: "";
+  position: absolute;
+  inset-block-start: -2rem;
+  left: -3rem;
+  inline-size: clamp(14rem, 26vw, 24rem);
+  aspect-ratio: 1;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 300'%3E%3Cg fill='%237d7a3a'%3E%3Cpath d='M20 260C70 200 120 120 250 40' fill='none' stroke='%237d7a3a' stroke-width='4'/%3E%3Cpath d='M70 200C40 160 40 120 60 90c30 30 35 70 10 110z'/%3E%3Cpath d='M70 200c40 10 80 0 105-30-40-15-80-10-105 30z'/%3E%3Cpath d='M130 130c-20-40-15-75 10-105 25 35 22 70-10 105z'/%3E%3Cpath d='M130 130c40 5 75-10 95-40-40-10-75 0-95 40z'/%3E%3Cpath d='M190 80c-5-25 5-50 25-65 10 25 2 50-25 65z'/%3E%3C/g%3E%3C/svg%3E") center / contain no-repeat;
+  opacity: 0.2;
+  filter: blur(7px);
+  pointer-events: none;
+}
+
+.gainsBand .inner {
+  position: relative; /* above the leaves */
+}
+
+.gainsLead {
+  max-inline-size: 44rem;
+  font-size: clamp(1.1rem, 1.5vw, 1.2rem);
+  line-height: 1.8;
+}
+
+/* Five across on wide screens; narrower screens wrap, centred. */
 .gains {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: var(--space-3);
-  max-inline-size: 56rem;
-  margin-block-start: var(--space-6);
+  gap: clamp(2rem, 3vw, 2.5rem) clamp(1.25rem, 2.5vw, 2rem);
+  inline-size: 100%;
+  margin-block-start: clamp(2rem, 4vw, 3rem);
   padding: 0;
   list-style: none;
 }
 
-/* See-through pills with a rose tick. */
-.gains li {
-  display: flex;
-  align-items: center;
+.gain {
+  flex: 1 1 11rem;
+  display: grid;
+  justify-items: center;
+  align-content: start;
   gap: var(--space-2);
-  padding: 0.7rem 1.3rem;
-  border: 1px solid color-mix(in srgb, var(--color-on-photo-accent) 30%, transparent);
-  border-radius: var(--radius-pill);
-  background: color-mix(in srgb, var(--color-on-photo) 6%, transparent);
-  font-size: 1.1rem;
+  max-inline-size: 14rem;
 }
 
-.gains li::before {
-  content: "✓";
-  color: var(--color-on-photo-accent);
+/* A watercolour dab: each one a slightly different uneven circle. */
+.gainIcon {
+  display: grid;
+  place-items: center;
+  inline-size: clamp(6.5rem, 9vw, 8rem);
+  aspect-ratio: 1;
+  margin-block-end: var(--space-3);
+  border-radius: 52% 48% 55% 45% / 47% 54% 46% 53%;
+  background: radial-gradient(
+    circle at 40% 35%,
+    color-mix(in srgb, var(--color-card) 55%, var(--color-wash-rose)),
+    color-mix(in srgb, var(--color-accent) 20%, var(--color-wash-rose))
+  );
+  color: var(--color-accent-strong);
+}
+
+.gain:nth-child(even) .gainIcon {
+  border-radius: 46% 54% 48% 52% / 55% 45% 53% 47%;
+}
+
+.gain:nth-child(3n) .gainIcon {
+  border-radius: 55% 45% 44% 56% / 50% 56% 44% 50%;
+}
+
+/* A drawn circle in place of an icon, the same size. */
+.gainImage {
+  inline-size: clamp(6.5rem, 9vw, 8rem);
+  block-size: auto;
+  margin-block-end: var(--space-3);
+}
+
+.gainIcon svg {
+  inline-size: 56%;
+  block-size: 56%;
+}
+
+.gain h3 {
+  font-size: clamp(1.35rem, 1.9vw, 1.55rem);
+}
+
+.gain p {
+  line-height: 1.65;
+  color: var(--color-text-muted);
 }
 
 /* ---------- what a session looks like ---------- */
@@ -220,132 +367,179 @@
   padding-block: clamp(4rem, 9vw, 7rem);
 }
 
-/* Four in a row, with a thin line linking the icons; two a row on tablets. */
-.steps {
+.flow .kicker {
+  font-weight: 500;
+  color: var(--color-text-muted);
+}
+
+/* The curve of a session: it climbs to the breath, drops to the rest and comes back. */
+.stepsTrack {
   position: relative;
+}
+
+.curve {
+  position: absolute;
+  inset: 0 0 auto;
+  inline-size: 100%;
+  block-size: 300px;
+  color: var(--color-text);
+  pointer-events: none;
+}
+
+.steps {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: clamp(1.5rem, 3vw, 2.5rem);
+  grid-template-columns: repeat(5, minmax(0, 1fr));
   padding: 0;
   list-style: none;
 }
 
-.steps::before {
-  content: "";
-  position: absolute;
-  inset-inline: 12%;
-  inset-block-start: calc(clamp(6rem, 9vw, 7.5rem) / 2);
-  border-block-start: 1px dashed color-mix(in srgb, var(--color-accent) 40%, transparent);
-}
-
+/* Each step hangs from its dot, at its height on the curve (--y). */
 .step {
   position: relative;
-  display: grid;
-  justify-items: center;
-  align-content: start;
-  gap: var(--space-3);
+  padding-block-start: calc(var(--y) + 24px);
+  padding-inline: 14px;
   text-align: center;
 }
 
-.stepIcon {
-  display: grid;
-  place-items: center;
-  inline-size: clamp(6rem, 9vw, 7.5rem);
-  aspect-ratio: 1;
-  margin-block-end: var(--space-2);
-  border-radius: 50%;
-  background: radial-gradient(
-    circle at 35% 30%,
-    var(--color-wash-rose),
-    color-mix(in srgb, var(--color-accent) 14%, var(--color-background))
-  );
-  color: var(--color-accent);
+.step:nth-child(1) {
+  --y: 175px;
 }
 
-.stepIcon svg {
-  inline-size: 52%;
-  block-size: 52%;
+.step:nth-child(2) {
+  --y: 135px;
+}
+
+.step:nth-child(3) {
+  --y: 14px;
+  padding-inline: 28px; /* keeps the text clear of the falling curve */
+}
+
+.step:nth-child(4) {
+  --y: 230px;
+}
+
+.step:nth-child(5) {
+  --y: 120px;
+}
+
+.step::before {
+  content: "";
+  position: absolute;
+  inset-block-start: var(--y);
+  left: 50%;
+  inline-size: 10px;
+  block-size: 10px;
+  margin: -5px 0 0 -5px;
+  border-radius: 50%;
+  background: var(--color-text);
+}
+
+/* The peak, the breath, in berry. */
+.step:nth-child(3)::before {
+  background: var(--color-accent);
 }
 
 .step h3 {
-  font-size: clamp(1.4rem, 2.2vw, 1.7rem);
+  font-size: clamp(1.5rem, 2.4vw, 1.9rem);
+}
+
+.step .stepLength {
+  margin-block-start: 0;
+  font-weight: var(--weight-bold);
+  color: var(--color-text);
 }
 
 .step p {
+  margin-block-start: var(--space-2);
   line-height: 1.75;
   color: var(--color-text-muted);
 }
 
-/* ---------- three ways to meet ---------- */
+/* ---------- two ways to meet ---------- */
 
+/* Rose fading in from the off-white page at the top and easing lighter toward
+   the bottom, the same all the way across. */
+.formatsBand {
+  background: linear-gradient(
+    to bottom,
+    var(--color-background) 0%,
+    color-mix(in srgb, var(--color-wash-rose) 70%, var(--color-background)) 35%,
+    color-mix(in srgb, var(--color-wash-rose) 25%, var(--color-background)) 100%
+  );
+}
+
+.formatsKicker {
+  font-size: clamp(1.25rem, 2vw, 1.45rem);
+}
+
+.formatsPlace {
+  font-size: 1.15rem;
+  font-weight: var(--weight-bold);
+  color: var(--color-text);
+}
+
+/* Open rows between thin lines, the length first. */
 .formats {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: var(--space-5, 1.25rem);
+  max-inline-size: 58rem;
   margin-block-start: clamp(2.5rem, 5vw, 3.5rem);
+  margin-inline: auto;
   padding: 0;
+  border-block-end: 1px solid color-mix(in srgb, var(--color-accent) 30%, transparent);
   list-style: none;
 }
 
 .format {
   display: grid;
-  align-content: start;
-  gap: var(--space-3);
-  padding: clamp(1.5rem, 3vw, 2.25rem);
-  border-radius: 22px;
-  background: color-mix(in srgb, var(--color-card) 70%, transparent);
-  box-shadow: 0 24px 44px -34px color-mix(in srgb, var(--color-band) 55%, transparent);
-}
-
-.format h3 {
-  font-size: clamp(1.6rem, 2.6vw, 2rem);
+  grid-template-columns: minmax(0, 4fr) minmax(0, 7fr);
+  gap: clamp(1.25rem, 4vw, 3rem);
+  align-items: start;
+  padding-block: clamp(1.75rem, 3.5vw, 2.5rem);
+  border-block-start: 1px solid color-mix(in srgb, var(--color-accent) 30%, transparent);
 }
 
 .length {
-  justify-self: start;
-  padding: 0.2rem 0.85rem;
-  border-radius: var(--radius-pill);
-  background: color-mix(in srgb, var(--color-accent) 12%, transparent);
-  font-size: 0.95rem;
-  font-weight: var(--weight-bold);
-  color: var(--color-accent-strong);
+  font-family: var(--font-heading);
+  font-size: clamp(2.4rem, 4.6vw, 3.4rem);
+  line-height: 1.05;
+  color: var(--color-accent);
 }
 
-.format p:last-child {
+.length span {
+  display: block;
+  margin-block-start: var(--space-2);
+  font-size: 0.5em;
+}
+
+.formatBody {
+  display: grid;
+  gap: var(--space-2);
+  font-size: 1.1rem;
   line-height: 1.75;
   color: var(--color-text-muted);
 }
 
-.formatsNote {
-  margin-block-start: var(--space-6);
-  text-align: center;
-  color: var(--color-text-muted);
+.formatBody h3 {
+  font-size: clamp(1.7rem, 2.8vw, 2.2rem);
+  line-height: 1.2;
+  color: var(--color-text);
 }
 
-/* ---------- before we breathe ---------- */
-
-.care {
-  display: grid;
-  gap: var(--space-3);
-  inline-size: min(100%, 46rem);
-  margin: clamp(4rem, 8vw, 6rem) auto 0;
-  padding: clamp(1.5rem, 3vw, 2.25rem);
-  border: 1px solid color-mix(in srgb, var(--color-accent) 30%, transparent);
-  border-inline-start: 4px solid var(--color-accent);
-  border-radius: 18px;
-  line-height: 1.8;
-  color: var(--color-text-muted);
+.formatSubtitle {
+  margin-block-start: calc(-1 * var(--space-2));
+  font-size: 1.15rem;
+  color: var(--color-text);
 }
 
-.care h2 {
-  font-size: clamp(1.5rem, 2.4vw, 1.8rem);
+.formatWho {
+  font-weight: var(--weight-bold);
   color: var(--color-text);
 }
 
 /* ---------- questions ---------- */
 
 .faq {
-  inline-size: min(100%, 46rem);
+  inline-size: min(100%, 54rem);
   margin-inline: auto;
   padding-block: clamp(4rem, 8vw, 6rem);
 }
@@ -358,7 +552,7 @@
   border-block-start: 1px solid var(--color-border);
 }
 
-.faq details:last-child {
+.faq details:last-of-type {
   border-block-end: 1px solid var(--color-border);
 }
 
@@ -368,7 +562,7 @@
   gap: var(--space-4);
   padding-block: var(--space-4);
   font-family: var(--font-heading);
-  font-size: 1.25rem;
+  font-size: 1.4rem;
   list-style: none;
   cursor: pointer;
 }
@@ -391,12 +585,46 @@
 }
 
 .faq details p {
-  max-inline-size: 52ch;
   padding-block-end: var(--space-4);
+  font-size: 1.1rem;
+  line-height: 1.75;
+  color: var(--color-text-muted);
+}
+
+/* Always in view, outside the questions. */
+.faqNote {
+  margin-block-start: var(--space-12);
+  font-size: 1.1rem;
+  font-weight: var(--weight-bold);
   color: var(--color-text-muted);
 }
 
 /* ---------- the closing band ---------- */
+
+/* The room photo under an umber shade, the text above both. */
+.closing {
+  position: relative;
+  padding-block: clamp(6rem, 13vw, 11rem);
+  overflow: hidden;
+  background: var(--color-band);
+}
+
+.closingImage {
+  object-fit: cover;
+  object-position: 50% 60%;
+}
+
+.closing::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: color-mix(in srgb, var(--color-band) 62%, transparent);
+}
+
+.closing > div {
+  position: relative;
+  z-index: 1; /* above the shade */
+}
 
 .closingText {
   max-inline-size: 40ch;
@@ -410,37 +638,59 @@
 
 /* ---------- tablets and phones ---------- */
 
-@media (max-width: 60rem) {
-  .steps {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    row-gap: clamp(2.5rem, 5vw, 3.5rem);
-  }
-
-  .steps::before {
+/* Too narrow for the curve: one thin line down the start side instead. */
+@media (max-width: 52rem) {
+  .curve {
     display: none;
   }
 
-  .formats {
+  .steps {
     grid-template-columns: minmax(0, 1fr);
-    max-inline-size: 34rem;
-    margin-inline: auto;
+  }
+
+  .step {
+    padding: 0 20px 24px 0;
+    border-inline-start: 1px solid var(--color-border);
+    text-align: start;
+  }
+
+  .step:nth-child(3) {
+    padding-inline: 20px 0;
+  }
+
+  .step::before {
+    inset-block-start: 10px;
+    right: -5px;
+    left: auto;
+    margin: 0;
   }
 }
 
 @media (max-width: 44rem) {
+  /* Phones: the photo centred between the two people, the text at the bottom. */
   .hero {
-    grid-template-columns: minmax(0, 1fr);
+    align-items: flex-end;
+    min-block-size: 100svh; /* svh: the visible height, without the browser bars */
   }
 
-  /* The photo comes first, above the text, fading only at the bottom. */
+  /* Between the two faces: hers on the left, his in the middle. */
   .heroImage {
-    order: -1;
-    border-radius: 0;
-    mask-image: linear-gradient(to top, transparent 0%, black 25%);
+    object-position: 35% 50%;
   }
 
-  .steps {
+
+  .format {
     grid-template-columns: minmax(0, 1fr);
+  }
+
+  /* No wave on phones: the text takes the full width. */
+  .noteColumn {
+    padding-inline-start: 0;
+  }
+
+  .noteColumn::before,
+  .noteColumn::after {
+    display: none;
   }
 }
 
