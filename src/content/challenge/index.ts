@@ -116,10 +116,9 @@ export type ChallengeContent = {
     heading: Heading;
     items: { myth: string; truth: string }[];
   };
-  // groupOnly: shown only in group mode (e.g. questions about the WhatsApp group).
   faq: {
     title: string;
-    items: { question: string; answer: string; groupOnly?: boolean }[];
+    items: { question: string; answer: string }[];
   };
   closing: { heading: Heading; text: string };
 

@@ -45,7 +45,6 @@ export default async function ChallengePage() {
   const c = getChallenge(locale);
   const { mode, startDate, whatsappUrl } = c.settings;
   const steps = mode === "group" ? c.group.steps : c.email.steps;
-  const faqItems = c.faq.items.filter((item) => mode === "group" || !item.groupOnly);
 
   // The group's start date while it's still ahead (today counts); null when
   // there's no date or it has passed, so the page never shows an old date.
@@ -247,7 +246,7 @@ export default async function ChallengePage() {
 
       <section className={`${styles.section} ${styles.faq}`}>
         <h2 className={styles.sectionTitle}>{c.faq.title}</h2>
-        {faqItems.map((item) => (
+        {c.faq.items.map((item) => (
           <details key={item.question}>
             <summary>{item.question}</summary>
             <p>{item.answer}</p>
