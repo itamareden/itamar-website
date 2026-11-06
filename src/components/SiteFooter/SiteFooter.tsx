@@ -1,3 +1,4 @@
+import { SocialLinks } from "@/components/SocialLinks/SocialLinks";
 import { photoCredit } from "@/content/credits";
 import { getDictionary } from "@/dictionaries";
 import { getLocale } from "@/i18n/get-locale";
@@ -15,6 +16,7 @@ export async function SiteFooter() {
         <p>
           © {year} {dict.site.name}
         </p>
+        <SocialLinks />
         <p>
           {photoCredit.label[locale]}:{" "}
           <a href={photoCredit.url} target="_blank" rel="noopener noreferrer" dir="ltr" className={styles.credit}>

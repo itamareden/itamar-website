@@ -4,15 +4,24 @@
   font-size: var(--text-sm);
 }
 
-/* The copyright on the start side, the photo credit on the end side. */
+/* The copyright on the start side, the social icons in the middle and the
+   photo credit on the end side. Stacked and centred on phones. */
 .inner {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   justify-content: space-between;
-  gap: var(--space-2) var(--space-6);
+  gap: var(--space-4) var(--space-6);
   max-inline-size: var(--content-width);
   margin-inline: auto;
   padding: var(--space-8) var(--gutter);
+}
+
+@media (max-width: 44rem) {
+  .inner {
+    flex-direction: column;
+    text-align: center;
+  }
 }
 
 .credit {

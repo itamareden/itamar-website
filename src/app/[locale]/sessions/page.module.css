@@ -33,10 +33,6 @@
   letter-spacing: -0.01em;
 }
 
-.sectionTitle em {
-  color: var(--color-accent);
-}
-
 /* The warm rose-and-sand wash, fading in from the ivory page. */
 .wash {
   margin-block-start: 0;
@@ -62,9 +58,6 @@
   color: var(--color-on-photo);
 }
 
-.dark .sectionTitle em {
-  color: var(--color-on-photo-accent);
-}
 
 /* WhatsApp buttons: berry on the page, cream on the dark band. */
 .button,
@@ -198,39 +191,21 @@
 }
 
 .noteColumn {
-  position: relative;
   display: grid;
   gap: var(--space-6);
   inline-size: min(100%, 48rem);
   margin-inline: auto;
-  padding-inline-start: 5rem;
+  padding: clamp(1.75rem, 5vw, 3.5rem);
+  box-sizing: border-box;
+  border-radius: 12px;
+  background: var(--color-card);
+  box-shadow: 0 26px 46px -30px color-mix(in srgb, var(--color-band) 60%, transparent);
   font-size: 1.2rem;
   line-height: 1.85;
   color: var(--color-text-muted);
 }
 
-/* A wave down the start edge: one breath through the three beats. A single
-   drawing stretched to the height, so it is unbroken and ends where the spiral begins. */
-.noteColumn::before {
-  content: "";
-  position: absolute;
-  inset-block: var(--space-2) -0.75rem;
-  inset-inline-start: var(--space-2);
-  inline-size: 1.5rem;
-  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 600' preserveAspectRatio='none'%3E%3Cpath d='M12 0C24 20 24 40 12 60S0 100 12 120S24 160 12 180S0 220 12 240S24 280 12 300S0 340 12 360S24 400 12 420S0 460 12 480S24 520 12 540S0 580 12 600' fill='none' stroke='%23a54173' stroke-opacity='.45' stroke-width='1.5' vector-effect='non-scaling-stroke'/%3E%3C/svg%3E") center / 100% 100% no-repeat;
-}
 
-/* The wave's end, curling gently inward. Offset so its first point meets the
-   wave's centre line; the curl opens toward the page edge (Hebrew layout). */
-.noteColumn::after {
-  content: "";
-  position: absolute;
-  inset-block-start: calc(100% + 0.75rem);
-  inset-inline-start: calc(var(--space-2) - 0.75rem);
-  inline-size: 2.25rem;
-  block-size: 2.875rem;
-  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 36 46'%3E%3Cpath d='M12 0C19 12 30 18 30 30 30 40 20 44 13 41 6 38 5 28 12 24 18 21 24 26 23 31 22 36 16 36 15 32' fill='none' stroke='%23a54173' stroke-opacity='.45' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E") center / contain no-repeat;
-}
 
 .beat {
   display: grid;
@@ -249,17 +224,13 @@
   color: var(--color-text);
 }
 
-/* The very first line is the largest, with "magic" in berry. */
+/* The very first line is the largest. */
 .beat:first-child .beatLead {
   font-size: clamp(2rem, 3.8vw, 2.7rem);
   line-height: 1.2;
   text-wrap: balance;
 }
 
-.beat:first-child strong {
-  font-weight: inherit;
-  color: var(--color-accent);
-}
 
 
 /* ---------- what can open up ---------- */
@@ -314,40 +285,11 @@
   max-inline-size: 14rem;
 }
 
-/* A watercolour dab: each one a slightly different uneven circle. */
-.gainIcon {
-  display: grid;
-  place-items: center;
-  inline-size: clamp(6.5rem, 9vw, 8rem);
-  aspect-ratio: 1;
-  margin-block-end: var(--space-3);
-  border-radius: 52% 48% 55% 45% / 47% 54% 46% 53%;
-  background: radial-gradient(
-    circle at 40% 35%,
-    color-mix(in srgb, var(--color-card) 55%, var(--color-wash-rose)),
-    color-mix(in srgb, var(--color-accent) 20%, var(--color-wash-rose))
-  );
-  color: var(--color-accent-strong);
-}
-
-.gain:nth-child(even) .gainIcon {
-  border-radius: 46% 54% 48% 52% / 55% 45% 53% 47%;
-}
-
-.gain:nth-child(3n) .gainIcon {
-  border-radius: 55% 45% 44% 56% / 50% 56% 44% 50%;
-}
-
-/* A drawn circle in place of an icon, the same size. */
+/* A hand drawing above each one. */
 .gainImage {
-  inline-size: clamp(6.5rem, 9vw, 8rem);
+  inline-size: clamp(3.6rem, 4.8vw, 4.4rem);
   block-size: auto;
   margin-block-end: var(--space-3);
-}
-
-.gainIcon svg {
-  inline-size: 56%;
-  block-size: 56%;
 }
 
 .gain h3 {
@@ -468,7 +410,7 @@
   );
 }
 
-.formatsKicker {
+.kickerLarge {
   font-size: clamp(1.25rem, 2vw, 1.45rem);
 }
 
@@ -681,16 +623,6 @@
 
   .format {
     grid-template-columns: minmax(0, 1fr);
-  }
-
-  /* No wave on phones: the text takes the full width. */
-  .noteColumn {
-    padding-inline-start: 0;
-  }
-
-  .noteColumn::before,
-  .noteColumn::after {
-    display: none;
   }
 }
 

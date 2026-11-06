@@ -1,5 +1,3 @@
-import type { ToolIconName } from "@/components/ToolIcon/ToolIcon";
-
 /*
  * The Sessions page (/he/sessions): private, couples and group sessions,
  * in Koh Phangan or online. Hebrew only for now. No prices: people write
@@ -23,11 +21,11 @@ export const sessions = {
     button: "לדבר איתי בוואטסאפ",
     imageAlt: "איתמר מלווה מפגש נשימה: אישה שוכבת על מזרן ונושמת, והוא יושב לצידה",
   },
-  // Itamar's own words, right after the photo, in three beats along a wave.
-  // A beat may open with a larger line. **bold** is berry in the opening line.
+  // Itamar's own words, right after the photo, in three beats.
+  // A beat may open with a larger line. **bold** marks emphasis.
   note: [
     {
-      lead: "לפעמים זה מרגיש לי כמו **קסם**, מה שקורה במפגשים האלה.",
+      lead: "לפעמים זה מרגיש לי כמו קסם, מה שקורה במפגשים האלה.",
       paragraphs: [
         "אנחנו מתחילים בשיחה, מכירים קצת, ומגלים יחד כמה דברים אנחנו סוחבים איתנו, וכמה התרגלנו להחזיק בפנים. ואז עוברים לנשימה, ולאט לאט משהו מתחיל לזוז. השריון מתחיל להיסדק, משהו מתרכך, ופתאום רגשות שהיו חבויים עמוק בפנים מוצאים את דרכם החוצה.",
         "לפעמים זה מגיע עם דמעות, לפעמים עם תחושות חזקות בגוף, ולפעמים דווקא עם שקט עמוק. לפעמים עולה זיכרון, אבל לא פעם זה פשוט קורה מעצמו, בלי סיפור ובלי הסבר.",
@@ -45,40 +43,37 @@ export const sessions = {
       ],
     },
   ],
-  // What can open up: five qualities, each with its own icon.
+  // What can open up: five qualities, each with its own hand drawing.
   gains: {
     kicker: "מה יכול להיפתח במפגש",
     title: "מרחב לנשום,",
     emphasis: "להרגיש ולשחרר",
-    lead: "כל מפגש הוא הזדמנות לעצור לרגע, להניח את מה שמצטבר, ולפגוש את עצמנו באופן חי, אותנטי ונוכח יותר. מתוך המרחב הזה יכולים להיפתח:",
+    lead: "כל מפגש הוא הזדמנות לעצור לרגע, להניח את מה שהצטבר, ולפגוש את עצמנו באופן חי, אותנטי ונוכח יותר. מתוך המרחב הזה יכולים להיפתח:",
     items: [
       {
-        icon: "breath" as ToolIconName,
-        image: "/images/sessions/gain-breath.png", // a drawn circle, used in place of the icon
+        image: "/images/sessions/gain-breath-line.png",
         title: "שחרור והקלה",
-        text: "מתחים, עומסים ודפוסים שכבר לא משרתים אתכם.",
+        text: "לשחרר מתחים, עומסים ורגשות שהחזקנו בפנים, ולפנות מקום לקלילות.",
       },
       {
-        icon: "heart" as ToolIconName,
-        image: "/images/sessions/gain-heart.png",
+        image: "/images/sessions/gain-heart-line.png",
         title: "חיבור רגשי",
-        text: "יותר רכות, פתיחות והתרככות של הלב.",
+        text: "להתרכך, לפתוח את הלב ולהעמיק את החיבור לעצמנו ולרגשות שלנו.",
       },
       {
-        icon: "sunrise" as ToolIconName,
+        image: "/images/sessions/gain-sunrise-line.png",
         title: "בהירות פנימית",
-        text: "מבט צלול יותר על מה שמתרחש בתוככם ובחייכם.",
+        text: "לצאת לרגע מרעש המחשבות ולגלות נקודות מבט חדשות.",
       },
       {
-        icon: "meditation" as ToolIconName,
-        title: "נוכחות בגוף",
-        text: "תחושת חיוניות, אנרגיה ועונג פשוט להיות.",
+        image: "/images/sessions/gain-lotus-line.png",
+        title: "נוכחות וחיות",
+        text: "להרגיש יותר מחוברים לגוף, עם יותר אנרגיה וחיות.",
       },
       {
-        icon: "manifestation" as ToolIconName,
-        image: "/images/sessions/gain-seedling.png",
+        image: "/images/sessions/gain-seedling-line.png",
         title: "פתיחות לחיים",
-        text: "יותר קלילות, שמחה וסקרנות למה שאפשרי.",
+        text: "לפגוש את החיים עם יותר חופש, שמחה, עונג וסקרנות.",
       },
     ],
   },

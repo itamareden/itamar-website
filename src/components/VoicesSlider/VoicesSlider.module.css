@@ -24,9 +24,6 @@
   text-align: center;
 }
 
-.title em {
-  color: var(--color-accent);
-}
 
 /* Swipeable. The room at the bottom keeps the card shadows from being cut off. */
 .track {

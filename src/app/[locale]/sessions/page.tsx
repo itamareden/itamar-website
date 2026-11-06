@@ -1,9 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { Emphasis } from "@/components/Emphasis/Emphasis";
-import { ToolIcon } from "@/components/ToolIcon/ToolIcon";
 import { VoicesSlider } from "@/components/VoicesSlider/VoicesSlider";
-import { Flourish } from "@/app/[locale]/challenge/_components/Flourish";
 import { WhatsAppIcon } from "@/app/[locale]/challenge/_components/WhatsAppIcon";
 import { sessions as s } from "@/content/sessions/he";
 import { getVoices } from "@/content/voices";
@@ -66,7 +64,7 @@ export default async function SessionsPage() {
         </div>
       </section>
 
-      {/* A personal note from Itamar: three beats along a wave, like one breath. */}
+      {/* A personal note from Itamar, in a white card. */}
       <section className={styles.note}>
         <div className={styles.noteColumn}>
           {s.note.map((beat) => (
@@ -89,8 +87,7 @@ export default async function SessionsPage() {
       {/* What can open up: five qualities on the wash, under a leaf shadow. */}
       <section className={`${styles.wash} ${styles.gainsBand}`} data-full-bleed>
         <div className={`${styles.inner} ${styles.center}`}>
-          <Flourish />
-          <p className={styles.kicker}>{s.gains.kicker}</p>
+          <p className={`${styles.kicker} ${styles.kickerLarge}`}>{s.gains.kicker}</p>
           <h2 className={styles.sectionTitle}>
             {s.gains.title} <em>{s.gains.emphasis}</em>
           </h2>
@@ -98,13 +95,7 @@ export default async function SessionsPage() {
           <ul className={styles.gains}>
             {s.gains.items.map((item) => (
               <li key={item.title} className={styles.gain}>
-                {item.image ? (
-                  <Image src={item.image} alt="" width={512} height={512} className={styles.gainImage} />
-                ) : (
-                  <span className={styles.gainIcon}>
-                    <ToolIcon name={item.icon} />
-                  </span>
-                )}
+                <Image src={item.image} alt="" width={512} height={512} className={styles.gainImage} />
                 <h3>{item.title}</h3>
                 <p>{item.text}</p>
               </li>
@@ -120,7 +111,7 @@ export default async function SessionsPage() {
       <section className={`${styles.wash} ${styles.formatsBand}`} data-full-bleed>
         <div className={styles.inner}>
           <header className={styles.center}>
-            <p className={`${styles.kicker} ${styles.formatsKicker}`}>{s.formats.kicker}</p>
+            <p className={`${styles.kicker} ${styles.kickerLarge}`}>{s.formats.kicker}</p>
             <h2 className={styles.sectionTitle}>
               {s.formats.title} <em>{s.formats.emphasis}</em>
             </h2>
