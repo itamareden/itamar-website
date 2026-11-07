@@ -1,0 +1,218 @@
+/*
+ * What people say on the homepage: one white card at a time, the same card as
+ * the Sessions carousel without the story. Arrows at its sides (under it on
+ * phones), dots and the link to the full reviews below.
+ */
+
+.voices {
+  display: grid;
+  gap: clamp(2rem, 4vw, 3rem);
+  padding-block-start: clamp(3rem, 6vw, 4.5rem);
+}
+
+.title {
+  font-size: clamp(2.1rem, 4.4vw, 3.2rem);
+  letter-spacing: -0.01em;
+  text-align: center;
+}
+
+/* In a right-to-left page the first column is on the right. */
+.carousel {
+  display: grid;
+  grid-template-columns: auto minmax(0, 38rem) auto;
+  grid-template-areas:
+    "next cards previous"
+    ".    dots  .";
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-6) clamp(1rem, 3vw, 2.5rem);
+}
+
+.cards {
+  grid-area: cards;
+  display: grid;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  touch-action: pan-y;
+}
+
+.current,
+.resting {
+  grid-area: 1 / 1;
+  transition:
+    opacity 320ms ease,
+    visibility 320ms;
+}
+
+.resting {
+  visibility: hidden;
+  opacity: 0;
+}
+
+/* A shorter review sits in the middle, so spare room is split evenly. */
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--space-3);
+  box-sizing: border-box;
+  block-size: 100%;
+  margin: 0;
+  padding: clamp(1.625rem, 3.4vw, 2.375rem);
+  border-radius: 12px;
+  background: var(--color-card);
+  box-shadow: 0 26px 46px -30px color-mix(in srgb, var(--color-band) 60%, transparent);
+}
+
+/* The English card, in the site's English fonts. */
+.card:lang(en) {
+  --font-body: var(--font-manrope), var(--font-assistant), system-ui, sans-serif;
+  --font-heading: var(--font-playfair), var(--font-frank-ruhl), Georgia, serif;
+
+  font-family: var(--font-body);
+}
+
+.headline {
+  font-family: var(--font-heading);
+  font-size: clamp(1.4rem, 2.6vw, 1.75rem);
+  line-height: 1.35;
+  text-wrap: pretty;
+}
+
+/* A large soft quote mark above the line, turned to match the language. */
+.headline::before {
+  content: "”";
+  display: block;
+  block-size: 2.1rem;
+  font-size: 3.8rem;
+  line-height: 1;
+  color: var(--color-wash-rose);
+}
+
+.card:lang(en) .headline::before {
+  content: "“";
+}
+
+.card figcaption {
+  padding-block-start: var(--space-3);
+  border-block-start: 1px solid var(--color-border);
+  line-height: 1.5;
+  color: var(--color-text-muted);
+}
+
+.card figcaption strong {
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: var(--color-text);
+}
+
+.arrow {
+  display: grid;
+  place-items: center;
+  inline-size: 3rem;
+  block-size: 3rem;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: var(--color-accent);
+  color: var(--color-on-accent);
+  cursor: pointer;
+  transition: background-color var(--transition-fast);
+}
+
+.arrow:hover {
+  background: var(--color-accent-strong);
+}
+
+.arrow:focus-visible,
+.dot:focus-visible,
+.fullLink:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 3px;
+}
+
+.arrow svg {
+  inline-size: 1.5rem;
+  block-size: auto;
+}
+
+.next {
+  grid-area: next;
+}
+
+/* The drawing points left; on the right side it should point right. */
+.next svg {
+  transform: scaleX(-1);
+}
+
+.previous {
+  grid-area: previous;
+}
+
+.dots {
+  grid-area: dots;
+  display: flex;
+  justify-content: center;
+  gap: var(--space-1);
+}
+
+/* A small dot in a larger, easier target. */
+.dot {
+  display: grid;
+  place-items: center;
+  inline-size: 1.75rem;
+  block-size: 1.75rem;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+
+.dot::before {
+  content: "";
+  inline-size: 0.6rem;
+  block-size: 0.6rem;
+  border-radius: 50%;
+  background: var(--color-border);
+  transition: background-color var(--transition-fast);
+}
+
+.dot[aria-current]::before {
+  background: var(--color-accent);
+}
+
+.fullLink {
+  justify-self: center;
+  font-size: 1.1rem;
+  font-weight: var(--weight-bold);
+  color: var(--color-accent);
+  text-decoration: none;
+}
+
+.fullLink:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 40rem) {
+  .carousel {
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    grid-template-areas:
+      "cards cards cards"
+      "next  dots  previous";
+    gap: var(--space-4);
+  }
+
+  .arrow {
+    inline-size: 2.75rem;
+    block-size: 2.75rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .current,
+  .resting {
+    transition: none;
+  }
+}

@@ -4,8 +4,8 @@ import type { Locale } from "@/i18n/config";
  * What people said after working with Itamar, shown on the Sessions page
  * and the homepage. The name as each person gave it, and one detail.
  * The headline repeats their strongest line, which also stays in the text.
- * The Sessions page shows all of them in a slider; the homepage shows the
- * ones in the page's own language.
+ * The Sessions page shows all of them in a slider with the full story; the
+ * homepage shows only the headlines, one at a time.
  *
  * Their own words, with only small punctuation fixes, used with their OK.
  * Hebrew only for now; a language without content here shows no section.
@@ -22,6 +22,7 @@ export type Voice = {
 export type VoicesContent = {
   title: string;
   emphasis: string;
+  readAll: string; // the homepage link to the full reviews
   more: string; // opens a full story in the slider
   less: string;
   previous: string; // the slider's arrows, for screen readers
@@ -32,6 +33,7 @@ export type VoicesContent = {
 const he: VoicesContent = {
   title: "מה אומרים",
   emphasis: "אחרי מפגש",
+  readAll: "לקריאת החוויות המלאות",
   more: "לקריאה המלאה",
   less: "סגירה",
   previous: "הקודם",
@@ -54,7 +56,7 @@ const he: VoicesContent = {
     {
       name: "עוז",
       detail: "תהליך",
-      headline: "מרגיש שפגשתי את האדם הנכון בדיוק בזמן.",
+      headline: "מעבר לנשימה, קיבלתי ממנו כלים שמלווים אותי עד היום בהמון סיטואציות ביומיום.",
       text: "התהליך עם איתמר בקופנגן היה אחד הדברים הכי חזקים שחוויתי בטיול, והוא ממש שינה לי את החיים. הגעתי עם הרבה ידע בראש, אבל ברגע האמת הרגשתי שאני עדיין מגיב באותה צורה ונשאר תקוע. איתמר עזר לי להתחיל לצאת מהתקיעות הזאת, בעיקר דרך החיבור לגוף וההקשבה אליו. מעבר לנשימה, קיבלתי ממנו כלים שמלווים אותי עד היום בהמון סיטואציות ביומיום. למדתי לעצור, להרגיש מה קורה בגוף, לזוז ולרקוד, ולא לנסות לפתור הכול רק דרך הראש. מה שהכי נגע בי זה כמה הוא עובד מהלב, וכמה הוא נותן מעצמו גם מעבר למפגשים. מרגיש שפגשתי את האדם הנכון בדיוק בזמן.",
     },
     {

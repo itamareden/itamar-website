@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Hero } from "@/components/Hero/Hero";
-import { Voices } from "@/components/Voices/Voices";
+import { VoicesCarousel } from "@/components/VoicesCarousel/VoicesCarousel";
 import { getHomeSections } from "@/content/home/sections";
 import { getMeditations } from "@/content/home/meditations";
 import { getTools } from "@/content/tools";
@@ -111,8 +111,9 @@ export default async function Home() {
         </section>
       )}
 
-      {/* Only the headline lines here; the full quotes live on the Sessions page. */}
-      {voices && <Voices content={voices} short className={styles.voices} />}
+      {voices && (
+        <VoicesCarousel content={voices} href={`/${locale}/sessions`} className={styles.voices} />
+      )}
 
       {meditations && <FreeMeditations content={meditations} />}
     </>
