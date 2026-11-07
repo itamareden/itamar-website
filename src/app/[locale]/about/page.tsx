@@ -3,7 +3,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { Emphasis } from "@/components/Emphasis/Emphasis";
 import { ToolIcon } from "@/components/ToolIcon/ToolIcon";
-import { Flourish } from "@/app/[locale]/challenge/_components/Flourish";
 import { about as a } from "@/content/about/he";
 import { getTools } from "@/content/tools";
 import { getDictionary } from "@/dictionaries";
@@ -75,13 +74,28 @@ export default async function AboutPage() {
         </nav>
       </section>
 
-      {/* My journey: the heading on the side, the story beside it. */}
-      <section id="journey" className={styles.journey}>
-        <header className={styles.storyHeader}>
-          <Flourish />
-          <h2 className={styles.sectionTitle}>{a.journey.title}</h2>
-          <p className={styles.summary}>{a.journey.summary}</p>
-        </header>
+      {/* My journey: one sand box, with the portrait and the story's opening
+          side by side, and the rest of the story under them. The "what lights
+          me up" part below is built the same way, in peach. */}
+      <section id="journey" className={styles.storyBox}>
+        <div className={styles.storyOpening}>
+          <Image
+            src="/images/about/forest-portrait.jpg"
+            alt={a.journey.portraitAlt}
+            width={1200}
+            height={1800}
+            sizes="(max-width: 44rem) 100vw, 36rem"
+            className={styles.storyImage}
+          />
+          <div className={styles.storyPanel}>
+            <h2 className={styles.sectionTitle}>{a.journey.title}</h2>
+            {a.journey.opening.map((paragraph) => (
+              <p key={paragraph}>
+                <Emphasis text={paragraph} />
+              </p>
+            ))}
+          </div>
+        </div>
         <div className={styles.story}>
           {a.journey.text.map((paragraph) => (
             <p key={paragraph}>
@@ -94,24 +108,10 @@ export default async function AboutPage() {
         </div>
       </section>
 
-      {/* A band of bare feet on a forest path: a pause after the journey. */}
-      <div className={styles.band} data-full-bleed>
-        <div className={styles.bandFrame}>
-          <Image
-            src="/images/about/barefoot-path.jpg"
-            alt={a.journey.imageAlt}
-            fill
-            sizes="(max-width: 44rem) 100vw, 85vw"
-            className={styles.bandImage}
-          />
-        </div>
-      </div>
-
       {/* My tools: one per row, a large icon beside each, alternating sides. */}
       {tools && (
         <section id="tools" className={styles.toolsSection}>
           <header className={styles.toolsHeader}>
-            <Flourish />
             <h2 className={styles.sectionTitle}>{tools.about.title}</h2>
             <p className={styles.toolsIntro}>{tools.about.intro}</p>
           </header>
@@ -139,17 +139,17 @@ export default async function AboutPage() {
       )}
 
       {/* What lights me up: the black-and-white portrait beside the text, on the wash. */}
-      <section id="lights" className={styles.wash} data-full-bleed>
-        <div className={`${styles.inner} ${styles.split} ${styles.why}`}>
+      <section id="lights" className={`${styles.storyBox} ${styles.lights}`}>
+        <div className={styles.storyOpening}>
           <Image
             src="/images/about/joy.jpg"
             alt={a.why.imageAlt}
             width={1100}
             height={1375}
-            sizes="(max-width: 44rem) 90vw, 40vw"
-            className={styles.whyImage}
+            sizes="(max-width: 44rem) 100vw, 36rem"
+            className={styles.storyImage}
           />
-          <div className={styles.whyText}>
+          <div className={styles.storyPanel}>
             <h2 className={styles.sectionTitle}>{a.why.title}</h2>
             {a.why.text.map((paragraph) => (
               <p key={paragraph}>{paragraph}</p>

@@ -5,21 +5,6 @@
 
 /* ---------- shared ---------- */
 
-/* Text and a photo side by side; stacked on phones. */
-.split {
-  display: grid;
-  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
-  gap: clamp(2rem, 6vw, 5rem);
-  align-items: center;
-}
-
-/* Content column inside full-width sections. */
-.inner {
-  max-inline-size: var(--content-width);
-  margin-inline: auto;
-  padding-inline: var(--gutter);
-}
-
 .sectionTitle {
   font-size: clamp(2.1rem, 4.4vw, 3.2rem);
   letter-spacing: -0.01em;
@@ -27,18 +12,6 @@
 
 .sectionTitle em {
   color: var(--color-accent);
-}
-
-/* The warm rose-and-sand wash, as on the challenge and course pages.
-   Its top fades in from the ivory page, so there's no hard edge. */
-.wash {
-  margin-block-start: 0;
-  padding-block: clamp(4rem, 9vw, 7.5rem);
-  background:
-    linear-gradient(to bottom, var(--color-background), transparent 30%),
-    radial-gradient(ellipse 55% 65% at 18% 25%, var(--color-wash-rose) 0%, transparent 70%),
-    radial-gradient(ellipse 50% 60% at 88% 75%, var(--color-wash-sand) 0%, transparent 70%),
-    var(--color-wash-base);
 }
 
 /* ---------- the top: the photo, with the greeting on it ---------- */
@@ -234,57 +207,58 @@
   scroll-margin-block-start: var(--space-6);
 }
 
-/* ---------- my journey: the heading on the side, the story beside it ---------- */
+/* ---------- my journey and what lights me up: a colored box, the portrait, then the story below ---------- */
 
-.journey {
+.storyBox {
+  margin-block-end: clamp(4rem, 8vw, 6.25rem);
+  background: var(--color-wash-sand);
+}
+
+.storyOpening {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
-  gap: clamp(2rem, 6vw, 6rem);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   align-items: start;
-  padding-block-end: clamp(3rem, 6vw, 4rem);
 }
 
-/* Stays in view beside the story as it scrolls. */
-.storyHeader {
-  position: sticky;
-  inset-block-start: var(--space-8, 2rem);
-  display: grid;
-  justify-items: start;
-  gap: var(--space-6);
+/* The whole photo, with square corners. */
+.storyImage {
+  inline-size: 100%;
+  block-size: auto;
 }
 
-/* The flourish sits flush at the start. */
-.storyHeader > :first-child {
-  margin: 0;
-}
-
-/* A short line under the heading: the story in one sentence. */
-.summary {
-  max-inline-size: 22rem;
-  margin-block-start: var(--space-2);
-  font-size: 1.25rem;
-  line-height: 1.7;
-  color: var(--color-text-muted);
-}
-
-.story {
+/* Centred beside the photo, so the space it leaves falls evenly. */
+.storyPanel {
   display: grid;
   gap: var(--space-5, 1.25rem);
-  max-inline-size: 42rem;
+  align-self: center;
+  padding: 2.5rem clamp(2rem, 5vw, 3.5rem);
   font-size: 1.15rem;
   line-height: 1.85;
 }
 
+.storyPanel strong,
 .story strong {
-  color: var(--color-accent);
+  color: var(--color-accent-strong);
 }
 
-/* The last line, larger, under a short berry line. */
+.storyPanel .sectionTitle {
+  margin-block-end: var(--space-4);
+}
+
+/* Narrower than the box, so the lines stay easy to read. */
+.story {
+  display: grid;
+  gap: var(--space-5, 1.25rem);
+  max-inline-size: 54rem;
+  margin-inline: auto;
+  padding: 2rem clamp(2rem, 5vw, 3.5rem) clamp(2rem, 5vw, 3.5rem);
+  font-size: 1.15rem;
+  line-height: 1.85;
+}
+
+/* The last line, under a short centred berry line. */
 .storyClosing {
   margin-block-start: var(--space-4);
-  font-family: var(--font-heading);
-  font-size: clamp(1.35rem, 2.2vw, 1.65rem);
-  line-height: 1.5;
 }
 
 .storyClosing::before {
@@ -292,6 +266,7 @@
   display: block;
   inline-size: 3rem;
   block-size: 2px;
+  margin-inline: auto;
   margin-block-end: var(--space-5, 1.25rem);
   background: var(--color-accent);
 }
@@ -300,28 +275,29 @@
   font-weight: inherit;
 }
 
-/* ---------- the band: a pause after the journey ---------- */
-
-/* Its top and bottom fade into the page, so it melts in. */
-.band {
-  position: relative;
-  block-size: clamp(14.5rem, 35vw, 29rem);
-  margin-block: clamp(1.5rem, 4vw, 3rem);
-  mask-image: linear-gradient(to bottom, transparent 0%, black 22%, black 78%, transparent 100%);
+/* What lights me up: the peach of its card on the page above. */
+.lights {
+  margin-block-end: clamp(3rem, 6vw, 4rem);
+  background: color-mix(in srgb, #ebc8ba 75%, var(--color-background));
 }
 
-/* On wide screens, narrower than the band so the photo shows more of
-   itself (zoomed out), its sides fading into the page. Full width on phones. */
-.bandFrame {
-  position: absolute;
-  inset-block: 0;
-  inset-inline: 8%;
-  mask-image: linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%);
-}
-
-.bandImage {
+/* The same height as the journey's portrait, trimmed a little at the sides. */
+.lights .storyImage {
+  aspect-ratio: 2 / 3;
   object-fit: cover;
-  object-position: 50% 60%;
+}
+
+/* All the text sits beside the photo here, starting at the top as there. */
+.lights .storyPanel {
+  align-self: start;
+  padding-block-end: 2.5rem;
+}
+
+/* The belief: a berry bar on the start side. */
+.belief {
+  margin-block: var(--space-2);
+  padding-inline-start: var(--space-5, 1.25rem);
+  border-inline-start: 3px solid var(--color-accent);
 }
 
 /* ---------- my tools: one per row, a large icon on alternating sides ---------- */
@@ -345,10 +321,6 @@
   block-size: 2px;
   margin-block-start: 1.4rem;
   background: color-mix(in srgb, var(--color-accent) 72%, var(--color-background));
-}
-
-.toolsHeader > :first-child {
-  margin: 0 0 var(--space-2);
 }
 
 /* The line under the heading: larger, in the heading font, in berry; the
@@ -434,56 +406,6 @@
   font-size: 1.1rem;
   line-height: 1.85;
   color: var(--color-text-muted);
-}
-
-/* ---------- what lights me up ---------- */
-
-/* Photo on the start side here, so the two portraits alternate. */
-.why {
-  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
-}
-
-.whyText {
-  display: grid;
-  gap: var(--space-4);
-  font-size: 1.125rem;
-  line-height: 1.8;
-  color: var(--color-text-muted);
-}
-
-.whyText .sectionTitle {
-  margin-block-end: var(--space-2);
-  color: var(--color-text);
-}
-
-.whyText strong {
-  color: var(--color-accent);
-}
-
-/* The belief: larger, in the heading font, with a berry bar on the start side. */
-.belief {
-  margin-block: var(--space-2);
-  padding-inline-start: var(--space-5, 1.25rem);
-  border-inline-start: 3px solid var(--color-accent);
-  font-family: var(--font-heading);
-  font-size: clamp(1.25rem, 2vw, 1.5rem);
-  line-height: 1.5;
-  color: var(--color-text);
-}
-
-/* No frame: the inner edge (toward the text, on the left in Hebrew) and
-   the bottom melt into the wash, which also hides the chest there. */
-.whyImage {
-  inline-size: 100%;
-  block-size: auto;
-  aspect-ratio: 4 / 5;
-  object-fit: cover;
-  object-position: 50% 30%;
-  border-radius: 32px;
-  mask-image:
-    linear-gradient(to right, transparent 0%, black 30%, black 92%, transparent 100%),
-    linear-gradient(to top, transparent 0%, black 30%, black 94%, transparent 100%);
-  mask-composite: intersect;
 }
 
 /* ---------- where to go next: the dark band ---------- */
@@ -576,23 +498,6 @@
     --tool-circle: clamp(9.2rem, 16.1vw, 12rem);
   }
 
-  .bandFrame {
-    inset-inline: 0;
-    mask-image: none;
-  }
-
-  .split,
-  .why {
-    grid-template-columns: minmax(0, 1fr);
-  }
-
-  .whyImage {
-    max-inline-size: 24rem;
-    justify-self: center;
-    border-radius: 0;
-    mask-image: linear-gradient(to top, transparent 0%, black 30%, black 80%, transparent 100%);
-  }
-
   /* Shorter on phones, so the upright crop keeps the open arms in view. */
   /* The whole first screen, as on desktop and the homepage. */
   .top {
@@ -604,16 +509,17 @@
     object-position: 62% 40%;
   }
 
-  .storyHeader > :first-child {
-    justify-self: center;
-  }
-
-  .journey {
+  .storyOpening {
     grid-template-columns: minmax(0, 1fr);
   }
 
-  .storyHeader {
-    position: static;
+  /* Text runs straight on from the panel, with the usual paragraph space. */
+  .storyPanel {
+    padding-block-end: 0;
+  }
+
+  .story {
+    padding-block-start: var(--space-5, 1.25rem);
   }
 
   /* Icon above the text, centred. */
