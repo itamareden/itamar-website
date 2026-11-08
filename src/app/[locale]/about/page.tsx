@@ -154,12 +154,6 @@ export default async function AboutPage() {
             {a.why.text.map((paragraph) => (
               <p key={paragraph}>{paragraph}</p>
             ))}
-            <p className={styles.belief}>{a.why.belief}</p>
-            {a.why.passion.map((paragraph) => (
-              <p key={paragraph}>
-                <Emphasis text={paragraph} />
-              </p>
-            ))}
           </div>
         </div>
       </section>

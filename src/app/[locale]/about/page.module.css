@@ -293,13 +293,6 @@
   padding-block-end: 2.5rem;
 }
 
-/* The belief: a berry bar on the start side. */
-.belief {
-  margin-block: var(--space-2);
-  padding-inline-start: var(--space-5, 1.25rem);
-  border-inline-start: 3px solid var(--color-accent);
-}
-
 /* ---------- my tools: one per row, a large icon on alternating sides ---------- */
 
 .toolsSection {
