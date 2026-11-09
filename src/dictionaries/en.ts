@@ -40,6 +40,18 @@ export const en = {
     heroImageAlt:
       "Itamar sitting cross-legged on a rock in a forest stream, arms wrapped around himself, eyes closed",
   },
+  // The footer on every page: the mailing list, then links to the offerings.
+  footer: {
+    listTitle: "A short letter, once a month",
+    listText: "A new meditation, a thought from the path, and first word on events and courses.",
+    firstName: "First name",
+    email: "Email",
+    join: "Join",
+    joinSoon: "Sign-up opens soon. Thank you for your patience!",
+    linksLabel: "Ways to practise together",
+    challenge: "Free 5-day challenge",
+    freeMeditations: "Free meditations",
+  },
   notFound: {
     title: "Page not found",
     text: "The page you're looking for doesn't exist or has moved.",

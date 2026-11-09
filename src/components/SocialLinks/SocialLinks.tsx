@@ -17,9 +17,11 @@ const icons: Record<SocialNetwork, string> = {
     "M2 11h20a10 10 0 0 1-20 0zm5.5 10.5h9a1 1 0 0 1 0 2h-9a1 1 0 0 1 0-2zM9 9.5c-.6 0-1-.4-1-1 0-1 .5-1.6.9-2.1.3-.4.4-.6.4-1.4a1 1 0 0 1 2 0c0 1.5-.5 2.2-.9 2.7-.3.4-.4.5-.4.8 0 .6-.4 1-1 1zm5 0c-.6 0-1-.4-1-1 0-1 .5-1.6.9-2.1.3-.4.4-.6.4-1.4a1 1 0 0 1 2 0c0 1.5-.5 2.2-.9 2.7-.3.4-.4.5-.4.8 0 .6-.4 1-1 1z",
 };
 
-export function SocialLinks() {
+// "round": berry circles (the challenge's closing page). "bare": just the
+// marks, in the text colour (the footer).
+export function SocialLinks({ variant = "round" }: { variant?: "round" | "bare" }) {
   return (
-    <ul className={styles.list}>
+    <ul className={`${styles.list} ${variant === "bare" ? styles.bare : ""}`}>
       {socialLinks.map(({ network, name, url }) => (
         <li key={network}>
           <a

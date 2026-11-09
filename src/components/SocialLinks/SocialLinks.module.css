@@ -39,6 +39,31 @@
   outline-offset: 3px;
 }
 
+/* Bare: no circles, just the marks in the surrounding text colour. */
+.bare {
+  gap: var(--space-4);
+}
+
+.bare .link {
+  inline-size: auto;
+  block-size: auto;
+  border-radius: 0;
+  background: none;
+  color: inherit;
+  opacity: 0.8;
+}
+
+.bare .link svg {
+  inline-size: 1.35rem;
+  block-size: 1.35rem;
+}
+
+.bare .link:hover {
+  background: none;
+  color: var(--color-accent);
+  opacity: 1;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .link {
     transition: none;
