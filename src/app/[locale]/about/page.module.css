@@ -55,9 +55,9 @@
   padding-block-end: clamp(var(--space-12), 9vw, 7rem);
 }
 
-/* The greeting in cream, its second line in rose, as on the homepage hero. */
+/* The greeting in cream. "היי," is a touch (about 4px) smaller than the name under it. */
 .title {
-  font-size: clamp(2.6rem, 5.4vw, 5.1rem);
+  font-size: clamp(2.35rem, calc(5.4vw - 0.25rem), 4.85rem);
   line-height: 0.95;
   letter-spacing: -0.02em;
   color: var(--color-on-photo);
@@ -67,9 +67,10 @@
 .title em {
   display: block;
   margin-block-start: 0.1em;
+  font-size: clamp(2.6rem, 5.4vw, 5.1rem);
   font-style: normal;
   font-weight: 500;
-  color: var(--color-on-photo-accent);
+  color: #f2d7a6; /* soft candlelight gold, picking up the warm tones in the photo */
 }
 
 .lead {
@@ -277,7 +278,7 @@
 
 /* What lights me up: the peach of its card on the page above. */
 .lights {
-  margin-block-end: clamp(3rem, 6vw, 4rem);
+  margin-block-end: clamp(4rem, 8vw, 6.25rem);
   background: color-mix(in srgb, #ebc8ba 75%, var(--color-background));
 }
 
@@ -406,7 +407,8 @@
 /* Umber with a berry glow from the top. */
 .dark {
   margin-block-start: 0;
-  padding-block: clamp(3.4rem, 7.6vw, 6.4rem);
+  /* A little less at the top: the heading's tall lines add their own space there. */
+  padding-block: clamp(2.3rem, 5.2vw, 4.4rem) clamp(3.5rem, 7.8vw, 6.55rem);
   background:
     radial-gradient(ellipse 70% 60% at 50% 0%, color-mix(in srgb, var(--color-accent) 45%, transparent), transparent 70%),
     var(--color-band);
@@ -449,12 +451,15 @@
 .button,
 .buttonSoft {
   display: inline-block;
-  padding: 0.85rem 2rem;
-  border-radius: var(--radius-pill);
+  padding: 0.7rem 2rem;
+  border-radius: var(--radius-md);
   font-size: 1.125rem;
   font-weight: var(--weight-bold);
   text-decoration: none;
-  transition: background-color var(--transition-fast);
+  transition:
+    background-color var(--transition-fast),
+    border-color var(--transition-fast),
+    color var(--transition-fast);
 }
 
 /* Sessions: the main way in, solid cream. */
@@ -474,8 +479,11 @@
   color: var(--color-on-photo-accent);
 }
 
+/* On hover the outline and text turn cream, over a faint cream tint. */
 .buttonSoft:hover {
-  background: color-mix(in srgb, var(--color-on-photo-accent) 12%, transparent);
+  border-color: var(--color-on-photo);
+  background: color-mix(in srgb, var(--color-on-photo) 8%, transparent);
+  color: var(--color-on-photo);
 }
 
 .button:focus-visible,
