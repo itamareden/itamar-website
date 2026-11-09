@@ -66,7 +66,7 @@
   align-items: center;
   gap: var(--space-2);
   padding: 0.85rem 1.9rem;
-  border-radius: var(--radius-pill);
+  border-radius: var(--radius-md); /* as the buttons at the bottom of the About page */
   font-size: 1.125rem;
   font-weight: var(--weight-bold);
   text-decoration: none;
@@ -120,6 +120,9 @@
      scrolling reveals the bottom. Phones keep the full screen (below). */
   min-block-size: max(36rem, calc(56.25vw - 14px));
   overflow: hidden;
+  /* The soft candlelight gold of the About hero, for the accents here. */
+  --hero-accent: #f2d7a6;
+
   color: var(--color-on-photo);
 }
 
@@ -144,7 +147,7 @@
   inline-size: 100%;
   /* Room at the top for the header, which sits over the photo. Close to the
      right edge rather than the content column, clear of his shoulder. */
-  padding: 7rem clamp(var(--gutter), 5vw, 6rem) clamp(3rem, 8vw, 5.5rem);
+  padding: 7rem clamp(var(--gutter), 5vw, 6rem) clamp(6rem, 13vw, 10rem); /* more below than above, so the text sits a little high */
 }
 
 .heroText {
@@ -157,22 +160,23 @@
 .eyebrow {
   font-size: 0.95rem;
   font-weight: var(--weight-bold);
-  color: var(--color-on-photo-accent);
+  color: var(--hero-accent);
 }
 
 .title {
   font-size: clamp(2.8rem, 6vw, 4.8rem);
   line-height: 1.02;
   letter-spacing: -0.02em;
+  margin-block-end: var(--space-3); /* more room before the lead */
   color: var(--color-on-photo);
   text-shadow: 0 2px 30px color-mix(in srgb, var(--color-band) 45%, transparent);
 }
 
-/* The second line in rose, on a line of its own. */
+/* The second line in gold, on a line of its own. */
 .title em {
   display: block;
   font-style: normal;
-  color: var(--color-on-photo-accent);
+  color: var(--hero-accent);
 }
 
 .lead {
@@ -182,9 +186,16 @@
   text-shadow: 0 1px 12px color-mix(in srgb, var(--color-band) 50%, transparent);
 }
 
+/* Each part on its own line, except on phones where it simply wraps. */
+.lead span {
+  display: block;
+}
+
 .heroButton {
   margin-block-start: var(--space-2);
 }
+
+
 
 /* ---------- a personal note from Itamar ---------- */
 
@@ -612,6 +623,10 @@
 }
 
 @media (max-width: 44rem) {
+  .lead span {
+    display: inline;
+  }
+
   /* Phones: the photo centred between the two people, the text at the bottom. */
   .hero {
     align-items: flex-end;

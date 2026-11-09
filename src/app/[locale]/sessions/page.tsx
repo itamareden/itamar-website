@@ -60,7 +60,11 @@ export default async function SessionsPage() {
             <h1 className={styles.title}>
               {s.hero.title} <em>{s.hero.emphasis}</em>
             </h1>
-            <p className={styles.lead}>{s.hero.lead}</p>
+            <p className={styles.lead}>
+              {s.hero.lead.map((part) => (
+                <span key={part}>{part} </span>
+              ))}
+            </p>
             <WhatsAppButton className={`${styles.button} ${styles.heroButton}`} />
           </div>
         </div>
