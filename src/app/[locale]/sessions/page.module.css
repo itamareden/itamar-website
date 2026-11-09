@@ -115,14 +115,17 @@
   position: relative;
   display: flex;
   align-items: center;
-  min-block-size: max(36rem, 100svh); /* svh: the visible height on phones */
+  /* The photo's own 16:9 shape less 14px, trimmed from the top only, so wide
+     screens show nearly all of it: a little
+     scrolling reveals the bottom. Phones keep the full screen (below). */
+  min-block-size: max(36rem, calc(56.25vw - 14px));
   overflow: hidden;
   color: var(--color-on-photo);
 }
 
 .heroImage {
   object-fit: cover;
-  object-position: 50% 25%; /* wide screens trim top and bottom; this keeps his head and her face */
+  object-position: 50% 100%;
 }
 
 /* A light shade at the top, so the header reads over the photo. */

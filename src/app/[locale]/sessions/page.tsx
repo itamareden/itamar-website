@@ -43,10 +43,12 @@ export default async function SessionsPage() {
           data-hero lets the header sit on top of it in light text. */}
       <section className={styles.hero} data-full-bleed data-hero>
         <Image
-          src="/images/sessions/session-hero.jpg"
+          src="/images/sessions/session-hero-v2.jpg"
           alt={s.hero.imageAlt}
           fill
-          sizes="100vw"
+          // On phones the photo fills the screen's height, so it shows about
+          // 1.78 times that height wide (16:9), far wider than the screen.
+          sizes="(max-width: 44rem) 178vh, 100vw"
           quality={90}
           loading="eager"
           fetchPriority="high"
