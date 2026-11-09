@@ -54,7 +54,7 @@
 .form button {
   padding: 0.65rem 1.4rem;
   border: none;
-  border-radius: var(--radius-pill);
+  border-radius: 10px; /* the same corners as the fields */
   background: var(--color-accent);
   color: var(--color-on-accent);
   font: inherit;
@@ -129,14 +129,42 @@
 }
 
 @media (max-width: 36rem) {
-  .form {
-    grid-template-columns: minmax(0, 1fr);
+  /* On phones everything is centred, like the offerings below. */
+  .list {
+    text-align: center;
   }
 
-  .row,
-  .bar {
+  /* A narrower form, the fields one above the other, with room to breathe. */
+  .form {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-3);
+    justify-self: center;
+    inline-size: min(100%, 20rem);
+  }
+
+  /* A shorter button, centred under the fields. */
+  .form button {
+    justify-self: center;
+    inline-size: 60%;
+    margin-block-start: var(--space-2);
+  }
+
+  /* The offerings and the icons centred, one above the other, with space
+     around the icons. */
+  .row {
     flex-direction: column;
-    align-items: flex-start;
+    gap: var(--space-8);
+    padding-block-end: var(--space-4);
+    text-align: center;
+  }
+
+  .links {
+    justify-content: center;
+  }
+
+  /* The copyright and the credit stay on one line, at either end. */
+  .bar {
+    flex-wrap: nowrap;
   }
 }
 
