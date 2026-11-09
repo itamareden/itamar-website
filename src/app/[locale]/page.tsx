@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { Emphasis } from "@/components/Emphasis/Emphasis";
 import { Hero } from "@/components/Hero/Hero";
 import { VoicesCarousel } from "@/components/VoicesCarousel/VoicesCarousel";
 import { getHomeSections } from "@/content/home/sections";
@@ -31,17 +32,25 @@ export default async function Home() {
         cta={{ href: `/${locale}/challenge`, label: dict.home.heroCta }}
       />
 
-      {/* The intro: a few lines and two buttons, on the start side. */}
+      {/* An invitation: the title across the top, then the question and the story side by side,
+          starting on the same line. No buttons here. */}
       {sections && (
-        <section className={styles.intro}>
-          <p className={styles.introText}>{sections.intro.text}</p>
-          <div className={styles.introButtons}>
-            <Link href={sections.intro.primary.href} className={styles.buttonSolid}>
-              {sections.intro.primary.label}
-            </Link>
-            <Link href={sections.intro.secondary.href} className={styles.buttonOutline}>
-              {sections.intro.secondary.label}
-            </Link>
+        <section className={styles.invite}>
+          <h2 className={styles.inviteOpening}>{sections.invite.opening}</h2>
+          <div className={styles.inviteLead}>
+            {sections.invite.imagine.map((line) => (
+              <p key={line} className={styles.inviteImagine}>
+                {line}
+              </p>
+            ))}
+            <p className={styles.inviteQuestion}>{sections.invite.question}</p>
+          </div>
+          <div className={styles.inviteBody}>
+            {sections.invite.body.map((paragraph) => (
+              <p key={paragraph}>
+                <Emphasis text={paragraph} />
+              </p>
+            ))}
           </div>
         </section>
       )}

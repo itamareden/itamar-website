@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Flourish } from "@/app/[locale]/challenge/_components/Flourish";
 import { TOOL_TONES, ToolIcon } from "@/components/ToolIcon/ToolIcon";
 import type { ToolsContent } from "@/content/tools";
 import styles from "./Tools.module.css";
@@ -11,7 +10,6 @@ export function Tools({ content, href }: { content: ToolsContent; href: string }
   return (
     <section className={styles.section}>
       <header className={styles.header}>
-        <Flourish />
         <h2 className={styles.title}>{content.home.title}</h2>
         <p className={styles.intro}>{content.home.intro}</p>
       </header>

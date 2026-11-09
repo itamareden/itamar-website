@@ -1,8 +1,8 @@
 import type { Locale } from "@/i18n/config";
 
 /*
- * The homepage sections below the hero: a short intro with two buttons,
- * a hello beside a portrait, and the ways to
+ * The homepage sections below the hero: what opens up for them (no
+ * buttons, just a reason to keep reading), a hello beside a portrait, and the ways to
  * practise together (challenge, course, sessions).
  *
  * Hebrew only for now; a language without content here shows only the
@@ -21,10 +21,11 @@ export type WayCard = {
 };
 
 export type HomeSections = {
-  intro: {
-    text: string;
-    primary: { label: string; href: string };
-    secondary: { label: string; href: string };
+  invite: {
+    opening: string; // a short opener, in the accent
+    imagine: string[]; // what they imagine, in the heading font, one line each
+    question: string;
+    body: string[]; // the rest of the text, quieter, one paragraph each; **bold** parts allowed
   };
   hello: {
     title: string;
@@ -42,18 +43,26 @@ export type HomeSections = {
 };
 
 const he: HomeSections = {
-  // Right under the hero, as in the round 2 draft: what this is, and two ways in.
-  intro: {
-    text: "מדיטציה, נשימה וחיבור לגוף שמזמינים יותר נוכחות, שמחה וקלילות לחיי היום־יום. במפגשים אישיים, בקורסים ובאתגרים, אני מלווה אנשים לעצור, להקשיב לעצמם, ולחזור לחיות מתוך הלב.",
-    primary: { label: "למפגשים אישיים", href: "/he/sessions" },
-    secondary: { label: "לאירועים וקורסים", href: "/he/events" },
+  // Right under the hero: an invitation to imagine, text only, no call to action.
+  invite: {
+    opening: "תגידו רגע...",
+    imagine: [
+      "מכירים את הרגעים האלה שאתם מרשים לעצמכם לדמיין איך החיים שלכם היו יכולים להיראות? אם הייתם מקשיבים יותר ללב, נותנים מקום לסקרנות, מעזים להיות קצת יותר אתם?",
+    ],
+    question: "ואתם מאמינים שזה באמת אפשרי עבורכם?",
+    body: [
+      "כי לפעמים נדמה שאנחנו יודעים בדיוק מה היינו רוצים, אבל משהו עוצר אותנו. הפחד ממה שיחשבו, ההרגלים שכבר הפכו לחלק מאיתנו, הקול הזה בראש שתמיד מוצא סיבה למה לא עכשיו, למה לא אנחנו.",
+      "**אני מאמין שיש בכולנו הרבה יותר ממה שאנחנו רגילים להביא לידי ביטוי.** ושלא חייבים לדעת מראש לאן הדרך תוביל. אפשר להתחיל בקטן, להקשיב קצת יותר פנימה, להרגיש את הגוף, להתנסות בדברים חדשים, ולגלות מה קורה כשאנחנו נותנים לעצמנו קצת יותר חופש.",
+    ],
   },
   hello: {
     title: "היי,",
     emphasis: "אני איתמר",
     text: [
-      "אני מנחה מדיטציה ונשימה, ומלווה אנשים לחזור לעצמם: לגוף, ללב, ולשמחה שכבר נמצאת בתוכם.",
-      "הייתי הילד הרגיש שחי בתוך הראש. היום אני גר בקופנגן, ויודע מניסיון שהחיים יכולים להיות קלילים, שמחים ומלאים.",
+      "אני מנחה מדיטציה, נשימה ותנועה, ומלווה אנשים בדרך חזרה לעצמם: לגוף, ללב ולשמחה שכבר נמצאת בתוכם.",
+      "הייתי הילד הרגיש שחי הרבה בתוך הראש, ולא תמיד העז להביא את עצמו לידי ביטוי. במשך שנים הרגשתי שיש בי הרבה יותר ממה שאני מאפשר לעצמי לחיות.",
+      "המסע שלי התחיל מתוך רצון להשתחרר מהפחדים, אבל בדרך גיליתי משהו הרבה יותר מעניין: כמה כיף זה להכיר את עצמי מחדש, להתנסות, להיפתח לאנשים ולתת לחיים להפתיע אותי.",
+      "ואני עדיין מגלה, כל הזמן.",
     ],
     link: { label: "להכיר אותי עוד", href: "/he/about" },
     imageAlt: "איתמר בכובע צמר ובקפוצ׳ון סגלגל, מביט למעלה ליד עץ ביער ירוק",

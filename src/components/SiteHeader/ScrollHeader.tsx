@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 
 /*
  * The <header> element, which slides away while you scroll down and comes
- * back, pinned to the top, as soon as you scroll up. At the top of the page
+ * back, pinned to the top, once you've scrolled up a little way. At the top of the page
  * it's the normal header. A client component only to follow the scroll.
  *
  * data-scroll is "shown" or "hidden" away from the top, and absent at the
@@ -12,10 +12,12 @@ import { useEffect, useRef, useState } from "react";
  */
 type ScrollState = "top" | "shown" | "hidden";
 
-// How far down (px) before the header starts hiding, and how many px of
-// movement count as a change of direction (ignores tiny jitters).
+// How far down (px) before the header starts hiding, how many px of
+// movement count at all (ignores tiny jitters), and how far up (px) you
+// scroll in one go before the header comes back (about two wheel steps).
 const TOP_ZONE = 120;
 const MIN_DELTA = 6;
+const SHOW_AFTER_UP = 200;
 
 export function ScrollHeader({ className, children }: { className: string; children: React.ReactNode }) {
   const [state, setState] = useState<ScrollState>("top");
@@ -23,6 +25,7 @@ export function ScrollHeader({ className, children }: { className: string; child
   // without first sliding across the screen.
   const [instant, setInstant] = useState(false);
   const lastY = useRef(0);
+  const upDistance = useRef(0); // px scrolled up since the last downward scroll
   const stateRef = useRef<ScrollState>("top");
 
   useEffect(() => {
@@ -47,7 +50,13 @@ export function ScrollHeader({ className, children }: { className: string; child
       }
       if (Math.abs(delta) < MIN_DELTA) return;
 
-      apply(delta > 0 ? "hidden" : "shown");
+      if (delta > 0) {
+        upDistance.current = 0;
+        apply("hidden");
+      } else {
+        upDistance.current -= delta;
+        if (upDistance.current >= SHOW_AFTER_UP) apply("shown");
+      }
       lastY.current = y;
     }
 

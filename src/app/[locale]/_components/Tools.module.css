@@ -17,11 +17,6 @@
   text-align: center;
 }
 
-/* The flourish above the heading, as the divider from the section before. */
-.header > :first-child {
-  margin: 0 0 var(--space-3);
-}
-
 .title {
   font-size: clamp(2rem, 4.4vw, 3rem);
   letter-spacing: -0.01em;

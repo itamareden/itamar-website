@@ -23,7 +23,7 @@
   inset-block-start: 0;
   z-index: 10;
   border-block-end: 2px solid var(--header-line);
-  background: var(--color-background);
+  background: var(--color-wash-sand); /* the same sand as the homepage hello box */
 }
 
 /*
@@ -73,7 +73,7 @@ body:has([data-hero]) .header[data-scroll] {
 
   position: fixed;
   border-block-end: 2px solid var(--header-line);
-  background: var(--color-background);
+  background: var(--color-wash-sand); /* the same sand as the homepage hello box */
 }
 
 /* Over a hero photo the header has already scrolled off with the page, so
