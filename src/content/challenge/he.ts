@@ -17,8 +17,9 @@ export const he: ChallengeContent = {
       { value: "5", label: "ימים" },
       { value: "15", label: "דקות ביום, בערך" },
       { value: "0 ₪", label: "חינם לגמרי" },
-      { value: "בלי ניסיון", label: "מתאים גם למתחילים" },
+      { value: "לכל רמה", label: "מתחילים ומנוסים" },
       { value: "מכל מקום", label: "בטלפון או במחשב" },
+      { value: "מודרך", label: "מדיטציות מודרכות" },
     ],
   },
   group: {

@@ -17,8 +17,9 @@ export const en: ChallengeContent = {
       { value: "5", label: "days" },
       { value: "15", label: "minutes a day, roughly" },
       { value: "Free", label: "no cost at all" },
-      { value: "No experience", label: "beginners welcome" },
+      { value: "Any level", label: "beginners and experienced" },
       { value: "Anywhere", label: "on your phone or computer" },
+      { value: "Guided", label: "guided meditations" },
     ],
   },
   group: {
