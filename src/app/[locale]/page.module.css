@@ -195,7 +195,8 @@
   grid-template-rows: auto auto 1fr auto;
   justify-items: start;
   gap: var(--space-3);
-  padding: clamp(1.5rem, 3vw, 2rem);
+  /* Narrower at the sides, so the texts fit in three lines. */
+  padding: clamp(1.5rem, 3vw, 2rem) clamp(1.25rem, 2.2vw, 1.5rem);
 }
 
 .wayLabel {
@@ -209,6 +210,7 @@
 }
 
 .wayText {
+  white-space: pre-line; /* keeps the line breaks written in the text */
   line-height: 1.75;
   color: var(--color-text-muted);
 }

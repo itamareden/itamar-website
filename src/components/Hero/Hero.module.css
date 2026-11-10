@@ -57,7 +57,7 @@
   display: block;
   margin-block-start: 0.1em;
   font-weight: 500; /* slightly thicker strokes carry the colour better */
-  color: var(--color-on-photo-accent);
+  color: #f2d7a6; /* soft candlelight gold, as in the About and Sessions heroes */
 }
 
 /* Hebrew has no italic: emphasis is the colour alone. */
@@ -80,17 +80,17 @@
   display: block;
 }
 
-/* The colour of "to life", as a solid button. */
+/* The gold of "to life", as a solid button. */
 .cta {
   display: inline-block;
   margin-block-start: clamp(var(--space-6), 2.6vw, var(--space-8));
-  padding: 0.72em 1.36em;
-  border-radius: var(--radius-pill);
-  background: var(--color-on-photo-accent);
+  padding: 0.85rem 1.5rem; /* the height and corners of the Sessions hero button, a little narrower */
+  border-radius: var(--radius-md);
+  background: #f2d7a6; /* the gold of the emphasised line */
   color: var(--color-band);
   font-family: var(--font-body);
   font-weight: 800; /* the heaviest Manrope and Assistant have */
-  font-size: var(--text-base);
+  font-size: 1.125rem;
   text-decoration: none;
   box-shadow: 0 8px 24px -8px rgb(20 15 10 / 0.5);
   transition: background-color var(--transition-fast);
