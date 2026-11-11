@@ -115,8 +115,53 @@
 
 /* ---------- the opening ---------- */
 
+/* A photo behind the opening: grass against a soft dawn sky, under a
+   light ivory veil so the text reads. It ends on a clear edge with a
+   hairline, not a fade. */
+/* The whole screen, header included; the content centred in it, with room
+   at the top for the header. svh: the visible height, without browser bars. */
 .hero {
-  padding-block-start: clamp(2rem, 5vw, 4rem);
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-block-size: 100svh;
+  overflow: hidden;
+  margin-block-start: 0;
+  padding-block: 7rem 4rem;
+  border-block-end: 1px solid var(--color-frame);
+}
+
+.hero > .inner {
+  inline-size: 100%;
+}
+
+.heroImage {
+  object-fit: cover;
+  object-position: 50% 40%;
+}
+
+/* The veil is strongest on the text's side (right in Hebrew, left in
+   English), so the grass shows mainly around the trailer. */
+.hero::after {
+  --veil-strong: color-mix(in srgb, var(--color-background) 90%, transparent);
+  --veil-light: color-mix(in srgb, var(--color-background) 45%, transparent);
+  --veil-side: to right;
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(var(--veil-side), var(--veil-strong) 20%, var(--veil-strong) 45%, var(--veil-light) 75%);
+}
+
+.hero:dir(rtl)::after {
+  --veil-side: to left;
+}
+
+/* The text and trailer, then the gift note centred below them. */
+.heroContent {
+  position: relative;
+  z-index: 1; /* above the photo and its veil */
+  display: grid;
+  gap: clamp(2.5rem, 5vw, 4rem);
 }
 
 /* Text on the start side, the trailer beside it. */
@@ -125,6 +170,12 @@
   grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
   align-items: center;
   gap: clamp(2rem, 5vw, 4.5rem);
+}
+
+/* Nudged down so it lines up with the middle of the text, which sits a
+   little low under its small eyebrow line. */
+.heroGrid > .trailer {
+  translate: 0 20px;
 }
 
 .heroText {
@@ -178,8 +229,8 @@
   color: var(--color-accent);
 }
 
-/* The gift note: a see-through card with a berry box icon, centred on a
-   line of its own under the opening. */
+/* The gift note: a frosted card with a berry box icon, centred at the
+   bottom of the opening. */
 .gift {
   display: flex;
   align-items: center;
@@ -190,6 +241,7 @@
   border: 1px solid var(--color-frame);
   border-radius: var(--radius-md);
   background: var(--color-panel);
+  backdrop-filter: blur(6px); /* frosted over the photo */
   line-height: 1.6;
 }
 
@@ -286,8 +338,8 @@ button.trailer:focus-visible {
 /* YouTube's play button in warm gold, which stands out on the green of
    the trailer's still better than berry; deeper on hover. */
 .play {
-  --play: #c9973f;
-  --play-hover: #a97a2a;
+  --play: #d4b47e; /* a soft sand gold */
+  --play-hover: #bf9a5c;
   position: relative; /* above the still */
   inline-size: 4.25rem;
   block-size: 3rem;
@@ -536,8 +588,18 @@ button.trailer:hover .playShape {
     grid-template-columns: minmax(0, 1fr);
   }
 
+  .heroGrid > .trailer {
+    translate: none;
+  }
+
   .gain {
     flex-basis: 100%;
+  }
+
+  /* Text above the trailer here, so an even veil all over. */
+  .hero::after,
+  .hero:dir(rtl)::after {
+    background: var(--veil-strong);
   }
 
   /* The lessons and length move under the text. */

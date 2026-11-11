@@ -14,6 +14,7 @@ export type Course = {
   settings: {
     enrolUrl: string; // where the enrol buttons lead (the Udemy page)
     trailerYoutubeId: string; // empty: a placeholder shows instead of the video
+    heroImage: string; // the photo behind the opening
     trailerTitle: string; // on the cover's top bar, as on YouTube
     trailerChannel: string;
   };

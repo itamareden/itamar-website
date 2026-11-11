@@ -36,6 +36,9 @@ export const breathingLife: Course = {
     // The instructor referral link, so sales from the site count as Itamar's own.
     enrolUrl: "https://www.udemy.com/course/breathing-life/?referralCode=1C84FF5FBB7C8D7AAA06",
     trailerYoutubeId: "3feKl1YIqr8",
+    // Photo by Iva Rajović on Unsplash (iva-rajovic-ZgO-eem8w0w-unsplash),
+    // free to use under the Unsplash license; no credit required.
+    heroImage: "/images/courses/breathing-life-hero.jpg",
     trailerTitle: "Breathing Life – A Breathwork & Meditation Course",
     trailerChannel: "Itamar Eden",
   },

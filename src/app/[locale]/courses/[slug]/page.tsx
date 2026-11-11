@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Emphasis } from "@/components/Emphasis/Emphasis";
@@ -77,8 +78,20 @@ export default async function CoursePage(props: PageProps<"/[locale]/courses/[sl
   return (
     <>
       {/* The opening: what the course gives, the enrol button and the trailer. */}
-      <section className={`${styles.wash} ${styles.hero}`} data-full-bleed>
-        <div className={`${styles.inner} ${styles.heroGrid}`}>
+      {/* data-hero="light": the header lies on the pale photo in dark text. */}
+      <section className={styles.hero} data-full-bleed data-hero="light">
+        <Image
+          src={course.settings.heroImage}
+          alt=""
+          fill
+          sizes="100vw"
+          quality={90}
+          loading="eager"
+          fetchPriority="high"
+          className={styles.heroImage}
+        />
+        <div className={`${styles.inner} ${styles.heroContent}`}>
+        <div className={styles.heroGrid}>
           <div className={styles.heroText}>
             <p className={styles.kicker}>{c.hero.eyebrow}</p>
             <h1 className={styles.title}>
@@ -97,17 +110,18 @@ export default async function CoursePage(props: PageProps<"/[locale]/courses/[sl
           </div>
           <TrailerOrSoon course={course} label={c.hero.trailerLabel} soon={c.hero.trailerSoon} />
         </div>
-      </section>
 
-      {/* The gift note, on a strip of its own under the opening. */}
-      {c.gift && (
-        <p className={styles.gift}>
-          <GiftIcon />
-          <span>
-            {c.gift.text} <Link href={`/${locale}${c.gift.path}`}>{c.gift.link}</Link>
-          </span>
-        </p>
-      )}
+        {/* The gift note, centred under the text and the trailer. */}
+        {c.gift && (
+          <p className={styles.gift}>
+            <GiftIcon />
+            <span>
+              {c.gift.text} <Link href={`/${locale}${c.gift.path}`}>{c.gift.link}</Link>
+            </span>
+          </p>
+        )}
+        </div>
+      </section>
 
       {/* What it gives: five outcomes, numbered. */}
       <section className={styles.gains}>
