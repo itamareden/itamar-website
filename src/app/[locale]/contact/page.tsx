@@ -17,8 +17,6 @@ export async function generateMetadata(): Promise<Metadata> {
 // Small line icons for the details column, in the accent colour.
 const icons = {
   mail: "M3 6h18v12H3zM3 6l9 7 9-7",
-  pin: "M12 21s-7-7.5-7-12a7 7 0 0 1 14 0c0 4.5-7 12-7 12Zm0-9.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z",
-  video: "M3 7h12v10H3zM15 10.5l6-3.5v10l-6-3.5",
 };
 
 function LineIcon({ d }: { d: string }) {
@@ -64,10 +62,6 @@ export default async function ContactPage() {
             <h2 className={styles.groupTitle}>{d.contactTitle}</h2>
             <ul className={styles.list}>
               <li>
-                <WhatsAppIcon className={styles.iconFilled} />
-                <bdi>{contactSettings.phone[locale]}</bdi>
-              </li>
-              <li>
                 <LineIcon d={icons.mail} />
                 <a href={`mailto:${contactSettings.email}`} className={styles.mail}>
                   <bdi>{contactSettings.email}</bdi>
@@ -84,23 +78,9 @@ export default async function ContactPage() {
             </a>
           </div>
 
-          <div className={styles.group}>
-            <h2 className={styles.groupTitle}>{d.whereTitle}</h2>
-            <ul className={styles.list}>
-              <li>
-                <LineIcon d={icons.pin} />
-                {d.where[0]}
-              </li>
-              <li>
-                <LineIcon d={icons.video} />
-                {d.where[1]}
-              </li>
-            </ul>
-          </div>
-
-          <div className={styles.group}>
+          <div className={`${styles.group} ${styles.social}`}>
             <h2 className={styles.groupTitle}>{d.socialTitle}</h2>
-            <SocialLinks />
+            <SocialLinks variant="bare" />
           </div>
         </aside>
       </div>

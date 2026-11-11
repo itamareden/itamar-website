@@ -7,7 +7,6 @@ import type { Locale } from "@/i18n/config";
 
 // The same in both languages.
 export const contactSettings = {
-  phone: { he: "054-635-3567", en: "+972 54-635-3567" } satisfies Record<Locale, string>,
   // Works once itamareden.love is bought and its email is set up.
   email: "info@itamareden.love",
   // The beach under the pines. (sunset-sea.jpg, from Unsplash, was the earlier try.)
@@ -33,8 +32,6 @@ export type ContactContent = {
     whatsappTitle: string;
     whatsappButton: string;
     whatsappUrl: string; // opens the chat with a first message already typed
-    whereTitle: string;
-    where: string[];
     socialTitle: string;
   };
 };
@@ -46,8 +43,9 @@ export const contact: Record<Locale, ContactContent> = {
     title: "צרו קשר",
     heading: "כתבו לי",
     lead: [
-      "יש לכם שאלה, משהו שתרצו לשתף, או פשוט רצון להכיר ולבדוק אם מתאים לנו לעבוד יחד?",
-      "מוזמנים לכתוב לי. אשמח לשמוע מכם.",
+      "יש לכם שאלה על המפגשים, הקורסים או התרגולים?",
+      "או משהו שתרצו לשתף?",
+      "מוזמנים לכתוב לי, אשמח לשמוע מכם.",
     ],
     imageAlt: "",
     form: {
@@ -61,20 +59,19 @@ export const contact: Record<Locale, ContactContent> = {
     },
     details: {
       contactTitle: "פרטי קשר",
-      whatsappTitle: "הכי מהיר",
-      whatsappButton: "לשיחה בוואטסאפ",
+      whatsappTitle: "אפשר גם בוואטסאפ",
+      whatsappButton: "כתבו לי",
       whatsappUrl: whatsapp("היי איתמר, הגעתי מהאתר"),
-      whereTitle: "איפה נפגשים",
-      where: ["קופנגן, תאילנד", "או בזום, מכל מקום"],
-      socialTitle: "במקומות אחרים",
+      socialTitle: "בואו נהיה חברים",
     },
   },
   en: {
     title: "Contact",
     heading: "Write to me",
     lead: [
-      "Have a question, something you'd like to share, or simply want to meet and see if we're a good fit to work together?",
-      "You're welcome to write to me. I'd love to hear from you.",
+      "Have a question about the sessions, courses or practices?",
+      "Or something you'd like to share?",
+      "You're welcome to write to me, I'd love to hear from you.",
     ],
     imageAlt: "",
     form: {
@@ -88,12 +85,10 @@ export const contact: Record<Locale, ContactContent> = {
     },
     details: {
       contactTitle: "Contact info",
-      whatsappTitle: "Quickest",
-      whatsappButton: "Chat on WhatsApp",
+      whatsappTitle: "Or on WhatsApp",
+      whatsappButton: "Write to me",
       whatsappUrl: whatsapp("Hi Itamar, I found you through your website"),
-      whereTitle: "Where we meet",
-      where: ["Koh Phangan, Thailand", "Or on Zoom, from anywhere"],
-      socialTitle: "Elsewhere",
+      socialTitle: "Let's be friends",
     },
   },
 };
