@@ -46,6 +46,17 @@ body:has([data-hero]) .header {
   background: transparent;
 }
 
+/* A pale, faded photo (data-hero="light", e.g. Contact): the header still lies
+   on it, but keeps its dark text. */
+body:has([data-hero="light"]) .header {
+  --header-text: var(--color-text);
+  --header-text-muted: var(--color-text-muted);
+  --header-shadow: none;
+  --header-icon-shadow: none;
+  --header-line: transparent;
+  --header-hover: var(--color-accent);
+}
+
 /*
  * Away from the top (set by ScrollHeader): scrolling down slides the header
  * up out of sight, scrolling up brings it back, pinned to the top. Pinned,

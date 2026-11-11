@@ -36,6 +36,14 @@
   --color-sunrise-glow: #c9668f8f;
   --color-on-sunrise: #fffaf0; /* the sun itself, bright on the glow */
 
+  /* A see-through ivory panel over a faded photo, framed in a soft hairline */
+  --color-panel: rgb(253 250 247 / 0.69);
+  --color-frame: rgb(138 122 109 / 0.45);
+
+  /* Cream: a gentle secondary button (e.g. WhatsApp beside a berry button) */
+  --color-cream: #f4e8d6;
+  --color-cream-line: #e2cdb0;
+
   /* Dark bands (e.g. a full-width section with light text) */
   --color-band: #33281f;
   --color-on-band: #f3dfdd;
