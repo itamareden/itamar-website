@@ -115,90 +115,146 @@
   color: var(--color-text);
 }
 
+/* The question, centred and large, above the lotus and the three parts. */
 .question {
-  margin-block-start: 5rem;
+  margin-block-start: clamp(5.5rem, 10vw, 7.5rem);
   font-family: var(--font-heading);
-  font-size: clamp(1.3rem, 2.2vw, 1.55rem);
-  color: var(--color-accent);
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1.2;
+  text-align: center;
+  color: var(--color-text);
 }
 
-
-/* Three soft gradient cards across the width; stacked on phones. */
-.jump {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+/* The lotus, with a short thin line on each side. */
+.lotus {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   gap: var(--space-4);
 }
 
-/* The title and line on the start side, a round arrow button on the end side. */
+.lotus::before,
+.lotus::after {
+  content: "";
+  inline-size: clamp(4rem, 12vw, 8rem);
+  block-size: 1px;
+  background: var(--rule);
+}
+
+.lotus img {
+  inline-size: 2.75rem;
+  block-size: auto;
+  opacity: 0.85;
+}
+
+/* Three columns split by thin lines, with a thin line under them. */
+.hello {
+  --rule: color-mix(in srgb, var(--color-text) 25%, transparent);
+}
+
+.jump {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-block-start: var(--space-4);
+  padding-block: var(--space-6) clamp(2rem, 4vw, 2.75rem);
+  border-block-end: 1px solid var(--rule);
+}
+
 .jump a {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
+  justify-items: center;
   align-content: start;
-  column-gap: var(--space-4);
-  row-gap: var(--space-2);
-  padding: var(--space-6) 1.75rem;
-  border-radius: 22px;
+  gap: var(--space-3);
+  padding: var(--space-2) clamp(1rem, 3vw, 2.5rem);
   color: var(--color-text);
+  text-align: center;
   text-decoration: none;
-  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
 }
 
-/* Deeper at the top, fading almost to the page color at the bottom. */
-.jump a:nth-child(1) {
-  background: linear-gradient(175deg, color-mix(in srgb, var(--color-accent) 18%, var(--color-wash-rose)), color-mix(in srgb, var(--color-wash-sand) 20%, var(--color-background)));
-}
-
-.jump a:nth-child(2) {
-  background: linear-gradient(175deg, #d9c4d8, color-mix(in srgb, #d9c4d8 22%, var(--color-background)));
-}
-
-.jump a:nth-child(3) {
-  background: linear-gradient(175deg, #ebc8ba, color-mix(in srgb, #ebc8ba 22%, var(--color-background)));
+.jump a + a {
+  border-inline-start: 1px solid var(--rule);
 }
 
 .jump strong {
   font-family: var(--font-heading);
   font-size: clamp(1.5rem, 2.4vw, 1.85rem);
-  font-weight: 700;
-  letter-spacing: -0.01em;
+  font-weight: 500;
+  transition: color var(--transition-fast);
 }
 
 .jump span {
-  grid-column: 1;
+  max-inline-size: 22rem;
   font-size: 1.05rem;
   line-height: 1.6;
   color: var(--color-text-muted);
+  text-wrap: balance; /* two even lines, no word left alone */
 }
 
-/* The arrow button: a cream circle with a bold berry arrow, filled berry on
-   hover. The arrow is an SVG, so its stroke can be thick; the colors in it
-   are --color-accent and --color-on-photo. */
+/* A berry arrow in a thin berry circle; on hover the circle fills berry, the
+   arrow turns cream and both drop a little. The colors in the SVGs are
+   --color-accent and --color-on-photo. */
 .jump a::after {
   content: "";
-  grid-column: 2;
-  grid-row: 1 / span 2;
-  align-self: center;
-  inline-size: 2.75rem;
-  block-size: 2.75rem;
+  inline-size: 2.6rem;
+  block-size: 2.6rem;
+  margin-block-start: var(--space-2);
+  border: 1px solid color-mix(in srgb, var(--color-accent) 55%, transparent);
   border-radius: 50%;
-  background: var(--color-background)
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23a54173' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 5v14M6 13l6 6 6-6'/%3E%3C/svg%3E")
-    center / 1.25rem no-repeat;
-  box-shadow: 0 6px 14px -8px color-mix(in srgb, var(--color-band) 50%, transparent);
-  transition: transform var(--transition-fast), background-color var(--transition-fast);
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23a54173' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 4v16M6 14l6 6 6-6'/%3E%3C/svg%3E")
+    center / 1.3rem no-repeat;
+  transition: transform var(--transition-fast), background-color var(--transition-fast), border-color var(--transition-fast);
 }
 
-.jump a:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 18px 32px -24px color-mix(in srgb, var(--color-band) 55%, transparent);
+.jump a:hover strong {
+  color: var(--color-accent);
 }
 
 .jump a:hover::after {
+  border-color: var(--color-accent);
   background: var(--color-accent)
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fbf3ee' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 5v14M6 13l6 6 6-6'/%3E%3C/svg%3E")
-    center / 1.25rem no-repeat;
-  transform: translateY(2px);
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fbf3ee' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 4v16M6 14l6 6 6-6'/%3E%3C/svg%3E")
+    center / 1.3rem no-repeat;
+  transform: translateY(3px);
+}
+
+/* Stacked on phones as compact rows: the title and line on the start side,
+   the arrow on the end side, with lines between them instead of beside. */
+@media (max-width: 44rem) {
+  .jump {
+    grid-template-columns: minmax(0, 1fr);
+    margin-block-start: 0;
+    padding-block: 0.25rem var(--space-2);
+  }
+
+  .jump a {
+    grid-template-columns: minmax(0, 1fr) auto;
+    justify-items: start;
+    column-gap: var(--space-4);
+    row-gap: var(--space-1, 0.25rem);
+    padding: var(--space-4) 0;
+    text-align: start;
+  }
+
+  .jump strong {
+    font-size: 1.4rem;
+  }
+
+  .jump span {
+    grid-column: 1;
+    text-wrap: pretty;
+  }
+
+  .jump a::after {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    align-self: center;
+    margin: 0;
+  }
+
+  .jump a + a {
+    border-inline-start: 0;
+    border-block-start: 1px solid var(--rule);
+  }
 }
 
 /* Room above each part when a button scrolls to it. */

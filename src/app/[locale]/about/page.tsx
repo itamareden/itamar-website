@@ -56,6 +56,10 @@ export default async function AboutPage() {
           ))}
         </div>
         <p className={styles.question}>{a.hello.question}</p>
+        {/* The lotus line drawing from the Sessions page, between two short lines. */}
+        <div className={styles.lotus} aria-hidden="true">
+          <Image src="/images/sessions/gain-lotus-line.png" alt="" width={44} height={44} />
+        </div>
         <nav className={styles.jump}>
           <a href="#journey">
             <strong>{a.journey.title}</strong>
