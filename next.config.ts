@@ -11,7 +11,11 @@ const nextConfig: NextConfig = {
     qualities: [75, 90],
     // Video stills from Mux (e.g. the closing video's card on day 5).
     // No `search` key, so the ?time=… that picks the frame is allowed.
-    remotePatterns: [{ protocol: "https", hostname: "image.mux.com", pathname: "/**" }],
+    // Stills of YouTube videos (e.g. a course trailer's cover).
+    remotePatterns: [
+      { protocol: "https", hostname: "image.mux.com", pathname: "/**" },
+      { protocol: "https", hostname: "i.ytimg.com", pathname: "/vi/**" },
+    ],
   },
 };
 
