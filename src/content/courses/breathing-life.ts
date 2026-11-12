@@ -12,17 +12,12 @@ import type { Course } from "./index";
 // The same on both pages.
 const reviews = [
   {
-    name: "Yaki",
-    text: "A well-structured and truly calming course. The guidance is clear, practical, and easy to apply in daily life. Highly recommended for anyone looking to build a simple, consistent meditation habit – it really worked for me!",
+    name: "Oren",
+    text: "The instructor’s presence and energy are warm and calming, creating a space that’s easy to connect with. The content is deep and inspiring, and I found myself fully engaged, absorbing every part of it with genuine interest.",
   },
   {
-    name: "Tom",
-    text: "This was a great experience. This course genuinely changed my life; it shifted how I think, work, and approach my goals. Highly recommend!",
-  },
-  {
-    name: "Hofit",
-    // Cut off on the screenshot: to complete from Udemy.
-    text: "I really enjoyed this short meditation course. It's clear, practical, and easy to follow, even on busy days. I loved that it includes different types of meditations and simple tools I can actually use in my daily routine.",
+    name: "Nofar",
+    text: "Great course! Clear explanations, practical and theoretical together. It helped me practice daily and stay consistent after I finished the course. Highly recommended!",
   },
   {
     name: "Saar",
@@ -64,27 +59,27 @@ export const breathingLife: Course = {
       },
       gains: {
         kicker: "מה הקורס נותן לכם",
-        title: "כלים שנשארים",
-        emphasis: "איתכם לתמיד",
-        lead: "הנשימה תמיד איתכם. בקורס תלמדו להשתמש בה כדי לחזור לעצמכם, בכל מקום ובכל רגע.",
+        title: "כלים פרקטיים",
+        emphasis: "שנשארים איתכם",
+        lead: "ללמוד איך להיעזר בנשימה כדי לחוות יותר שלווה ונוכחות בחיי היומיום.",
         items: [
           {
+            icon: "breath",
             title: "רוגע בהישג יד",
-            text: "נשימות פשוטות שמרגיעות את הגוף ומביאות שלווה לראש בתוך דקות, גם באמצע יום עמוס.",
+            text: "טכניקות נשימה פשוטות שיכולות לעזור לכם להאט, להרפות ולמצוא שלווה גם באמצע יום עמוס.",
           },
           {
-            title: "גוף משוחרר",
-            text: "לשחרר מתח ועומס שהצטברו בגוף, ולהרגיש יותר קלילות ומרחב.",
-          },
-          {
+            icon: "balance",
             title: "איזון רגשי",
             text: "שגרת נשימה יומית שמחזקת את היציבות הרגשית ואת תחושת הרווחה שלכם.",
           },
           {
+            icon: "heart",
             title: "נוכחות וחיבור",
             text: "להרגיש יותר נוכחים בגוף ובחיים, ולהעמיק את החיבור לעצמכם דרך הנשימה.",
           },
           {
+            icon: "moon",
             title: "מנוחה עמוקה",
             text: "מסעות נשימה ומדיטציות מונחות שמובילים להרפיה עמוקה ולשלווה פנימית.",
           },
@@ -94,7 +89,6 @@ export const breathingLife: Course = {
         kicker: "מה אומרים",
         title: "מי שכבר",
         emphasis: "נושמים איתי",
-        rating: "5.0 ב-Udemy",
         items: reviews,
       },
       inside: {
@@ -118,7 +112,7 @@ export const breathingLife: Course = {
             title: "הנשימה ביום-יום",
             length: "22 דק׳",
             lessons: "4 שיעורים",
-            text: "להביא את הנשימה אל החיים ולבנות שגרה קצרה שמחזיקה אתכם.",
+            text: "להביא את הנשימה אל החיים ולבנות שגרה קצרה שתומכת בכם.",
           },
           {
             title: "סיום והוקרה",
@@ -132,36 +126,42 @@ export const breathingLife: Course = {
       },
       faq: {
         title: "שאלות נפוצות",
-        note: "הקורס הוא מרחב של צמיחה וחיבור, ואינו תחליף לטיפול רפואי או פסיכולוגי.",
+        note: "הקורס נועד ללמידה ולתרגול אישי, ואינו תחליף לייעוץ או לטיפול רפואי או פסיכולוגי.",
         items: [
           {
-            question: "צריך ניסיון קודם?",
+            question: "צריך ניסיון קודם בנשימה או במדיטציה?",
             answer: [
-              "ממש לא. הקורס מתאים גם למי שמעולם לא תרגל נשימה או מדיטציה. כל מה שצריך זה סקרנות, ומקום נוח לשבת או לשכב בו.",
+              "אין צורך בניסיון קודם. נתחיל מהבסיס ונכיר את הטכניקות צעד אחר צעד, עם הסברים ותרגול מודרך. גם אם כבר התנסיתם, זו הזדמנות להעמיק ולהכיר דרכים נוספות לעבוד עם הנשימה.",
             ],
           },
           {
-            question: "הקורס באנגלית. זה יתאים לי?",
+            question: "הקורס באנגלית. איך אדע אם אצליח לעקוב?",
             answer: [
-              "הקורס מועבר באנגלית פשוטה וברורה, בקצב רגוע. אם אתם מבינים אנגלית בסיסית, תוכלו לעקוב בקלות ולהתמסר לתרגול.",
+              "בעמוד הקורס ב־Udemy מחכים לכם שלושה סרטונים לצפייה בחינם. תוכלו להתרשם מהאנגלית, מההסברים ומסגנון ההנחיה שלי, ולראות אם אתם מרגישים בנוח לפני ההרשמה.",
             ],
           },
           {
             question: "איך זה עובד?",
             answer: [
-              "הקורס נמצא ב-Udemy. אחרי ההרשמה הוא שלכם **לכל החיים**: צופים מהמחשב, מהטלפון או מהטלוויזיה, בקצב שלכם, וחוזרים לשיעורים כמה שרוצים. בסיום מקבלים תעודת סיום.",
+              "ההרשמה, התשלום והצפייה בקורס נעשים ב-Udemy, באתר או באפליקציה. אחרי ההרשמה הקורס שלכם **לכל החיים**: צופים מהמחשב, מהטלפון או מהטלוויזיה, בקצב שלכם, וחוזרים לשיעורים כמה שרוצים.",
+            ],
+          },
+          {
+            question: "כמה זמן צריך לפנות לתרגול?",
+            answer: [
+              "הקורס כולל כ־2.5 שעות וידאו, ואפשר לפרוס אותו בהתאם לזמן שלכם. התרגולים המודרכים נמשכים כ־5–10 דקות, כך שאפשר לשלב אותם גם ביום עמוס. מומלץ להתקדם בהדרגה ולחזור על התרגולים, כדי שהטכניקות יהפכו למוכרות וטבעיות וישתלבו בחיי היומיום.",
+            ],
+          },
+          {
+            question: "האם כל תרגילי הנשימה מתאימים לכולם?",
+            answer: [
+              "התרגולים בקורס מתאימים לרוב הגדול של האנשים, גם ללא ניסיון קודם. עם זאת, יש מצבים רפואיים שבהם תרגולים מסוימים אינם מומלצים. בסרטון שזמין לצפייה בחינם בעמוד הקורס אני מסביר על המצבים האלה. מומלץ לצפות בו לפני ההרשמה, ובמידת הצורך להתייעץ עם איש מקצוע רפואי.",
             ],
           },
           {
             question: "ואם הקורס לא מתאים לי?",
             answer: [
-              "Udemy נותנת 30 יום להחזר כספי מלא, כך שאפשר להתחיל בביטחון.",
-            ],
-          },
-          {
-            question: "הנשימות מתאימות לכולם?",
-            answer: [
-              "הטכניקות בקורס מתאימות לרוב האנשים, ובתחילת הקורס יש שיעור על תרגול בטוח. אם יש לכם מצב רפואי, היריון או כל דבר שחשוב לקחת בחשבון, כדאי להתייעץ עם רופא לפני שמתחילים.",
+              "לפני ההרשמה אפשר לצפות בשלושה סרטונים בחינם בעמוד הקורס ולהתרשם מהגישה ומסגנון ההנחיה. ואחרי ההרשמה, Udemy מציעה אחריות להחזר כספי בתוך 30 יום, כך שאפשר להתחיל בביטחון.",
             ],
           },
         ],
@@ -187,27 +187,27 @@ export const breathingLife: Course = {
       },
       gains: {
         kicker: "What the course gives you",
-        title: "Tools that stay",
-        emphasis: "with you for good",
-        lead: "Your breath is always with you. In this course you'll learn to use it to come back to yourself, anywhere and at any moment.",
+        title: "Practical tools",
+        emphasis: "that stay with you",
+        lead: "Learn how to use your breath to experience more peace and presence in everyday life.",
         items: [
           {
+            icon: "breath",
             title: "Calm within reach",
-            text: "Simple breaths that settle the body and bring peace to the mind within minutes, even in the middle of a busy day.",
+            text: "Simple breathing techniques that can help you slow down, let go and find peace, even in the middle of a busy day.",
           },
           {
-            title: "A freer body",
-            text: "Release the tension and load the body has gathered, and feel more lightness and space.",
-          },
-          {
+            icon: "balance",
             title: "Emotional balance",
             text: "A daily breathing routine that strengthens your emotional steadiness and well-being.",
           },
           {
+            icon: "heart",
             title: "Presence and connection",
             text: "Feel more present in your body and your life, and deepen your connection with yourself through the breath.",
           },
           {
+            icon: "moon",
             title: "Deep rest",
             text: "Guided breath journeys and meditations that lead into deep relaxation and inner peace.",
           },
@@ -217,7 +217,6 @@ export const breathingLife: Course = {
         kicker: "What people say",
         title: "Already",
         emphasis: "breathing with me",
-        rating: "5.0 on Udemy",
         items: reviews,
       },
       inside: {
@@ -241,7 +240,7 @@ export const breathingLife: Course = {
             title: "Integrating the Breath in Daily Life",
             length: "22 min",
             lessons: "4 lessons",
-            text: "Bring the breath into your days and build a short routine that holds you.",
+            text: "Bring the breath into your days and build a short routine that supports you.",
           },
           {
             title: "Completion & Gratitude",
@@ -255,29 +254,35 @@ export const breathingLife: Course = {
       },
       faq: {
         title: "Questions",
-        note: "The course is a space for growth and connection, and isn't a substitute for medical or psychological care.",
+        note: "The course is meant for personal learning and practice, and isn't a substitute for medical or psychological advice or care.",
         items: [
           {
-            question: "Do I need any experience?",
+            question: "Do I need experience with breathwork or meditation?",
             answer: [
-              "Not at all. The course suits people who have never practised breathwork or meditation. All you need is curiosity, and a comfortable place to sit or lie down.",
+              "No experience is needed. We start from the basics and learn the techniques step by step, with explanations and guided practice. If you have practised before, it's a chance to go deeper and discover new ways to work with your breath.",
             ],
           },
           {
             question: "How does it work?",
             answer: [
-              "The course lives on Udemy. Once you enrol it's yours **for life**: watch on your computer, phone or TV, at your own pace, and come back to any lesson as often as you like. You'll receive a certificate when you complete it.",
+              "You enrol, pay and watch the course on Udemy, on the website or in the app. Once you enrol, the course is yours **for life**: watch on your computer, phone or TV, at your own pace, and come back to any lesson as often as you like.",
+            ],
+          },
+          {
+            question: "How much time do I need for practice?",
+            answer: [
+              "The course has about 2.5 hours of video, and you can spread it out to suit your time. The guided practices last about 5–10 minutes, so they fit even into a busy day. It's best to progress gradually and repeat the practices, so the techniques become familiar and natural and part of your everyday life.",
+            ],
+          },
+          {
+            question: "Are all the breathing exercises right for everyone?",
+            answer: [
+              "The practices in the course suit the great majority of people, even without any experience. Still, there are medical conditions in which some practices aren't recommended. In a video you can watch for free on the course page, I explain these conditions. It's best to watch it before you enrol and, if needed, consult a medical professional.",
             ],
           },
           {
             question: "What if it isn't right for me?",
-            answer: ["Udemy offers a full refund within 30 days, so you can begin with confidence."],
-          },
-          {
-            question: "Is the breathwork right for everyone?",
-            answer: [
-              "The techniques suit most people, and the course opens with a lesson on practising safely. If you have a medical condition, are pregnant or have anything else worth considering, check with your doctor before you begin.",
-            ],
+            answer: ["Before you enrol, you can watch three free videos on the course page and get a feel for the approach and the guidance. And after you enrol, Udemy offers a 30-day money-back guarantee, so you can begin with confidence."],
           },
         ],
       },

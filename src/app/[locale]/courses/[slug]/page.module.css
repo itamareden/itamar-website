@@ -365,86 +365,105 @@ button.trailer:hover .playShape {
   padding-block: clamp(4rem, 8vw, 6rem);
 }
 
-/* Five cards: three over two on wide screens, centred. */
+/* Two rows of two wide cards, each with its icon beside the text. */
 .gainList {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: var(--space-6);
-  margin: var(--space-12) 0 0;
+  max-inline-size: 61rem;
+  margin: var(--space-12) auto 0;
   padding: 0;
   list-style: none;
-  counter-reset: gain;
 }
 
 .gain {
-  flex: 0 1 calc((100% - 2 * var(--space-6)) / 3);
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-6);
   padding: var(--space-8);
   border-radius: var(--radius-md);
   background: var(--color-card);
-  counter-increment: gain;
 }
 
-/* The number, large and in berry, above the title. */
-.gain::before {
-  content: counter(gain, decimal-leading-zero);
-  display: block;
-  margin-block-end: var(--space-3);
-  font-family: var(--font-heading);
-  font-size: 2rem;
-  line-height: 1;
+/* A berry line drawing in a soft rose circle. */
+.gainIcon {
+  flex: none;
+  display: grid;
+  place-items: center;
+  inline-size: 4rem;
+  block-size: 4rem;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--color-accent) 13%, white);
   color: var(--color-accent);
+}
+
+.gainIcon svg {
+  inline-size: 2rem;
+  block-size: 2rem;
 }
 
 .gain h3 {
   margin-block-end: var(--space-2);
-  font-size: 1.4rem;
+  font-size: 1.6rem;
 }
 
 .gain p {
+  font-size: 1.05rem;
   line-height: 1.7;
   color: var(--color-text-muted);
 }
 
 /* ---------- reviews ---------- */
 
-.rating {
-  font-weight: var(--weight-bold);
-}
-
-.rating span {
-  letter-spacing: 0.1em;
-  color: var(--color-accent);
-}
-
 .reviews {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr)); /* three in one row */
   gap: var(--space-6);
-  max-inline-size: 60rem;
   margin: var(--space-12) auto 0;
   padding: 0;
   list-style: none;
 }
 
+/* A white card: a large berry quotation mark, the words, and the name
+   under a short berry line, pushed to the bottom so the names line up. */
 .review {
-  display: grid;
-  align-content: space-between;
-  gap: var(--space-4);
-  padding: var(--space-8);
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-8) var(--space-8) var(--space-6);
   border-radius: var(--radius-md);
-  background: var(--color-panel);
+  background: var(--color-card);
+  box-shadow: 0 20px 40px -28px color-mix(in srgb, var(--color-band) 45%, transparent);
+}
+
+.quoteMark {
+  block-size: 2.2rem; /* the glyph sits high; trim the empty space under it */
+  font-family: var(--font-heading);
+  font-size: 4.5rem;
+  line-height: 1;
+  color: var(--color-accent);
+  opacity: 0.55;
 }
 
 .review blockquote {
-  margin: 0;
+  flex: 1;
+  margin: 0 0 var(--space-6);
   font-size: 1.1rem;
-  line-height: 1.7;
+  line-height: 1.75;
 }
 
 .reviewName {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
   font-weight: var(--weight-bold);
   color: var(--color-accent);
+}
+
+.reviewName::before {
+  content: "";
+  inline-size: 1.75rem;
+  block-size: 1px;
+  background: currentColor;
 }
 
 /* ---------- inside the course ---------- */
@@ -452,7 +471,7 @@ button.trailer:hover .playShape {
 .inside {
   inline-size: min(100%, 54rem);
   margin-inline: auto;
-  padding-block: clamp(4rem, 8vw, 6rem) 0;
+  padding-block: clamp(4rem, 8vw, 6rem);
 }
 
 .stages {
@@ -577,8 +596,9 @@ button.trailer:hover .playShape {
 /* ---------- smaller screens ---------- */
 
 @media (max-width: 60rem) {
-  .gain {
-    flex-basis: calc((100% - var(--space-6)) / 2);
+  .reviews {
+    grid-template-columns: minmax(0, 1fr);
+    max-inline-size: 36rem;
   }
 }
 
@@ -592,8 +612,13 @@ button.trailer:hover .playShape {
     translate: none;
   }
 
+  .gainList {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
   .gain {
-    flex-basis: 100%;
+    gap: var(--space-4);
+    padding: var(--space-6);
   }
 
   /* Text above the trailer here, so an even veil all over. */
