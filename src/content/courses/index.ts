@@ -21,9 +21,6 @@ export type Course = {
   content: Record<Locale, CourseContent>;
 };
 
-// The line drawings the gain cards can show, drawn in the course page.
-export type GainIcon = "breath" | "balance" | "heart" | "moon";
-
 // The page text in one language. **bold** marks emphasis.
 export type CourseContent = {
   description: string; // for search results and link previews
@@ -44,7 +41,8 @@ export type CourseContent = {
     title: string;
     emphasis: string;
     lead: string;
-    items: { icon: GainIcon; title: string; text: string }[];
+    // Each card shows a hand drawing: a path under public/.
+    items: { image: string; title: string; text: string }[];
   };
   reviews: {
     kicker: string;
@@ -68,6 +66,7 @@ export type CourseContent = {
     title: string;
     emphasis: string;
     text: string;
+    note: string; // a small line under the button
   };
 };
 

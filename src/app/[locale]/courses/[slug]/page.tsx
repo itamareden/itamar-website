@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Emphasis } from "@/components/Emphasis/Emphasis";
-import { courses, getCourse, type Course, type GainIcon } from "@/content/courses";
+import { courses, getCourse, type Course } from "@/content/courses";
 import { getDictionary } from "@/dictionaries";
 import { getLocale } from "@/i18n/get-locale";
 import { Trailer } from "./Trailer";
@@ -36,53 +36,6 @@ function EnrolButton({ course, label, className }: { course: Course; label: stri
     <a href={course.settings.enrolUrl} target="_blank" rel="noopener" className={className}>
       {label}
     </a>
-  );
-}
-
-// The gain cards' line drawings: breath lines, balancing stones, a heart
-// with a heartbeat, a moon with a star.
-const gainPaths: Record<GainIcon, React.ReactNode> = {
-  breath: (
-    <>
-      <path d="M3 8h10a3 3 0 1 0-3-3" />
-      <path d="M3 12h15a3 3 0 1 1-3 3" />
-      <path d="M3 16h7" />
-    </>
-  ),
-  balance: (
-    <>
-      <ellipse cx="12" cy="18.5" rx="7" ry="2.5" />
-      <ellipse cx="12" cy="13.3" rx="5" ry="2.2" />
-      <ellipse cx="12" cy="8.6" rx="3.2" ry="1.9" />
-    </>
-  ),
-  heart: (
-    <>
-      <path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z" />
-      <path d="M9 11.5h1.5l1-2 1.5 4 1-2H15" />
-    </>
-  ),
-  moon: (
-    <>
-      <path d="M19 14.5A7.5 7.5 0 1 1 9.5 5a6 6 0 0 0 9.5 9.5z" />
-      <path d="M17 3.5v3M15.5 5h3" />
-    </>
-  ),
-};
-
-function GainIconSvg({ icon }: { icon: GainIcon }) {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth={1.4}
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
-    >
-      {gainPaths[icon]}
-    </svg>
   );
 }
 
@@ -170,7 +123,7 @@ export default async function CoursePage(props: PageProps<"/[locale]/courses/[sl
         </div>
       </section>
 
-      {/* What it gives: four outcomes, each with its line drawing. */}
+      {/* What it gives: four outcomes, each with its hand drawing. */}
       <section className={styles.gains}>
         <header className={styles.center}>
           <p className={styles.kicker}>{c.gains.kicker}</p>
@@ -182,8 +135,8 @@ export default async function CoursePage(props: PageProps<"/[locale]/courses/[sl
         <ul className={styles.gainList}>
           {c.gains.items.map((item) => (
             <li key={item.title} className={styles.gain}>
-              <span className={styles.gainIcon}>
-                <GainIconSvg icon={item.icon} />
+              <span className={styles.gainDrawing}>
+                <Image src={item.image} alt="" fill sizes="12rem" />
               </span>
               <div>
                 <h3>{item.title}</h3>
@@ -269,6 +222,7 @@ export default async function CoursePage(props: PageProps<"/[locale]/courses/[sl
           </h2>
           <p className={styles.closingText}>{c.closing.text}</p>
           <EnrolButton course={course} label={c.hero.button} className={styles.buttonLight} />
+          <p className={styles.closingNote}>{c.closing.note}</p>
         </div>
       </section>
     </>

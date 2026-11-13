@@ -41,12 +41,12 @@
   color: var(--color-text-muted);
 }
 
-/* The warm rose-and-sand wash, fading in from the ivory page. */
+/* The warm rose-and-sand wash, starting on a clear edge (no fade from
+   the page). */
 .wash {
   margin-block-start: 0;
   padding-block: clamp(4rem, 9vw, 7rem);
   background:
-    linear-gradient(to bottom, var(--color-background), transparent 30%),
     radial-gradient(ellipse 55% 65% at 18% 25%, var(--color-wash-rose) 0%, transparent 70%),
     radial-gradient(ellipse 50% 60% at 88% 75%, var(--color-wash-sand) 0%, transparent 70%),
     var(--color-wash-base);
@@ -365,41 +365,40 @@ button.trailer:hover .playShape {
   padding-block: clamp(4rem, 8vw, 6rem);
 }
 
-/* Two rows of two wide cards, each with its icon beside the text. */
+/* Four cards in one row, each with its icon above the title. Two by two
+   on tablets; on phones one per row, the icon beside the text. */
 .gainList {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: var(--space-6);
-  max-inline-size: 61rem;
-  margin: var(--space-12) auto 0;
+  margin: var(--space-12) 0 0;
   padding: 0;
   list-style: none;
 }
 
+/* Centred: the icon, then the title and text under it. */
 .gain {
   display: flex;
-  align-items: flex-start;
-  gap: var(--space-6);
-  padding: var(--space-8);
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--space-4);
+  padding: var(--space-8) var(--space-6);
   border-radius: var(--radius-md);
   background: var(--color-card);
 }
 
-/* A berry line drawing in a soft rose circle. */
-.gainIcon {
-  flex: none;
-  display: grid;
-  place-items: center;
-  inline-size: 4rem;
+/* The hand drawing above the title, in a fixed-height slot so the four
+   titles stay level whatever each drawing's shape. */
+.gainDrawing {
+  position: relative;
+  inline-size: min(100%, 12rem);
   block-size: 4rem;
-  border-radius: 50%;
-  background: color-mix(in srgb, var(--color-accent) 13%, white);
-  color: var(--color-accent);
+  margin-block-end: var(--space-2);
 }
 
-.gainIcon svg {
-  inline-size: 2rem;
-  block-size: 2rem;
+.gainDrawing img {
+  object-fit: contain;
 }
 
 .gain h3 {
@@ -471,7 +470,8 @@ button.trailer:hover .playShape {
 .inside {
   inline-size: min(100%, 54rem);
   margin-inline: auto;
-  padding-block: clamp(4rem, 8vw, 6rem);
+  /* No room on top: the gains above already leave enough. */
+  padding-block: 0 clamp(4rem, 8vw, 6rem);
 }
 
 .stages {
@@ -588,14 +588,31 @@ button.trailer:hover .playShape {
 
 .closingText {
   max-inline-size: 34rem;
-  margin-block-end: var(--space-4);
+  margin-block-end: calc(var(--space-4) + 30px); /* room before the button */
   font-size: 1.15rem;
   line-height: 1.75;
+}
+
+/* Wide screens: a little less room above the title and below the note. */
+@media (min-width: 44.01rem) {
+  .closing {
+    padding-block: calc(clamp(4rem, 9vw, 7rem) - 20px);
+  }
+}
+
+/* The small line under the button. */
+.closingNote {
+  font-size: 0.95rem;
+  opacity: 0.8;
 }
 
 /* ---------- smaller screens ---------- */
 
 @media (max-width: 60rem) {
+  .gainList {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .reviews {
     grid-template-columns: minmax(0, 1fr);
     max-inline-size: 36rem;
@@ -617,8 +634,22 @@ button.trailer:hover .playShape {
   }
 
   .gain {
-    gap: var(--space-4);
+    flex-direction: row;
+    align-items: flex-start;
     padding: var(--space-6);
+    text-align: start;
+  }
+
+  /* Smaller, beside the text. */
+  .gainDrawing {
+    flex: none;
+    margin-block-end: 0;
+    inline-size: 4rem;
+    block-size: 3rem;
+  }
+
+  .closingText {
+    margin-block-end: calc(var(--space-4) + 15px);
   }
 
   /* Text above the trailer here, so an even veil all over. */

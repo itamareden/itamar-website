@@ -64,22 +64,22 @@ export const breathingLife: Course = {
         lead: "ללמוד איך להיעזר בנשימה כדי לחוות יותר שלווה ונוכחות בחיי היומיום.",
         items: [
           {
-            icon: "breath",
+            image: "/images/courses/gain-calm.png", // a leaf on flowing breath lines
             title: "רוגע בהישג יד",
             text: "טכניקות נשימה פשוטות שיכולות לעזור לכם להאט, להרפות ולמצוא שלווה גם באמצע יום עמוס.",
           },
           {
-            icon: "balance",
+            image: "/images/courses/gain-balance.png", // open hands holding a heart
             title: "איזון רגשי",
             text: "שגרת נשימה יומית שמחזקת את היציבות הרגשית ואת תחושת הרווחה שלכם.",
           },
           {
-            icon: "heart",
+            image: "/images/courses/gain-presence.png", // a hand resting on the heart
             title: "נוכחות וחיבור",
             text: "להרגיש יותר נוכחים בגוף ובחיים, ולהעמיק את החיבור לעצמכם דרך הנשימה.",
           },
           {
-            icon: "moon",
+            image: "/images/courses/gain-rest-shoulders.png", // a person lying at rest, head and shoulders
             title: "מנוחה עמוקה",
             text: "מסעות נשימה ומדיטציות מונחות שמובילים להרפיה עמוקה ולשלווה פנימית.",
           },
@@ -87,8 +87,8 @@ export const breathingLife: Course = {
       },
       reviews: {
         kicker: "מה אומרים",
-        title: "מי שכבר",
-        emphasis: "נושמים איתי",
+        title: "כמה מילים",
+        emphasis: "ממי שכבר התנסו",
         items: reviews,
       },
       inside: {
@@ -167,9 +167,10 @@ export const breathingLife: Course = {
         ],
       },
       closing: {
-        title: "הנשימה כבר איתכם,",
-        emphasis: "בואו נתחיל",
-        text: "שעתיים וחצי של תרגול שילווה אתכם הרבה אחרי השיעור האחרון.",
+        title: "לגלות מה הנשימה",
+        emphasis: "יכולה לעשות בשבילכם",
+        text: "טכניקות פשוטות ותרגולים מודרכים שיעזרו לכם להיעזר בנשימה להפחתת מתח ולחוות יותר שלווה ונוכחות בחיי היומיום.",
+        note: "שלושה סרטונים לצפייה בחינם בעמוד הקורס",
       },
     },
     en: {
@@ -192,22 +193,22 @@ export const breathingLife: Course = {
         lead: "Learn how to use your breath to experience more peace and presence in everyday life.",
         items: [
           {
-            icon: "breath",
+            image: "/images/courses/gain-calm.png", // a leaf on flowing breath lines
             title: "Calm within reach",
             text: "Simple breathing techniques that can help you slow down, let go and find peace, even in the middle of a busy day.",
           },
           {
-            icon: "balance",
+            image: "/images/courses/gain-balance.png", // open hands holding a heart
             title: "Emotional balance",
             text: "A daily breathing routine that strengthens your emotional steadiness and well-being.",
           },
           {
-            icon: "heart",
+            image: "/images/courses/gain-presence.png", // a hand resting on the heart
             title: "Presence and connection",
             text: "Feel more present in your body and your life, and deepen your connection with yourself through the breath.",
           },
           {
-            icon: "moon",
+            image: "/images/courses/gain-rest-shoulders.png", // a person lying at rest, head and shoulders
             title: "Deep rest",
             text: "Guided breath journeys and meditations that lead into deep relaxation and inner peace.",
           },
@@ -215,8 +216,8 @@ export const breathingLife: Course = {
       },
       reviews: {
         kicker: "What people say",
-        title: "Already",
-        emphasis: "breathing with me",
+        title: "A few words",
+        emphasis: "from those who’ve tried it",
         items: reviews,
       },
       inside: {
@@ -287,9 +288,10 @@ export const breathingLife: Course = {
         ],
       },
       closing: {
-        title: "Your breath is already here.",
-        emphasis: "Let's begin",
-        text: "Two and a half hours of practice that stays with you long after the last lesson.",
+        title: "Discover what your breath",
+        emphasis: "can do for you",
+        text: "Simple techniques and guided practices that help you use your breath to ease stress and experience more peace and presence in everyday life.",
+        note: "Three free videos to watch on the course page",
       },
     },
   },
