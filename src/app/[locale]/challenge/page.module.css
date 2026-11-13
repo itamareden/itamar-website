@@ -321,6 +321,8 @@
 }
 
 .isThisYou {
+  --is-this-you-rule: color-mix(in srgb, var(--color-band) 14%, transparent);
+
   display: grid;
   gap: var(--space-6);
   max-inline-size: 40rem;
@@ -342,10 +344,82 @@
   background: var(--color-accent);
 }
 
+/* The body font, so only the heading carries the serif. */
 .isThisYouText {
-  font-family: var(--font-heading);
-  font-size: clamp(1.3rem, 2vw, 1.55rem);
-  line-height: 1.4;
+  font-size: clamp(1.2rem, 1.8vw, 1.35rem);
+  line-height: 1.5;
+  text-wrap: balance;
+}
+
+/* Narrower screens: a short centred line under the heading and after the
+   last line, a little darker than the desktop rules so it shows. */
+@media (width < 60rem) {
+  .isThisYou ul {
+    --is-this-you-rule: color-mix(in srgb, var(--color-band) 26%, transparent);
+
+    padding-block: var(--space-6);
+    background:
+      linear-gradient(var(--is-this-you-rule), var(--is-this-you-rule)) top center / 60% 1px no-repeat,
+      linear-gradient(var(--is-this-you-rule), var(--is-this-you-rule)) bottom center / 60% 1px no-repeat;
+  }
+}
+
+/* Wide screens: the heading and the closing line on one side, the lines on
+   the other with a rule as wide as the longest line between them. The band is 30px shorter at the top and the bottom. */
+@media (min-width: 60rem) {
+  .washBand.isThisYouBand {
+    padding-block: calc(clamp(3.5rem, 8vw, 7rem) - 30px);
+  }
+
+  .isThisYou {
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+    grid-template-areas:
+      "title list"
+      "text  list";
+    gap: var(--space-6) clamp(3rem, 6vw, 4.5rem);
+    align-items: center;
+    max-inline-size: 62rem;
+  }
+
+  .isThisYou .sectionTitle,
+  .isThisYouText {
+    text-align: start;
+  }
+
+  .isThisYou .sectionTitle {
+    grid-area: title;
+    align-self: end;
+  }
+
+  .isThisYouText {
+    grid-area: text;
+    align-self: start;
+  }
+
+  .isThisYou ul {
+    grid-area: list;
+    justify-self: start;
+    inline-size: fit-content;
+    gap: 0;
+    font-size: 1.2rem;
+  }
+
+  .isThisYou ul li {
+    padding-block: 1.05rem;
+    background: linear-gradient(var(--is-this-you-rule), var(--is-this-you-rule)) bottom / 100% 1px
+      no-repeat;
+  }
+
+  .isThisYou ul li:first-child {
+    background:
+      linear-gradient(var(--is-this-you-rule), var(--is-this-you-rule)) top / 100% 1px no-repeat,
+      linear-gradient(var(--is-this-you-rule), var(--is-this-you-rule)) bottom / 100% 1px no-repeat;
+  }
+
+  /* The dot, moved down by the extra room above each line. */
+  .isThisYou ul li::before {
+    inset-block-start: calc(1.05rem + 0.55em);
+  }
 }
 
 /* ---------- a personal note: one narrow column with a spoken opening line ---------- */

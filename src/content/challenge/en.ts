@@ -62,6 +62,7 @@ export const en: ChallengeContent = {
       "Your thoughts keep racing, even when you try to rest",
       "You used to meditate, but the practice got lost in the daily routine",
       "You'd like to start a practice, but don't know where to begin",
+      "You reach for your phone in every spare moment, even when what you really wanted was a little quiet",
     ],
     text: "If you found yourself in one of these lines, **these five days were made for you.**",
   },
