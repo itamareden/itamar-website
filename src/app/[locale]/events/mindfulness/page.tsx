@@ -24,7 +24,7 @@ export default async function MindfulnessPage() {
           data-hero lets the header sit on top of it in light text. */}
       <section className={styles.hero} data-full-bleed data-hero>
         <Image
-          src="/images/challenge/hero.jpg"
+          src="/images/challenge/hero-river.jpg"
           alt={m.hero.imageAlt}
           fill
           sizes="100vw"

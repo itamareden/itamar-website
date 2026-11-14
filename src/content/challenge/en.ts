@@ -12,7 +12,7 @@ export const en: ChallengeContent = {
     eyebrow: "Free 5-day challenge",
     heading: { title: "Five days", emphasis: "back to yourself." },
     text: "For anyone who wants to start a practice, or come back to one. A short, gentle daily practice that brings you back to this moment, and to yourself.",
-    imageAlt: "Itamar meditating on a fallen tree over a forest stream, hands on his heart",
+    imageAlt: "Itamar meditating on a rock by a forest stream",
     facts: [
       { value: "5", label: "days" },
       { value: "15", label: "minutes a day, roughly" },
@@ -30,7 +30,7 @@ export const en: ChallengeContent = {
     countdown: (days) =>
       days === 0 ? "We start today!" : days === 1 ? "We start tomorrow!" : `${days} days to go`,
     soonHeading: { title: "The next group", emphasis: "opens soon" },
-    meta: "Free · in a WhatsApp group · I send each day's link in the morning",
+    meta: "Free · in a WhatsApp group",
     button: "Join the WhatsApp group",
     steps: [
       { title: "Join the group", text: "Tap the button and join the WhatsApp group, which supports you throughout the challenge." },
@@ -110,19 +110,19 @@ export const en: ChallengeContent = {
     items: [
       {
         myth: "You need to stop thinking",
-        truth: "Thoughts are part of the practice. Sometimes they settle and sometimes they keep running. The moment you notice you've been swept away by a thought is already a moment of awareness, and from there you can gently come back.",
+        truth: "In meditation, there's no need to stop your thoughts. Thoughts are part of meditation: sometimes they settle and sometimes they keep running. The moment you notice you've been swept away by a thought is already a moment of awareness, and from there you can gently come back.",
       },
       {
         myth: "I'm not the meditating type",
-        truth: "You don't need to be a monk or an especially calm person to begin. Even if you're restless, curious or sceptical, there's a place for you here. You can try things out and discover which way suits you.",
+        truth: "You don't need to be a monk or an especially calm person to meditate. Even if you're restless, curious or sceptical, you can find the meditation that suits you. Meditation can also be done in movement or through dance. As you try things out, you'll discover what works for you.",
       },
       {
         myth: "I don't have time to meditate",
-        truth: "You can start with a few minutes a day, within the life you already have. A short time in which you turn your attention to yourself can be the start of a new relationship with the practice.",
+        truth: "You can start with a few minutes a day. There's no need to wait for a particularly free moment; you can pick a small moment in the morning or evening and dedicate it to yourself. Over time, that moment can become something you look forward to.",
       },
       {
         myth: "If I didn't feel anything, I failed",
-        truth: "Sometimes there's quiet or a special feeling, and sometimes it seems as if not much happened. There's no particular experience you need to reach. Meeting a few ordinary minutes, just as they are, is also part of meditation.",
+        truth: "In meditation there's no such thing as success or failure. Sometimes there's quiet or a special feeling, and sometimes it seems as if not much happened. There's no particular experience you need to reach. Over time, this attitude can help us meet life with more acceptance and ease.",
       },
       {
         myth: "Meditation is too spiritual for me",
@@ -130,7 +130,7 @@ export const en: ChallengeContent = {
       },
       {
         myth: "You have to sit in a certain posture",
-        truth: "Comfort comes first. A cushion, a chair, or even moving.",
+        truth: "Comfort comes first. You can sit on a cushion, a chair, or even meditate in movement.",
       },
     ],
   },

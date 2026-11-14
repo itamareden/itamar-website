@@ -104,41 +104,37 @@
 
 /* ---------- hero ---------- */
 
+/* Nearly the full screen: the card below straddles the photo's bottom edge
+   and still shows whole on the first screen. */
 .photo {
   position: relative;
-  min-block-size: clamp(36rem, 80svh, 48rem);
+  min-block-size: max(34rem, calc(100svh - 4.5rem));
   display: flex;
   align-items: flex-end;
   color: var(--color-on-photo);
   overflow: hidden;
 }
 
-/* The jungle is very green, so its colour is softened a little; the shade
-   on the text side (below) quiets it further. */
+/* The same photo and shading as the live course's hero. */
 .photoImage {
   object-fit: cover;
-  object-position: 52% 40%;
-  filter: saturate(0.78) brightness(0.97);
+  object-position: 45% 40%;
 }
 
-/* Wide screens: the photo just fills the width, so to move Itamar away from
-   the text it is enlarged from its top right corner, which slides him left. */
-@media (min-width: 45rem) {
-  .photoImage {
-    object-position: 50% 30%;
-    transform: scale(1.2);
-    transform-origin: 100% 0%;
-  }
-}
-
+/* Darkens the start side (the right, in Hebrew) and the bottom, so the text
+   reads while Itamar stays clear on the other side. */
 .photo::after {
   content: "";
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(to top, color-mix(in srgb, var(--color-band) 70%, transparent) 0%, color-mix(in srgb, var(--color-band) 25%, transparent) 45%, transparent 70%),
-    linear-gradient(to left, color-mix(in srgb, var(--color-band) 50%, transparent) 0%, color-mix(in srgb, var(--color-band) 20%, transparent) 35%, transparent 60%),
-    linear-gradient(to bottom, color-mix(in srgb, var(--color-band) 35%, transparent) 0%, transparent 20%);
+    linear-gradient(
+      to left,
+      color-mix(in srgb, var(--color-band) 82%, transparent) 0%,
+      color-mix(in srgb, var(--color-band) 55%, transparent) 38%,
+      color-mix(in srgb, var(--color-band) 5%, transparent) 70%
+    ),
+    linear-gradient(to top, color-mix(in srgb, var(--color-band) 60%, transparent), transparent 45%);
 }
 
 .heroText {
@@ -148,7 +144,7 @@
   max-inline-size: var(--content-width);
   margin-inline: auto;
   /* Room at the bottom for the card that overlaps the photo. */
-  padding: 0 var(--gutter) clamp(6rem, 11vw, 9rem);
+  padding: 0 var(--gutter) clamp(6rem, 9vw, 7rem);
 }
 
 .eyebrow {
@@ -190,8 +186,105 @@
   position: relative;
   z-index: 1;
   max-inline-size: var(--content-width);
-  margin: clamp(-7rem, -8vw, -4rem) auto 0;
+  margin: -3.5rem auto 0; /* about half the card on the photo */
   padding-inline: var(--gutter);
+}
+
+/* A slim cream bar on the photo, under the text: the start date on one side,
+   the button on the other. Shown only on wide screens in group mode, where it
+   replaces the card. */
+.heroAction {
+  display: none;
+}
+
+.heroWhen {
+  font-size: var(--text-sm);
+  line-height: 1.45;
+  color: var(--color-text-muted);
+}
+
+.heroWhenTitle {
+  display: block;
+  margin-block-end: 0.2rem;
+  font-family: var(--font-heading);
+  font-size: 1.45rem;
+  line-height: 1.15;
+  color: var(--color-text);
+}
+
+.heroWhenTitle b {
+  font-weight: inherit;
+}
+
+@media (width > 45rem) {
+  .heroGroup .photo {
+    min-block-size: max(36rem, 100svh);
+  }
+
+  /* The text and the bar together, 50px toward the right edge where the
+     screen has the room (the page is right to left). */
+  .heroGroup .heroText {
+    padding-block-end: clamp(2.5rem, 5vw, 3.5rem);
+    translate: min(50px, max(0px, (100vw - var(--content-width)) / 2 - 1rem)) 0;
+  }
+
+  /* In English the text is on the left, so it moves left. */
+  :global([dir="ltr"]) .heroGroup .heroText {
+    translate: calc(-1 * min(50px, max(0px, (100vw - var(--content-width)) / 2 - 1rem))) 0;
+  }
+
+  .heroAction {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-8);
+    inline-size: fit-content;
+    max-inline-size: 100%;
+    margin-block-start: calc(var(--space-8) + 20px);
+    padding: 1.1rem;
+    padding-inline-start: 1.6rem;
+    border-radius: 18px;
+    background: var(--color-background);
+    box-shadow: 0 24px 60px -24px color-mix(in srgb, var(--color-band) 60%, transparent);
+  }
+
+  .heroAction .button {
+    margin-block-start: 0;
+  }
+
+  .heroGroup .card {
+    display: none;
+  }
+
+  /* No card overlapping the photo, so the facts start on the cream below it. */
+  .heroGroup .cardRow {
+    margin-block-start: var(--space-8);
+  }
+}
+
+/* The group card on one row: the date and details on one side, the button
+   on the other, so it is short enough to sit on the photo's edge. */
+/* .card.cardInline: two classes, so it wins over .card's narrower width below. */
+.card.cardInline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-6);
+  max-inline-size: calc(48rem - 80px);
+  /* Out past the text's edge, toward the screen edge on the start side, by up
+     to 6rem where the screen has the room. */
+  margin-inline-start: calc(-1 * min(6rem, max(0px, (100vw - var(--content-width)) / 2 - 1rem)));
+  padding-block: var(--space-6);
+  padding-inline-end: calc(clamp(var(--space-6), 3vw, 2.25rem) - 7px); /* less room beside the button */
+}
+
+.cardInline .cardTitle {
+  font-size: clamp(1.4rem, 2vw, 1.6rem);
+}
+
+.cardInline .button {
+  flex-shrink: 0;
+  margin-block-start: 0;
 }
 
 .card {
@@ -863,8 +956,43 @@
 /* ---------- phones ---------- */
 
 @media (max-width: 45rem) {
+  /* Short enough that the whole card, button included, fits on the first
+     screen (the card is about 10.5rem tall here, a third of it on the photo). */
   .photo {
-    min-block-size: 37.5rem;
+    min-block-size: max(28rem, calc(100svh - 8rem + 35px));
+  }
+
+  /* The card sits deeper on the photo, which ends just above the button. */
+  .cardRow {
+    margin-block-start: calc(-3.5rem - 35px);
+  }
+
+  .heroText {
+    padding-block-end: calc(6rem + 35px);
+  }
+
+  /* Phones: the card stacks again, the button under the details. */
+  .card.cardInline {
+    display: block;
+    padding-inline-end: clamp(var(--space-6), 3vw, 2.25rem);
+  }
+
+  .cardInline .button {
+    margin-block-start: var(--space-6);
+  }
+
+  /* The text spans the width, so the darkening comes up from the bottom. */
+  .photo::after {
+    background: linear-gradient(
+      to top,
+      color-mix(in srgb, var(--color-band) 90%, transparent) 0%,
+      color-mix(in srgb, var(--color-band) 55%, transparent) 55%,
+      color-mix(in srgb, var(--color-band) 15%, transparent) 100%
+    );
+  }
+
+  .photoImage {
+    object-position: 52% 40%;
   }
 
   /* Two columns, the line only between them. With an odd count, the last

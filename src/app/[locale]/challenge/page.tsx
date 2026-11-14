@@ -81,13 +81,24 @@ export default async function ChallengePage() {
       </a>
     );
 
+  // When the next group starts, for the card and the hero's action line.
+  const groupStart = nextStart ? (
+    <>
+      {c.group.starts} <b>{formatDate(nextStart.date, locale)}</b>
+    </>
+  ) : (
+    c.group.startsSoon
+  );
+
   return (
     <>
-      {/* Photo with the headline, and the action card overlapping its bottom edge. */}
-      <section data-full-bleed data-hero>
+      {/* Photo with the headline, and the action card overlapping its bottom
+          edge. In group mode on wide screens the photo fills the screen and
+          the button sits on it, under the text, instead of the card. */}
+      <section data-full-bleed data-hero className={mode === "group" ? styles.heroGroup : undefined}>
         <div className={styles.photo}>
           <Image
-            src="/images/challenge/hero-river.jpg"
+            src="/images/challenge/hero.jpg"
             alt={c.hero.imageAlt}
             fill
             sizes="100vw"
@@ -102,23 +113,26 @@ export default async function ChallengePage() {
               <Heading heading={c.hero.heading} />
             </h1>
             <p className={styles.heroLead}>{c.hero.text}</p>
+            {mode === "group" && (
+              <div className={styles.heroAction}>
+                <p className={styles.heroWhen}>
+                  <span className={styles.heroWhenTitle}>{groupStart}</span>
+                  {c.group.meta}
+                </p>
+                {joinButton(styles.button)}
+              </div>
+            )}
           </div>
         </div>
 
         <div className={styles.cardRow}>
-          <div className={styles.card} id="join">
+          <div className={mode === "group" ? `${styles.card} ${styles.cardInline}` : styles.card} id="join">
             {mode === "group" ? (
               <>
-                <p className={styles.cardTitle}>
-                  {nextStart ? (
-                    <>
-                      {c.group.starts} <b>{formatDate(nextStart.date, locale)}</b>
-                    </>
-                  ) : (
-                    c.group.startsSoon
-                  )}
-                </p>
-                <p className={styles.cardMeta}>{c.group.meta}</p>
+                <div>
+                  <p className={styles.cardTitle}>{groupStart}</p>
+                  <p className={styles.cardMeta}>{c.group.meta}</p>
+                </div>
                 {joinButton(styles.button)}
               </>
             ) : (

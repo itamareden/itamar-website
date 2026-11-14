@@ -10,7 +10,7 @@ export const mindfulness = {
     registerUrl: "",
   },
   hero: {
-    imageAlt: "איתמר מודט על סלע ליד נחל ביער",
+    imageAlt: "איתמר מודט על גזע עץ מעל נחל ביער, ידיו על הלב",
     eyebrow: "קורס אונליין לייב",
     title: "מיינדפולנס",
     emphasis: "חיים במודעות, צעד אחר צעד",

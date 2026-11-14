@@ -14,25 +14,33 @@
   color: var(--color-on-photo);
 }
 
+/* The forest stream photo, as it was on the challenge page. The jungle is
+   very green, so its colour is softened a little; the shade on the text side
+   (below) quiets it further. */
 .heroImage {
   object-fit: cover;
-  object-position: 45% 40%;
+  object-position: 52% 40%;
+  filter: saturate(0.78) brightness(0.97);
 }
 
-/* Darkens the start side (the right, on this Hebrew page) and the bottom,
-   so the text reads while you stay clear on the other side. */
+/* Wide screens: the photo just fills the width, so to move Itamar away from
+   the text it is enlarged from its top right corner, which slides him left. */
+@media (min-width: 45rem) {
+  .heroImage {
+    object-position: 50% 30%;
+    transform: scale(1.2);
+    transform-origin: 100% 0%;
+  }
+}
+
 .hero::after {
   content: "";
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(
-      to left,
-      color-mix(in srgb, var(--color-band) 82%, transparent) 0%,
-      color-mix(in srgb, var(--color-band) 55%, transparent) 38%,
-      color-mix(in srgb, var(--color-band) 5%, transparent) 70%
-    ),
-    linear-gradient(to top, color-mix(in srgb, var(--color-band) 60%, transparent), transparent 45%);
+    linear-gradient(to top, color-mix(in srgb, var(--color-band) 70%, transparent) 0%, color-mix(in srgb, var(--color-band) 25%, transparent) 45%, transparent 70%),
+    linear-gradient(to left, color-mix(in srgb, var(--color-band) 50%, transparent) 0%, color-mix(in srgb, var(--color-band) 20%, transparent) 35%, transparent 60%),
+    linear-gradient(to bottom, color-mix(in srgb, var(--color-band) 35%, transparent) 0%, transparent 20%);
 }
 
 .heroInner {
@@ -820,20 +828,6 @@
 }
 
 @media (max-width: 44rem) {
-  /* The text spans the width, so the darkening comes up from the bottom. */
-  .hero::after {
-    background: linear-gradient(
-      to top,
-      color-mix(in srgb, var(--color-band) 90%, transparent) 0%,
-      color-mix(in srgb, var(--color-band) 55%, transparent) 55%,
-      color-mix(in srgb, var(--color-band) 15%, transparent) 100%
-    );
-  }
-
-  .heroImage {
-    object-position: 52% 40%;
-  }
-
   .split {
     grid-template-columns: minmax(0, 1fr);
   }
