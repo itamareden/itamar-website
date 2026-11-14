@@ -101,17 +101,37 @@ export const en: ChallengeContent = {
       "It's funny to say it now, but that anxiety attack was one of the best things that ever happened to me. What was then the most frightening thing I had ever been through became something I'm deeply grateful for.",
       "Back then I didn't understand much about meditation. I discovered the \"how\" and the \"why\" by trying things out, and I would have loved someone to guide me at the start. That's where this challenge comes from: to give you a simple, pleasant start, with guidance and a little company along the way. An invitation to begin right now, out of curiosity. It's so much more fun that way.",
     ],
+    link: "My full story",
     imageAlt: "Itamar smiling",
   },
   misconceptions: {
     kicker: "Let's clear things up",
-    heading: { title: "Common misconceptions", emphasis: "that might hold you back" },
+    heading: { title: "Common beliefs", emphasis: "that might hold you back" },
     items: [
-      { myth: "You need to stop thinking", truth: "Thoughts are part of the practice. Noticing that you're thinking is already meditation." },
-      { myth: "If I didn't feel anything, I failed", truth: "Nothing is supposed to happen. It's enough to be curious about what's there." },
-      { myth: "You have to sit in a certain posture", truth: "Comfort comes first. A cushion, a chair, or even moving." },
-      { myth: "I'm not the meditating type", truth: "Even if you're restless, there are many ways to practise, and one of them is through movement." },
-      { myth: "Meditation is for relaxing", truth: "Calm may come, but meditation is mostly a journey inward, getting to know yourself deeply. Let yourself not know, and be surprised." },
+      {
+        myth: "You need to stop thinking",
+        truth: "Thoughts are part of the practice. Sometimes they settle and sometimes they keep running. The moment you notice you've been swept away by a thought is already a moment of awareness, and from there you can gently come back.",
+      },
+      {
+        myth: "I'm not the meditating type",
+        truth: "You don't need to be a monk or an especially calm person to begin. Even if you're restless, curious or sceptical, there's a place for you here. You can try things out and discover which way suits you.",
+      },
+      {
+        myth: "I don't have time to meditate",
+        truth: "You can start with a few minutes a day, within the life you already have. A short time in which you turn your attention to yourself can be the start of a new relationship with the practice.",
+      },
+      {
+        myth: "If I didn't feel anything, I failed",
+        truth: "Sometimes there's quiet or a special feeling, and sometimes it seems as if not much happened. There's no particular experience you need to reach. Meeting a few ordinary minutes, just as they are, is also part of meditation.",
+      },
+      {
+        myth: "Meditation is too spiritual for me",
+        truth: "You can come to meditation out of simple curiosity: getting to know your body, noticing your thoughts and discovering what happens when you pause for a moment. You're welcome to bring your own beliefs and questions, and see for yourself what you find.",
+      },
+      {
+        myth: "You have to sit in a certain posture",
+        truth: "Comfort comes first. A cushion, a chair, or even moving.",
+      },
     ],
   },
   faq: {

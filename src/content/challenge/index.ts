@@ -108,6 +108,7 @@ export type ChallengeContent = {
     kicker: string;
     heading: Heading;
     text: string[]; // one entry per paragraph
+    link: string; // to the About page
     imageAlt: string;
   };
   // Common beliefs that keep people from meditating, each with a short answer.

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import { connection } from "next/server";
 import { getChallenge } from "@/content/challenge";
 import { getDictionary } from "@/dictionaries";
@@ -185,48 +186,8 @@ export default async function ChallengePage() {
         </div>
       </section>
 
-      <section className={`${styles.section} ${styles.how}`}>
-        <p className={styles.kicker}>{c.how.kicker}</p>
-        <h2 className={styles.sectionTitle}>
-          <Heading heading={c.how.heading} />
-        </h2>
-        <ol className={styles.steps}>
-          {steps.map((step) => (
-            <li key={step.title}>
-              <h3>{step.title}</h3>
-              <p>{step.text}</p>
-            </li>
-          ))}
-        </ol>
-      </section>
-
-      {/* Who's guiding: the photo on one side, from the top, the story beside it. */}
-      <section className={`${styles.section} ${styles.guide}`}>
-        <Image
-          src="/images/about/hello.jpg"
-          alt={c.guide.imageAlt}
-          width={1100}
-          height={1622}
-          sizes="(max-width: 45rem) 90vw, 30vw"
-          className={styles.guideImage}
-        />
-        <div className={styles.guideBody}>
-          <p className={styles.kicker}>{c.guide.kicker}</p>
-          <h2 className={styles.sectionTitle}>
-            <Heading heading={c.guide.heading} />
-          </h2>
-          <div className={styles.guideText}>
-            {c.guide.text.map((paragraph) => (
-              <p key={paragraph}>
-                <Emphasis text={paragraph} />
-              </p>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className={styles.washBand} data-full-bleed>
-        <div className={styles.inner}>
+      <section className={`${styles.washBand} ${styles.mythsBand}`} data-full-bleed>
+        <div className={`${styles.inner} ${styles.mythsInner}`}>
           <p className={styles.kicker}>{c.misconceptions.kicker}</p>
           <h2 className={styles.sectionTitle}>
             <Heading heading={c.misconceptions.heading} />
@@ -244,19 +205,69 @@ export default async function ChallengePage() {
         </div>
       </section>
 
-      <section className={`${styles.section} ${styles.faq}`}>
-        <h2 className={styles.sectionTitle}>{c.faq.title}</h2>
-        {c.faq.items.map((item) => (
-          <details key={item.question}>
-            <summary>{item.question}</summary>
-            <p>{item.answer}</p>
-          </details>
-        ))}
+      <section className={`${styles.section} ${styles.how}`}>
+        <p className={styles.kicker}>{c.how.kicker}</p>
+        <h2 className={styles.sectionTitle}>
+          <Heading heading={c.how.heading} />
+        </h2>
+        <ol className={styles.steps}>
+          {steps.map((step) => (
+            <li key={step.title}>
+              <h3>{step.title}</h3>
+              <p>{step.text}</p>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      {/* Who's guiding: the photo on one side, from the top, the story beside it. */}
+      <section className={styles.section}>
+        <div className={styles.guide}>
+          <Image
+            src="/images/about/hello.jpg"
+            alt={c.guide.imageAlt}
+            width={1100}
+            height={1622}
+            sizes="(max-width: 45rem) 90vw, 30vw"
+            className={styles.guideImage}
+          />
+          <div className={styles.guideBody}>
+            <p className={styles.kicker}>{c.guide.kicker}</p>
+            <h2 className={styles.sectionTitle}>
+              <Heading heading={c.guide.heading} />
+            </h2>
+            <div className={styles.guideText}>
+              {c.guide.text.map((paragraph) => (
+                <p key={paragraph}>
+                  <Emphasis text={paragraph} />
+                </p>
+              ))}
+              <Link href={`/${locale}/about`} className={styles.guideLink}>
+                {c.guide.link} ←
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Questions, on a light sand band so they stand apart from the cream above. */}
+      <section className={`${styles.section} ${styles.faqBand}`} data-full-bleed>
+        <div className={`${styles.inner} ${styles.faq}`}>
+          <h2 className={styles.sectionTitle}>{c.faq.title}</h2>
+          {c.faq.items.map((item) => (
+            <details key={item.question}>
+              <summary>{item.question}</summary>
+              <p>{item.answer}</p>
+            </details>
+          ))}
+        </div>
       </section>
 
       <section className={styles.closing} data-full-bleed>
         <div className={styles.inner}>
-          {mode === "group" && <p className={styles.kicker}>{c.group.nextKicker}</p>}
+          {mode === "group" && (
+            <p className={styles.kicker}>{c.group.nextKicker}</p>
+          )}
           <h2 className={styles.sectionTitle}>
             <Heading
               heading={
@@ -269,7 +280,9 @@ export default async function ChallengePage() {
             />
           </h2>
           <p className={styles.closingText}>
-            {nextStart ? `${c.group.countdown(nextStart.daysLeft)} · ${c.closing.text}` : c.closing.text}
+            {nextStart
+              ? `${c.group.countdown(nextStart.daysLeft)} · ${c.closing.text}`
+              : c.closing.text}
           </p>
           {joinOrSignup}
         </div>
