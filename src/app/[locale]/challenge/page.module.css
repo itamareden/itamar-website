@@ -10,6 +10,11 @@
   padding-block: clamp(3.5rem, 8vw, 7rem);
 }
 
+/* "How it works": 50px less room below (never under 1rem on phones). */
+.how {
+  padding-block-end: max(1rem, calc(clamp(3.5rem, 8vw, 7rem) - 50px));
+}
+
 /* Content column inside full-width sections. */
 .inner {
   max-inline-size: var(--content-width);
@@ -108,9 +113,22 @@
   overflow: hidden;
 }
 
+/* The jungle is very green, so its colour is softened a little; the shade
+   on the text side (below) quiets it further. */
 .photoImage {
   object-fit: cover;
-  object-position: 45% 40%;
+  object-position: 52% 40%;
+  filter: saturate(0.78) brightness(0.97);
+}
+
+/* Wide screens: the photo just fills the width, so to move Itamar away from
+   the text it is enlarged from its top right corner, which slides him left. */
+@media (min-width: 45rem) {
+  .photoImage {
+    object-position: 50% 30%;
+    transform: scale(1.2);
+    transform-origin: 100% 0%;
+  }
 }
 
 .photo::after {
@@ -119,6 +137,7 @@
   inset: 0;
   background:
     linear-gradient(to top, color-mix(in srgb, var(--color-band) 70%, transparent) 0%, color-mix(in srgb, var(--color-band) 25%, transparent) 45%, transparent 70%),
+    linear-gradient(to left, color-mix(in srgb, var(--color-band) 50%, transparent) 0%, color-mix(in srgb, var(--color-band) 20%, transparent) 35%, transparent 60%),
     linear-gradient(to bottom, color-mix(in srgb, var(--color-band) 35%, transparent) 0%, transparent 20%);
 }
 
@@ -430,7 +449,7 @@
   inline-size: 100%;
   max-inline-size: 40rem;
   margin-inline: auto;
-  padding-block: 0 clamp(3.5rem, 8vw, 6rem);
+  padding-block: calc(clamp(3rem, 6vw, 4.5rem) - 30px) clamp(3.5rem, 8vw, 6rem);
   font-size: 1.125rem;
   line-height: 1.8;
   color: var(--color-text-muted);
@@ -443,9 +462,16 @@
 
 .noteOpening {
   font-family: var(--font-heading);
-  font-size: clamp(1.5rem, 2.6vw, 1.95rem);
-  line-height: 1.35;
+  font-size: clamp(2rem, 4.2vw, 3.2rem); /* as the section titles */
+  letter-spacing: -0.01em;
+  line-height: 1.2;
   color: var(--color-text);
+}
+
+/* The second part on its own line, in the accent colour. */
+.noteOpening em {
+  display: block;
+  color: var(--color-accent);
 }
 
 .note strong {
@@ -456,7 +482,7 @@
 .noteClosing {
   margin-block-start: var(--space-4);
   font-family: var(--font-heading);
-  font-size: clamp(1.4rem, 2.4vw, 1.8rem);
+  font-size: clamp(1.25rem, 2vw, 1.55rem);
   line-height: 1.4;
   color: var(--color-text);
 }
@@ -498,12 +524,6 @@
   text-align: center;
 }
 
-/* The flourish on top, in soft rose. */
-.takeawaysInner > :first-child {
-  margin: 0 0 var(--space-6);
-  color: var(--color-on-photo-accent);
-}
-
 /* Bigger than the other sections' kickers: it names what the band is about. */
 .takeawaysKicker {
   margin-block-end: var(--space-2);
@@ -528,12 +548,14 @@
 }
 
 /* Well clear of the cards (the button adds its own margin on top of this). */
+/* Further below the cards on wide screens. */
 .takeawaysAction {
-  margin-block-start: var(--space-8);
+  margin-block-start: var(--space-12);
 }
 
-/* The tools: soft see-through cards with a rose rim (like the note on the
-   closing page), the theme word on top. 3 + 2 on wide screens, centred. */
+/* The tools: solid cards a little lighter than the band, so they stand out
+   from it, with a faint rose rim, the theme word in rose and the text in
+   bright cream. 3 + 2 on wide screens, centred. */
 .tools {
   display: flex;
   flex-wrap: wrap;
@@ -550,11 +572,10 @@
   align-content: start;
   gap: var(--space-2);
   padding: var(--space-6);
-  border: 1px solid color-mix(in srgb, var(--color-on-photo-accent) 35%, transparent);
+  border: 1px solid color-mix(in srgb, var(--color-on-photo-accent) 22%, transparent);
   border-radius: 18px;
-  background:
-    radial-gradient(ellipse 90% 70% at 50% 0%, color-mix(in srgb, var(--color-accent) 22%, transparent), transparent 75%),
-    color-mix(in srgb, var(--color-on-photo) 5%, transparent);
+  background: color-mix(in srgb, var(--color-band) 88%, var(--color-on-photo));
+  box-shadow: 0 22px 40px -28px color-mix(in srgb, black 70%, transparent);
   text-align: center;
 }
 
@@ -567,7 +588,7 @@
 .tools p {
   font-size: 1.05rem;
   line-height: 1.6;
-  color: var(--color-on-band);
+  color: var(--color-on-photo);
 }
 
 @media (max-width: 45rem) {
@@ -627,29 +648,50 @@
 
 /* ---------- who's guiding ---------- */
 
+/* The photo on the right (first in RTL), from the top; the text gets the
+   wider column. */
 .guide {
   display: grid;
-  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1fr);
-  gap: clamp(var(--space-8), 6vw, 5.5rem);
-  align-items: center;
+  grid-template-columns: minmax(0, 0.6fr) minmax(0, 1fr);
+  column-gap: clamp(var(--space-8), 5vw, 4.5rem);
+  align-items: start;
+  max-inline-size: 68rem;
+  margin-inline: auto;
+}
+
+/* The text's parts sit straight in the grid, so the photo can start level
+   with the title, under the kicker. */
+.guideBody {
+  display: contents;
+}
+
+.guide .kicker {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.guide .sectionTitle {
+  grid-column: 2;
+  grid-row: 2;
 }
 
 .guideImage {
+  grid-column: 1;
+  grid-row: 2 / span 2;
+  margin-block-start: 13px; /* level with the top of the title letters */
   inline-size: 100%;
   block-size: auto;
-  aspect-ratio: 4 / 5;
-  object-fit: cover;
-  object-position: 40% 30%;
   border-radius: var(--radius-sm);
 }
 
 .guideText {
+  grid-column: 2;
+  grid-row: 3;
   display: grid;
   gap: var(--space-4);
-  max-inline-size: 52ch;
   margin-block-start: var(--space-6);
-  font-size: 1.08rem;
-  line-height: 1.75;
+  font-size: 1.1rem;
+  line-height: 1.8;
   color: var(--color-text-muted);
 }
 
@@ -835,8 +877,18 @@
     grid-template-columns: minmax(0, 1fr);
   }
 
+  /* One column: the photo first, then the kicker, title and text. */
+  .guide .kicker,
+  .guide .sectionTitle,
+  .guideImage,
+  .guideText {
+    grid-column: 1;
+    grid-row: auto;
+  }
+
   .guideImage {
     max-inline-size: 20rem;
+    margin-block-end: var(--space-8);
     justify-self: center; /* centred in its grid cell once the column is wider than the photo */
   }
 }

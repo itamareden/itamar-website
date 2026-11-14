@@ -12,7 +12,7 @@ export const en: ChallengeContent = {
     eyebrow: "Free 5-day challenge",
     heading: { title: "Five days", emphasis: "back to yourself." },
     text: "For anyone who wants to start a practice, or come back to one. A short, gentle daily practice that brings you back to this moment, and to yourself.",
-    imageAlt: "Itamar meditating on a rock beside a forest stream",
+    imageAlt: "Itamar meditating on a fallen tree over a forest stream, hands on his heart",
     facts: [
       { value: "5", label: "days" },
       { value: "15", label: "minutes a day, roughly" },
@@ -33,7 +33,7 @@ export const en: ChallengeContent = {
     meta: "Free · in a WhatsApp group · I send each day's link in the morning",
     button: "Join the WhatsApp group",
     steps: [
-      { title: "Join the group", text: "Tap the button and join the WhatsApp group, which supports you all the way through." },
+      { title: "Join the group", text: "Tap the button and join the WhatsApp group, which supports you throughout the challenge." },
       { title: "Get ready", text: "Before day 1, two short videos: getting to know each other, and tips for sitting comfortably in meditation." },
       { title: "Get the day's link", text: "Each morning I post a link to that day's practice in the group." },
       { title: "Practise", text: "A short video, a guided meditation, and small tips to carry into the rest of your day." },
@@ -67,18 +67,17 @@ export const en: ChallengeContent = {
     text: "If you found yourself in one of these lines, **these five days were made for you.**",
   },
   note: {
-    opening: "Look, friends, just between us: in the end, meditation is a matter of momentum.",
+    heading: { title: "In the end, meditation is", emphasis: "a matter of momentum." },
     text: [
-      "Most of you have probably heard quite a bit about meditation, and maybe even tried to practise a few times. But something still didn't click. It hasn't become part of your life yet.",
-      "And that's quite natural. The beginning is the hard part.",
-      "You need to create some positive movement, start practising every day, and cross a certain threshold, after which practice starts to feel more natural. And yes, **even fun!**",
+      "Look, friends, just between us, most of you have probably heard quite a bit about meditation, and maybe even tried to practise a few times. But something still didn't click. It hasn't become part of your life yet. And that's quite natural. The beginning is the hard part.",
+      "As with many things in life, with meditation too you need to create some positive movement, start practising every day, and cross a certain threshold, after which practice starts to feel more natural. And yes, **even fun!**",
       "That's really why I'm running this challenge. To help you start creating that movement, so that meditation doesn't stay something you know you should do, but **becomes something you really want to do.**",
     ],
     closing:
-      "A daily meditation practice may be the greatest gift you can give yourself. And I say this from experience: **it's really worth it!**",
+      "A daily meditation practice may be the greatest gift you can give yourself. And I say this from experience: it's truly worth it!",
   },
   takeaways: {
-    kicker: "What you'll take with you",
+    kicker: "What you'll take from the challenge",
     heading: { title: "Tools", emphasis: "for everyday life" },
     text: "Simple practices you can come back to anywhere, long after the five days are over.",
     items: [
@@ -94,13 +93,15 @@ export const en: ChallengeContent = {
     kicker: "Who's guiding",
     heading: { title: "Nice to", emphasis: "meet you" },
     text: [
-      "You know that voice in your head that keeps replaying every word you said around other people? Mine hardly ever went quiet. For years it came with me everywhere, especially to the moments when I had to speak in front of others, or simply be myself.",
-      "Hi, I'm Itamar. In 2018, after an anxiety attack that shook me, I sat down to meditate and decided to do it every day. I wasn't looking for enlightenment. I just wanted to feel safe inside myself again.",
-      "Since then, hardly a day has gone by without practice. Slowly, something opened: the anxiety softened, the voice in my head grew quieter, and in its place I found an ease and a joy I didn't know were there. There are moments in practice when something simply lets go, the heart opens, and a small smile sneaks in for no reason at all. Those moments are why I come back every day, and it feels like coming home.",
-      "That change took me far, and today **I guide breathwork sessions and accompany people and groups on the journey inward.**",
-      "I created this challenge to give you what I wish someone had given me back then: a simple, gentle way to begin, with no pressure and no \"doing it right\". I'd love to guide you.",
+      "Hi, I'm Itamar. I guide meditation, breathwork and movement, and I accompany people on a journey of empowerment and connection with themselves.",
+      "My first encounter with meditation was in 2013, when my neck locked up badly. In the first days every movement hurt, and a few months went by before it fully let go. It was as if my body was saying out loud what I didn't want to hear: that I was holding a lot of tension inside.",
+      "I didn't really understand what meditation was or what I was supposed to do, but I knew I needed a change, so I was willing to try. Honestly, it didn't last long. I practised a few times, but something didn't click, and it became something I did only rarely.",
+      "A few years later, in 2018, I had an anxiety attack that shook me. It came out of nowhere, it was very frightening, and all I wanted was for it never to come back. And just like in 2013, life decided a change was needed, only this time it was far more fundamental.",
+      "On the advice of a very dear woman who was guiding me at the time, I started practising every day. What began as 10 minutes a day became a practice that is still with me today, one that has given me so much and changed the way I see myself and the world. Today there is more quiet in my experience. Challenging thoughts still come, but they have less of a hold on me, and I know how to come back to presence.",
+      "It's funny to say it now, but that anxiety attack was one of the best things that ever happened to me. What was then the most frightening thing I had ever been through became something I'm deeply grateful for.",
+      "Back then I didn't understand much about meditation. I discovered the \"how\" and the \"why\" by trying things out, and I would have loved someone to guide me at the start. That's where this challenge comes from: to give you a simple, pleasant start, with guidance and a little company along the way. An invitation to begin right now, out of curiosity. It's so much more fun that way.",
     ],
-    imageAlt: "Itamar in the forest, looking up",
+    imageAlt: "Itamar smiling",
   },
   misconceptions: {
     kicker: "Let's clear things up",

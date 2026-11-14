@@ -91,7 +91,7 @@ export type ChallengeContent = {
   isThisYou: { heading: Heading; items: string[]; text: string };
   // A personal note from Itamar, in his own voice.
   note: {
-    opening: string; // the first line, set larger
+    heading: Heading; // the title; the emphasis goes on its own line, in the accent colour
     text: string[]; // one entry per paragraph
     closing: string; // the last line, set large like the opening
   };

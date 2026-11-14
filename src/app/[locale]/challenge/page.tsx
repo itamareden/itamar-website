@@ -6,7 +6,6 @@ import { getDictionary } from "@/dictionaries";
 import type { Locale } from "@/i18n/config";
 import { getLocale } from "@/i18n/get-locale";
 import { Emphasis } from "@/components/Emphasis/Emphasis";
-import { Flourish } from "./_components/Flourish";
 import { Heading } from "./_components/Heading";
 import { RingList } from "./_components/RingList";
 import { SignupForm } from "./_components/SignupForm";
@@ -87,7 +86,7 @@ export default async function ChallengePage() {
       <section data-full-bleed data-hero>
         <div className={styles.photo}>
           <Image
-            src="/images/challenge/hero.jpg"
+            src="/images/challenge/hero-river.jpg"
             alt={c.hero.imageAlt}
             fill
             sizes="100vw"
@@ -154,8 +153,9 @@ export default async function ChallengePage() {
       </section>
 
       <section className={styles.note}>
-        <Flourish />
-        <p className={styles.noteOpening}>{c.note.opening}</p>
+        <h2 className={styles.noteOpening}>
+          <Heading heading={c.note.heading} />
+        </h2>
         {c.note.text.map((paragraph) => (
           <p key={paragraph}>
             <Emphasis text={paragraph} />
@@ -168,7 +168,6 @@ export default async function ChallengePage() {
 
       <section className={styles.takeaways} data-full-bleed>
         <div className={styles.takeawaysInner}>
-          <Flourish />
           <p className={styles.takeawaysKicker}>{c.takeaways.kicker}</p>
           <h2 className={styles.sectionTitle}>
             <Heading heading={c.takeaways.heading} />
@@ -186,7 +185,7 @@ export default async function ChallengePage() {
         </div>
       </section>
 
-      <section className={styles.section}>
+      <section className={`${styles.section} ${styles.how}`}>
         <p className={styles.kicker}>{c.how.kicker}</p>
         <h2 className={styles.sectionTitle}>
           <Heading heading={c.how.heading} />
@@ -201,16 +200,17 @@ export default async function ChallengePage() {
         </ol>
       </section>
 
+      {/* Who's guiding: the photo on one side, from the top, the story beside it. */}
       <section className={`${styles.section} ${styles.guide}`}>
         <Image
-          src="/images/challenge/guide.jpg"
+          src="/images/about/hello.jpg"
           alt={c.guide.imageAlt}
           width={1100}
-          height={1706}
-          sizes="(max-width: 45rem) 90vw, 40vw"
+          height={1622}
+          sizes="(max-width: 45rem) 90vw, 30vw"
           className={styles.guideImage}
         />
-        <div>
+        <div className={styles.guideBody}>
           <p className={styles.kicker}>{c.guide.kicker}</p>
           <h2 className={styles.sectionTitle}>
             <Heading heading={c.guide.heading} />

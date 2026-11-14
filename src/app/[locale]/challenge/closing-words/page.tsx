@@ -67,7 +67,7 @@ export default async function ClosingPage() {
 
       <section className={`${styles.block} ${styles.social}`}>
         <h2 className={styles.blockTitle}>{c.finale.socialHeading}</h2>
-        <SocialLinks />
+        <SocialLinks variant="bare" />
       </section>
     </article>
   );
