@@ -101,7 +101,9 @@ export default async function ChallengePage() {
             src="/images/challenge/hero.jpg"
             alt={c.hero.imageAlt}
             fill
-            sizes="100vw"
+            // On a phone the wide photo fills a tall area, so it shows about
+            // three screen-widths wide; ask for an image that large.
+            sizes="(max-width: 45rem) 330vw, 100vw"
             quality={90}
             loading="eager"
             fetchPriority="high"

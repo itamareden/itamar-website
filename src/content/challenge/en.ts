@@ -9,9 +9,9 @@ export const en: ChallengeContent = {
     whatsappUrl: "",
   },
   hero: {
-    eyebrow: "Free 5-day challenge",
-    heading: { title: "Five days", emphasis: "back to yourself." },
-    text: "For anyone who wants to start a practice, or come back to one. A short, gentle daily practice that brings you back to this moment, and to yourself.",
+    eyebrow: "Free meditation challenge · 5 days",
+    heading: { title: "Five days.", emphasis: "A moment for yourself." },
+    text: "An invitation to create a new movement in a direction that does you good.\nA short, gentle daily practice that brings you back to this moment, and to yourself.",
     imageAlt: "Itamar meditating on a rock by a forest stream",
     facts: [
       { value: "5", label: "days" },
@@ -30,7 +30,7 @@ export const en: ChallengeContent = {
     countdown: (days) =>
       days === 0 ? "We start today!" : days === 1 ? "We start tomorrow!" : `${days} days to go`,
     soonHeading: { title: "The next group", emphasis: "opens soon" },
-    meta: "Free · in a WhatsApp group",
+    meta: "Free · a new guided meditation every morning",
     button: "Join the WhatsApp group",
     steps: [
       { title: "Join the group", text: "Tap the button and join the WhatsApp group, which supports you throughout the challenge." },
@@ -141,8 +141,7 @@ export const en: ChallengeContent = {
       { question: "What if I miss a day?", answer: "That's fine, it can happen. Simply pick up where you left off, when you're able to. Of course it's worth trying to keep up a daily rhythm, because the idea is to build momentum and bring meditation into our lives as a habit." },
       { question: "Do I need to prepare anything?", answer: "Just find a quiet corner where you can enjoy a few minutes without interruptions. It's worth having a cushion, mattress or chair that's comfortable to sit on. Headphones can also upgrade the experience, but they're definitely not a must." },
       { question: "Is the challenge also for people who are experienced in meditation?", answer: "Of course! Even if you already have some meditation experience, the challenge can be a chance to discover new approaches, go deeper into the experience or get a small push to get back into it." },
-      { question: "What if I find it hard to stop thinking?", answer: "Great, because you really don't need to! In meditation we don't try to stop our thoughts, we learn to observe them without getting swept away by them. Thoughts are part of meditation, and I go into this further in the explanation videos during the challenge." },
-      { question: "What if I find it hard to sit still?", answer: "Not every meditation has to be done sitting! In the challenge we'll also explore meditation in movement, where we use the body, music and free movement to connect with ourselves. As for the seated meditations, you can start small, change position when you need to and gradually find the way that's comfortable for you." },
+      { question: "Can I take part in the challenge without sharing in the group?", answer: "Absolutely. You can simply receive the content and practise in your own time, without sharing or replying. Each day there will be a short window for questions and sharing, and the rest of the time the group will be closed to messages. You can also mute notifications and check in whenever it suits you." },
       { question: "What if unpleasant emotions come up during meditation?", answer: "That's natural and can happen. Meditation sometimes brings us face to face with emotions and sensations that aren't always pleasant to meet. If that happens, you can open your eyes, breathe, take a break and continue when you feel ready. And if you'd like to share or ask for advice, you can always write to me." },
       { question: "Is meditation suitable during a time of anxiety or crisis?", answer: "Meditation can help us deal with stress and anxiety and develop more stability and calm, but it isn't a replacement for professional care. If you're going through a mentally challenging time, it's worth consulting a professional and checking which path is right for you at the moment." },
     ],

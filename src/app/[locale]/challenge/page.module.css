@@ -131,10 +131,10 @@
     linear-gradient(
       to left,
       color-mix(in srgb, var(--color-band) 82%, transparent) 0%,
-      color-mix(in srgb, var(--color-band) 55%, transparent) 38%,
-      color-mix(in srgb, var(--color-band) 5%, transparent) 70%
+      color-mix(in srgb, var(--color-band) 50%, transparent) 35%,
+      transparent 60%
     ),
-    linear-gradient(to top, color-mix(in srgb, var(--color-band) 60%, transparent), transparent 45%);
+    linear-gradient(to top, color-mix(in srgb, var(--color-band) 35%, transparent), transparent 35%);
 }
 
 .heroText {
@@ -147,9 +147,10 @@
   padding: 0 var(--gutter) clamp(6rem, 9vw, 7rem);
 }
 
+/* The offer in one line, so a little larger than a usual kicker. */
 .eyebrow {
-  margin-block-end: var(--space-4);
-  font-size: 0.75rem;
+  margin-block-end: var(--space-2);
+  font-size: 1rem;
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -173,7 +174,8 @@
 
 .heroLead {
   margin-block-start: var(--space-4);
-  max-inline-size: 36ch;
+  max-inline-size: 44ch;
+  white-space: pre-line; /* each sentence on its own line */
   font-weight: 500;
   font-size: clamp(1rem, 1.4vw, 1.15rem);
   line-height: 1.6;
@@ -198,7 +200,7 @@
 }
 
 .heroWhen {
-  font-size: var(--text-sm);
+  font-size: 1rem;
   line-height: 1.45;
   color: var(--color-text-muted);
 }
@@ -240,7 +242,7 @@
     gap: var(--space-8);
     inline-size: fit-content;
     max-inline-size: 100%;
-    margin-block-start: calc(var(--space-8) + 20px);
+    margin-block-start: calc(var(--space-8) + 36px);
     padding: 1.1rem;
     padding-inline-start: 1.6rem;
     border-radius: 18px;
@@ -252,13 +254,44 @@
     margin-block-start: 0;
   }
 
-  .heroGroup .card {
+  /* Three classes, so it wins over .card.cardInline's display further down. */
+  .heroGroup .cardRow .card {
     display: none;
   }
 
-  /* No card overlapping the photo, so the facts start on the cream below it. */
+  /* No card overlapping the photo: the facts sit on a narrow dark strip right
+     under it, like a base for the photo. */
   .heroGroup .cardRow {
-    margin-block-start: var(--space-8);
+    max-inline-size: none;
+    margin-block-start: 0;
+    padding: 1.75rem var(--gutter);
+    background: var(--color-band);
+  }
+
+  .heroGroup .facts,
+  :global([dir="ltr"]) .heroGroup .facts {
+    max-inline-size: 64rem;
+    margin: 0 auto;
+    padding: 0;
+    border-radius: 0;
+    background: none;
+  }
+
+  .heroGroup .facts li + li {
+    border-color: color-mix(in srgb, var(--color-on-band) 20%, transparent);
+  }
+
+  .heroGroup .factValue {
+    color: var(--color-on-photo-accent);
+  }
+
+  .heroGroup .factLabel {
+    color: var(--color-on-band);
+  }
+
+  /* The pink band follows the strip straight on, with no cream gap. */
+  .heroGroup + .isThisYouBand {
+    margin-block-start: 0;
   }
 }
 
@@ -309,7 +342,7 @@
 
 .cardMeta {
   margin-block-start: var(--space-2);
-  font-size: var(--text-sm);
+  font-size: 1rem;
   color: var(--color-text-muted);
 }
 
@@ -959,7 +992,7 @@
   /* Short enough that the whole card, button included, fits on the first
      screen (the card is about 10.5rem tall here, a third of it on the photo). */
   .photo {
-    min-block-size: max(28rem, calc(100svh - 8rem + 35px));
+    min-block-size: max(28rem, calc(100svh - 8rem + 65px));
   }
 
   /* The card sits deeper on the photo, which ends just above the button. */
@@ -968,13 +1001,49 @@
   }
 
   .heroText {
-    padding-block-end: calc(6rem + 35px);
+    padding-block-end: calc(6rem + 67px); /* a little air above the card */
+  }
+
+  /* Phones: everything in the hero a size smaller, so it breathes. */
+  .eyebrow {
+    font-size: 0.875rem;
+  }
+
+  .heroTitle {
+    font-size: 2.25rem;
+  }
+
+  /* Phones: the two sentences run on as one, in three even lines, so the
+     text stays clear of Itamar. */
+  .heroLead {
+    max-inline-size: 34ch;
+    font-size: 0.95rem;
+    white-space: normal;
+    text-wrap: balance;
+  }
+
+  .card .cardTitle {
+    font-size: 1.3rem;
+  }
+
+  .card .cardMeta {
+    font-size: 0.9rem;
+  }
+
+  /* A compact card with a full-width button. */
+  .card.cardInline {
+    padding: var(--space-4);
+  }
+
+  .card.cardInline .button {
+    inline-size: 100%;
+    margin-block-start: var(--space-3);
   }
 
   /* Phones: the card stacks again, the button under the details. */
   .card.cardInline {
     display: block;
-    padding-inline-end: clamp(var(--space-6), 3vw, 2.25rem);
+    padding-inline-end: var(--space-4);
   }
 
   .cardInline .button {
