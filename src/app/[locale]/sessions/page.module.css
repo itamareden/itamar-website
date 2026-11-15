@@ -642,6 +642,60 @@
   .format {
     grid-template-columns: minmax(0, 1fr);
   }
+
+  /* Fill each line before wrapping ("pretty" pushed a word down early). */
+  .beatLead {
+    text-wrap: wrap;
+  }
+
+  .step h3 {
+    font-size: 1.4375rem; /* 23px */
+  }
+
+  .faq summary {
+    font-size: 1.375rem; /* 22px */
+  }
+}
+
+/* Desktop sizes tuned for Rubik; phones keep the sizes above. */
+@media (width > 44rem) {
+  .eyebrow {
+    font-size: 1.05rem;
+  }
+
+  /* The opening line (38px) and the other leads (24px). */
+  .beat:first-child .beatLead {
+    font-size: clamp(1.8rem, 3.35vw, 2.375rem);
+  }
+
+  .beatLead {
+    font-size: clamp(1.25rem, 2vw, 1.5rem);
+  }
+
+  /* Matches the homepage section titles. */
+  .sectionTitle {
+    font-size: clamp(1.95rem, 4.1vw, 3rem);
+  }
+
+  .gain h3 {
+    font-size: clamp(1.25rem, 1.75vw, 1.425rem);
+  }
+
+  .length {
+    font-size: clamp(2.2rem, 4.1vw, 3rem);
+  }
+
+  .formatBody h3 {
+    font-size: clamp(1.55rem, 2.5vw, 1.95rem);
+  }
+
+  .step h3 {
+    font-size: clamp(1.3rem, 2vw, 1.5625rem); /* 25px */
+  }
+
+  .faq summary {
+    font-size: 1.275rem;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
