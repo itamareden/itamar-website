@@ -68,7 +68,6 @@ export type ChallengeContent = {
     startsSoon: string; // shown while startDate is null (or has passed)
     // The closing band in group mode: a label, then the date as the title
     // with a countdown line, or a "coming soon" title while there's no date.
-    nextKicker: string;
     startsHeading: (formattedDate: string) => Heading;
     countdown: (days: number) => string; // 0 = today, 1 = tomorrow
     soonHeading: Heading;

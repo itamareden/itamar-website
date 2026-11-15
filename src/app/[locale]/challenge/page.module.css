@@ -969,7 +969,7 @@
 
 .closing {
   margin-block-start: 0; /* straight on from the sand questions band */
-  padding-block: clamp(3.5rem, 8vw, 7rem);
+  padding-block: 80px; /* the same room above the title and below the button */
   background: var(--color-band);
   color: var(--color-on-band);
   text-align: center;
@@ -984,6 +984,11 @@
   margin: var(--space-4) auto 0;
   max-inline-size: 40ch;
   opacity: 0.85;
+}
+
+/* The button a little further from the line above it. */
+.closing .button {
+  margin-block-start: calc(var(--space-6) + 20px);
 }
 
 /* ---------- phones ---------- */

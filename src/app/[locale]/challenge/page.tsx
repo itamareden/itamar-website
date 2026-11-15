@@ -281,9 +281,6 @@ export default async function ChallengePage() {
 
       <section className={styles.closing} data-full-bleed>
         <div className={styles.inner}>
-          {mode === "group" && (
-            <p className={styles.kicker}>{c.group.nextKicker}</p>
-          )}
           <h2 className={styles.sectionTitle}>
             <Heading
               heading={

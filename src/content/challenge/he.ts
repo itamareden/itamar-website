@@ -25,11 +25,10 @@ export const he: ChallengeContent = {
   group: {
     starts: "אתגר הקבוצה מתחיל",
     startsSoon: "אתגר הקבוצה הבא מתחיל בקרוב",
-    nextKicker: "הקבוצה הבאה",
     startsHeading: (date) => ({ title: "מתחילים", emphasis: `ב${date}` }),
     countdown: (days) =>
       days === 0 ? "מתחילים היום!" : days === 1 ? "מתחילים מחר!" : days === 2 ? "עוד יומיים" : `עוד ${days} ימים`,
-    soonHeading: { title: "הקבוצה הבאה", emphasis: "תיפתח בקרוב" },
+    soonHeading: { title: "הקבוצה הבאה", emphasis: "מתחילה בקרוב" },
     meta: "חינם · מדיטציה מודרכת חדשה בכל בוקר",
     button: "הצטרפות לקבוצת הווטסאפ",
     steps: [

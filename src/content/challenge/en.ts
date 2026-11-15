@@ -25,11 +25,10 @@ export const en: ChallengeContent = {
   group: {
     starts: "The group challenge starts",
     startsSoon: "The next group challenge starts soon",
-    nextKicker: "The next group",
     startsHeading: (date) => ({ title: "We start on", emphasis: date }),
     countdown: (days) =>
       days === 0 ? "We start today!" : days === 1 ? "We start tomorrow!" : `${days} days to go`,
-    soonHeading: { title: "The next group", emphasis: "opens soon" },
+    soonHeading: { title: "The next group", emphasis: "starts soon" },
     meta: "Free · a new guided meditation every morning",
     button: "Join the WhatsApp group",
     steps: [
