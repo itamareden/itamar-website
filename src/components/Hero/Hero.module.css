@@ -53,6 +53,11 @@
   text-shadow: 0 2px 24px rgb(20 15 10 / 0.45); /* separates the letters from the busy photo */
 }
 
+/* Rubik at 400 reads thin this large over the photo. */
+.title:lang(he) {
+  font-weight: 500;
+}
+
 .title em {
   display: block;
   margin-block-start: 0.1em;
@@ -181,5 +186,12 @@
   .lines {
     font-size: clamp(0.875rem, 2.6vw, 1.45rem); /* 14px on phones, ~23px on an upright iPad */
     max-inline-size: 34ch;
+  }
+}
+
+/* Hebrew title on phones: Rubik carries a little more size there. */
+@media (max-width: 40rem) {
+  .title:lang(he) {
+    font-size: 3rem; /* 48px */
   }
 }

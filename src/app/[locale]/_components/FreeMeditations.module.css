@@ -20,6 +20,10 @@
   letter-spacing: -0.01em;
 }
 
+.title:lang(he) {
+  font-size: clamp(1.85rem, 4.1vw, 2.8rem);
+}
+
 .intro {
   max-inline-size: 46ch;
   font-size: 1.125rem;
@@ -72,15 +76,18 @@
   );
 }
 
-.titleRow {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  gap: var(--space-1, 0.25rem) var(--space-3);
-}
-
+/* Top corner of the photo, on the start side (the right in Hebrew). */
 .label {
-  font-size: 1rem;
+  position: absolute;
+  inset-block-start: clamp(var(--space-3), 2vw, var(--space-4));
+  inset-inline-start: clamp(var(--space-3), 2vw, var(--space-4));
+  padding: 0.3em 0.9em;
+  border-radius: var(--radius-pill);
+  /* The light edge keeps the pill visible on dark photos too. */
+  border: 1px solid color-mix(in srgb, var(--color-on-photo) 30%, transparent);
+  background: color-mix(in srgb, var(--color-band) 60%, transparent);
+  backdrop-filter: blur(6px);
+  font-size: 0.95rem;
   font-weight: 800;
   color: var(--color-on-photo-accent);
 }

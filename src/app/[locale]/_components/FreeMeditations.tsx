@@ -24,12 +24,10 @@ export function FreeMeditations({ content }: { content: MeditationsContent }) {
                 style={{ objectPosition: m.imagePosition }}
               />
             </div>
+            {/* The label sits in the photo's top corner. */}
+            <p className={styles.label}>{m.label}</p>
             <div className={styles.body}>
-              {/* The name with its label beside it, to keep the card short. */}
-              <div className={styles.titleRow}>
-                <h3 className={styles.cardTitle}>{m.title}</h3>
-                <p className={styles.label}>{m.label}</p>
-              </div>
+              <h3 className={styles.cardTitle}>{m.title}</h3>
               <p className={styles.summary}>{m.summary}</p>
               <a href={m.url} target="_blank" rel="noopener noreferrer" className={styles.listen}>
                 {content.listen}

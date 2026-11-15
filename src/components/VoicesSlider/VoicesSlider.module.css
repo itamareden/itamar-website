@@ -87,6 +87,11 @@
   line-height: 1.35;
 }
 
+/* Hebrew quotes in a serif, set apart from the Rubik headings. */
+.headline:lang(he) {
+  font-family: var(--font-noto-serif-hebrew), var(--font-playfair), Georgia, serif;
+}
+
 /* A large soft quote mark above the line, turned to match the language. */
 .headline::before {
   content: "”";

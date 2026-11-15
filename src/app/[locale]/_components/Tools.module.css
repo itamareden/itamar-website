@@ -22,6 +22,10 @@
   letter-spacing: -0.01em;
 }
 
+.title:lang(he) {
+  font-size: clamp(1.85rem, 4.1vw, 2.8rem);
+}
+
 .intro {
   max-inline-size: 46ch;
   font-size: 1.125rem;
@@ -88,6 +92,11 @@
   line-height: 1.15;
 }
 
+/* Rubik runs larger than the English serif. */
+.cardTitle:lang(he) {
+  font-size: clamp(1.125rem, 1.6vw, 1.2875rem);
+}
+
 .cardText {
   font-size: 0.95rem;
   line-height: 1.6;
@@ -151,6 +160,10 @@
 
   .cardTitle {
     font-size: 1.4rem;
+  }
+
+  .cardTitle:lang(he) {
+    font-size: 1.34375rem; /* 21.5px */
   }
 
   .withDrawing {

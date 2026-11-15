@@ -37,7 +37,7 @@ const he: MeditationsContent = {
     {
       label: "באנגלית",
       title: "אני אוהב את עצמי",
-      summary: "לפתוח את הלב אל עצמך ולהרגיש בבית בתוך עצמך.",
+      summary: "לפנות מקום לאהבה ולקבלה עצמית.",
       url: "https://insighttimer.com/itamar_eden/video-guided-meditations/i-love-myself",
       image: "/images/home/meditations/rose.jpg", // Tirza van Dijk, https://unsplash.com/photos/cNGUw-CEsp0
       imagePosition: "50% 22%", // an upright photo: keep the flower in the wide crop
@@ -60,7 +60,7 @@ const en: MeditationsContent = {
     {
       label: "Guided meditation",
       title: "I Love Myself",
-      summary: "Open your heart to yourself and feel at home within.",
+      summary: "Make room for love and self-acceptance.",
       url: he.meditations[1].url,
       image: he.meditations[1].image,
       imagePosition: he.meditations[1].imagePosition,

@@ -1,4 +1,11 @@
-import { Assistant, Frank_Ruhl_Libre, Manrope, Playfair_Display } from "next/font/google";
+import {
+  Assistant,
+  Frank_Ruhl_Libre,
+  Manrope,
+  Noto_Serif_Hebrew,
+  Playfair_Display,
+  Rubik,
+} from "next/font/google";
 
 /*
  * Site fonts, self-hosted by next/font: the files are downloaded at build
@@ -30,6 +37,19 @@ export const frankRuhl = Frank_Ruhl_Libre({
   variable: "--font-frank-ruhl",
 });
 
+// Hebrew headings. Latin subset too, so English words inside a Hebrew
+// heading match it.
+export const rubik = Rubik({
+  subsets: ["hebrew", "latin"],
+  variable: "--font-rubik",
+});
+
+// Hebrew review quotes: a serif voice for the words of others.
+export const notoSerifHebrew = Noto_Serif_Hebrew({
+  subsets: ["hebrew", "latin"],
+  variable: "--font-noto-serif-hebrew",
+});
+
 // Hebrew body text.
 export const assistant = Assistant({
   subsets: ["hebrew", "latin"],
@@ -37,6 +57,6 @@ export const assistant = Assistant({
 });
 
 // All font variables, ready to put on <html> as one className.
-export const fontVariables = [playfair, manrope, frankRuhl, assistant]
+export const fontVariables = [playfair, manrope, frankRuhl, rubik, notoSerifHebrew, assistant]
   .map((font) => font.variable)
   .join(" ");

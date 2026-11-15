@@ -110,6 +110,6 @@
 :root:lang(he) {
   --font-body: var(--font-assistant), var(--font-manrope), system-ui,
     sans-serif;
-  --font-heading: var(--font-frank-ruhl), var(--font-playfair), Georgia,
-    serif;
+  --font-heading: var(--font-rubik), var(--font-assistant), system-ui,
+    sans-serif;
 }

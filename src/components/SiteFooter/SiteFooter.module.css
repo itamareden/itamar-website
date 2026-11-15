@@ -25,6 +25,16 @@
   font-size: clamp(1.45rem, 2.6vw, 1.8rem);
 }
 
+.listTitle:lang(he) {
+  font-size: clamp(1.25rem, 2.2vw, 1.5rem);
+}
+
+@media (max-width: 44rem) {
+  .listTitle:lang(he) {
+    font-size: 1.375rem;
+  }
+}
+
 .listText {
   margin-block-start: var(--space-1);
   color: var(--color-text-muted);

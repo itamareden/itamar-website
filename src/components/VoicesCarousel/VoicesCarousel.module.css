@@ -16,6 +16,10 @@
   text-align: center;
 }
 
+.title:lang(he) {
+  font-size: clamp(1.95rem, 4.1vw, 3rem);
+}
+
 /* In a right-to-left page the first column is on the right. */
 .carousel {
   display: grid;
@@ -78,6 +82,11 @@
   font-size: clamp(1.4rem, 2.6vw, 1.75rem);
   line-height: 1.35;
   text-wrap: pretty;
+}
+
+/* Hebrew quotes in a serif, set apart from the Rubik headings. */
+.headline:lang(he) {
+  font-family: var(--font-noto-serif-hebrew), var(--font-playfair), Georgia, serif;
 }
 
 /* A large soft quote mark above the line, turned to match the language. */
