@@ -590,6 +590,55 @@
   .tool:nth-child(even) .toolIcon {
     order: 0;
   }
+
+  /* Phone sizes tuned for Rubik. */
+  .title {
+    font-size: 2.725rem; /* 43.6px */
+  }
+
+  .title em {
+    font-size: 2.975rem; /* 47.6px */
+  }
+
+  .sectionTitle {
+    font-size: 2.375rem; /* 38px */
+  }
+
+  .dark .sectionTitle {
+    font-size: 2.1rem; /* 33.6px, the closing stays as it was */
+  }
+
+  .toolText h3 {
+    font-size: 1.625rem; /* 26px */
+  }
+}
+
+/* Desktop sizes tuned for Rubik; phones keep their own sizes above. */
+@media (width > 44rem) {
+  .title {
+    font-size: clamp(2.35rem, calc(5.4vw - 0.25rem), 5.1rem);
+  }
+
+  .title em {
+    font-size: clamp(2.6rem, 5.6vw, 5.35rem);
+  }
+
+  .intro p:first-child {
+    font-size: clamp(1.25rem, 2.08vw, 1.556rem); /* ~24.9px at full width */
+  }
+
+  .jump strong {
+    font-size: clamp(1.45rem, 2.3vw, 1.781rem); /* 28.5px at full width */
+    font-weight: 450;
+  }
+
+  .toolText h3 {
+    font-size: clamp(1.6rem, 2.8vw, 2rem);
+  }
+
+  .dark .sectionTitle {
+    font-size: clamp(2rem, 4.1vw, 2.95rem);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
