@@ -75,6 +75,12 @@
   font-family: var(--font-body);
 }
 
+/* Lines fill to the edge: on a short paragraph, balancing the lines left a
+   gap at the end of the first one. */
+.story p {
+  text-wrap: wrap;
+}
+
 .headline {
   font-family: var(--font-heading);
   font-size: clamp(1.4rem, 2.3vw, 1.65rem);
