@@ -10,6 +10,17 @@ const nextConfig: NextConfig = {
   // with no empty page in between. Temporary (307), so search engines keep
   // /courses for the list it will become with a second course; then
   // remove this and build the list at app/[locale]/courses/page.tsx.
+  // Ready-made photo sizes (scripts/build-images.mjs). Each file's address
+  // includes a hash of the photo, so a replaced photo gets a new address and
+  // browsers can keep every file for a year without asking again.
+  async headers() {
+    return [
+      {
+        source: "/_img/:path*",
+        headers: [{ key: "Cache-Control", value: "public, max-age=31536000, immutable" }],
+      },
+    ];
+  },
   async redirects() {
     return [
       {
