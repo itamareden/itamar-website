@@ -32,6 +32,11 @@ function pickLocale(request: NextRequest): Locale {
   const saved = request.cookies.get(localeCookie)?.value;
   if (saved && isLocale(saved)) return saved;
 
+  // Until the English pages are translated, everyone starts in Hebrew.
+  // Set to false to go back to following the browser's language.
+  const hebrewFirst = true;
+  if (hebrewFirst) return "he";
+
   return fromAcceptLanguage(request.headers.get("accept-language")) ?? defaultLocale;
 }
 

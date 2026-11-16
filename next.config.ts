@@ -20,6 +20,10 @@ const nextConfig: NextConfig = {
     ];
   },
   images: {
+    // Photos are resized in advance (scripts/build-images.mjs) and served
+    // as ready-made files; this loader points <Image> at them.
+    loader: "custom",
+    loaderFile: "./src/lib/image-loader.ts",
     // 75 is Next's default; 90 is kept for large photos where softness shows
     // (the challenge hero). Next 16 only serves the qualities listed here.
     qualities: [75, 90],
