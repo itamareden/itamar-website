@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import { HeroImage } from "@/components/HeroImage/HeroImage";
 import { Emphasis } from "@/components/Emphasis/Emphasis";
 import { VoicesSlider } from "@/components/VoicesSlider/VoicesSlider";
 import { WhatsAppIcon } from "@/app/[locale]/challenge/_components/WhatsAppIcon";
@@ -42,7 +43,7 @@ export default async function SessionsPage() {
       {/* The opening: a session in progress fills the screen, the text on it.
           data-hero lets the header sit on top of it in light text. */}
       <section className={styles.hero} data-full-bleed data-hero>
-        <Image
+        <HeroImage
           src="/images/sessions/session-hero-v2.jpg"
           alt={s.hero.imageAlt}
           fill

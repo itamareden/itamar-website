@@ -35,6 +35,10 @@ const nextConfig: NextConfig = {
     // as ready-made files; this loader points <Image> at them.
     loader: "custom",
     loaderFile: "./src/lib/image-loader.ts",
+    // Next's default widths plus 2560, so a laptop needing ~2400px (e.g.
+    // 1920px at 125% zoom) gets 2560 instead of the much heavier 3840.
+    // Keep in sync with WIDTHS in scripts/build-images.mjs and the loader.
+    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 2560, 3840],
     // 75 is Next's default; 90 is kept for large photos where softness shows
     // (the challenge hero). Next 16 only serves the qualities listed here.
     qualities: [75, 90],

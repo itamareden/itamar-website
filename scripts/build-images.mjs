@@ -21,13 +21,30 @@ import path from "node:path";
 import sharp from "sharp";
 
 // The same widths Next.js uses for srcset (imageSizes + deviceSizes).
-export const WIDTHS = [32, 48, 64, 96, 128, 256, 384, 640, 750, 828, 1080, 1200, 1920, 2048, 3840];
+export const WIDTHS = [32, 48, 64, 96, 128, 256, 384, 640, 750, 828, 1080, 1200, 1920, 2048, 2560, 3840];
 const QUALITIES = [75, 90];
 
 const root = process.cwd();
 const srcDir = path.join(root, "public", "images");
 const outDir = path.join(root, "public", "_img");
 const manifestPath = path.join(root, "src", "lib", "image-manifest.json");
+// Shown while a photo loads (see HeroImage). Kept apart from the manifest,
+// which the browser downloads; this one is only read when pages are built.
+const placeholdersPath = path.join(root, "src", "lib", "image-placeholders.json");
+
+// A tiny version of the photo, blurred by HeroImage while the photo loads.
+async function makePlaceholder(input) {
+  const { data, info } = await sharp(input)
+    .rotate()
+    .resize({ width: 10 })
+    .webp({ quality: 60 })
+    .toBuffer({ resolveWithObject: true });
+  return {
+    src: `data:image/webp;base64,${data.toString("base64")}`,
+    width: info.width,
+    height: info.height,
+  };
+}
 
 function walk(dir) {
   return fs.readdirSync(dir, { withFileTypes: true }).flatMap((e) =>
@@ -56,6 +73,7 @@ async function makeSizes(input, dir) {
 
 const started = Date.now();
 const manifest = {};
+const placeholders = {};
 let made = 0;
 
 for (const file of walk(srcDir)) {
@@ -64,6 +82,7 @@ for (const file of walk(srcDir)) {
   const hash = createHash("sha1").update(input).digest("hex").slice(0, 10);
   const publicPath = "/" + path.relative(path.join(root, "public"), file).split(path.sep).join("/");
   manifest[publicPath] = hash;
+  placeholders[publicPath] = await makePlaceholder(input);
 
   const dir = path.join(outDir, hash);
   const expected = WIDTHS.length * QUALITIES.length;
@@ -83,6 +102,7 @@ if (fs.existsSync(outDir)) {
 }
 
 fs.writeFileSync(manifestPath, JSON.stringify(manifest, null, 2) + "\n");
+fs.writeFileSync(placeholdersPath, JSON.stringify(placeholders, null, 2) + "\n");
 console.log(
   `Images: ${Object.keys(manifest).length} photos, ${made} (re)made, ${((Date.now() - started) / 1000).toFixed(1)}s`,
 );

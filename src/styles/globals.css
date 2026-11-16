@@ -103,3 +103,19 @@ select {
 :lang(he) em {
   font-style: normal;
 }
+
+/* Hero photo (HeroImage): hidden over its blurred preview until it has
+   fully loaded, so it never appears in strips; then it fades in. A photo
+   already saved in the browser ("instant") shows at once. */
+[data-hero-img] {
+  opacity: 0;
+}
+
+[data-hero-img][data-shown] {
+  opacity: 1;
+  transition: opacity 0.4s ease;
+}
+
+[data-hero-img][data-shown="instant"] {
+  transition: none;
+}

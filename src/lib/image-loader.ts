@@ -8,7 +8,7 @@
 import manifest from "./image-manifest.json";
 
 // Must match WIDTHS in scripts/build-images.mjs.
-const WIDTHS = [32, 48, 64, 96, 128, 256, 384, 640, 750, 828, 1080, 1200, 1920, 2048, 3840];
+const WIDTHS = [32, 48, 64, 96, 128, 256, 384, 640, 750, 828, 1080, 1200, 1920, 2048, 2560, 3840];
 
 type LoaderProps = { src: string; width: number; quality?: number };
 

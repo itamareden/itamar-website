@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import { HeroImage } from "@/components/HeroImage/HeroImage";
 import Link from "next/link";
 import { Emphasis } from "@/components/Emphasis/Emphasis";
 import { ToolIcon } from "@/components/ToolIcon/ToolIcon";
@@ -30,7 +31,7 @@ export default async function AboutPage() {
       {/* The palo santo photo filling the first screen, with the greeting and
           one line on it, on the right as on the homepage. */}
       <section className={styles.top} data-full-bleed data-hero>
-        <Image
+        <HeroImage
           src="/images/about/palo-santo.jpg"
           alt={a.hello.imageAlt}
           fill

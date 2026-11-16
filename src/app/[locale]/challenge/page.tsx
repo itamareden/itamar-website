@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import { HeroImage } from "@/components/HeroImage/HeroImage";
 import Link from "next/link";
 import { connection } from "next/server";
 import { getChallenge } from "@/content/challenge";
@@ -97,7 +98,7 @@ export default async function ChallengePage() {
           the button sits on it, under the text, instead of the card. */}
       <section data-full-bleed data-hero className={mode === "group" ? styles.heroGroup : undefined}>
         <div className={styles.photo}>
-          <Image
+          <HeroImage
             src="/images/challenge/hero.jpg"
             alt={c.hero.imageAlt}
             fill

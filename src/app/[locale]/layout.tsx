@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { SiteFooter } from "@/components/SiteFooter/SiteFooter";
+import { heroImageScript } from "@/components/HeroImage/HeroImage";
 import { SiteHeader } from "@/components/SiteHeader/SiteHeader";
 import { getDictionary } from "@/dictionaries";
 import { getDirection, locales } from "@/i18n/config";
@@ -33,6 +34,14 @@ export default async function RootLayout({ children }: LayoutProps<"/[locale]">)
 
   return (
     <html lang={locale} dir={getDirection(locale)} className={fontVariables}>
+      <head>
+        {/* Shows each hero photo the moment it has fully loaded (HeroImage). */}
+        <script dangerouslySetInnerHTML={{ __html: heroImageScript }} />
+        {/* Without JavaScript, show hero photos normally. */}
+        <noscript>
+          <style>{"[data-hero-img]{opacity:1!important}"}</style>
+        </noscript>
+      </head>
       <body className={styles.body}>
         <SiteHeader />
         <main className={styles.main}>{children}</main>

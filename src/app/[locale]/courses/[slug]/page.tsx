@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import { HeroImage } from "@/components/HeroImage/HeroImage";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Emphasis } from "@/components/Emphasis/Emphasis";
@@ -80,7 +81,7 @@ export default async function CoursePage(props: PageProps<"/[locale]/courses/[sl
       {/* The opening: what the course gives, the enrol button and the trailer. */}
       {/* data-hero="light": the header lies on the pale photo in dark text. */}
       <section className={styles.hero} data-full-bleed data-hero="light">
-        <Image
+        <HeroImage
           src={course.settings.heroImage}
           alt=""
           fill

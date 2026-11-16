@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { HeroImage } from "@/components/HeroImage/HeroImage";
 import Link from "next/link";
 import styles from "./Hero.module.css";
 
@@ -23,7 +23,7 @@ export function Hero({ image, imageAlt, title, titleEmphasis, lines, cta }: Hero
   return (
     <section className={styles.hero} data-full-bleed data-hero>
       <div className={styles.media}>
-        <Image
+        <HeroImage
           src={image}
           alt={imageAlt}
           fill

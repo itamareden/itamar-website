@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import { HeroImage } from "@/components/HeroImage/HeroImage";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Emphasis } from "@/components/Emphasis/Emphasis";
@@ -23,7 +24,7 @@ export default async function MindfulnessPage() {
       {/* A full photo with the title, facts and price on the start side.
           data-hero lets the header sit on top of it in light text. */}
       <section className={styles.hero} data-full-bleed data-hero>
-        <Image
+        <HeroImage
           src="/images/challenge/hero-river.jpg"
           alt={m.hero.imageAlt}
           fill
