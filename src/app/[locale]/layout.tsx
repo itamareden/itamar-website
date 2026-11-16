@@ -14,6 +14,9 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title: dict.site.name,
     description: dict.site.description,
+    // QA period: the site is online for friends to test, but search engines
+    // are asked not to index it yet. Remove this when the texts are final.
+    robots: { index: false, follow: false },
   };
 }
 
