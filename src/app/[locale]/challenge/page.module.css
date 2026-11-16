@@ -1094,7 +1094,17 @@
   }
 
   .factValue {
-    font-size: 1.9rem;
+    font-size: 1.7125rem; /* 27.4px */
+  }
+
+  .sectionTitle,
+  .noteOpening {
+    font-size: 2.125rem; /* 34px */
+  }
+
+  /* As on the Sessions page. */
+  .faq summary {
+    font-size: 1.375rem; /* 22px */
   }
 
   .factLabel {
@@ -1136,6 +1146,51 @@
     max-inline-size: 20rem;
     margin-block-end: var(--space-8);
     justify-self: center; /* centred in its grid cell once the column is wider than the photo */
+  }
+}
+
+/* Desktop sizes tuned for Rubik, matching the other pages. */
+@media (width > 45rem) {
+  .eyebrow:lang(he) {
+    font-size: 1.05rem; /* 16.8px */
+  }
+
+  .heroTitle {
+    font-size: clamp(2.6rem, 5.8vw, 4.5rem); /* 72px at full width */
+  }
+
+  /* "The next group starts soon", in the hero and on the card. */
+  .heroWhenTitle {
+    font-size: 1.16875rem; /* 18.7px */
+  }
+
+  .cardInline .cardTitle {
+    font-size: clamp(1.15rem, 1.7vw, 1.31875rem);
+  }
+
+  .isThisYouText {
+    font-size: clamp(1.1rem, 1.6vw, 1.225rem); /* 19.6px */
+  }
+
+  .myths h3 {
+    font-size: clamp(1.25rem, 1.95vw, 1.4625rem); /* 23.4px */
+  }
+
+  .steps h3 {
+    font-size: 1.25625rem; /* 20.1px */
+  }
+
+  .factValue {
+    font-size: clamp(1.25rem, 2vw, 1.575rem);
+  }
+
+  .sectionTitle,
+  .noteOpening {
+    font-size: clamp(1.95rem, 4.1vw, 3rem);
+  }
+
+  .faq summary {
+    font-size: 1.275rem;
   }
 }
 

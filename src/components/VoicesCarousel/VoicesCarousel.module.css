@@ -20,6 +20,12 @@
   font-size: clamp(1.95rem, 4.1vw, 3rem);
 }
 
+@media (max-width: 44rem) {
+  .title:lang(he) {
+    font-size: 2.0625rem; /* 33px, as the homepage section titles */
+  }
+}
+
 /* In a right-to-left page the first column is on the right. */
 .carousel {
   display: grid;

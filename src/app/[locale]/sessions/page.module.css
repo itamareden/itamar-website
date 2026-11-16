@@ -648,6 +648,10 @@
     text-wrap: wrap;
   }
 
+  .sectionTitle {
+    font-size: 2.1875rem; /* 35px */
+  }
+
   .step h3 {
     font-size: 1.4375rem; /* 23px */
   }

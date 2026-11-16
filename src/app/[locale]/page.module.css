@@ -274,6 +274,10 @@
     font-size: 1rem;
   }
 
+  .sectionTitle:lang(he) {
+    font-size: 2.0625rem; /* 33px */
+  }
+
   .hello {
     grid-template-columns: minmax(0, 1fr);
   }
