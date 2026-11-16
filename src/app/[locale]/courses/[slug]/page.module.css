@@ -671,6 +671,45 @@ button.trailer:hover .playShape {
   }
 }
 
+/* Phone sizes tuned for Rubik, matching the other pages. */
+@media (max-width: 44rem) {
+  .gain h3 {
+    font-size: 1.475rem; /* 23.6px */
+  }
+
+  .sectionTitle {
+    font-size: 2.1875rem; /* 35px */
+  }
+
+  .faq summary {
+    font-size: 1.375rem; /* 22px */
+  }
+}
+
+/* Desktop sizes tuned for Rubik, matching the other pages. */
+@media (min-width: 44.01rem) {
+  .title {
+    font-size: clamp(2.6rem, 5.6vw, 4.2875rem); /* 68.6px at full width */
+  }
+
+  /* The line under the name keeps its size (it was 0.42em of the old title). */
+  .title em {
+    font-size: clamp(1.176rem, 2.52vw, 1.932rem);
+  }
+
+  .gain h3 {
+    font-size: 1.475rem; /* 23.6px */
+  }
+
+  .sectionTitle {
+    font-size: clamp(1.95rem, 4.1vw, 3rem);
+  }
+
+  .faq summary {
+    font-size: 1.275rem;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .faq summary::after,
   .playShape,
