@@ -139,7 +139,7 @@ const paths: Record<SeoPage, string> = {
 // every English page (until the English pass). Pages that never use getSeo
 // (challenge days, welcome and closing words, Practices) are always out.
 const indexed: Record<Locale, SeoPage[]> = {
-  he: ["home", "about", "sessions", "breathingLife", "challenge", "events", "contact"],
+  he: ["home", "about", "sessions", "breathingLife", "challenge", "contact"],
   en: [],
 };
 
