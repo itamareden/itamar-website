@@ -72,9 +72,9 @@ const seo: Record<Locale, Record<SeoPage, SeoText>> = {
   },
   en: {
     home: {
-      title: "Itamar Eden | Breathwork and meditation – a space for presence and growth",
+      title: "Itamar Eden | Breathwork, Meditation & Embodiment",
       description:
-        "A warm space to meet yourself a little more closely and discover new possibilities. Rebirthing breathwork, meditation and movement: private sessions, courses and practices in Koh Phangan and online.",
+        "Explore breathwork, meditation and embodiment with Itamar Eden. Sessions in Koh Phangan and online, courses, and free guided meditations.",
     },
     about: {
       title: "My story | Itamar Eden",
@@ -136,18 +136,24 @@ const paths: Record<SeoPage, string> = {
 
 // Finished pages Google may index, per language. Not listed, so kept out:
 // the live course (until its name, structure and address are decided) and
-// every English page (until the English pass). Pages that never use getSeo
+// English pages not yet translated. Pages that never use getSeo
 // (challenge days, welcome and closing words, Practices) are always out.
 const indexed: Record<Locale, SeoPage[]> = {
   he: ["home", "about", "sessions", "breathingLife", "challenge", "contact"],
-  en: [],
+  en: ["home"],
 };
 
 export function getSeo(page: SeoPage, locale: Locale): Metadata {
   const index = openToSearch && indexed[locale].includes(page);
+  // hreflang: a page indexed in every language names all its versions, so
+  // Google shows each searcher theirs. x-default is Hebrew while "/" opens Hebrew.
+  const inAll = locales.every((l) => indexed[l].includes(page));
+  const languages = inAll
+    ? { ...Object.fromEntries(locales.map((l) => [l, `/${l}${paths[page]}`])), "x-default": `/he${paths[page]}` }
+    : undefined;
   return {
     ...seo[locale][page],
-    alternates: { canonical: `/${locale}${paths[page]}` },
+    alternates: { canonical: `/${locale}${paths[page]}`, languages },
     robots: { index, follow: true },
   };
 }

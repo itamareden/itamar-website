@@ -122,7 +122,7 @@ const en: HomeSections = {
     title: "Hi,",
     emphasis: "I'm Itamar",
     text: [
-      "I guide meditation, breathwork and movement. I help people feel at ease being themselves, connect with their bodies, and open up to life.",
+      "I guide meditation, breathwork and embodiment. I help people feel at ease being themselves, connect with their bodies, and open up to life.",
       "The truth? If you'd told me a few years ago that I'd be standing in front of people, leading groups and sharing so much of myself, I probably wouldn't have believed you.",
       "For years I felt there was so much more in me than I dared to express. I wanted to open up, to explore, to feel freer to bring myself into the world. But my sensitivity and my fears often kept me behind the scenes. At work, with friends, almost everywhere. And so many parts of me stayed inside, waiting for me to find the courage to give them room.",
     ],
