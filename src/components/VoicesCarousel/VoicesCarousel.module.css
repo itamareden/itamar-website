@@ -38,6 +38,13 @@
   gap: var(--space-6) clamp(1rem, 3vw, 2.5rem);
 }
 
+/* English: previous (←) on the left, next (→) on the right. */
+.carousel:not(:lang(he)) {
+  grid-template-areas:
+    "previous cards next"
+    ".        dots  .";
+}
+
 .cards {
   grid-area: cards;
   display: grid;
@@ -206,6 +213,11 @@
   text-decoration: none;
 }
 
+/* English: closer to the dots above. */
+.fullLink:not(:lang(he)) {
+  margin-block-start: -1rem;
+}
+
 .fullLink:hover {
   text-decoration: underline;
 }
@@ -217,6 +229,12 @@
       "cards cards cards"
       "next  dots  previous";
     gap: var(--space-4);
+  }
+
+  .carousel:not(:lang(he)) {
+    grid-template-areas:
+      "cards    cards cards"
+      "previous dots  next";
   }
 
   .arrow {

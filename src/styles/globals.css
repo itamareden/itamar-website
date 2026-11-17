@@ -104,6 +104,14 @@ select {
   font-style: normal;
 }
 
+/* English headings read as one plain line: no italic or accent colour on
+   the emphasised part. Page heroes (h1) keep theirs. !important wins over
+   the per-page heading styles. */
+:lang(en) :is(h2, h3, h4) em {
+  font-style: normal !important;
+  color: inherit !important;
+}
+
 /* Hero photo (HeroImage): hidden over its blurred preview until it has
    fully loaded, so it never appears in strips; then it fades in. A photo
    already saved in the browser ("instant") shows at once. */

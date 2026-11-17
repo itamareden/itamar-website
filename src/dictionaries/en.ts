@@ -36,20 +36,22 @@ export const en = {
       "Learning to listen to your inner voice and being your own guide.",
       "Letting go and trusting as a way of life.",
     ],
-    heroCta: "Start the free challenge",
+    // Empty: no hero button until the challenge has English.
+    heroCta: "",
     heroImageAlt:
       "Itamar sitting cross-legged on a rock in a forest stream, arms wrapped around himself, eyes closed",
   },
   // The footer on every page: the mailing list, then links to the offerings.
   footer: {
     listTitle: "A short letter, once a month",
-    listText: "A new meditation, a thought from the path, and first word on events and courses.",
+    listText: "New meditations, personal reflections, and a first look at upcoming events and courses.",
     firstName: "First name",
     email: "Email",
     join: "Join",
     joinSoon: "Sign-up opens soon. Thank you for your patience!",
     linksLabel: "Ways to practise together",
-    challenge: "Free 5-day challenge",
+    // Empty: no challenge link until the challenge has English.
+    challenge: "",
     freeMeditations: "Free meditations",
   },
   notFound: {

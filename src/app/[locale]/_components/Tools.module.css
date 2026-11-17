@@ -88,8 +88,18 @@
 }
 
 .cardTitle {
-  font-size: clamp(1.25rem, 1.8vw, 1.45rem);
+  font-size: clamp(1.1875rem, calc(1.8vw - 0.0625rem), 1.3875rem);
   line-height: 1.15;
+}
+
+/* English: a slightly larger description. */
+.cardText:not(:lang(he)) {
+  font-size: 1rem; /* 16px */
+}
+
+/* English: more air between the title and its text. */
+.cardTitle:not(:lang(he)) {
+  margin-block-end: 0.9375rem; /* 15px */
 }
 
 /* Rubik runs larger than the English serif. */
@@ -108,6 +118,10 @@
   font-weight: var(--weight-bold);
   color: var(--color-accent);
   text-decoration: none;
+}
+
+.link:not(:lang(he)) {
+  font-size: calc(1em + 2px);
 }
 
 .link:hover {
@@ -158,8 +172,20 @@
     font-size: 1.1rem;
   }
 
+  .cardText:not(:lang(he)) {
+    font-size: 1rem; /* 16px */
+  }
+
+  .cardTitle:not(:lang(he)) {
+    margin-block-end: 0.4375rem; /* 7px */
+  }
+
+  .link:not(:lang(he)) {
+    font-size: 1rem; /* 16px */
+  }
+
   .cardTitle {
-    font-size: 1.4rem;
+    font-size: 1.3375rem;
   }
 
   .cardTitle:lang(he) {

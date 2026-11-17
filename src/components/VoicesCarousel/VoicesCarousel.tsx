@@ -118,7 +118,7 @@ export function VoicesCarousel({ content, href, className }: VoicesCarouselProps
       </div>
 
       <Link href={href} className={styles.fullLink}>
-        {content.readAll} ←
+        {content.readAll}
       </Link>
     </section>
   );

@@ -37,7 +37,8 @@ export default async function Home() {
         title={dict.home.heroTitle}
         titleEmphasis={dict.home.heroTitleEmphasis}
         lines={dict.home.heroLines}
-        cta={{ href: `/${locale}/challenge`, label: dict.home.heroCta }}
+        // No button while heroCta is empty (English, until the challenge is translated).
+        cta={dict.home.heroCta ? { href: `/${locale}/challenge`, label: dict.home.heroCta } : undefined}
       />
 
       {/* An invitation: the title across the top, then the question and the story side by side,
@@ -74,7 +75,7 @@ export default async function Home() {
               <p key={paragraph}>{paragraph}</p>
             ))}
             <Link href={sections.hello.link.href} className={styles.textLink}>
-              {sections.hello.link.label} ←
+              {sections.hello.link.label}
             </Link>
           </div>
           <Image

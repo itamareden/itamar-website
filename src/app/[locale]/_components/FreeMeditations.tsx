@@ -5,7 +5,7 @@ import styles from "./FreeMeditations.module.css";
 // A card per meditation, each opening it on Insight Timer in a new tab.
 export function FreeMeditations({ content }: { content: MeditationsContent }) {
   return (
-    <section className={styles.section}>
+    <section id="free-meditations" className={styles.section}>
       <header className={styles.header}>
         <h2 className={styles.title}>{content.title}</h2>
         <p className={styles.intro}>{content.intro}</p>
@@ -25,7 +25,7 @@ export function FreeMeditations({ content }: { content: MeditationsContent }) {
               />
             </div>
             {/* The label sits in the photo's top corner. */}
-            <p className={styles.label}>{m.label}</p>
+            {m.label && <p className={styles.label}>{m.label}</p>}
             <div className={styles.body}>
               <h3 className={styles.cardTitle}>{m.title}</h3>
               <p className={styles.summary}>{m.summary}</p>

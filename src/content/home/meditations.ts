@@ -7,7 +7,7 @@ import type { Locale } from "@/i18n/config";
  * A language without content here shows no section.
  */
 export type MeditationCard = {
-  label: string; // e.g. the language it's in
+  label?: string; // e.g. the language it's in; none, no tag
   title: string;
   summary: string;
   url: string; // the meditation on Insight Timer
@@ -46,19 +46,17 @@ const he: MeditationsContent = {
 };
 
 const en: MeditationsContent = {
-  title: "A taste of the practice",
-  intro: "Free guided meditations I recorded, so you can begin right now.",
-  listen: "Practise",
+  title: "A taste of the experience",
+  intro: "Find a quiet spot, get comfortable, and let me guide you.",
+  listen: "Explore",
   meditations: [
     {
-      label: "Guided meditation",
       title: "Welcoming the Day",
       summary: "Begin your morning in serenity and presence.",
       url: he.meditations[0].url,
       image: he.meditations[0].image,
     },
     {
-      label: "Guided meditation",
       title: "I Love Myself",
       summary: "Make room for love and self-acceptance.",
       url: he.meditations[1].url,

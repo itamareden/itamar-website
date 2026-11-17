@@ -25,7 +25,7 @@ export async function SiteFooter() {
     { href: `/${locale}/courses`, label: dict.nav.courses },
     { href: `/${locale}/practices`, label: f.freeMeditations },
     { href: `/${locale}/about`, label: dict.nav.about },
-  ];
+  ].filter((link) => link.label); // an empty label hides its link
 
   return (
     <footer className={styles.footer}>

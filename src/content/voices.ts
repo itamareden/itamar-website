@@ -8,7 +8,7 @@ import type { Locale } from "@/i18n/config";
  * homepage shows only the headlines, one at a time.
  *
  * Their own words, with only small punctuation fixes, used with their OK.
- * Hebrew only for now; a language without content here shows no section.
+ * A language without content here shows no section.
  * **bold** marks emphasis, and a blank line starts a new paragraph.
  */
 export type Voice = {
@@ -33,7 +33,7 @@ export type VoicesContent = {
 const he: VoicesContent = {
   title: "מה אומרים",
   emphasis: "אחרי מפגש",
-  readAll: "לקריאת החוויות המלאות",
+  readAll: "לקריאת החוויות המלאות ←",
   more: "לקריאה המלאה",
   less: "סגירה",
   previous: "הקודם",
@@ -76,7 +76,40 @@ const he: VoicesContent = {
   ],
 };
 
-const content: Partial<Record<Locale, VoicesContent>> = { he };
+// The English site: the Hebrew reviews translated, the English ones as written.
+const en: VoicesContent = {
+  title: "What people say",
+  emphasis: "after a session",
+  readAll: "Read the full stories →",
+  more: "Read more",
+  less: "Close",
+  previous: "Previous",
+  next: "Next",
+  items: [
+    {
+      name: "Yair Swissa, 47",
+      detail: "Israel",
+      headline: "It simply released everything that was stuck, even things from the past.",
+      text: "I came to Itamar in my first days on Koh Phangan, when everything felt threatening and scary. I wanted something that would free my breath and my soul, and I could feel the loneliness of a new place. From his very first hello I already felt at ease. We set up a session and it was beyond anything I expected: it simply released everything that was stuck, even things from the past. I warmly recommend him, and when I'm back on Koh Phangan I'll come back for another session.",
+    },
+    { ...he.items[1], lang: undefined },
+    {
+      name: "Oz, 36",
+      detail: "Israel",
+      headline: "Beyond the breath, he gave me tools that still help me in so many everyday situations.",
+      text: "The process with Itamar on Koh Phangan was one of the most powerful things I experienced on my trip, and it truly changed my life. I came with a lot of knowledge in my head, but when it really mattered I felt I was still reacting the same way and staying stuck. Itamar helped me start moving out of that stuckness, mainly through connecting to my body and listening to it. Beyond the breath, he gave me tools that still help me in so many everyday situations. I learned to pause, feel what's happening in my body, move and dance, and not try to solve everything through my head. What touched me most is how much he works from the heart, and how much he gives of himself, even beyond the sessions. It feels like I met exactly the right person at exactly the right time.",
+    },
+    {
+      name: "Yarin Goldman, 35",
+      detail: "Israel",
+      headline: "Itamar was there beside me and for me, and it felt really good and held.",
+      text: "From the first moment of my conversation with Itamar I felt something very attentive, honest and present, which only made me want to do the session with him even more. Before the session itself, Itamar sat with me and explained very clearly what we were going to do, what might come up and how to handle it, and that helped me feel safer. The session itself is hard to put into words, but I can say it was powerful, and I allowed myself to feel everything that came up, fully. Itamar was there beside me and for me, and it felt really good and held. I warmly recommend Itamar as a therapist and rebirthing facilitator. He does it with so much heart, sensitivity and wisdom.",
+    },
+    { ...he.items[4], lang: undefined },
+  ],
+};
+
+const content: Partial<Record<Locale, VoicesContent>> = { en, he };
 
 export function getVoices(locale: Locale): VoicesContent | undefined {
   return content[locale];

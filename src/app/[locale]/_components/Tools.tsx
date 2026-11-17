@@ -34,7 +34,7 @@ export function Tools({ content, href }: { content: ToolsContent; href: string }
       </ul>
 
       <Link href={href} className={styles.link}>
-        {content.home.link} ←
+        {content.home.link}
       </Link>
     </section>
   );
