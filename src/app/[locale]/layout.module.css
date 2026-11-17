@@ -35,8 +35,10 @@
   grid-column: full;
 }
 
-/* A page that opens with a hero starts at the very top, under the header. */
-.main:has(> [data-hero]:first-child) {
+/* A page that opens with a hero starts at the very top, under the header.
+   "of :not(script)" skips invisible blocks such as structured data, so they
+   never change which section counts as first or last. */
+.main:has(> [data-hero]:nth-child(1 of :not(script))) {
   padding-block-start: 0;
 }
 
@@ -47,6 +49,6 @@
 }
 
 /* A page that ends with a full-width section runs straight into the footer. */
-.main:has(> [data-full-bleed]:last-child) {
+.main:has(> [data-full-bleed]:nth-last-child(1 of :not(script))) {
   padding-block-end: 0;
 }
