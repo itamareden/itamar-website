@@ -144,6 +144,24 @@ body:has([data-hero]) .header[data-instant] {
   transition: color var(--transition-fast);
 }
 
+/* Hebrew reads small at the same size as English: 4px larger. This menu
+   only shows on desktop (phones use the mobile menu). */
+.navLink:lang(he) {
+  font-size: calc(1em + 4px);
+}
+
+/* The "English" link beside it, on Hebrew pages, matches the menu. */
+.desktopOnly:lang(he) a {
+  font-size: calc(1em + 4px);
+}
+
+/* The name, on Hebrew pages on desktop, grows with the menu. */
+@media (min-width: 60rem) {
+  .name:lang(he) {
+    font-size: calc(var(--text-xl) + 4px);
+  }
+}
+
 .navLink:hover {
   color: var(--header-text);
 }
