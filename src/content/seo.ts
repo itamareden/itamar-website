@@ -120,7 +120,7 @@ export const siteUrl = "https://www.itamareden.love";
 
 // false during friends' QA: no page may be indexed yet. Set to true to let
 // Google and AI search in; the pages listed in `indexed` then go live.
-export const openToSearch = false;
+export const openToSearch = true;
 
 // Each page's address after the language (/he, /en).
 const paths: Record<SeoPage, string> = {
