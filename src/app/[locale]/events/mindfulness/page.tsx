@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { getSeo } from "@/content/seo";
 import Image from "next/image";
 import { HeroImage } from "@/components/HeroImage/HeroImage";
 import Link from "next/link";
@@ -6,13 +7,11 @@ import { notFound } from "next/navigation";
 import { Emphasis } from "@/components/Emphasis/Emphasis";
 import { Flourish } from "@/app/[locale]/challenge/_components/Flourish";
 import { mindfulness as m } from "@/content/events/mindfulness";
-import { getDictionary } from "@/dictionaries";
 import { getLocale } from "@/i18n/get-locale";
 import styles from "./page.module.css";
 
 export async function generateMetadata(): Promise<Metadata> {
-  const dict = await getDictionary();
-  return { title: `${m.hero.title} · ${dict.site.name}`, description: m.hero.lead };
+  return getSeo("liveCourse", await getLocale());
 }
 
 // The live online course. Hebrew only for now.

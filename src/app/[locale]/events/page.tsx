@@ -1,14 +1,12 @@
 import type { Metadata } from "next";
+import { getSeo } from "@/content/seo";
 import Link from "next/link";
 import { getEvents } from "@/content/events";
-import { getDictionary } from "@/dictionaries";
 import { getLocale } from "@/i18n/get-locale";
 import styles from "./page.module.css";
 
 export async function generateMetadata(): Promise<Metadata> {
-  const events = getEvents(await getLocale());
-  const dict = await getDictionary();
-  return { title: `${events.title} · ${dict.site.name}`, description: events.intro };
+  return getSeo("events", await getLocale());
 }
 
 // The events list: a card per event, each leading to the event's own page.

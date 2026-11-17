@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { SiteFooter } from "@/components/SiteFooter/SiteFooter";
 import { heroImageScript } from "@/components/HeroImage/HeroImage";
+import { siteUrl } from "@/content/seo";
 import { SiteHeader } from "@/components/SiteHeader/SiteHeader";
 import { getDictionary } from "@/dictionaries";
 import { getDirection, locales } from "@/i18n/config";
@@ -15,9 +16,12 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title: dict.site.name,
     description: dict.site.description,
-    // QA period: the site is online for friends to test, but search engines
-    // are asked not to index it yet. Remove this when the texts are final.
-    robots: { index: false, follow: false },
+    // Full addresses (canonical, sitemap) are built on the official domain.
+    metadataBase: new URL(siteUrl),
+    // By default a page stays out of search results. Finished pages opt in
+    // through getSeo (src/content/seo.ts), which also holds the switch that
+    // keeps everything out during friends' QA (openToSearch).
+    robots: { index: false, follow: true },
   };
 }
 

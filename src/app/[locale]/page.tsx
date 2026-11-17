@@ -1,4 +1,6 @@
+import type { Metadata } from "next";
 import Image from "next/image";
+import { getSeo } from "@/content/seo";
 import Link from "next/link";
 import { Emphasis } from "@/components/Emphasis/Emphasis";
 import { Hero } from "@/components/Hero/Hero";
@@ -12,6 +14,10 @@ import { getLocale } from "@/i18n/get-locale";
 import { FreeMeditations } from "./_components/FreeMeditations";
 import { Tools } from "./_components/Tools";
 import styles from "./page.module.css";
+
+export async function generateMetadata(): Promise<Metadata> {
+  return getSeo("home", await getLocale());
+}
 
 export default async function Home() {
   const locale = await getLocale();

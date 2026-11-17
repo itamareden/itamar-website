@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { getSeo } from "@/content/seo";
 import Image from "next/image";
 import { HeroImage } from "@/components/HeroImage/HeroImage";
 import Link from "next/link";
@@ -11,12 +12,7 @@ import { getLocale } from "@/i18n/get-locale";
 import styles from "./page.module.css";
 
 export async function generateMetadata(): Promise<Metadata> {
-  const dict = await getDictionary();
-  const he = (await getLocale()) === "he";
-  return {
-    title: `${dict.nav.about} · ${dict.site.name}`,
-    description: he ? a.description : undefined,
-  };
+  return getSeo("about", await getLocale());
 }
 
 // Hebrew only for now; the English page keeps its placeholder.

@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
+import { getSeo } from "@/content/seo";
 import Image from "next/image";
 import { HeroImage } from "@/components/HeroImage/HeroImage";
 import Link from "next/link";
 import { connection } from "next/server";
 import { getChallenge } from "@/content/challenge";
-import { getDictionary } from "@/dictionaries";
 import type { Locale } from "@/i18n/config";
 import { getLocale } from "@/i18n/get-locale";
 import { Emphasis } from "@/components/Emphasis/Emphasis";
@@ -15,12 +15,7 @@ import { WhatsAppIcon } from "./_components/WhatsAppIcon";
 import styles from "./page.module.css";
 
 export async function generateMetadata(): Promise<Metadata> {
-  const challenge = getChallenge(await getLocale());
-  const dict = await getDictionary();
-  return {
-    title: `${challenge.hero.eyebrow} · ${dict.site.name}`,
-    description: challenge.hero.text,
-  };
+  return getSeo("challenge", await getLocale());
 }
 
 // "2026-11-08" → "Sunday, 8 November" / "יום ראשון, 8 בנובמבר".

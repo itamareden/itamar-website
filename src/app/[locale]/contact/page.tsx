@@ -1,17 +1,15 @@
 import type { Metadata } from "next";
+import { getSeo } from "@/content/seo";
 import Image from "next/image";
 import { SocialLinks } from "@/components/SocialLinks/SocialLinks";
 import { WhatsAppIcon } from "@/app/[locale]/challenge/_components/WhatsAppIcon";
 import { contact, contactSettings } from "@/content/contact";
-import { getDictionary } from "@/dictionaries";
 import { getLocale } from "@/i18n/get-locale";
 import { ContactForm } from "./ContactForm";
 import styles from "./page.module.css";
 
 export async function generateMetadata(): Promise<Metadata> {
-  const dict = await getDictionary();
-  const c = contact[await getLocale()];
-  return { title: `${c.title} · ${dict.site.name}` };
+  return getSeo("contact", await getLocale());
 }
 
 // Small line icons for the details column, in the accent colour.

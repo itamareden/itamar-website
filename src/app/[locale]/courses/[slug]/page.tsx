@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { getSeo } from "@/content/seo";
 import Image from "next/image";
 import { HeroImage } from "@/components/HeroImage/HeroImage";
 import Link from "next/link";
@@ -26,9 +27,11 @@ async function findCourse(params: PageProps<"/[locale]/courses/[slug]">["params"
 export async function generateMetadata(props: PageProps<"/[locale]/courses/[slug]">): Promise<Metadata> {
   const course = await findCourse(props.params);
   if (!course) return {};
-  const c = course.content[await getLocale()];
+  const locale = await getLocale();
+  if (course.slug === "breathing-life") return getSeo("breathingLife", locale);
   const dict = await getDictionary();
-  return { title: `${c.hero.title} · ${dict.site.name}`, description: c.description };
+  const c = course.content[locale];
+  return { title: `${c.hero.title} | ${dict.site.name}`, description: c.description };
 }
 
 // Opens the course on Udemy, in a new tab.

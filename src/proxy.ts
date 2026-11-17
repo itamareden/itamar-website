@@ -12,6 +12,11 @@ export function proxy(request: NextRequest) {
 
   if (isLocale(firstSegment)) {
     const response = NextResponse.next();
+    // The vercel.app address is a copy of the site: keep it out of search
+    // results so only www.itamareden.love is indexed.
+    if (request.nextUrl.hostname.endsWith(".vercel.app")) {
+      response.headers.set("X-Robots-Tag", "noindex");
+    }
     if (request.cookies.get(localeCookie)?.value !== firstSegment) {
       response.cookies.set(localeCookie, firstSegment, {
         maxAge: 60 * 60 * 24 * 365,
