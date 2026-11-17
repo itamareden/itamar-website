@@ -10,16 +10,42 @@ import { socialLinks } from "./social";
  * Everything points to one Person (personId), so search engines connect
  * the sessions, the course and the challenge to the same person, and to
  * his profiles elsewhere (sameAs).
+ *
+ * Check a page at validator.schema.org (Google's Rich Results Test only
+ * lists the few types Google shows as special results).
  */
 type Json = Record<string, unknown>;
 
 const personId = `${siteUrl}/#person`;
 const websiteId = `${siteUrl}/#website`;
 
+// Where sessions are offered, as the Sessions page says.
 const where = (locale: Locale) => [
   { "@type": "Place", name: locale === "he" ? "קופנגן, תאילנד" : "Koh Phangan, Thailand" },
-  { "@type": "VirtualLocation", name: locale === "he" ? "אונליין" : "Online" },
+  locale === "he" ? "אונליין" : "Online",
 ];
+
+const languages = [
+  { "@type": "Language", name: "Hebrew", alternateName: "he" },
+  { "@type": "Language", name: "English", alternateName: "en" },
+];
+
+type FaqItem = { question: string; answer: string | string[] };
+
+// A page's questions and answers, word for word as shown on it.
+function faqPage(items: FaqItem[]): Json {
+  return {
+    "@type": "FAQPage",
+    mainEntity: items.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: [item.answer].flat().join("\n\n").replaceAll("**", ""),
+      },
+    })),
+  };
+}
 
 // Home: the website and the person behind it.
 export function homeData(locale: Locale): Json {
@@ -47,7 +73,7 @@ export function homeData(locale: Locale): Json {
         knowsAbout: he
           ? ["נשימה מעגלית", "ריברסינג", "מדיטציה", "מיינדפולנס", "תנועה", "חיבור לגוף"]
           : ["Rebirthing breathwork", "Breathwork", "Meditation", "Mindfulness", "Movement", "Embodiment"],
-        knowsLanguage: ["he", "en"],
+        knowsLanguage: languages,
         // No workLocation on purpose (17 Nov): the person entry states no
         // place of work. Where sessions are offered is on the Service, as
         // on the page itself.
@@ -58,12 +84,8 @@ export function homeData(locale: Locale): Json {
 }
 
 // Sessions: the service, and its questions and answers.
-export function sessionsData(
-  locale: Locale,
-  faq: { question: string; answer: string[] }[],
-): Json {
+export function sessionsData(locale: Locale, faq: FaqItem[]): Json {
   const he = locale === "he";
-  const seo = getSeo("sessions", locale);
   return {
     "@context": "https://schema.org",
     "@graph": [
@@ -71,65 +93,64 @@ export function sessionsData(
         "@type": "Service",
         name: he ? "מפגשי נשימה מעגלית (ריברסינג)" : "Rebirthing breathwork sessions",
         serviceType: he ? "נשימה מעגלית (ריברסינג)" : "Rebirthing breathwork",
-        description: seo.description,
+        description: getSeo("sessions", locale).description,
         url: `${siteUrl}/${locale}/sessions`,
         provider: { "@id": personId },
         areaServed: where(locale),
-        availableLanguage: ["he", "en"],
+        // Sessions are held in Hebrew or English.
+        availableChannel: {
+          "@type": "ServiceChannel",
+          serviceUrl: `${siteUrl}/${locale}/sessions`,
+          availableLanguage: languages,
+        },
       },
-      {
-        "@type": "FAQPage",
-        mainEntity: faq.map((item) => ({
-          "@type": "Question",
-          name: item.question,
-          acceptedAnswer: {
-            "@type": "Answer",
-            text: item.answer.join("\n\n").replaceAll("**", ""),
-          },
-        })),
-      },
+      faqPage(faq),
     ],
   };
 }
 
 // The Breathing Life course (recorded, on Udemy, taught in English).
-export function breathingLifeData(locale: Locale, enrolUrl: string): Json {
-  const seo = getSeo("breathingLife", locale);
+export function breathingLifeData(locale: Locale, enrolUrl: string, faq: FaqItem[]): Json {
   return {
     "@context": "https://schema.org",
-    "@type": "Course",
-    name: "Breathing Life",
-    description: seo.description,
-    url: `${siteUrl}/${locale}/courses/breathing-life`,
-    inLanguage: "en",
-    provider: { "@id": personId },
-    instructor: { "@id": personId },
-    hasCourseInstance: {
-      "@type": "CourseInstance",
-      courseMode: "online",
-      url: enrolUrl,
-    },
+    "@graph": [
+      {
+        "@type": "Course",
+        name: "Breathing Life",
+        description: getSeo("breathingLife", locale).description,
+        url: `${siteUrl}/${locale}/courses/breathing-life`,
+        inLanguage: "en",
+        provider: { "@id": personId },
+        instructor: { "@id": personId },
+        hasCourseInstance: { "@type": "CourseInstance", courseMode: "online", url: enrolUrl },
+      },
+      faqPage(faq),
+    ],
   };
 }
 
 // The free five-day meditation challenge.
-export function challengeData(locale: Locale): Json {
-  const seo = getSeo("challenge", locale);
+export function challengeData(locale: Locale, faq: FaqItem[]): Json {
   return {
     "@context": "https://schema.org",
-    "@type": "Course",
-    name: locale === "he" ? "אתגר מדיטציה חינמי · 5 ימים" : "Free 5-day meditation challenge",
-    description: seo.description,
-    url: `${siteUrl}/${locale}/challenge`,
-    inLanguage: locale,
-    isAccessibleForFree: true,
-    provider: { "@id": personId },
-    instructor: { "@id": personId },
-    offers: { "@type": "Offer", price: 0, priceCurrency: "ILS", category: "Free" },
-    hasCourseInstance: {
-      "@type": "CourseInstance",
-      courseMode: "online",
-      courseSchedule: { "@type": "Schedule", repeatFrequency: "P1D", repeatCount: 5 },
-    },
+    "@graph": [
+      {
+        "@type": "Course",
+        name: locale === "he" ? "אתגר מדיטציה חינמי · 5 ימים" : "Free 5-day meditation challenge",
+        description: getSeo("challenge", locale).description,
+        url: `${siteUrl}/${locale}/challenge`,
+        inLanguage: locale,
+        isAccessibleForFree: true,
+        provider: { "@id": personId },
+        instructor: { "@id": personId },
+        offers: { "@type": "Offer", price: 0, priceCurrency: "ILS", category: "Free" },
+        hasCourseInstance: {
+          "@type": "CourseInstance",
+          courseMode: "online",
+          courseSchedule: { "@type": "Schedule", repeatFrequency: "P1D", repeatCount: 5 },
+        },
+      },
+      faqPage(faq),
+    ],
   };
 }

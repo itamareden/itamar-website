@@ -90,7 +90,7 @@ export default async function ChallengePage() {
 
   return (
     <>
-      <JsonLd data={challengeData(locale)} />
+      <JsonLd data={challengeData(locale, c.faq.items)} />
       {/* Photo with the headline, and the action card overlapping its bottom
           edge. In group mode on wide screens the photo fills the screen and
           the button sits on it, under the text, instead of the card. */}
