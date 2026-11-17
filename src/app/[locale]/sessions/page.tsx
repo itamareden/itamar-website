@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { sessionsData } from "@/content/structured-data";
+import { JsonLd } from "@/components/JsonLd/JsonLd";
 import { getSeo } from "@/content/seo";
 import Image from "next/image";
 import { HeroImage } from "@/components/HeroImage/HeroImage";
@@ -36,6 +38,7 @@ export default async function SessionsPage() {
 
   return (
     <>
+      <JsonLd data={sessionsData(locale, s.faq.items)} />
       {/* The opening: a session in progress fills the screen, the text on it.
           data-hero lets the header sit on top of it in light text. */}
       <section className={styles.hero} data-full-bleed data-hero>

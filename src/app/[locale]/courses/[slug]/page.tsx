@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { breathingLifeData } from "@/content/structured-data";
+import { JsonLd } from "@/components/JsonLd/JsonLd";
 import { getSeo } from "@/content/seo";
 import Image from "next/image";
 import { HeroImage } from "@/components/HeroImage/HeroImage";
@@ -81,6 +83,7 @@ export default async function CoursePage(props: PageProps<"/[locale]/courses/[sl
 
   return (
     <>
+      {course.slug === "breathing-life" && <JsonLd data={breathingLifeData(locale, course.settings.enrolUrl)} />}
       {/* The opening: what the course gives, the enrol button and the trailer. */}
       {/* data-hero="light": the header lies on the pale photo in dark text. */}
       <section className={styles.hero} data-full-bleed data-hero="light">

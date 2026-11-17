@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { homeData } from "@/content/structured-data";
+import { JsonLd } from "@/components/JsonLd/JsonLd";
 import Image from "next/image";
 import { getSeo } from "@/content/seo";
 import Link from "next/link";
@@ -29,6 +31,7 @@ export default async function Home() {
 
   return (
     <>
+      <JsonLd data={homeData(locale)} />
       <Hero
         image="/images/home/hero.jpg"
         imageAlt={dict.home.heroImageAlt}
