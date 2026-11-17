@@ -83,7 +83,6 @@ export default async function CoursePage(props: PageProps<"/[locale]/courses/[sl
 
   return (
     <>
-      {course.slug === "breathing-life" && <JsonLd data={breathingLifeData(locale, course.settings.enrolUrl, c.faq.items)} />}
       {/* The opening: what the course gives, the enrol button and the trailer. */}
       {/* data-hero="light": the header lies on the pale photo in dark text. */}
       <section className={styles.hero} data-full-bleed data-hero="light">
@@ -232,6 +231,7 @@ export default async function CoursePage(props: PageProps<"/[locale]/courses/[sl
           <p className={styles.closingNote}>{c.closing.note}</p>
         </div>
       </section>
+      {course.slug === "breathing-life" && <JsonLd data={breathingLifeData(locale, course.settings.enrolUrl, c.faq.items)} />}
     </>
   );
 }

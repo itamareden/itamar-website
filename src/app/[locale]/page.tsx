@@ -31,7 +31,6 @@ export default async function Home() {
 
   return (
     <>
-      <JsonLd data={homeData(locale)} />
       <Hero
         image="/images/home/hero.jpg"
         imageAlt={dict.home.heroImageAlt}
@@ -134,6 +133,7 @@ export default async function Home() {
       )}
 
       {meditations && <FreeMeditations content={meditations} />}
+      <JsonLd data={homeData(locale)} />
     </>
   );
 }

@@ -38,7 +38,6 @@ export default async function SessionsPage() {
 
   return (
     <>
-      <JsonLd data={sessionsData(locale, s.faq.items)} />
       {/* The opening: a session in progress fills the screen, the text on it.
           data-hero lets the header sit on top of it in light text. */}
       <section className={styles.hero} data-full-bleed data-hero>
@@ -215,6 +214,7 @@ export default async function SessionsPage() {
           <WhatsAppButton className={styles.buttonLight} />
         </div>
       </section>
+      <JsonLd data={sessionsData(locale, s.faq.items)} />
     </>
   );
 }
