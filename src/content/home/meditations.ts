@@ -23,9 +23,9 @@ export type MeditationsContent = {
 };
 
 const he: MeditationsContent = {
-  title: "לטעום מהתרגול",
-  intro: "מדיטציות מודרכות חינמיות שהקלטתי. הן באנגלית, ואפשר להתחיל מהן כבר עכשיו.",
-  listen: "לתרגול",
+  title: "טעימה מהחוויה",
+  intro: "תמצאו לכם פינה שקטה, תתרווחו, ותנו לי ללוות אתכם.",
+  listen: "בואו נתחיל",
   meditations: [
     {
       label: "באנגלית",
