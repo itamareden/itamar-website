@@ -5,9 +5,8 @@ import { HeroImage } from "@/components/HeroImage/HeroImage";
 import Link from "next/link";
 import { Emphasis } from "@/components/Emphasis/Emphasis";
 import { ToolIcon } from "@/components/ToolIcon/ToolIcon";
-import { about as a } from "@/content/about/he";
+import { getAbout } from "@/content/about";
 import { getTools } from "@/content/tools";
-import { getDictionary } from "@/dictionaries";
 import { getLocale } from "@/i18n/get-locale";
 import styles from "./page.module.css";
 
@@ -15,11 +14,9 @@ export async function generateMetadata(): Promise<Metadata> {
   return getSeo("about", await getLocale());
 }
 
-// Hebrew only for now; the English page keeps its placeholder.
 export default async function AboutPage() {
-  const dict = await getDictionary();
   const locale = await getLocale();
-  if (locale !== "he") return <h1>{dict.nav.about}</h1>;
+  const a = getAbout(locale);
   const tools = getTools(locale);
 
   return (
@@ -157,6 +154,13 @@ export default async function AboutPage() {
             ))}
           </div>
         </div>
+        {a.why.more && (
+          <div className={styles.story}>
+            {a.why.more.map((paragraph) => (
+              <p key={paragraph}>{paragraph}</p>
+            ))}
+          </div>
+        )}
       </section>
 
       {/* Where to go next: the dark band with two ways in. */}
@@ -167,11 +171,11 @@ export default async function AboutPage() {
           </h2>
           <p className={styles.nextText}>{a.next.text}</p>
           <div className={styles.buttons}>
-            <Link href={a.next.sessions.href} className={styles.button}>
-              {a.next.sessions.label}
+            <Link href={a.next.primary.href} className={styles.button}>
+              {a.next.primary.label}
             </Link>
-            <Link href={a.next.challenge.href} className={styles.buttonSoft}>
-              {a.next.challenge.label}
+            <Link href={a.next.secondary.href} className={styles.buttonSoft}>
+              {a.next.secondary.label}
             </Link>
           </div>
         </div>
