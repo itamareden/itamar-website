@@ -146,10 +146,12 @@ const indexed: Record<Locale, SeoPage[]> = {
 export function getSeo(page: SeoPage, locale: Locale): Metadata {
   const index = openToSearch && indexed[locale].includes(page);
   // hreflang: a page indexed in every language names all its versions, so
-  // Google shows each searcher theirs. x-default is Hebrew while "/" opens Hebrew.
+  // Google shows each searcher theirs. x-default is the address without a
+  // language ("/", "/about"), which picks one per visitor (proxy.ts), as
+  // Google recommends for sites that redirect by language.
   const inAll = locales.every((l) => indexed[l].includes(page));
   const languages = inAll
-    ? { ...Object.fromEntries(locales.map((l) => [l, `/${l}${paths[page]}`])), "x-default": `/he${paths[page]}` }
+    ? { ...Object.fromEntries(locales.map((l) => [l, `/${l}${paths[page]}`])), "x-default": paths[page] || "/" }
     : undefined;
   return {
     ...seo[locale][page],
