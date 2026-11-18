@@ -1,11 +1,7 @@
-/*
- * The Sessions page (/he/sessions): private, couples and group sessions,
- * in Koh Phangan or online. Hebrew only for now. No prices: people write
- * on WhatsApp and talk first.
- *
- * Draft copy, to be refined. **bold** marks emphasis.
- */
-export const sessions = {
+import type { SessionsContent } from ".";
+
+// The Hebrew Sessions page. **bold** marks emphasis.
+export const he: SessionsContent = {
   settings: {
     // Itamar's WhatsApp chat link, opening with a short first message.
     // While it's empty, the buttons show but aren't links.
