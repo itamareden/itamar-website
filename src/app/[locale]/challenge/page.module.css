@@ -285,8 +285,18 @@
     padding: 1.1rem;
     padding-inline-start: 1.6rem;
     border-radius: 18px;
-    background: var(--color-background);
-    box-shadow: 0 24px 60px -24px color-mix(in srgb, var(--color-band) 60%, transparent);
+    /* Dark glass on the photo, framed in a hairline, with a gentle warm glow. */
+    border: 1px solid rgb(251 243 238 / 0.18);
+    background: rgb(0 0 0 / 0.47);
+    box-shadow: 0 0 44px 6px rgb(255 250 244 / 0.5); /* a soft white halo around the box */
+  }
+
+  .heroAction .heroWhen {
+    color: color-mix(in srgb, var(--color-on-photo) 85%, transparent);
+  }
+
+  .heroAction .heroWhenTitle {
+    color: var(--color-on-photo);
   }
 
   .heroAction .button {
@@ -1235,5 +1245,44 @@
 @media (prefers-reduced-motion: reduce) {
   .faq summary::after {
     transition: none;
+  }
+}
+
+/* ---------- phones, group mode: the card as dark glass on the photo ---------- */
+
+/* Like the desktop bar: the card sits whole on the bottom of the photo, in
+   see-through black with a soft white halo, and the photo grows to hold it
+   so the first screen is one scene. */
+@media (max-width: 45rem) {
+  .heroGroup .photo {
+    min-block-size: max(36rem, calc(100svh - 0.5rem));
+  }
+
+  /* The card's height plus generous air, so the text sits well above it. */
+  .heroGroup .heroText {
+    padding-block-end: 14rem;
+  }
+
+  .heroGroup .cardRow {
+    margin-block-start: -10.5rem; /* the card's height, plus a margin under it */
+  }
+
+  /* Air between the photo's bottom edge and the facts. */
+  .heroGroup .cardRow .facts {
+    margin-block-start: calc(var(--space-6) + 1.5rem);
+  }
+
+  .heroGroup .card {
+    border: 1px solid rgb(251 243 238 / 0.18);
+    background: #00000070;
+    box-shadow: 0 0 36px 4px rgb(255 250 244 / 0.42);
+  }
+
+  .heroGroup .card .cardTitle {
+    color: var(--color-on-photo);
+  }
+
+  .heroGroup .card .cardMeta {
+    color: color-mix(in srgb, var(--color-on-photo) 85%, transparent);
   }
 }
