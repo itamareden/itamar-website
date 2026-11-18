@@ -5,6 +5,29 @@
 
 /* ---------- shared ---------- */
 
+/* Trial (design-trial branch): less pink on this page. Berry becomes a deep
+   terracotta, the dark bands and the photo get a light clay accent in place
+   of soft rose, their text a plain warm cream, and the wash bands lose their
+   rose patch. Set on <html> only while this page is open (`.photo` exists
+   only here), so the header and footer follow and other pages are untouched. */
+:global(html):has(.photo) {
+  --color-accent: #eaa178; /* warm clay: buttons, bullets, links, labels */
+  --color-accent-strong: #e08e60; /* hover */
+  --color-on-accent: #33281f; /* dark text on the clay */
+  --color-accent-text: #b8683f; /* deeper clay for small text, so it stays readable */
+  --color-focus: #84401f;
+  --color-title-accent: #c47650; /* lighter clay for the coloured words in titles; 3.1:1, large text only */
+  --color-on-photo-accent: #f0b48f; /* clay */
+  --color-on-band: #f4e8d9; /* warm cream */
+  --color-wash-rose: #e6d2bc; /* sand-clay */
+  --color-wash-base: #f0e7dc; /* warm, not rosy */
+}
+
+/* The hero headline's coloured line in the homepage's candlelight gold. */
+.heroText {
+  --color-on-photo-accent: #f2d7a6;
+}
+
 .section {
   margin-block-start: 0;
   padding-block: clamp(3.5rem, 8vw, 7rem);
@@ -28,7 +51,7 @@
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--color-accent);
+  color: var(--color-accent-text, var(--color-accent));
 }
 
 /* Hebrew has no capitals; wide letter-spacing just breaks up the words. */
@@ -43,8 +66,9 @@
   letter-spacing: -0.01em;
 }
 
+/* Titles in one colour; only the letter's opening keeps the accent. */
 .sectionTitle em {
-  color: var(--color-accent);
+  color: inherit;
 }
 
 .lead {
@@ -73,6 +97,20 @@
 
 .button:hover {
   background: var(--color-accent-strong);
+  color: var(--color-on-accent); /* keep the text over the site's link-hover colour */
+}
+
+/* Trial: the join buttons in the light clay of the dark bands, dark text, so
+   they read warm and open on every background. */
+.button:not(.buttonLight) {
+  background: var(--color-accent);
+  color: var(--color-band);
+  box-shadow: 0 10px 24px -12px color-mix(in srgb, #c47650 70%, transparent);
+}
+
+.button:not(.buttonLight):hover {
+  background: var(--color-accent-strong);
+  color: var(--color-band);
 }
 
 .button:focus-visible {
@@ -100,6 +138,7 @@
 
 .buttonLight:hover {
   background: var(--color-on-photo);
+  color: var(--color-band);
 }
 
 /* ---------- hero ---------- */
@@ -337,7 +376,7 @@
 
 .cardTitle b {
   font-weight: inherit;
-  color: var(--color-accent);
+  color: var(--color-accent-text, var(--color-accent));
 }
 
 .cardMeta {
@@ -481,7 +520,7 @@
 }
 
 .isThisYouText strong {
-  color: var(--color-accent);
+  color: var(--color-accent-text, var(--color-accent));
 }
 
 /* Solid dots instead of the day pages' rings. */
@@ -597,11 +636,11 @@
 /* The second part on its own line, in the accent colour. */
 .noteOpening em {
   display: block;
-  color: var(--color-accent);
+  color: var(--color-title-accent, var(--color-accent));
 }
 
 .note strong {
-  color: var(--color-accent);
+  color: var(--color-accent-text, var(--color-accent));
 }
 
 /* The last line mirrors the opening, under a short berry line. */
@@ -633,7 +672,7 @@
 .takeaways {
   padding-block: clamp(3.5rem, 8vw, 6.5rem);
   background:
-    radial-gradient(ellipse 70% 60% at 50% 0%, color-mix(in srgb, var(--color-accent) 45%, transparent), transparent 70%),
+    radial-gradient(ellipse 70% 60% at 50% 0%, color-mix(in srgb, var(--color-on-photo-accent) 22%, transparent), transparent 70%),
     var(--color-band);
   color: var(--color-on-band);
 }
@@ -825,7 +864,7 @@
 .guideLink {
   justify-self: start;
   font-weight: var(--weight-bold);
-  color: var(--color-accent);
+  color: var(--color-accent-text, var(--color-accent));
   text-decoration: none;
 }
 
@@ -950,7 +989,7 @@
   font-family: var(--font-body);
   font-size: 1.4rem;
   line-height: 1;
-  color: var(--color-accent);
+  color: var(--color-accent-text, var(--color-accent));
   transition: transform 200ms ease;
 }
 
@@ -975,7 +1014,6 @@
   text-align: center;
 }
 
-.closing .sectionTitle em,
 .closing .kicker {
   color: var(--color-on-photo-accent);
 }

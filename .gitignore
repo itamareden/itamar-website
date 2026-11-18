@@ -44,3 +44,8 @@ next-env.d.ts
 /public/_img/
 /src/lib/image-manifest.json
 /src/lib/image-placeholders.json
+
+# Local AI design tools (Impeccable, Playwright MCP)
+.claude/
+.mcp.json
+.playwright-mcp/
