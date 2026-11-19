@@ -179,10 +179,10 @@ export const breathingLife: Course = {
       hero: {
         eyebrow: "Online course",
         title: "Breathing Life",
-        emphasis: "Connect with life through the breath",
-        lead: "A recorded course in conscious breathing and meditation: simple tools that bring calm, balance and presence into your life, at your own pace, from anywhere.",
+        emphasis: "Discover the power of your breath",
+        lead: "Simple breathing practices and guided meditations for more calm, balance and presence in your everyday life. Learn at your own pace, from anywhere.",
         button: "Join the course on Udemy",
-        facts: ["2.5 hours of video", "19 lessons", "Lifetime access", "At your own pace"],
+        facts: ["2.5 hours", "19 lessons", "Lifetime access", "Self-paced"],
         trailerLabel: "The Breathing Life course trailer",
         trailerSoon: "The trailer will be here soon",
       },
