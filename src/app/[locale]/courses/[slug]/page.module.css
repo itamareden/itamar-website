@@ -501,7 +501,8 @@ button.trailer:hover .playShape {
 
 .stage {
   display: grid;
-  grid-template-columns: auto minmax(0, 1fr) auto;
+  /* A fixed column for the number, so every title starts in line. */
+  grid-template-columns: 1.25rem minmax(0, 1fr) auto;
   align-items: baseline;
   gap: var(--space-6);
   padding-block: var(--space-6);
