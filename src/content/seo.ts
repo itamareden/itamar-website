@@ -84,7 +84,7 @@ const seo: Record<Locale, Record<SeoPage, SeoText>> = {
     sessions: {
       title: "Rebirthing breathwork sessions | Itamar Eden",
       description:
-        "A private, couples or group rebirthing breathwork session, with close guidance and music tuned to you. A safe space to release emotion and tension and meet yourself deeply. Online and in Koh Phangan.",
+        "Private, couples and group breathwork sessions with Itamar Eden: a safe space to let go, release emotions and meet yourself deeply. Koh Phangan & online.",
     },
     breathingLife: {
       title: "Online breathwork and meditation course | Breathing Life",
@@ -140,7 +140,7 @@ const paths: Record<SeoPage, string> = {
 // (challenge days, welcome and closing words, Practices) are always out.
 const indexed: Record<Locale, SeoPage[]> = {
   he: ["home", "about", "sessions", "breathingLife", "challenge", "contact"],
-  en: ["home", "about"],
+  en: ["home", "about", "sessions"],
 };
 
 export function getSeo(page: SeoPage, locale: Locale): Metadata {

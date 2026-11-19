@@ -72,7 +72,7 @@ export const en: SessionsContent = {
     ],
   },
   flow: {
-    kicker: "What a Deep Journey looks like",
+    kicker: "What a Breath Journey looks like",
     title: "A small journey,",
     emphasis: "step by step",
     steps: [
@@ -109,9 +109,9 @@ export const en: SessionsContent = {
       {
         length: "2.5–3",
         unit: "hours",
-        title: "Deep Journey",
-        subtitle: "Breathwork and personal guidance",
-        text: "A warm, safe space to meet yourself more deeply. We'll begin with a short meditation to turn inward, then talk about whatever is alive in you right now. From there we hand the reins to the body through conscious connected breathing (rebirthing), and make room for whatever wants to come up and be released.",
+        title: "Breath Journey",
+        subtitle: "Breathwork & Personal Guidance",
+        text: "A warm, safe space to go deeper within. We begin with a short meditation to arrive, then talk about whatever is alive in you right now. From there, conscious connected breathing (rebirthing) carries us out of the mind and into the body, making room for whatever is ready to arise and be released. We leave time afterwards to rest, reflect on what came up, and explore how to carry these insights into your everyday life.",
         format: "Private, couples or group session",
       },
       {
@@ -119,7 +119,7 @@ export const en: SessionsContent = {
         unit: "minutes",
         title: "Personal Guidance",
         subtitle: "Attentive conversation and body awareness",
-        text: "An open, welcoming space where you can feel free to bring everything, just as you are. We'll begin with a short meditation to turn inward, then continue with an attentive conversation, paying attention to what's happening in the body too. Together we'll look at things from new angles and discover what feels right for you now.",
+        text: "An open, welcoming space to bring everything, just as you are. We begin with a short meditation to arrive, then move into an attentive conversation that listens to the body as much as to the words. Together we look at things from fresh angles and discover what feels right for you now.",
         format: "Private, one-on-one session",
       },
     ],
@@ -129,11 +129,11 @@ export const en: SessionsContent = {
     note: "These sessions are a space for growth and connection, and are not a substitute for medical or psychological treatment.",
     items: [
       {
-        question: "Do I need any experience?",
-        answer: ["Not at all. You don't need to know how to meditate, to have tried breathwork, or to come with any prior knowledge. I'll guide you through the whole session, at a pace that suits you. All it takes is a little curiosity and a willingness to meet yourself."],
+        question: "Do I need prior experience?",
+        answer: ["Not at all. You don't need to know how to meditate or to have done breathwork before. I'll guide you through the whole session, at a pace that suits you. All it takes is a little curiosity and a willingness to meet yourself."],
       },
       {
-        question: "Is conscious connected breathing right for everyone?",
+        question: "Is conscious connected breathing suited for everyone?",
         answer: [
           "Conscious connected breathing can be a wonderful, nourishing experience for the vast majority of people. That said, if you know of a medical condition related to the heart, blood pressure, lungs or spine, epilepsy, any other health issue, a recent surgery, pregnancy, a mental health condition worth taking into account, or anything else you feel I should know, please share it with me before the session.",
           "That way we can work out together whether breathwork is right for you, and if needed adapt it to your pace and needs, or choose a different path.",
@@ -142,14 +142,14 @@ export const en: SessionsContent = {
       {
         question: "What if difficult emotions come up?",
         answer: [
-          "Sometimes emotions, memories or sensations come up that aren't always easy to meet. That's natural, and meeting these places can open the way to more freedom and acceptance in our lives.",
-          "I'm here to guide you and to create a **safe, supportive space** where whatever comes up can be given room, without rushing to change or fix anything. You can always slow down, pause or share what you're feeling. I'm with you all the way.",
+          "Sometimes emotions, memories or sensations come up that aren't always easy to meet. That's natural, and meeting these places can open the way to more freedom and ease in our lives.",
+          "I'm here to guide you and to create a **safe, supportive space** where there's room for whatever comes up, without rushing to change or fix anything. You can always slow down, pause or share what you're feeling. I'm with you all the way.",
         ],
       },
       {
         question: "How do I prepare for a session?",
         answer: [
-          "Come in comfortable clothes, especially for the breathing part, and avoid a heavy meal for at least an hour beforehand. It's also good to leave yourself some time afterwards, without rushing straight on to the next thing.",
+          "Come in comfortable clothes, especially for the breathing part, and avoid a heavy meal for at least an hour before the session. It's also good to leave yourself some time afterwards, without rushing straight on to the next thing.",
           "If you like, take a moment before the session to notice what's alive in you right now. Is there something you'd like to invite into your life, or perhaps let go of? You don't need to come with answers, just a little curiosity.",
           "You're welcome to bring a notebook to write down thoughts and insights, and of course, if there's anything important for me to know in advance, feel free to share it with me.",
         ],
@@ -157,7 +157,7 @@ export const en: SessionsContent = {
       {
         question: "How does it work on Zoom?",
         answer: [
-          "Even through a screen we can create a close connection and go through a deep, meaningful breathwork experience. I'll be with you throughout the session, guide you step by step and make sure you feel at ease, even from afar.",
+          "Even through a screen we can create a real connection and go through a deep, meaningful breathwork experience. I'll be with you throughout the session, guide you step by step and make sure you feel comfortable wherever you are.",
           "All you need is a quiet, comfortable place where you can give yourself fully to the experience, and a computer or phone with a camera placed so I can see your face and upper body, from the belly up.",
           "You're welcome to set up a cosy space with soft lighting and whatever helps you feel at ease. Even from home, we can feel close.",
         ],
@@ -169,8 +169,8 @@ export const en: SessionsContent = {
     ],
   },
   closing: {
-    title: "Ready to breathe?",
-    emphasis: "Let's talk",
+    title: "Let's talk",
+    emphasis: "",
     text: "Message me on WhatsApp, and together we'll find the session that's right for you.",
   },
 };

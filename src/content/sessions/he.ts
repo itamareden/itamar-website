@@ -178,8 +178,8 @@ export const he: SessionsContent = {
     ],
   },
   closing: {
-    title: "מוכנים לנשום?",
-    emphasis: "בואו נדבר",
+    title: "בואו נדבר",
+    emphasis: "",
     text: "כתבו לי בוואטסאפ, ונמצא יחד את המפגש שמתאים לכם.",
   },
 };

@@ -205,7 +205,7 @@ export default async function SessionsPage() {
         />
         <div className={`${styles.inner} ${styles.center}`}>
           <h2 className={styles.sectionTitle}>
-            {s.closing.title} <em>{s.closing.emphasis}</em>
+            {s.closing.title}{s.closing.emphasis && <> <em>{s.closing.emphasis}</em></>}
           </h2>
           <p className={styles.closingText}>{s.closing.text}</p>
           <WhatsAppButton s={s} className={styles.buttonLight} />

@@ -484,9 +484,16 @@
   font-size: clamp(1.25rem, 2vw, 1.45rem);
 }
 
-/* English: "What can open up in a session" 2px smaller. */
-.gainsBand .kickerLarge:not(:lang(he)) {
+/* English: both band labels ("What can open up…", "Two ways to meet") 2px smaller. */
+.kickerLarge:not(:lang(he)) {
   font-size: calc(clamp(1.25rem, 2vw, 1.45rem) - 2px);
+}
+
+/* English: the line under "Choose your session" matches the lead under the
+   section above it. */
+.formatsPlace:not(:lang(he)) {
+  font-size: clamp(1.1rem, 1.5vw, 1.2rem);
+  font-weight: inherit;
 }
 
 .formatsPlace {
@@ -768,5 +775,40 @@
   .button,
   .buttonLight {
     transition: none;
+  }
+}
+
+/* ---------- the closing band, tuned (both languages) ---------- */
+
+/* 100px shorter, taken from the top only: the band loses 50px of padding on
+   each side (so the text stays centred), and the photo is pulled up 100px past
+   the band's top edge, so its bottom stays exactly where it was. */
+.closing {
+  padding-block: calc(clamp(6rem, 13vw, 11rem) - 50px);
+}
+
+.closingImage {
+  inset-block-start: -100px !important; /* over next/image's inline inset */
+  block-size: calc(100% + 100px) !important;
+}
+
+/* The one-line title larger, with more air under it. Last in the file so it
+   wins over the phone size set above. */
+.closing .sectionTitle {
+  font-size: clamp(2.6rem, 4.8vw, 3.6rem);
+  margin-block-end: 0.75rem;
+}
+
+/* Phones: back to roomy padding and the whole photo height, framed toward
+   the lamp and the candle on its left. */
+@media (max-width: 44rem) {
+  .closing {
+    padding-block: 7rem;
+  }
+
+  .closingImage {
+    inset-block-start: 0 !important;
+    block-size: 100% !important;
+    object-position: 6% 70%;
   }
 }
