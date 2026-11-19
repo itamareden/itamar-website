@@ -140,7 +140,7 @@ const paths: Record<SeoPage, string> = {
 // (challenge days, welcome and closing words, Practices) are always out.
 const indexed: Record<Locale, SeoPage[]> = {
   he: ["home", "about", "sessions", "breathingLife", "challenge", "contact"],
-  en: ["home", "about", "sessions", "contact"],
+  en: ["home", "about", "sessions", "breathingLife", "contact"],
 };
 
 export function getSeo(page: SeoPage, locale: Locale): Metadata {
