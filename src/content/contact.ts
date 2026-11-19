@@ -7,8 +7,8 @@ import type { Locale } from "@/i18n/config";
 
 // The same in both languages.
 export const contactSettings = {
-  // Works once itamareden.love is bought and its email is set up.
-  email: "info@itamareden.love",
+  // The one business address (forwarded for now; a real inbox later).
+  email: "itamar@itamareden.love",
   // The beach under the pines. (sunset-sea.jpg, from Unsplash, was the earlier try.)
   image: "/images/contact/beach.jpg",
 };
@@ -62,7 +62,7 @@ export const contact: Record<Locale, ContactContent> = {
       whatsappTitle: "אפשר גם בוואטסאפ",
       whatsappButton: "כתבו לי",
       whatsappUrl: whatsapp("היי איתמר, הגעתי מהאתר"),
-      socialTitle: "בואו נהיה חברים",
+      socialTitle: "בואו נהיה חברים :)",
     },
   },
   en: {
@@ -88,7 +88,7 @@ export const contact: Record<Locale, ContactContent> = {
       whatsappTitle: "Or on WhatsApp",
       whatsappButton: "Write to me",
       whatsappUrl: whatsapp("Hi Itamar, I found you through your website"),
-      socialTitle: "Let's be friends",
+      socialTitle: "Let's be friends :)",
     },
   },
 };

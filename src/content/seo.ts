@@ -67,7 +67,7 @@ const seo: Record<Locale, Record<SeoPage, SeoText>> = {
     contact: {
       title: "צרו קשר | איתמר אדן",
       description:
-        "לשאלות, לתיאום מפגש נשימה מעגלית או לכל דבר אחר: כתבו לי כאן, בווטסאפ או במייל, ואחזור אליכם.",
+        "אשמח לשמוע מכם: שאלות, תיאום מפגש או כל דבר אחר. כתבו לי כאן, בווטסאפ או במייל, ואחזור אליכם.",
     },
   },
   en: {
@@ -109,7 +109,7 @@ const seo: Record<Locale, Record<SeoPage, SeoText>> = {
     contact: {
       title: "Contact | Itamar Eden",
       description:
-        "For questions, to book a breathwork session or anything else: write to me here, on WhatsApp or by email, and I'll get back to you.",
+        "Would love to hear from you: questions, booking a session or anything else. Write to me here, on WhatsApp or by email, and I'll get back to you.",
     },
   },
 };
@@ -140,7 +140,7 @@ const paths: Record<SeoPage, string> = {
 // (challenge days, welcome and closing words, Practices) are always out.
 const indexed: Record<Locale, SeoPage[]> = {
   he: ["home", "about", "sessions", "breathingLife", "challenge", "contact"],
-  en: ["home", "about", "sessions"],
+  en: ["home", "about", "sessions", "contact"],
 };
 
 export function getSeo(page: SeoPage, locale: Locale): Metadata {
