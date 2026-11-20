@@ -5,13 +5,30 @@
 
 /* ---------- shared ---------- */
 
+/* Trial (design-trial branch): the challenge page's warm clay palette in
+   place of berry and pink. Set on <html> only while this page is open
+   (`.top` exists only here), so the header and footer follow and other pages
+   are untouched. */
+:global(html):has(.top) {
+  --color-accent: #eaa178; /* warm clay: buttons, lines, highlights */
+  --color-accent-strong: #e08e60; /* hover */
+  --color-on-accent: #33281f; /* dark text on the clay */
+  --color-accent-text: #b8683f; /* deeper clay for smaller text, so it stays readable */
+  --color-focus: #84401f;
+  --color-on-photo-accent: #f0b48f; /* clay, on the dark band */
+  --color-on-band: #f4e8d9; /* warm cream */
+  --color-wash-rose: #e6d2bc; /* sand-clay */
+  --color-wash-base: #f0e7dc; /* warm, not rosy */
+}
+
 .sectionTitle {
   font-size: clamp(2.1rem, 4.4vw, 3.2rem);
   letter-spacing: -0.01em;
 }
 
+/* Titles in one colour. */
 .sectionTitle em {
-  color: var(--color-accent);
+  color: inherit;
 }
 
 /* ---------- the top: the photo, with the greeting on it ---------- */
@@ -63,6 +80,11 @@
 .topInner:not(:lang(he)) > * {
   max-inline-size: 31rem;
   inline-size: 100%;
+}
+
+/* English: "I help..." starts on its own line. */
+.lead:not(:lang(he)) {
+  white-space: pre-line;
 }
 
 /* The greeting in cream. "היי," is a touch (about 4px) smaller than the name under it. */
@@ -213,21 +235,21 @@
   inline-size: 2.6rem;
   block-size: 2.6rem;
   margin-block-start: var(--space-2);
-  border: 1px solid color-mix(in srgb, var(--color-accent) 55%, transparent);
+  border: 1px solid color-mix(in srgb, var(--color-accent-text) 55%, transparent);
   border-radius: 50%;
-  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23a54173' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 4v16M6 14l6 6 6-6'/%3E%3C/svg%3E")
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23b8683f' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 4v16M6 14l6 6 6-6'/%3E%3C/svg%3E")
     center / 1.3rem no-repeat;
   transition: transform var(--transition-fast), background-color var(--transition-fast), border-color var(--transition-fast);
 }
 
 .jump a:hover strong {
-  color: var(--color-accent);
+  color: var(--color-accent-text);
 }
 
 .jump a:hover::after {
   border-color: var(--color-accent);
   background: var(--color-accent)
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fbf3ee' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 4v16M6 14l6 6 6-6'/%3E%3C/svg%3E")
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2333281f' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 4v16M6 14l6 6 6-6'/%3E%3C/svg%3E")
     center / 1.3rem no-repeat;
   transform: translateY(3px);
 }
@@ -326,7 +348,7 @@
 
 .storyPanel strong,
 .story strong {
-  color: var(--color-accent-strong);
+  color: var(--color-accent-text, var(--color-accent-strong));
 }
 
 .storyPanel .sectionTitle {
@@ -371,7 +393,7 @@
 /* What lights me up: the peach of its card on the page above. */
 .lights {
   margin-block-end: clamp(4rem, 8vw, 6.25rem);
-  background: color-mix(in srgb, #ebc8ba 75%, var(--color-background));
+  background: color-mix(in srgb, var(--color-wash-sand) 75%, var(--color-background));
 }
 
 /* The same height as the journey's portrait, trimmed a little at the sides. */
@@ -417,7 +439,7 @@
   font-size: clamp(1.25rem, 2vw, 1.5rem);
   font-weight: 500;
   line-height: 1.5;
-  color: var(--color-accent);
+  color: var(--color-accent-text);
 }
 
 /* --tool-circle: the circle size, 15% larger on phones (below), where the
@@ -463,7 +485,7 @@
     color-mix(in srgb, var(--tone, var(--color-accent)) 12%, var(--color-card)),
     color-mix(in srgb, var(--tone, var(--color-accent)) 24%, var(--color-background))
   );
-  color: var(--tone, var(--color-accent));
+  color: var(--tone, var(--color-accent-text));
 }
 
 /* A drawing in the circle instead of an icon: it fits at its own shape,
@@ -502,7 +524,7 @@
   /* A little less at the top: the heading's tall lines add their own space there. */
   padding-block: clamp(2.3rem, 5.2vw, 4.4rem) clamp(3.5rem, 7.8vw, 6.55rem);
   background:
-    radial-gradient(ellipse 70% 60% at 50% 0%, color-mix(in srgb, var(--color-accent) 45%, transparent), transparent 70%),
+    radial-gradient(ellipse 70% 60% at 50% 0%, color-mix(in srgb, var(--color-on-photo-accent) 22%, transparent), transparent 70%),
     var(--color-band);
   color: var(--color-on-band);
 }
@@ -523,7 +545,7 @@
 
 .dark .sectionTitle em {
   display: block;
-  color: var(--color-on-photo-accent);
+  color: inherit;
 }
 
 .nextText {
@@ -557,7 +579,7 @@
 /* Sessions: the main way in, solid cream. */
 .button {
   background: var(--color-on-photo);
-  color: var(--color-accent-strong);
+  color: var(--color-band);
   box-shadow: 0 14px 28px -14px color-mix(in srgb, black 60%, transparent);
 }
 
@@ -571,11 +593,11 @@
   color: var(--color-on-photo-accent);
 }
 
-/* On hover the outline and text turn cream, over a faint cream tint. */
+/* On hover it fills: clay background, dark text. */
 .buttonSoft:hover {
-  border-color: var(--color-on-photo);
-  background: color-mix(in srgb, var(--color-on-photo) 8%, transparent);
-  color: var(--color-on-photo);
+  border-color: var(--color-on-photo-accent);
+  background: var(--color-on-photo-accent);
+  color: var(--color-band);
 }
 
 .button:focus-visible,

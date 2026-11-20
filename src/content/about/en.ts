@@ -7,7 +7,7 @@ export const en: AboutContent = {
   hello: {
     title: "Hi,",
     emphasis: "I'm Itamar",
-    lead: "I guide meditation, breathwork and embodiment. I help people feel at ease being themselves, connect with their bodies, and open up to life.",
+    lead: "I guide meditation, breathwork and embodiment.\nI help people feel at ease being themselves, connect with their bodies, and open up to life.",
     intro: [
       "I believe life is full of opportunities. But often life waits for us to take the first step, and then, step by step, the path begins to reveal itself.",
       "Meeting someone by chance, a post that suddenly pops up, an unexpected conversation. Life has many ways of showing us signs along the way.",
