@@ -52,7 +52,7 @@ const he: ToolsContent = {
       card: "הנשימה מאפשרת לנו להגיע למקומות שהמילים והמחשבות לא תמיד מצליחות להגיע אליהם. היא פותחת מרחב לחיבור רגשי, לשחרור של מה שתקוע ולשינוי עמוק.",
       text: [
         "הנשימה היא גשר בין הגוף, הנפש והנשמה, והיא תמיד איתנו. היא הרבה יותר מפעולה שאנחנו עושים כדי להישאר בחיים. האופן שבו אנחנו נושמים משפיע על איך שאנחנו מרגישים, על מידת הנוכחות שלנו ועל הדרך שבה אנחנו פוגשים את החיים. כשאנחנו לומדים להקשיב לנשימה ולעבוד איתה, אנחנו מגלים כלי פשוט ונגיש שיכול לעזור לנו להירגע, להתעורר, להתחבר לעצמנו ולמצוא איזון בתוך היומיום.",
-        "בריברסינג אנחנו לוקחים את העבודה עם הנשימה צעד נוסף פנימה. באמצעות נשימה מעגלית ומחוברת, ללא הפסקה בין השאיפה לנשיפה, אנחנו מאפשרים לעצמנו להיכנס לחוויה עמוקה יותר. הנשימה יכולה להציף רגשות, לשחרר מתחים ודפוסים שהגוף מחזיק, לפתוח את הלב ולאפשר לתובנות חדשות להגיע. כל מפגש הוא קצת אחר, ואין צורך לדעת מראש מה יעלה או לאן הוא ייקח אותנו.",
+        "בריברסינג אנחנו לוקחים את העבודה עם הנשימה צעד נוסף פנימה. באמצעות נשימה מעגלית ומחוברת, אנחנו מאפשרים לעצמנו להיכנס לחוויה עמוקה יותר. הנשימה יכולה להציף רגשות, לשחרר מתחים ודפוסים שהגוף מחזיק, לפתוח את הלב ולאפשר לתובנות חדשות להגיע. כל מפגש הוא קצת אחר, ואין צורך לדעת מראש מה יעלה או לאן הוא ייקח אותנו.",
         "עבורי, הנשימה הפכה לאחד הכלים המשמעותיים ביותר בדרך שלי. היא עזרה לי להתחבר מחדש לגוף ולרגשות שלי, להשתחרר מפחדים וחרדות שניהלו אותי, ולפגוש צדדים רכים יותר בתוכי שלא תמיד נתתי להם מקום.",
       ],
     },
@@ -120,7 +120,7 @@ const en: ToolsContent = {
       card: "The breath takes us to places that words and thoughts can't always reach. It opens a space for emotional connection, for releasing what's stuck, and for deep change.",
       text: [
         "The breath is a bridge between body, mind and soul, and it is always with us. It is much more than something we do to stay alive. The way we breathe shapes how we feel, how present we are and how we meet life. When we learn to listen to the breath and work with it, we discover a simple, accessible tool that can help us calm down, wake up, connect to ourselves and find balance in everyday life.",
-        "In rebirthing we take breathwork one step further inward. Through circular, connected breathing, with no pause between the inhale and the exhale, we allow ourselves to enter a deeper experience. The breath can bring emotions to the surface, release tension and patterns the body holds, open the heart and let new insights arrive. Every session is a little different, and there's no need to know in advance what will come up or where it will take us.",
+        "In rebirthing we take breathwork one step further. Through conscious connected breathing, we allow ourselves to enter a deeper experience. The breath can bring emotions to the surface, help us let go of tension and patterns we hold in the body, open the heart, and make room for new insights. Every session is a little different, and there's no need to know in advance what will come up or where it will take us.",
         "For me, the breath has become one of the most meaningful tools on my path. It helped me reconnect with my body and my emotions, free myself from fears and anxieties that used to run me, and meet softer sides of myself that I didn't always give room to.",
       ],
     },
@@ -129,9 +129,9 @@ const en: ToolsContent = {
       title: "Somatic inquiry",
       card: "The body is our compass. When we learn to listen to it, we discover a whole world of sensations, emotions and insights, and build a new relationship with ourselves.",
       text: [
-        "The body holds many answers. It feels things long before the mind has a name for them, and it carries sensations and emotions we haven't yet met consciously. Again and again we find ourselves swept up in thoughts, in the stories we tell ourselves, in worries about what was or what's to come. Listening to the body lets us step out of all that for a moment and come back to what's happening here and now.",
-        "The more we learn to listen to it, the more we discover that it can be a compass in our lives. It helps us recognise what's right for us, what we're drawn to, and when it's time to pause or to move forward. By listening to the body's sensations we learn to trust ourselves and to act from a connection to what we feel.",
-        "For years I lived mostly in my head. I learned to think, to analyse and to try to understand everything, but I didn't always know how to stop and feel. Coming back to the body was my way of reconnecting with myself, and with life itself.",
+        "The body holds many answers. It feels things long before the mind has a name for them, and it carries sensations and emotions we haven't yet met consciously. We so often get caught up in our thoughts, in the stories we tell ourselves, in worrying about the past or the future. Listening to the body lets us step out of all that for a moment and come back to what's happening here and now.",
+        "The more we learn to listen to it, the more we discover that it can be a compass in our lives. It can help us notice what feels right for us, what we're drawn to, and when it's time to pause or move forward. By listening to the body's sensations we learn to trust ourselves and to make choices that feel true to us.",
+        "For years I lived mostly in my head. I learned to think, to analyse and to try to understand everything, but I rarely knew how to slow down and simply feel. Coming back to the body was my way of reconnecting with myself, and with life itself.",
       ],
     },
     {
@@ -149,9 +149,9 @@ const en: ToolsContent = {
       title: "Manifestation",
       card: "Knowing what we truly want, believing it's possible for us, letting go and allowing it to appear in our lives.",
       text: [
-        "What happens inside shapes what we meet and create outside. Our thoughts, the beliefs we hold, the emotions we nurture and the way we see ourselves and the world all influence the reality we experience and the possibilities we notice within it.",
+        "What happens inside us shapes what we meet and create outside. Our thoughts, the beliefs we hold, the emotions we nurture and the way we see ourselves and the world, all influence the reality we experience and the possibilities we notice within it.",
         "Manifestation begins with understanding what we truly want, not from what's expected of us or what we think we should want, but from deep listening to ourselves. From there we learn to imagine the reality we wish to create, to feel it in the body as if it's already here, and to connect with the feelings we'd love to experience in our lives. Alongside this, we cultivate gratitude for what we already have, and make room to receive more.",
-        "But manifestation isn't only about asking the universe and waiting. It's also about agreeing to believe it's possible for us, letting go of fears and limiting beliefs, and becoming sensitive and attentive to the opportunities life brings us. Sometimes they come in ways we didn't expect: through a meeting, an idea, an invitation or an inner sense that points us to the next step. We learn to recognise these moments, and to dare to act when they come. We do our part, and at the same time learn to let go of the need to control the path and the outcome, and let life surprise us.",
+        "But manifestation isn't only about asking the universe and waiting. It's also about agreeing to believe it's possible for us, letting go of fears and limiting beliefs, and becoming attentive to the opportunities life brings us. Sometimes they come in ways we didn't expect: through a meeting, an idea, an invitation or an inner sense that points us to the next step. We learn to recognise these moments, and to dare to act when they come. We do our part, and at the same time learn to let go of the need to control the path and the outcome, and let life surprise us.",
       ],
     },
   ],

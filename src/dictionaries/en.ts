@@ -16,7 +16,9 @@ export const en = {
     home: "Home",
     about: "About",
     sessions: "Private sessions",
-    events: "Events",
+    // Empty: no Events link in the English nav and footer while there are
+    // no English events.
+    events: "",
     courses: "Courses",
     practices: "Practices",
     challenge: "5-Day Challenge",

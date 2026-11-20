@@ -62,7 +62,10 @@ a {
   text-underline-offset: 0.2em;
 }
 
-a:hover {
+/* Zero specificity (:where), so any styled link or button keeps its own
+   colours on hover. As plain `a:hover` it outranked button classes and
+   turned button text the colour of the button's hover background. */
+:where(a:hover) {
   color: var(--color-accent-strong);
 }
 

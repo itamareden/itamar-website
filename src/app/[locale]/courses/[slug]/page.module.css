@@ -223,6 +223,24 @@
   color: var(--color-text-muted);
 }
 
+/* English hero: a slightly smaller lead and facts, more air above the
+   button, and more room between the text and the trailer. */
+.heroGrid:not(:lang(he)) {
+  gap: calc(clamp(2rem, 5vw, 4.5rem) + 2rem);
+}
+
+.lead:not(:lang(he)) {
+  font-size: calc(clamp(1.05rem, 1.5vw, 1.2rem) - 1.5px);
+}
+
+.button:not(:lang(he)) {
+  margin-block-start: calc(var(--space-2) + 1rem);
+}
+
+.facts:not(:lang(he)) {
+  font-size: 1rem;
+}
+
 .facts li:not(:last-child)::after {
   content: "·";
   margin-inline-start: var(--space-3);
@@ -483,7 +501,8 @@ button.trailer:hover .playShape {
 
 .stage {
   display: grid;
-  grid-template-columns: auto minmax(0, 1fr) auto;
+  /* A fixed column for the number, so every title starts in line. */
+  grid-template-columns: 1.25rem minmax(0, 1fr) auto;
   align-items: baseline;
   gap: var(--space-6);
   padding-block: var(--space-6);

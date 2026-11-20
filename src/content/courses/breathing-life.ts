@@ -179,45 +179,45 @@ export const breathingLife: Course = {
       hero: {
         eyebrow: "Online course",
         title: "Breathing Life",
-        emphasis: "Connect with life through the breath",
-        lead: "A recorded course in conscious breathing and meditation: simple tools that bring calm, balance and presence into your life, at your own pace, from anywhere.",
+        emphasis: "Discover the power of your breath",
+        lead: "Simple breathing practices and guided meditations for more calm, balance and presence in your everyday life. Learn at your own pace, from anywhere.",
         button: "Join the course on Udemy",
-        facts: ["2.5 hours of video", "19 lessons", "Lifetime access", "At your own pace"],
+        facts: ["2.5 hours", "19 lessons", "Lifetime access", "Self-paced"],
         trailerLabel: "The Breathing Life course trailer",
         trailerSoon: "The trailer will be here soon",
       },
       gains: {
-        kicker: "What the course gives you",
+        kicker: "What you'll gain",
         title: "Practical tools",
         emphasis: "that stay with you",
-        lead: "Learn how to use your breath to experience more peace and presence in everyday life.",
+        lead: "Learn to use your breath to find more peace and presence in your everyday life.",
         items: [
           {
             image: "/images/courses/gain-calm.png", // a leaf on flowing breath lines
             title: "Calm within reach",
-            text: "Simple breathing techniques that can help you slow down, let go and find peace, even in the middle of a busy day.",
+            text: "Simple techniques to help you slow down, let go and find calm, even on a busy day.",
           },
           {
             image: "/images/courses/gain-balance.png", // open hands holding a heart
             title: "Emotional balance",
-            text: "A daily breathing routine that strengthens your emotional steadiness and well-being.",
+            text: "A short daily breathing practice that helps you feel steadier and more at ease.",
           },
           {
             image: "/images/courses/gain-presence.png", // a hand resting on the heart
-            title: "Presence and connection",
-            text: "Feel more present in your body and your life, and deepen your connection with yourself through the breath.",
+            title: "Presence",
+            text: "Feel more present in your body and your life, and more connected to yourself.",
           },
           {
             image: "/images/courses/gain-rest-shoulders.png", // a person lying at rest, head and shoulders
             title: "Deep rest",
-            text: "Guided breath journeys and meditations that lead into deep relaxation and inner peace.",
+            text: "Guided breath journeys and meditations that lead you into deep relaxation.",
           },
         ],
       },
       reviews: {
         kicker: "What people say",
-        title: "A few words",
-        emphasis: "from those who’ve tried it",
+        title: "In their",
+        emphasis: "own words",
         items: reviews,
       },
       inside: {
@@ -229,69 +229,69 @@ export const breathingLife: Course = {
             title: "Welcome & Foundations",
             length: "16 min",
             lessons: "3 lessons",
-            text: "How the breath shapes your body, mind and emotions, and how to practise safely.",
+            text: "How the breath affects your body, mind and emotions, and how to practise safely.",
           },
           {
             title: "Core Techniques",
             length: "2 hours",
             lessons: "11 lessons",
-            text: "The heart of the course: breathing techniques and guided journeys, step by step.",
+            text: "The heart of the course: breathing techniques and guided practices, step by step.",
           },
           {
             title: "Integrating the Breath in Daily Life",
             length: "22 min",
             lessons: "4 lessons",
-            text: "Bring the breath into your days and build a short routine that supports you.",
+            text: "Simple ways to use the breath throughout your day, and a short routine that supports you.",
           },
           {
             title: "Completion & Gratitude",
             length: "3 min",
             lessons: "1 lesson",
-            text: "Closing the journey, and a look at the path ahead.",
+            text: "Closing the journey and looking at the path ahead.",
           },
         ],
         techniques:
-          "Techniques include sigh breathing, coherent breathing, belly and complete breathing, box breathing, Nadi Shodhana and guided meditations.",
+          "You'll learn sigh breathing, coherent breathing, belly and complete breathing, box breathing and Nadi Shodhana, along with guided meditations.",
       },
       faq: {
         title: "Questions",
-        note: "The course is meant for personal learning and practice, and isn't a substitute for medical or psychological advice or care.",
+        note: "This course is for personal learning and practice, and is not a substitute for medical or psychological advice or treatment.",
         items: [
           {
-            question: "Do I need experience with breathwork or meditation?",
+            question: "Do I need any experience with breathwork or meditation?",
             answer: [
-              "No experience is needed. We start from the basics and learn the techniques step by step, with explanations and guided practice. If you have practised before, it's a chance to go deeper and discover new ways to work with your breath.",
+              "Not at all. We start with the basics and build up step by step, with clear explanations and guided practice. If you already practise, it's a chance to go deeper and find new ways to work with your breath.",
             ],
           },
           {
             question: "How does it work?",
             answer: [
-              "You enrol, pay and watch the course on Udemy, on the website or in the app. Once you enrol, the course is yours **for life**: watch on your computer, phone or TV, at your own pace, and come back to any lesson as often as you like.",
+              "You sign up, pay and watch the course on Udemy, on the website or in the app. Once you've enrolled, the course is yours **for life**: watch on your computer, phone or TV, at your own pace, and come back to any lesson whenever you like.",
             ],
           },
           {
-            question: "How much time do I need for practice?",
+            question: "How much time does it take?",
             answer: [
-              "The course has about 2.5 hours of video, and you can spread it out to suit your time. The guided practices last about 5–10 minutes, so they fit even into a busy day. It's best to progress gradually and repeat the practices, so the techniques become familiar and natural and part of your everyday life.",
+              "The course has about 2.5 hours of video, which you can spread out however suits you. The guided practices take about 5–10 minutes, so they fit even into a busy day. Go gradually and repeat the practices, so the techniques become second nature and part of your daily life.",
             ],
           },
           {
-            question: "Are all the breathing exercises right for everyone?",
+            question: "Are the breathing practices suitable for everyone?",
             answer: [
-              "The practices in the course suit the great majority of people, even without any experience. Still, there are medical conditions in which some practices aren't recommended. In a video you can watch for free on the course page, I explain these conditions. It's best to watch it before you enrol and, if needed, consult a medical professional.",
+              "The practices suit most people, even complete beginners. Still, some of them aren't recommended for certain medical conditions. I explain these in a free video on the course page, so it's best to watch it before you enrol and, if needed, check with a medical professional.",
             ],
           },
           {
-            question: "What if it isn't right for me?",
-            answer: ["Before you enrol, you can watch three free videos on the course page and get a feel for the approach and the guidance. And after you enrol, Udemy offers a 30-day money-back guarantee, so you can begin with confidence."],
+            question: "What if it's not for me?",
+            answer: ["Before you enrol, you can watch three free videos on the course page to get a feel for the approach and my teaching style. And after you enrol, Udemy offers a 30-day money-back guarantee, so you can start with confidence."],
           },
         ],
       },
       closing: {
         title: "Discover what your breath",
         emphasis: "can do for you",
-        text: "Simple techniques and guided practices that help you use your breath to ease stress and experience more peace and presence in everyday life.",
-        note: "Three free videos to watch on the course page",
+        text: "Simple techniques and guided practices to help you ease stress and bring more peace and presence into your everyday life.",
+        note: "Watch three free videos on the course page",
       },
     },
   },

@@ -55,6 +55,16 @@
   padding-block-end: clamp(var(--space-12), 9vw, 7rem);
 }
 
+/* English too: the greeting keeps to the right of the photo, as in Hebrew. */
+.topInner:not(:lang(he)) {
+  justify-items: end;
+}
+
+.topInner:not(:lang(he)) > * {
+  max-inline-size: 31rem;
+  inline-size: 100%;
+}
+
 /* The greeting in cream. "היי," is a touch (about 4px) smaller than the name under it. */
 .title {
   font-size: clamp(2.35rem, calc(5.4vw - 0.25rem), 4.85rem);
@@ -106,6 +116,11 @@
   font-size: 1.2rem;
   line-height: 1.85;
   color: var(--color-text-muted);
+}
+
+/* English: reading text matched to the tools (17.6px), the card a touch larger. */
+.intro:not(:lang(he)) {
+  font-size: 1.125rem; /* 18px */
 }
 
 .intro p:first-child {
@@ -283,6 +298,22 @@
   block-size: auto;
 }
 
+/* Side by side. English: both photos on the right, as in Hebrew. */
+@media (min-width: 44rem) {
+  .storyImage:not(:lang(he)) {
+    order: 2;
+    /* Fills the box's full height when the text beside it runs a bit longer. */
+    align-self: stretch;
+    block-size: 100%;
+    object-fit: cover;
+  }
+
+  /* English: the titles beside the photos a few px smaller. */
+  .storyPanel .sectionTitle:not(:lang(he)) {
+    font-size: calc(clamp(2.1rem, 4.4vw, 3.2rem) - 4px);
+  }
+}
+
 /* Centred beside the photo, so the space it leaves falls evenly. */
 .storyPanel {
   display: grid;
@@ -311,6 +342,11 @@
   padding: 2rem clamp(2rem, 5vw, 3.5rem) clamp(2rem, 5vw, 3.5rem);
   font-size: 1.15rem;
   line-height: 1.85;
+}
+
+.storyPanel:not(:lang(he)),
+.story:not(:lang(he)) {
+  font-size: 1.0625rem; /* 17px */
 }
 
 /* The last line, under a short centred berry line. */

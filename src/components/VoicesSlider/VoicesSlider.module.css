@@ -209,6 +209,15 @@
   transform: scaleX(-1);
 }
 
+/* English reads left to right: previous points left (←), next points right (→). */
+:global([dir="ltr"]) .arrow svg {
+  transform: scaleX(-1);
+}
+
+:global([dir="ltr"]) .previous svg {
+  transform: none;
+}
+
 .dots {
   display: flex;
   gap: 0.625rem;

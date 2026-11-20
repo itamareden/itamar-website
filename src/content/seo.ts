@@ -67,7 +67,7 @@ const seo: Record<Locale, Record<SeoPage, SeoText>> = {
     contact: {
       title: "צרו קשר | איתמר אדן",
       description:
-        "לשאלות, לתיאום מפגש נשימה מעגלית או לכל דבר אחר: כתבו לי כאן, בווטסאפ או במייל, ואחזור אליכם.",
+        "אשמח לשמוע מכם: שאלות, תיאום מפגש או כל דבר אחר. כתבו לי כאן, בווטסאפ או במייל, ואחזור אליכם.",
     },
   },
   en: {
@@ -84,7 +84,7 @@ const seo: Record<Locale, Record<SeoPage, SeoText>> = {
     sessions: {
       title: "Rebirthing breathwork sessions | Itamar Eden",
       description:
-        "A private, couples or group rebirthing breathwork session, with close guidance and music tuned to you. A safe space to release emotion and tension and meet yourself deeply. Online and in Koh Phangan.",
+        "Private, couples and group breathwork sessions with Itamar Eden: a safe space to let go, release emotions and meet yourself deeply. Koh Phangan & online.",
     },
     breathingLife: {
       title: "Online breathwork and meditation course | Breathing Life",
@@ -109,7 +109,7 @@ const seo: Record<Locale, Record<SeoPage, SeoText>> = {
     contact: {
       title: "Contact | Itamar Eden",
       description:
-        "For questions, to book a breathwork session or anything else: write to me here, on WhatsApp or by email, and I'll get back to you.",
+        "Would love to hear from you: questions, booking a session or anything else. Write to me here, on WhatsApp or by email, and I'll get back to you.",
     },
   },
 };
@@ -140,16 +140,18 @@ const paths: Record<SeoPage, string> = {
 // (challenge days, welcome and closing words, Practices) are always out.
 const indexed: Record<Locale, SeoPage[]> = {
   he: ["home", "about", "sessions", "breathingLife", "challenge", "contact"],
-  en: ["home"],
+  en: ["home", "about", "sessions", "breathingLife", "contact"],
 };
 
 export function getSeo(page: SeoPage, locale: Locale): Metadata {
   const index = openToSearch && indexed[locale].includes(page);
   // hreflang: a page indexed in every language names all its versions, so
-  // Google shows each searcher theirs. x-default is Hebrew while "/" opens Hebrew.
+  // Google shows each searcher theirs. x-default is the address without a
+  // language ("/", "/about"), which picks one per visitor (proxy.ts), as
+  // Google recommends for sites that redirect by language.
   const inAll = locales.every((l) => indexed[l].includes(page));
   const languages = inAll
-    ? { ...Object.fromEntries(locales.map((l) => [l, `/${l}${paths[page]}`])), "x-default": `/he${paths[page]}` }
+    ? { ...Object.fromEntries(locales.map((l) => [l, `/${l}${paths[page]}`])), "x-default": paths[page] || "/" }
     : undefined;
   return {
     ...seo[locale][page],

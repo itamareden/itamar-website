@@ -75,13 +75,15 @@
   transition: background-color var(--transition-fast);
 }
 
+/* Warm clay with dark text, as on the challenge page. */
 .button {
-  background: var(--color-accent);
-  color: var(--color-on-photo);
+  background: #eaa178;
+  color: var(--color-band);
+  box-shadow: 0 10px 24px -12px color-mix(in srgb, #c47650 70%, transparent);
 }
 
 .button:hover {
-  background: var(--color-accent-strong);
+  background: #e08e60;
 }
 
 .buttonLight {
@@ -150,6 +152,38 @@
   padding: 7rem clamp(var(--gutter), 5vw, 6rem) clamp(6rem, 13vw, 10rem); /* more below than above, so the text sits a little high */
 }
 
+/* English: the text keeps to the right as in Hebrew, in a narrower block
+   (English runs wider) so it stays clear of his shoulder. */
+:global([dir="ltr"]) .heroInner {
+  justify-content: flex-end;
+  padding-inline-end: calc(clamp(var(--gutter), 2.5vw, 3rem) + 15px); /* closer to the edge */
+}
+
+:global([dir="ltr"]) .heroText {
+  max-inline-size: 23rem;
+  translate: 0 -2.5rem; /* a little higher on the photo */
+}
+
+/* English: a slightly smaller title (-5px) and lead (-2.5px). */
+:global([dir="ltr"]) .title {
+  font-size: calc(clamp(2.8rem, 6vw, 4.8rem) - 5px);
+}
+
+:global([dir="ltr"]) .lead {
+  font-size: calc(clamp(1.05rem, 1.5vw, 1.2rem) - 2.5px);
+}
+
+/* The taller English text lifts this line onto the bright floor on phones:
+   the same soft shade as the lead keeps it readable. */
+:global([dir="ltr"]) .heroButton {
+  translate: 0 20px; /* lower, while the text above stays put */
+}
+
+:global([dir="ltr"]) .eyebrow {
+  margin-block-end: -0.5rem; /* a little closer to the title */
+  text-shadow: 0 1px 12px color-mix(in srgb, var(--color-band) 70%, transparent);
+}
+
 .heroText {
   display: grid;
   justify-items: start;
@@ -204,6 +238,11 @@
   padding-block: clamp(4rem, 8vw, 6.5rem);
 }
 
+/* English: 40px less space between the note and the band below. */
+.note:not(:lang(he)) {
+  padding-block-end: calc(clamp(4rem, 8vw, 6.5rem) - 40px);
+}
+
 .noteColumn {
   display: grid;
   gap: var(--space-6);
@@ -220,6 +259,16 @@
 }
 
 
+
+/* English: 18.4px text, and a little more air under each beat's opening line. */
+.noteColumn:not(:lang(he)) {
+  inline-size: min(100%, 52rem); /* a little wider, so the card is shorter */
+  font-size: 1.15rem;
+}
+
+.beatLead:not(:lang(he)) {
+  margin-block-end: 10px;
+}
 
 .beat {
   display: grid;
@@ -273,6 +322,7 @@
 }
 
 .gainsLead {
+  white-space: pre-line; /* a line break in the text starts a new line */
   max-inline-size: 44rem;
   font-size: clamp(1.1rem, 1.5vw, 1.2rem);
   line-height: 1.8;
@@ -340,6 +390,12 @@
   block-size: 300px;
   color: var(--color-text);
   pointer-events: none;
+}
+
+/* The curve is drawn right to left, for Hebrew. English runs the steps left
+   to right, so it is mirrored to follow them. */
+:global([dir="ltr"]) .curve {
+  transform: scaleX(-1);
 }
 
 .steps {
@@ -426,6 +482,18 @@
 
 .kickerLarge {
   font-size: clamp(1.25rem, 2vw, 1.45rem);
+}
+
+/* English: both band labels ("What can open up…", "Two ways to meet") 2px smaller. */
+.kickerLarge:not(:lang(he)) {
+  font-size: calc(clamp(1.25rem, 2vw, 1.45rem) - 2px);
+}
+
+/* English: the line under "Choose your session" matches the lead under the
+   section above it. */
+.formatsPlace:not(:lang(he)) {
+  font-size: clamp(1.1rem, 1.5vw, 1.2rem);
+  font-weight: inherit;
 }
 
 .formatsPlace {
@@ -707,5 +775,40 @@
   .button,
   .buttonLight {
     transition: none;
+  }
+}
+
+/* ---------- the closing band, tuned (both languages) ---------- */
+
+/* 100px shorter, taken from the top only: the band loses 50px of padding on
+   each side (so the text stays centred), and the photo is pulled up 100px past
+   the band's top edge, so its bottom stays exactly where it was. */
+.closing {
+  padding-block: calc(clamp(6rem, 13vw, 11rem) - 50px);
+}
+
+.closingImage {
+  inset-block-start: -100px !important; /* over next/image's inline inset */
+  block-size: calc(100% + 100px) !important;
+}
+
+/* The one-line title larger, with more air under it. Last in the file so it
+   wins over the phone size set above. */
+.closing .sectionTitle {
+  font-size: clamp(2.6rem, 4.8vw, 3.6rem);
+  margin-block-end: 0.75rem;
+}
+
+/* Phones: back to roomy padding and the whole photo height, framed toward
+   the lamp and the candle on its left. */
+@media (max-width: 44rem) {
+  .closing {
+    padding-block: 7rem;
+  }
+
+  .closingImage {
+    inset-block-start: 0 !important;
+    block-size: 100% !important;
+    object-position: 6% 70%;
   }
 }

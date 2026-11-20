@@ -23,10 +23,10 @@ export async function SiteHeader() {
   const dict = await getDictionary();
 
   // Ready-made links, used by both the desktop nav and the mobile menu.
-  const links = navItems.map(({ key, path }) => ({
-    href: `/${locale}${path}`,
-    label: dict.nav[key],
-  }));
+  // An empty label hides its link (e.g. Events in English for now).
+  const links = navItems
+    .map(({ key, path }) => ({ href: `/${locale}${path}`, label: dict.nav[key] }))
+    .filter((link) => link.label);
 
   return (
     <ScrollHeader className={styles.header}>

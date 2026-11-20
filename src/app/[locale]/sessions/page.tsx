@@ -7,9 +7,8 @@ import { HeroImage } from "@/components/HeroImage/HeroImage";
 import { Emphasis } from "@/components/Emphasis/Emphasis";
 import { VoicesSlider } from "@/components/VoicesSlider/VoicesSlider";
 import { WhatsAppIcon } from "@/app/[locale]/challenge/_components/WhatsAppIcon";
-import { sessions as s } from "@/content/sessions/he";
+import { getSessions, type SessionsContent } from "@/content/sessions";
 import { getVoices } from "@/content/voices";
-import { getDictionary } from "@/dictionaries";
 import { getLocale } from "@/i18n/get-locale";
 import styles from "./page.module.css";
 
@@ -19,7 +18,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
 // The WhatsApp button, used in the opening and the closing band.
 // No link until the number is set in the content settings.
-function WhatsAppButton({ className }: { className: string }) {
+function WhatsAppButton({ s, className }: { s: SessionsContent; className: string }) {
   const href = s.settings.whatsappUrl || undefined;
   return (
     <a href={href} target="_blank" rel="noopener noreferrer" className={className}>
@@ -29,11 +28,9 @@ function WhatsAppButton({ className }: { className: string }) {
   );
 }
 
-// Hebrew only for now; the English page keeps its placeholder.
 export default async function SessionsPage() {
-  const dict = await getDictionary();
   const locale = await getLocale();
-  if (locale !== "he") return <h1>{dict.nav.sessions}</h1>;
+  const s = getSessions(locale);
   const voices = getVoices(locale);
 
   return (
@@ -64,7 +61,7 @@ export default async function SessionsPage() {
                 <span key={part}>{part} </span>
               ))}
             </p>
-            <WhatsAppButton className={`${styles.button} ${styles.heroButton}`} />
+            <WhatsAppButton s={s} className={`${styles.button} ${styles.heroButton}`} />
           </div>
         </div>
       </section>
@@ -208,10 +205,10 @@ export default async function SessionsPage() {
         />
         <div className={`${styles.inner} ${styles.center}`}>
           <h2 className={styles.sectionTitle}>
-            {s.closing.title} <em>{s.closing.emphasis}</em>
+            {s.closing.title}{s.closing.emphasis && <> <em>{s.closing.emphasis}</em></>}
           </h2>
           <p className={styles.closingText}>{s.closing.text}</p>
-          <WhatsAppButton className={styles.buttonLight} />
+          <WhatsAppButton s={s} className={styles.buttonLight} />
         </div>
       </section>
       <JsonLd data={sessionsData(locale, s.faq.items)} />
