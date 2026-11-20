@@ -109,7 +109,7 @@
   padding: 0.55em 1.3em;
   border-radius: var(--radius-pill);
   background: var(--color-on-photo);
-  color: var(--color-accent-strong);
+  color: var(--color-accent-text, var(--color-accent-strong));
   font-weight: var(--weight-bold);
   text-decoration: none;
   transition: background-color var(--transition-fast);

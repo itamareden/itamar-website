@@ -209,7 +209,7 @@
   justify-self: center;
   font-size: 1.1rem;
   font-weight: var(--weight-bold);
-  color: var(--color-accent);
+  color: var(--color-accent-text, var(--color-accent));
   text-decoration: none;
 }
 

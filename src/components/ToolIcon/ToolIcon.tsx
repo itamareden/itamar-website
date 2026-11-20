@@ -9,10 +9,10 @@
 export type ToolIconName = "meditation" | "breath" | "body" | "child" | "manifestation";
 
 export const TOOL_TONES: Record<ToolIconName, string> = {
-  meditation: "#a54173",
+  meditation: "#b8683f", /* clay (was berry #a54173) */
   breath: "#b8782a",
   body: "#b5654a",
-  child: "#8c5a7a",
+  child: "#9a6a4f", /* warm umber (was plum #8c5a7a) */
   manifestation: "#7d7a3a",
 };
 

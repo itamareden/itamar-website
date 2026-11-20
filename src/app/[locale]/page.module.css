@@ -4,6 +4,22 @@
 
 /* ---------- shared ---------- */
 
+/* Trial (design-trial branch): the warm clay palette of the challenge,
+   About and Sessions pages in place of berry and rose. Set on <html> only
+   while this page is open (`.invite` is this page's own class), so the
+   header and footer follow and other pages are untouched. */
+:global(html):has(.invite) {
+  --color-accent: #eaa178; /* warm clay: buttons, lines, highlights */
+  --color-accent-strong: #e08e60; /* hover */
+  --color-on-accent: #33281f; /* dark text on the clay */
+  --color-accent-text: #b8683f; /* deeper clay for smaller text, so it stays readable */
+  --color-focus: #84401f;
+  --color-on-photo-accent: #f0b48f; /* clay, on dark */
+  --color-on-band: #f4e8d9; /* warm cream */
+  --color-wash-rose: #e6d2bc; /* sand-clay */
+  --color-wash-base: #f0e7dc; /* warm, not rosy */
+}
+
 .inner {
   max-inline-size: var(--content-width);
   margin-inline: auto;
@@ -19,7 +35,7 @@
 
 .kicker {
   font-weight: var(--weight-bold);
-  color: var(--color-accent);
+  color: var(--color-accent-text, var(--color-accent));
 }
 
 .kicker:not(:lang(he)) {
@@ -36,14 +52,15 @@
   font-size: clamp(1.95rem, 4.1vw, 3rem);
 }
 
+/* Titles in one colour. */
 .sectionTitle em {
   font-style: normal;
-  color: var(--color-accent);
+  color: inherit;
 }
 
 .textLink {
   font-weight: var(--weight-bold);
-  color: var(--color-accent);
+  color: var(--color-accent-text, var(--color-accent));
   text-decoration: none;
 }
 
@@ -86,7 +103,7 @@
 .inviteOpening {
   font-size: clamp(2.4rem, 5vw, 3.6rem);
   line-height: 1.1;
-  color: var(--color-accent);
+  color: var(--color-text);
 }
 
 .inviteImagine {
@@ -101,7 +118,7 @@
   font-size: clamp(1.6rem, 2.8vw, 2.2rem);
   font-weight: var(--weight-bold);
   line-height: 1.3;
-  color: var(--color-accent);
+  color: var(--color-accent-text, var(--color-accent));
 }
 
 /* The other side: the story, smaller and quieter. */
@@ -221,7 +238,7 @@
 .wayLabel {
   font-size: 0.95rem;
   font-weight: var(--weight-bold);
-  color: var(--color-accent);
+  color: var(--color-accent-text, var(--color-accent));
 }
 
 .way h3 {
@@ -246,15 +263,15 @@
   margin-block-start: var(--space-2);
   padding: 0.65rem 1.5rem;
   border-radius: var(--radius-pill);
-  background: color-mix(in srgb, var(--color-accent) 12%, var(--color-background));
+  background: var(--color-accent);
   font-weight: var(--weight-bold);
-  color: var(--color-accent-strong);
+  color: var(--color-on-accent);
   text-decoration: none;
   transition: background-color var(--transition-fast);
 }
 
 .wayButton:hover {
-  background: color-mix(in srgb, var(--color-accent) 22%, var(--color-background));
+  background: var(--color-accent-strong);
 }
 
 /* ---------- what people say ---------- */
