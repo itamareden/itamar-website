@@ -23,6 +23,20 @@
   gap: clamp(2rem, 4vw, 3rem);
 }
 
+/* The question, the list with the photo, and the small cards share one
+   width, a little narrower than the page column, centred. */
+.header,
+.pick {
+  inline-size: min(100%, 70rem);
+  margin-inline: auto;
+}
+
+/* The small cards keep their earlier, narrower width. */
+.others {
+  inline-size: min(100%, 64rem);
+  margin-inline: auto;
+}
+
 /* The top: a soft sand wash across the whole width (a shadow spread to the
    screen edges, clipped at the sides of the screen, so the page never
    scrolls sideways), running up to the site header. The needs' line sits on
@@ -31,7 +45,7 @@
   display: grid;
   gap: clamp(1.75rem, 3vw, 2.5rem);
   --top-band: color-mix(in srgb, var(--color-wash-base) 55%, var(--color-background)); /* lighter than the header's sand */
-  padding-block: clamp(0.5rem, 1.5vw, 1rem) clamp(1.75rem, 3.5vw, 2.5rem); /* room under the line */
+  padding-block: clamp(1.75rem, 3.5vw, 2.75rem); /* room under the header bar and under the text */
   background: var(--top-band);
   box-shadow: 0 0 0 100vmax var(--top-band);
   clip-path: inset(calc(-1 * var(--space-12)) -100vmax 0);
@@ -44,8 +58,6 @@
   display: grid;
   justify-items: start;
   gap: var(--space-3);
-  inline-size: min(100%, 64rem);
-  margin-inline: auto;
 }
 
 .title {
@@ -70,8 +82,6 @@
   grid-template-columns: minmax(0, 1fr) minmax(0, 1.9fr);
   gap: clamp(1.75rem, 4vw, 3.5rem);
   align-items: start;
-  inline-size: min(100%, 64rem);
-  margin-inline: auto;
 }
 
 /* A quiet vertical list on a thin line: the need, and under it the
@@ -100,6 +110,13 @@
   animation: arrive 500ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+/* Hebrew, wider screens: the descriptions 1.5px larger. */
+@media (width > 44rem) {
+  .needMore:lang(he) {
+    font-size: calc(1rem + 1.5px);
+  }
+}
+
 /* Shown only on phones (below). */
 .chosenMore,
 .needsMore {
@@ -117,7 +134,7 @@
   gap: 0.15rem;
   inline-size: 100%;
   padding: 1rem 0;
-  padding-inline-start: 1.1rem;
+  padding-inline: 1.1rem 2.5rem; /* room for the + at the end */
   border: 0;
   background: none;
   font: inherit;
@@ -125,6 +142,25 @@
   color: var(--color-text-muted);
   cursor: pointer;
   transition: color var(--transition-fast);
+}
+
+/* A + at the end of each row, like the questions in an FAQ; it turns into
+   a × while the row is open. */
+.need::after {
+  content: "+";
+  position: absolute;
+  inset-block-start: 50%;
+  inset-inline-end: 0.25rem;
+  font-family: var(--font-body);
+  font-size: 1.5rem;
+  line-height: 1;
+  color: var(--color-accent-text, var(--color-accent));
+  translate: 0 -50%;
+  transition: rotate 200ms ease;
+}
+
+.need[aria-expanded="true"]::after {
+  rotate: 45deg;
 }
 
 .need::before {
@@ -288,8 +324,6 @@
 .others {
   display: grid;
   gap: var(--space-6);
-  inline-size: min(100%, 64rem);
-  margin-inline: auto;
   margin-block-start: var(--space-6);
 }
 
@@ -478,6 +512,7 @@
   }
 
   .need::before,
+  .need::after,
   .needTitle,
   .needMore {
     display: none;
@@ -508,6 +543,7 @@
   .chosenMedia {
     aspect-ratio: 4 / 5;
   }
+
 
   .chosenBody {
     grid-template-columns: minmax(0, 1fr);
@@ -544,6 +580,10 @@
   .chosen,
   .needMore {
     animation: none;
+  }
+
+  .need::after {
+    transition: none;
   }
 
   .need,

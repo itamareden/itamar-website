@@ -50,27 +50,27 @@ const he: PracticesContent = {
   },
   practices: [
     {
-      need: "להתחיל את היום בשקט",
+      need: "להתחיל את היום בשלווה",
       ...home.meditations[0],
       length: "7 דקות",
       description:
-        "דרך יפה לקבל את היום בנוכחות.\nהמדיטציה מזמינה אתכם להאט, לחזור לגוף ולהתחיל את היום ממקום מיושב, כך שהיום נפתח פתוח, צלול ומרומם יותר.",
+        "דרך יפה לפתוח את היום בנוכחות.\nלעצור לרגע, להאט ולחזור לגוף, כדי להתחיל את הבוקר ממקום מחובר, עם יותר פתיחות, בהירות וקלילות.",
     },
     {
       need: "לאהוב את עצמי",
       ...home.meditations[1],
       length: "7 דקות",
       description:
-        "לאהוב את עצמנו זה אחד היסודות החשובים ביותר לחיים של שמחה, חופש ותחושת שלמות. במדיטציה הזו אנחנו מגיעים חשופים ורכים…\nומאפשרים ללב להיפתח בדרך שלו, בקצב שלו.",
+        "אהבה עצמית היא אחד היסודות החשובים ביותר לחיים של שמחה, חופש ושלמות. למדיטציה הזו אנחנו מגיעים כמו שאנחנו, חשופים ורכים…\nומאפשרים ללב להיפתח בקצב שלו.",
     },
     {
       need: "לשחרר",
       label: "באנגלית",
       title: "מסע הנהר",
-      summary: "15 דקות שבהן הנהר לוקח איתו את מה שאתם מוכנים לשחרר.",
+      summary: "מסע מודרך אל אמון ושחרור.",
       length: "15 דקות",
       description:
-        "המדיטציה המודרכת הזו היא הזמנה לשחרר ולתת לחיים לזרום דרככם. בעזרת דימוי של נהר תחקרו איך זה מרגיש לרכך את המאמץ, לשחרר את השליטה ולסמוך על התבונה הטבעית של החיים.",
+        "הזמנה לשחרר, ולתת לחיים להוביל אתכם. דרך הדימוי של נהר נרגיש איך זה להרפות מהמאמץ, לוותר על השליטה ולסמוך על החוכמה הטבעית של החיים.",
       url: "https://insighttimer.com/itamar_eden/guided-meditations/the-river-journey-15-minute-meditation",
       image: "/images/practices/river-green.jpg", // Photo by Shanmu Wang on Unsplash, https://unsplash.com/photos/tUjLz0gBUKY
       imagePosition: "35% 70%", // the river's bend, on the start side
@@ -78,11 +78,11 @@ const he: PracticesContent = {
     {
       need: "להרגיש את הגוף",
       label: "באנגלית",
-      title: "להפוך לנוזל",
-      summary: "מדיטציה בתנועה: לתת לגוף לזרום ולהרגיש אותו מבפנים.",
+      title: "להימס לאט",
+      summary: "מדיטציה בתנועה: לתת לגוף להוביל אתכם.",
       length: "17 דקות",
       description:
-        "חקירה איטית בתנועה, בהשראת הטנטרה והאמנות העתיקה של הטנדאווה.\nדרך תנועה איטית ומודעת והקשבה לגוף, לומדים להקשיב לדחפים של הגוף, לשחרר מתחים ולהעמיק את הנוכחות. מתאים להרפיה, להתקרקעות ולמודעות גופנית.",
+        "תנועה איטית ומודעת, בהשראת הטנטרה והאמנות העתיקה של הטנדאווה.\nמקשיבים לגוף ולדחפים שעולים ממנו, נותנים למתחים להשתחרר ומעמיקים את הנוכחות. תרגול נהדר להרפיה, להתקרקעות ולחיבור לגוף.",
       url: "https://insighttimer.com/itamar_eden/video-guided-meditations/becoming-liquid-body-awareness-through-movement",
       image: "/images/practices/becoming-liquid.jpg",
       imagePosition: "50% 35%",
@@ -91,22 +91,22 @@ const he: PracticesContent = {
       need: "להתקרקע",
       label: "באנגלית",
       title: "רוגע וקרקע",
-      summary: "לחזור לגוף ולתחושה טבעית של יציבות.",
+      summary: "להעמיק את השורשים ולהרגיש את האדמה מזינה אתכם.",
       length: "9 דקות",
       description:
-        "תרגול עדין של התקרקעות, שעוזר להרגיש רגועים, ממורכזים ונתמכים.\nבעזרת הנשימה ודימויים של אדמה, המדיטציה מחזירה אתכם לגוף ולתחושה טבעית של יציבות.",
+        "תרגול עדין של התקרקעות, להרגיש רגועים, מאוזנים ונתמכים.\nבעזרת הנשימה ודימויים מהאדמה, חוזרים אל הגוף ואל תחושת יציבות טבעית.",
       url: "https://insighttimer.com/itamar_eden/video-guided-meditations/feel-calm-and-grounded",
       image: "/images/practices/grounded-roots.jpg", // Photo by Omar Ramadan on Unsplash; upright, so the wide crop shows the roots
       imagePosition: "50% 78%",
     },
     {
-      need: "להתחבר זה לזה",
+      need: "אינטימיות",
       label: "לזוגות · באנגלית",
-      title: "מבט אל הנשמה",
+      title: "אינטימיות",
       summary: "מדיטציה לזוגות: לראות באמת, ולהיראות.",
       length: "15 דקות",
       description:
-        "מדיטציה מודרכת לזוגות, להעמקת האינטימיות דרך נוכחות מהלב ומבט בעיניים. כשמביטים מעבר לתפקידים ולסיפורים שמעצבים את הזוגיות, אפשר לגלות שכבות חדשות זה בזה, ואולי אפילו להציץ אל האלוהי שחי בכל אחד מכם. הזמנה לראות באמת, ולהיראות.",
+        "מדיטציה מודרכת לזוגות, להעמקת האינטימיות דרך נוכחות מהלב ומבט עמוק בעיניים. כשמביטים מעבר לתפקידים ולסיפורים של הזוגיות, אפשר לגלות זה את זה מחדש, ואולי אפילו לפגוש את האלוהי שבכל אחד מכם. הזמנה לראות באמת, ולהיראות.",
       url: "https://insighttimer.com/itamar_eden/guided-meditations/couple-s-soul-gazing-a-guided-eye-gazing-meditation",
       image: "/images/practices/soul-gazing.jpg", // Photo by quilia on Unsplash, https://unsplash.com/photos/n2VvngfbXtU
     },
@@ -118,10 +118,10 @@ const he: PracticesContent = {
 const en: PracticesContent = {
   title: "What do you need right now?",
   intro: "Choose what speaks to you, find a quiet spot, and let me guide you.",
-  listen: homeEn.listen,
+  listen: "Listen",
   soon: "Coming soon",
-  othersTitle: "More practices",
-  moreLabel: "More practices",
+  othersTitle: "More meditations",
+  moreLabel: "More meditations",
   closing: {
     title: "Want to go deeper together?",
     text: "Private sessions, in person or online, shaped around what you bring that day.",
@@ -146,7 +146,7 @@ const en: PracticesContent = {
     {
       need: "Let go",
       title: "The River Journey",
-      summary: "15 minutes in which the river carries away what you're ready to release.",
+      summary: "A guided journey into trust and letting go.",
       length: "15 min",
       description:
         "This guided meditation is an invitation to let go and allow life to move through you. Using the image of a river, you’ll explore what it feels like to soften effort, release control, and trust the natural intelligence of life.",
@@ -155,9 +155,9 @@ const en: PracticesContent = {
       imagePosition: he.practices[2].imagePosition,
     },
     {
-      need: "Feel my body",
-      title: "Becoming Liquid",
-      summary: "A movement meditation: let the body flow and feel it from within.",
+      need: "Move my body",
+      title: "Slowly Melting",
+      summary: "Movement as meditation: let the body lead you.",
       length: "17 min",
       description:
         "A slow movement exploration inspired by Tantra and the ancient art of Tandava.\nThrough slow & mindful movement and body awareness, we learn to listen to the body's impulses, let go, release tension, and cultivate a deeper sense of presence. Ideal for relaxation, grounding, and embodied self-awareness.",
@@ -168,7 +168,7 @@ const en: PracticesContent = {
     {
       need: "Feel grounded",
       title: "Feel Calm and Grounded",
-      summary: "Come back into your body and a natural sense of stability.",
+      summary: "Deepen your roots, and feel nourished by the earth.",
       length: "9 min",
       description:
         "A gentle grounding practice to help you feel calm, centered, and supported.\nUsing breath and earth-based imagery, this meditation guides you back into your body and into a natural sense of stability.",

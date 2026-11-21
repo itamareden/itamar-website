@@ -9,6 +9,8 @@ import styles from "./page.module.css";
 // other three as small cards that choose theirs when tapped.
 export function Chooser({ content }: { content: PracticesContent }) {
   const [selected, setSelected] = useState(0);
+  // Which row's description is open: none at first, like a list of answers.
+  const [open, setOpen] = useState<number | null>(null);
   const [atEnd, setAtEnd] = useState(true);
   const needsRef = useRef<HTMLDivElement>(null);
 
@@ -61,20 +63,21 @@ export function Chooser({ content }: { content: PracticesContent }) {
                 type="button"
                 className={styles.need}
                 aria-pressed={i === selected}
+                aria-expanded={i === open}
                 aria-controls="chosen"
                 onClick={(e) => {
                   choose(i);
+                  setOpen(open === i ? null : i);
                   // Phones: bring a half-hidden choice fully into the row.
                   e.currentTarget.scrollIntoView({ inline: "nearest", block: "nearest", behavior: "smooth" });
                 }}
               >
                 <span className={styles.needName}>{p.need}</span>
-                <span className={styles.needTitle}>
-                  {p.title} · {p.length}
-                </span>
+                {/* Only the length here: the need answers the question above. */}
+                <span className={styles.needTitle}>{p.length}</span>
               </button>
               {/* The chosen one opens: its longer description. */}
-              {i === selected && <p className={styles.needMore}>{p.description}</p>}
+              {i === open && <p className={styles.needMore}>{p.description}</p>}
             </div>
           ))}
         </div>
@@ -113,7 +116,6 @@ export function Chooser({ content }: { content: PracticesContent }) {
         </div>
         {current.label && <p className={styles.label}>{current.label}</p>}
         <div className={styles.chosenBody}>
-          <p className={styles.chosenNeed}>{current.need}</p>
           <h2 className={styles.chosenTitle}>{current.title}</h2>
           <p className={styles.summary}>{current.summary}</p>
           {current.placeholder ? (
