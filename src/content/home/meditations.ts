@@ -19,7 +19,7 @@ export type MeditationsContent = {
   title: string;
   intro: string;
   listen: string; // the link to a meditation
-  more: string; // the link under the cards, to the Practices page
+  more: string; // the link under the cards, to the Meditations page
   meditations: MeditationCard[];
 };
 
@@ -27,7 +27,7 @@ const he: MeditationsContent = {
   title: "טעימה מהחוויה",
   intro: "תמצאו לכם פינה שקטה, תתרווחו, ותנו לי ללוות אתכם.",
   listen: "בואו נתחיל",
-  more: "לכל התרגולים ←",
+  more: "לכל המדיטציות ←",
   meditations: [
     {
       label: "באנגלית",
@@ -51,7 +51,7 @@ const en: MeditationsContent = {
   title: "A taste of the experience",
   intro: "Find a quiet spot, get comfortable, and let me guide you.",
   listen: "Explore",
-  more: "All practices →",
+  more: "All meditations →",
   meditations: [
     {
       title: "Welcoming the Day",

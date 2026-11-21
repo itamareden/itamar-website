@@ -2,7 +2,7 @@ import type { Locale } from "@/i18n/config";
 import { getMeditations } from "@/content/home/meditations";
 
 /*
- * The Practices page (/he/practices): free guided meditations on Insight
+ * The Meditations page (/he/meditations; the code still calls it practices): free guided meditations on Insight
  * Timer, chosen by what the visitor needs right now. Hebrew and English.
  *
  * Descriptions: Itamar's own Insight Timer texts (English) and their Hebrew
@@ -40,8 +40,8 @@ const he: PracticesContent = {
   intro: "תבחרו את מה שמדבר אליכם, תמצאו לכם פינה שקטה, ותנו לי ללוות אתכם.",
   listen: home.listen,
   soon: "בקרוב",
-  othersTitle: "ועוד תרגולים",
-  moreLabel: "עוד תרגולים",
+  othersTitle: "ועוד מדיטציות",
+  moreLabel: "עוד מדיטציות",
   closing: {
     title: "רוצים לתרגל יחד?",
     text: "חמישה ימים של תרגול מודרך, בחינם, עם קבוצה שמלווה אתכם.",

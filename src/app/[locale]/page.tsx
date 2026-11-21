@@ -133,7 +133,7 @@ export default async function Home() {
         <VoicesCarousel content={voices} href={`/${locale}/sessions`} className={styles.voices} />
       )}
 
-      {meditations && <FreeMeditations content={meditations} href={`/${locale}/practices`} />}
+      {meditations && <FreeMeditations content={meditations} href={`/${locale}/meditations`} />}
       <JsonLd data={homeData(locale)} />
     </>
   );

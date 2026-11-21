@@ -14,7 +14,7 @@ const navItems: { key: keyof Dictionary["nav"]; path: string }[] = [
   { key: "sessions", path: "/sessions" },
   { key: "events", path: "/events" },
   { key: "courses", path: "/courses" },
-  { key: "practices", path: "/practices" },
+  { key: "practices", path: "/meditations" },
   { key: "contact", path: "/contact" },
 ];
 

@@ -18,7 +18,7 @@ export const he: Dictionary = {
     // Empty: no Events link in the nav and footer while there are no events.
     events: "",
     courses: "קורסים",
-    practices: "תרגולים",
+    practices: "מדיטציות",
     challenge: "אתגר 5 ימים",
     contact: "צרו קשר",
   },

@@ -25,7 +25,8 @@ export type SeoPage =
   | "challenge"
   | "events"
   | "liveCourse"
-  | "contact";
+  | "contact"
+  | "meditations";
 
 const seo: Record<Locale, Record<SeoPage, SeoText>> = {
   he: {
@@ -69,6 +70,11 @@ const seo: Record<Locale, Record<SeoPage, SeoText>> = {
       description:
         "אשמח לשמוע מכם: שאלות, תיאום מפגש או כל דבר אחר. כתבו לי כאן, בווטסאפ או במייל, ואחזור אליכם.",
     },
+    meditations: {
+      title: "מדיטציות מודרכות בחינם | איתמר אדן",
+      description:
+        "מדיטציות מודרכות בחינם לפי מה שאתם צריכים עכשיו: להתחיל את היום בשלווה, אהבה עצמית, שחרור, תנועה, התקרקעות ואינטימיות. להאזנה ב-Insight Timer.",
+    },
   },
   en: {
     home: {
@@ -111,6 +117,11 @@ const seo: Record<Locale, Record<SeoPage, SeoText>> = {
       description:
         "Would love to hear from you: questions, booking a session or anything else. Write to me here, on WhatsApp or by email, and I'll get back to you.",
     },
+    meditations: {
+      title: "Free guided meditations | Itamar Eden",
+      description:
+        "Free guided meditations for what you need right now: a calm start to the day, self-love, letting go, movement, grounding and intimacy. Listen on Insight Timer.",
+    },
   },
 };
 
@@ -132,15 +143,16 @@ const paths: Record<SeoPage, string> = {
   events: "/events",
   liveCourse: "/events/mindfulness",
   contact: "/contact",
+  meditations: "/meditations",
 };
 
 // Finished pages Google may index, per language. Not listed, so kept out:
 // the live course (until its name, structure and address are decided) and
 // English pages not yet translated. Pages that never use getSeo
-// (challenge days, welcome and closing words, Practices) are always out.
+// (challenge days, welcome and closing words) are always out.
 const indexed: Record<Locale, SeoPage[]> = {
-  he: ["home", "about", "sessions", "breathingLife", "challenge", "contact"],
-  en: ["home", "about", "sessions", "breathingLife", "contact"],
+  he: ["home", "about", "sessions", "breathingLife", "challenge", "contact", "meditations"],
+  en: ["home", "about", "sessions", "breathingLife", "contact", "meditations"],
 };
 
 export function getSeo(page: SeoPage, locale: Locale): Metadata {

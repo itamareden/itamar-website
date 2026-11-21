@@ -1,4 +1,6 @@
+import type { Metadata } from "next";
 import Link from "next/link";
+import { getSeo } from "@/content/seo";
 import { getPractices } from "@/content/practices";
 import { getDictionary } from "@/dictionaries";
 import { getLocale } from "@/i18n/get-locale";
@@ -7,6 +9,10 @@ import styles from "./page.module.css";
 
 // Free guided meditations, chosen by what the visitor needs right now.
 // Hebrew and English; a language without content keeps the placeholder title.
+export async function generateMetadata(): Promise<Metadata> {
+  return getSeo("meditations", await getLocale());
+}
+
 export default async function PracticesPage() {
   const locale = await getLocale();
   const content = getPractices(locale);

@@ -23,6 +23,13 @@ const nextConfig: NextConfig = {
   },
   async redirects() {
     return [
+      // The free meditations page was first called Practices; old links
+      // and bookmarks to /practices land on its new address.
+      {
+        source: "/:locale(en|he)/practices",
+        destination: "/:locale/meditations",
+        permanent: true,
+      },
       {
         source: "/:locale(en|he)/courses",
         destination: "/:locale/courses/breathing-life",
