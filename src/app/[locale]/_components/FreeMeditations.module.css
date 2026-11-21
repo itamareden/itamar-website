@@ -41,6 +41,20 @@
   list-style: none;
 }
 
+/* The link to all the practices, centred under the cards. */
+.more {
+  justify-self: center;
+  font-size: 1.1rem;
+  font-weight: var(--weight-bold);
+  color: var(--color-accent-text, var(--color-accent));
+  text-decoration: none;
+}
+
+.more:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
 /* The photo fills the card; the text sits on its lower part, over a shade. */
 .card {
   position: relative;

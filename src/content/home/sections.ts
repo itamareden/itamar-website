@@ -158,7 +158,7 @@ const en: HomeSections = {
         title: "Free meditations",
         text: "Take a moment for yourself. These free guided meditations are an invitation to turn inward and let go.",
         cta: "Listen now",
-        href: "#free-meditations",
+        href: "/en/practices",
         image: "/images/home/meditations/sunrise-meadow.jpg",
         imageAlt: "A meadow at sunrise",
       },
