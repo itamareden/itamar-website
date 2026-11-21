@@ -6,6 +6,22 @@
 
 /* ---------- shared ---------- */
 
+/* Trial (design-trial branch): the warm clay palette of the other pages in
+   place of berry and rose. Set on <html> only while this page is open
+   (`.hero` here is this page's own class), so the header and footer follow
+   and other pages are untouched. */
+:global(html):has(.hero) {
+  --color-accent: #eaa178; /* warm clay: buttons, dots, lines */
+  --color-accent-strong: #e08e60; /* hover */
+  --color-on-accent: #33281f; /* dark text on the clay */
+  --color-accent-text: #b8683f; /* deeper clay for smaller text */
+  --color-focus: #84401f;
+  --color-on-photo-accent: #f0b48f; /* clay, on the dark band */
+  --color-on-band: #f4e8d9; /* warm cream */
+  --color-wash-rose: #e6d2bc; /* sand-clay */
+  --color-wash-base: #f0e7dc; /* warm, not rosy */
+}
+
 .inner {
   max-inline-size: var(--content-width);
   margin-inline: auto;
@@ -21,7 +37,7 @@
 
 .kicker {
   font-weight: var(--weight-bold);
-  color: var(--color-accent);
+  color: var(--color-accent-text, var(--color-accent));
 }
 
 .sectionTitle {
@@ -31,7 +47,7 @@
 
 .sectionTitle em {
   font-style: normal;
-  color: var(--color-accent);
+  color: inherit; /* titles in one colour */
 }
 
 .sectionLead {
@@ -57,7 +73,7 @@
   margin-block-start: 0;
   padding-block: clamp(4rem, 9vw, 7rem);
   background:
-    radial-gradient(ellipse 70% 60% at 50% 0%, color-mix(in srgb, var(--color-accent) 45%, transparent), transparent 70%),
+    radial-gradient(ellipse 70% 60% at 50% 0%, color-mix(in srgb, var(--color-on-photo-accent) 22%, transparent), transparent 70%),
     var(--color-band);
   color: var(--color-on-band);
 }
@@ -68,7 +84,7 @@
 
 .dark .sectionTitle em {
   display: block;
-  color: var(--color-on-photo-accent);
+  color: inherit;
 }
 
 /* Enrol buttons: berry on the page, cream on the dark band. */
@@ -87,29 +103,29 @@
 
 .button {
   background: var(--color-accent);
-  color: var(--color-on-photo);
+  color: var(--color-on-accent);
 }
 
 /* The text colour is repeated on hover: the site-wide a:hover rule would
    otherwise turn it berry, invisible on the berry button. */
 .button:hover {
   background: var(--color-accent-strong);
-  color: var(--color-on-photo);
+  color: var(--color-on-accent);
 }
 
 .buttonLight {
   background: var(--color-on-photo);
-  color: var(--color-accent-strong);
+  color: var(--color-band);
 }
 
 .buttonLight:hover {
   background: var(--color-card);
-  color: var(--color-accent-strong);
+  color: var(--color-band);
 }
 
 .button:focus-visible,
 .buttonLight:focus-visible {
-  outline: 2px solid var(--color-accent);
+  outline: 2px solid var(--color-focus);
   outline-offset: 3px;
 }
 
@@ -198,7 +214,7 @@
   font-style: normal;
   line-height: var(--leading-tight);
   letter-spacing: 0;
-  color: var(--color-accent);
+  color: var(--color-accent-text, var(--color-accent));
 }
 
 .lead {
@@ -267,12 +283,12 @@
   flex: none;
   inline-size: 1.5rem;
   block-size: 1.5rem;
-  color: var(--color-accent);
+  color: var(--color-accent-text, var(--color-accent));
 }
 
 .gift a {
   font-weight: var(--weight-bold);
-  color: var(--color-accent);
+  color: var(--color-accent-text, var(--color-accent));
   white-space: nowrap;
 }
 
@@ -302,7 +318,7 @@ button.trailer {
 }
 
 button.trailer:focus-visible {
-  outline: 2px solid var(--color-accent);
+  outline: 2px solid var(--color-focus);
   outline-offset: 4px;
 }
 
@@ -473,7 +489,7 @@ button.trailer:hover .playShape {
   align-items: center;
   gap: var(--space-3);
   font-weight: var(--weight-bold);
-  color: var(--color-accent);
+  color: var(--color-accent-text, var(--color-accent));
 }
 
 .reviewName::before {
@@ -518,7 +534,7 @@ button.trailer:hover .playShape {
   content: counter(stage);
   font-family: var(--font-heading);
   font-size: 1.6rem;
-  color: var(--color-accent);
+  color: var(--color-accent-text, var(--color-accent));
 }
 
 .stage h3 {
@@ -582,7 +598,7 @@ button.trailer:hover .playShape {
   content: "+";
   font-family: var(--font-body);
   line-height: 1;
-  color: var(--color-accent);
+  color: var(--color-accent-text, var(--color-accent));
   transition: transform 200ms ease;
 }
 
