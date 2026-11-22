@@ -73,7 +73,7 @@ const seo: Record<Locale, Record<SeoPage, SeoText>> = {
     meditations: {
       title: "מדיטציות מודרכות בחינם | איתמר אדן",
       description:
-        "מדיטציות מודרכות בחינם לפי מה שאתם צריכים עכשיו: להתחיל את היום בשלווה, אהבה עצמית, שחרור, תנועה, התקרקעות ואינטימיות. להאזנה ב-Insight Timer.",
+        "מדיטציות מודרכות בחינם לפי מה שאתם צריכים עכשיו: לשלווה, לאהבה עצמית, לשחרור ולהתקרקעות. תמצאו פינה שקטה ותנו לי ללוות אתכם.",
     },
   },
   en: {
@@ -120,7 +120,7 @@ const seo: Record<Locale, Record<SeoPage, SeoText>> = {
     meditations: {
       title: "Free guided meditations | Itamar Eden",
       description:
-        "Free guided meditations for what you need right now: a calm start to the day, self-love, letting go, movement, grounding and intimacy. Listen on Insight Timer.",
+        "Free guided meditations for what you need right now: calm, self-love, letting go and grounding. Find a quiet spot and let me guide you.",
     },
   },
 };

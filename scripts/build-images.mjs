@@ -24,6 +24,13 @@ import sharp from "sharp";
 export const WIDTHS = [32, 48, 64, 96, 128, 256, 384, 640, 750, 828, 1080, 1200, 1920, 2048, 2560, 3840];
 const QUALITIES = [75, 90];
 
+// Photos so full of fine detail (leaves, roots) that their usual sizes come
+// out heavy: their everyday files (the q75 ones) are made at this lower
+// quality instead. The difference is very hard to see in such textures.
+const LIGHTER = {
+  "/images/practices/grounded-roots.jpg": 55,
+};
+
 const root = process.cwd();
 const srcDir = path.join(root, "public", "images");
 const outDir = path.join(root, "public", "_img");
@@ -52,7 +59,7 @@ function walk(dir) {
   );
 }
 
-async function makeSizes(input, dir) {
+async function makeSizes(input, dir, everyday = 75) {
   const { width: originalWidth } = await sharp(input).metadata();
   // Widths wider than the photo get its full width (never enlarged).
   const made = new Map();
@@ -63,7 +70,11 @@ async function makeSizes(input, dir) {
       if (!made.has(key)) {
         made.set(
           key,
-          sharp(input).rotate().resize({ width: actual }).webp({ quality }).toBuffer(),
+          sharp(input)
+            .rotate()
+            .resize({ width: actual })
+            .webp({ quality: quality === 75 ? everyday : quality })
+            .toBuffer(),
         );
       }
       fs.writeFileSync(path.join(dir, `${width}-q${quality}.webp`), await made.get(key));
@@ -79,8 +90,14 @@ let made = 0;
 for (const file of walk(srcDir)) {
   if (!/\.(jpe?g|png)$/i.test(file)) continue;
   const input = fs.readFileSync(file);
-  const hash = createHash("sha1").update(input).digest("hex").slice(0, 10);
   const publicPath = "/" + path.relative(path.join(root, "public"), file).split(path.sep).join("/");
+  const everyday = LIGHTER[publicPath] ?? 75;
+  // A lighter setting is part of the hash, so changing it remakes the sizes.
+  const hash = createHash("sha1")
+    .update(input)
+    .update(everyday === 75 ? "" : `q${everyday}`)
+    .digest("hex")
+    .slice(0, 10);
   manifest[publicPath] = hash;
   placeholders[publicPath] = await makePlaceholder(input);
 
@@ -89,7 +106,7 @@ for (const file of walk(srcDir)) {
   if (fs.existsSync(dir) && fs.readdirSync(dir).length === expected) continue;
 
   fs.mkdirSync(dir, { recursive: true });
-  await makeSizes(input, dir);
+  await makeSizes(input, dir, everyday);
   made++;
 }
 
