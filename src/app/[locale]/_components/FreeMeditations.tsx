@@ -1,9 +1,11 @@
 import Image from "next/image";
+import Link from "next/link";
 import type { MeditationsContent } from "@/content/home/meditations";
 import styles from "./FreeMeditations.module.css";
 
 // A card per meditation, each opening it on Insight Timer in a new tab.
-export function FreeMeditations({ content }: { content: MeditationsContent }) {
+// A link under them leads to the Practices page, where there are more.
+export function FreeMeditations({ content, href }: { content: MeditationsContent; href: string }) {
   return (
     <section id="free-meditations" className={styles.section}>
       <header className={styles.header}>
@@ -36,6 +38,10 @@ export function FreeMeditations({ content }: { content: MeditationsContent }) {
           </li>
         ))}
       </ul>
+
+      <Link href={href} className={styles.more}>
+        {content.more}
+      </Link>
     </section>
   );
 }

@@ -23,7 +23,7 @@ export async function SiteFooter() {
     { href: `/${locale}/sessions`, label: dict.nav.sessions },
     { href: `/${locale}/events`, label: dict.nav.events },
     { href: `/${locale}/courses`, label: dict.nav.courses },
-    { href: `/${locale}/practices`, label: f.freeMeditations },
+    { href: `/${locale}/meditations`, label: f.freeMeditations },
     { href: `/${locale}/about`, label: dict.nav.about },
   ].filter((link) => link.label); // an empty label hides its link
 

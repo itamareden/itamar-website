@@ -80,6 +80,8 @@
   inline-size: calc(var(--size) * 0.8);
   block-size: calc(var(--size) * 0.72);
   object-fit: contain;
+  /* Trial (design-trial branch): the drawings' berry lines shifted to clay. */
+  filter: hue-rotate(52deg) saturate(0.9);
 }
 
 .icon svg {
@@ -116,7 +118,7 @@
 .link {
   justify-self: center;
   font-weight: var(--weight-bold);
-  color: var(--color-accent);
+  color: var(--color-accent-text, var(--color-accent));
   text-decoration: none;
 }
 

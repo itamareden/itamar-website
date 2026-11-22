@@ -5,6 +5,18 @@
  * Phone layout below 44rem.
  */
 
+/* Trial (design-trial branch): the warm clay palette of the other pages in
+   place of berry. Set on <html> only while this page is open (`.panel` is
+   this page's own class), so the header and footer follow and other pages
+   are untouched. */
+:global(html):has(.panel) {
+  --color-accent: #eaa178; /* warm clay: the Send button */
+  --color-accent-strong: #e08e60; /* hover */
+  --color-on-accent: #33281f; /* dark text on the clay */
+  --color-accent-text: #b8683f; /* deeper clay for small text and icons */
+  --color-focus: #84401f;
+}
+
 .page {
   position: relative;
   isolation: isolate;
@@ -86,7 +98,7 @@
   font-weight: 700;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--color-accent);
+  color: var(--color-accent-text, var(--color-accent));
 }
 
 .eyebrow:lang(he) {
@@ -235,7 +247,7 @@
   flex: none;
   inline-size: 1rem;
   block-size: 1rem;
-  color: var(--color-accent);
+  color: var(--color-accent-text, var(--color-accent));
   fill: none;
   stroke: currentColor;
   stroke-width: 1.8;
@@ -249,7 +261,7 @@
 }
 
 .mail:hover {
-  color: var(--color-accent);
+  color: var(--color-accent-text, var(--color-accent));
 }
 
 /* A cream pill, gentle beside the berry Send button. */
@@ -274,7 +286,7 @@
 .whatsappIcon {
   inline-size: 1.2rem;
   block-size: 1.2rem;
-  color: var(--color-accent);
+  color: var(--color-accent-text, var(--color-accent));
 }
 
 /* ---------- phones ---------- */

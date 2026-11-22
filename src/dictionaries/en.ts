@@ -20,7 +20,7 @@ export const en = {
     // no English events.
     events: "",
     courses: "Courses",
-    practices: "Practices",
+    practices: "Meditations",
     challenge: "5-Day Challenge",
     contact: "Contact",
   },

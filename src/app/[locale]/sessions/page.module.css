@@ -6,6 +6,22 @@
 /* ---------- shared ---------- */
 
 /* Content column inside full-width sections. */
+/* Trial (design-trial branch): the challenge page's warm clay palette in
+   place of berry and pink. Set on <html> only while this page is open
+   (`.hero` here is this page's own class), so the header and footer follow
+   and other pages are untouched. */
+:global(html):has(.hero) {
+  --color-accent: #eaa178; /* warm clay: lines, dots, highlights */
+  --color-accent-strong: #e08e60; /* hover */
+  --color-on-accent: #33281f; /* dark text on the clay */
+  --color-accent-text: #b8683f; /* deeper clay for smaller text, so it stays readable */
+  --color-focus: #84401f;
+  --color-on-photo-accent: #f0b48f; /* clay, on the dark band */
+  --color-on-band: #f4e8d9; /* warm cream */
+  --color-wash-rose: #e6d2bc; /* sand-clay */
+  --color-wash-base: #f0e7dc; /* warm, not rosy */
+}
+
 .inner {
   max-inline-size: var(--content-width);
   margin-inline: auto;
@@ -25,7 +41,7 @@
 
 .kicker {
   font-weight: var(--weight-bold);
-  color: var(--color-accent);
+  color: var(--color-accent-text, var(--color-accent));
 }
 
 .sectionTitle {
@@ -49,7 +65,7 @@
   margin-block-start: 0;
   padding-block: clamp(4rem, 9vw, 7.5rem);
   background:
-    radial-gradient(ellipse 70% 60% at 50% 0%, color-mix(in srgb, var(--color-accent) 45%, transparent), transparent 70%),
+    radial-gradient(ellipse 70% 60% at 50% 0%, color-mix(in srgb, var(--color-on-photo-accent) 22%, transparent), transparent 70%),
     var(--color-band);
   color: var(--color-on-band);
 }
@@ -88,7 +104,7 @@
 
 .buttonLight {
   background: var(--color-on-photo);
-  color: var(--color-accent-strong);
+  color: var(--color-band);
 }
 
 .buttonLight:hover {
@@ -97,7 +113,7 @@
 
 .button:focus-visible,
 .buttonLight:focus-visible {
-  outline: 2px solid var(--color-accent);
+  outline: 2px solid var(--color-focus);
   outline-offset: 3px;
 }
 
@@ -469,15 +485,19 @@
 
 /* ---------- two ways to meet ---------- */
 
-/* Rose fading in from the off-white page at the top and easing lighter toward
-   the bottom, the same all the way across. */
+/* Trial (design-trial branch): a dark band, umber with a clay glow from the
+   top, as at the end of the page. The text colours are redefined for the
+   band, so everything inside turns light. (Was: rose fading in from the
+   off-white page and easing lighter toward the bottom.) */
 .formatsBand {
-  background: linear-gradient(
-    to bottom,
-    var(--color-background) 0%,
-    color-mix(in srgb, var(--color-wash-rose) 70%, var(--color-background)) 35%,
-    color-mix(in srgb, var(--color-wash-rose) 25%, var(--color-background)) 100%
-  );
+  --color-text: var(--color-on-band);
+  --color-text-muted: color-mix(in srgb, var(--color-on-band) 80%, transparent);
+  --color-accent-text: var(--color-on-photo-accent);
+  --color-accent: var(--color-on-photo-accent);
+  background:
+    radial-gradient(ellipse 70% 60% at 50% 0%, color-mix(in srgb, var(--color-on-photo-accent) 22%, transparent), transparent 70%),
+    var(--color-band);
+  color: var(--color-text);
 }
 
 .kickerLarge {
@@ -526,7 +546,7 @@
   font-family: var(--font-heading);
   font-size: clamp(2.4rem, 4.6vw, 3.4rem);
   line-height: 1.05;
-  color: var(--color-accent);
+  color: var(--color-accent-text, var(--color-accent));
 }
 
 .length span {
@@ -600,7 +620,7 @@
   font-family: var(--font-body);
   font-size: 1.4rem;
   line-height: 1;
-  color: var(--color-accent);
+  color: var(--color-accent-text, var(--color-accent));
   transition: transform 200ms ease;
 }
 
@@ -810,5 +830,18 @@
     inset-block-start: 0 !important;
     block-size: 100% !important;
     object-position: 6% 70%;
+  }
+}
+
+/* Trial (design-trial branch), phones only: the text and button in a
+   see-through black box, so they read calmly over the busy, bright photo.
+   With the same soft white halo as on the challenge page. */
+@media (max-width: 44rem) {
+  .heroText {
+    padding: var(--space-5, 1.25rem);
+    border: 1px solid rgb(251 243 238 / 0.18);
+    border-radius: 18px;
+    background: rgb(0 0 0 / 0.47);
+    box-shadow: 0 0 36px 4px rgb(255 250 244 / 0.42);
   }
 }
