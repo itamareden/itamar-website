@@ -7,7 +7,9 @@
   display: flex;
   gap: var(--space-4);
   padding-inline-start: var(--space-6);
-  border-inline-start: 1px solid var(--header-line, var(--color-border));
+  /* Its own colour where the header sets one (e.g. on a pale photo, where
+     the header has no line of its own), else the header's line colour. */
+  border-inline-start: 1px solid var(--header-divider, var(--header-line, var(--color-border)));
 }
 
 .link {

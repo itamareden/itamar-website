@@ -959,7 +959,13 @@
 
 /* A light sand band, so the questions stand apart from the cream sections above. */
 .faqBand {
+  padding-block-start: calc(clamp(2.25rem, 5vw, 4.5rem) + 1rem); /* a little less room above the questions */
   background: color-mix(in srgb, var(--color-wash-sand) 40%, var(--color-background));
+}
+
+/* A little less room under "Nice to meet you", before the questions. */
+.section:has(> .guide) {
+  padding-block-end: clamp(2.25rem, 5vw, 4.5rem);
 }
 
 .faq {

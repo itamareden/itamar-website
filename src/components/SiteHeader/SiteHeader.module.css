@@ -54,6 +54,9 @@ body:has([data-hero="light"]) .header {
   --header-shadow: none;
   --header-icon-shadow: none;
   --header-line: transparent;
+  /* No line under the header here, but the language switcher keeps its
+     divider, in a soft dark that reads on the pale photo. */
+  --header-divider: color-mix(in srgb, var(--color-text) 30%, transparent);
   --header-hover: var(--color-accent);
 }
 
