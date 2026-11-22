@@ -965,7 +965,7 @@
 
 /* A little less room under "Nice to meet you", before the questions. */
 .section:has(> .guide) {
-  padding-block-end: clamp(2.25rem, 5vw, 4.5rem);
+  padding-block-end: calc(clamp(2.25rem, 5vw, 4.5rem) + 0.5rem);
 }
 
 .faq {
