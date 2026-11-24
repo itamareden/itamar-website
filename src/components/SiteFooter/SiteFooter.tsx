@@ -53,7 +53,10 @@ export async function SiteFooter() {
 
         <div className={styles.bar}>
           <p>
-            © {year} {dict.site.name}
+            © {year} {dict.site.name} ·{" "}
+            <Link href={`/${locale}/privacy`} className={styles.credit}>
+              {f.privacy}
+            </Link>
           </p>
           <p>
             {photoCredit.label[locale]}:{" "}

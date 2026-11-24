@@ -47,6 +47,7 @@ export const he: Dictionary = {
     linksLabel: "דרכים לתרגל יחד",
     challenge: "אתגר 5 ימים חינמי",
     freeMeditations: "מדיטציות בחינם",
+    privacy: "מדיניות פרטיות",
   },
   notFound: {
     title: "הדף לא נמצא",

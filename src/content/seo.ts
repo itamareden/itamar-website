@@ -26,7 +26,8 @@ export type SeoPage =
   | "events"
   | "liveCourse"
   | "contact"
-  | "meditations";
+  | "meditations"
+  | "privacy";
 
 const seo: Record<Locale, Record<SeoPage, SeoText>> = {
   he: {
@@ -75,6 +76,10 @@ const seo: Record<Locale, Record<SeoPage, SeoText>> = {
       description:
         "מדיטציות מודרכות בחינם לפי מה שאתם צריכים עכשיו: לשלווה, לאהבה עצמית, לשחרור ולהתקרקעות. תמצאו פינה שקטה ותנו לי ללוות אתכם.",
     },
+    privacy: {
+      title: "מדיניות פרטיות | איתמר אדן",
+      description: "איזה מידע נאסף באתר, למה, מי עוזר לטפל בו, ואיך אפשר לבקש לראות או למחוק אותו.",
+    },
   },
   en: {
     home: {
@@ -122,6 +127,10 @@ const seo: Record<Locale, Record<SeoPage, SeoText>> = {
       description:
         "Free guided meditations for what you need right now: calm, self-love, letting go and grounding. Find a quiet spot and let me guide you.",
     },
+    privacy: {
+      title: "Privacy policy | Itamar Eden",
+      description: "What information the site collects, why, who helps handle it, and how to ask to see or delete it.",
+    },
   },
 };
 
@@ -144,6 +153,7 @@ const paths: Record<SeoPage, string> = {
   liveCourse: "/events/mindfulness",
   contact: "/contact",
   meditations: "/meditations",
+  privacy: "/privacy",
 };
 
 // Finished pages Google may index, per language. Not listed, so kept out:

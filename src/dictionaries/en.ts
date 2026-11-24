@@ -55,6 +55,7 @@ export const en = {
     // Empty: no challenge link until the challenge has English.
     challenge: "",
     freeMeditations: "Free meditations",
+    privacy: "Privacy policy",
   },
   notFound: {
     title: "Page not found",
