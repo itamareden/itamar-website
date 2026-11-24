@@ -1,7 +1,7 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import { localeNames, locales } from "@/i18n/config";
+import { isHebrewOnly, localeNames, locales } from "@/i18n/config";
 import styles from "./LanguageSwitcher.module.css";
 
 /*
@@ -22,6 +22,9 @@ import styles from "./LanguageSwitcher.module.css";
 export function LanguageSwitcher({ className }: { className?: string }) {
   const pathname = usePathname(); // e.g. "/he/about"
   const [, current, ...rest] = pathname.split("/"); // ["", "he", "about"]
+
+  // A Hebrew-only page has no other language to switch to.
+  if (isHebrewOnly(`/${rest.join("/")}`)) return null;
 
   return (
     <div className={className ? `${styles.switcher} ${className}` : styles.switcher}>

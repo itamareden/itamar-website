@@ -32,3 +32,14 @@ export function isLocale(value: string): value is Locale {
 export function getDirection(locale: Locale) {
   return direction[locale];
 }
+
+/*
+ * Pages that exist only in Hebrew for now (the path after the language).
+ * Their other-language addresses show "not found", and the language
+ * switcher isn't shown on them. Remove a path once its translation is ready.
+ */
+const hebrewOnlyPaths = ["/challenge", "/events/mindfulness"];
+
+export function isHebrewOnly(path: string) {
+  return hebrewOnlyPaths.some((prefix) => path === prefix || path.startsWith(`${prefix}/`));
+}
