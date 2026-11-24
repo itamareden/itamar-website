@@ -26,7 +26,7 @@ export async function sendMessage(_previous: ContactState, formData: FormData): 
     return { status: "invalid" };
   }
 
-  const token = process.env.SENDER_API_TOKEN;
+  const token = process.env.SENDER_API_TOKEN?.trim(); // a pasted key can carry a stray space or line break
   if (!token) {
     console.error("Contact form: SENDER_API_TOKEN is not set");
     return { status: "failed" };
