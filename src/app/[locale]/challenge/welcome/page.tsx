@@ -42,17 +42,14 @@ export default async function WelcomePage() {
         <Flourish />
       </header>
 
-      {c.welcome.videos.map((video) => (
+      {c.welcome.videos.map(({ heading, ...video }) => (
         <section key={video.title} className={styles.block}>
-          <h2 className={styles.blockTitle}>{video.title}</h2>
+          <h2 className={styles.blockTitle}>{heading}</h2>
           <VideoPlayer {...video} labels={c.practice.player} />
         </section>
       ))}
 
-      {/* The ornament gives the list its room, so no extra listBlock margin. */}
-      <Flourish />
-
-      <section className={styles.block}>
+      <section className={`${styles.block} ${styles.listBlock}`}>
         <h2 className={styles.blockTitle}>{c.welcome.prepare.heading}</h2>
         <RingList items={c.welcome.prepare.items} />
       </section>

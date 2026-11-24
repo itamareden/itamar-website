@@ -16,7 +16,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const c = getChallenge(await getLocale());
   const dict = await getDictionary();
   return {
-    title: `${c.finale.video.title} · ${dict.site.name}`,
+    title: `${c.finale.heading.title} ${c.finale.heading.emphasis} · ${dict.site.name}`,
     // Shared by link only: keep it out of search results.
     robots: { index: false, follow: false },
   };
@@ -55,7 +55,10 @@ export default async function ClosingPage() {
         <Flourish />
       </header>
 
-      <VideoPlayer {...c.finale.video} labels={c.practice.player} />
+      <section className={styles.block}>
+        <h2 className={styles.blockTitle}>{c.practice.closingVideoHeading}</h2>
+        <VideoPlayer {...c.finale.video} labels={c.practice.player} />
+      </section>
 
       <ContinueBand
         text={c.finale.continue}

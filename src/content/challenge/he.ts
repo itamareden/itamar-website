@@ -210,6 +210,8 @@ export const he: ChallengeContent = {
     dayDone: "הושלם",
     dayNotDone: "עוד לא הושלם",
     dayComplete: "היום הושלם. יפה מאוד.",
+    videoHeading: "לפני שמתחילים",
+    closingVideoHeading: "לפני שנפרדים",
     meditationHeading: "המדיטציה של היום",
     forTheDayHeading: "לקחת את החוויה איתכם להמשך היום",
     untilTomorrow: "נתראה מחר",
@@ -233,11 +235,13 @@ export const he: ChallengeContent = {
     ],
     videos: [
       {
-        title: "פתיחה",
+        heading: "פתיחה",
+        title: "נעים להכיר",
         playbackId: "jU02ElGb64oIl8XdY9YOg00EZ7MsOg7AYNlKshxgui3Mc",
       },
       {
-        title: "איך מודטים",
+        heading: "איך מודטים",
+        title: "טיפים לישיבה נוחה במדיטציה",
         playbackId: "1IzatIQ8exQiFJ8pabhYec4Y71H9q01rUgzxCfxsgATU",
       },
     ],
@@ -277,7 +281,7 @@ export const he: ChallengeContent = {
         "וכשתהיו מוכנים, פשוט תנו לעצמכם כמה דקות להיות עם הנשימה, בסקרנות ובלי ציפיות, ולראות מה קורה כשאנחנו פשוט עוצרים לרגע ומקשיבים.",
       ],
       video: {
-        title: "יום 1: נשימה",
+        title: "הנשימה כעוגן לרגע הזה",
         playbackId: "dVJkKAGdccC00PP5fXaghjuffWoFzkkuey2H02q6dg81I",
       },
       meditation: {
@@ -298,7 +302,7 @@ export const he: ChallengeContent = {
         "וכשתהיו מוכנים, תנו לעצמכם כמה דקות להפנות את תשומת הלב פנימה, ולהקשיב לתחושות הגוף. שימו את הציפיות בצד ובואו ליהנות.",
       ],
       video: {
-        title: "יום 2: תחושות גוף",
+        title: "הגוף כמצפן פנימי",
         playbackId: "01hl02bTQBqRMgXTW5IAHQ00fMuePe02CDyLtnAmXNPHrW4",
       },
       meditation: {
@@ -321,7 +325,7 @@ export const he: ChallengeContent = {
         "וכשתהיו מוכנים, תנו לעצמכם כמה דקות להתבונן במחשבות, בלי לנסות לשלוט בהן או לשנות שום דבר. **ממש כמו צופים בקולנוע, בואו בסקרנות לראות איזה סרט המיינד שלכם יוצר עבורכם היום, ותנו לו לבדר אתכם.**",
       ],
       video: {
-        title: "יום 3: התבוננות במחשבות",
+        title: "לפגוש את המחשבות בסקרנות",
         playbackId: "MERgEDAQlwnf6nTAl4f00zUJTOhcF800xhLCpEDIQyqog",
       },
       meditation: {
@@ -344,7 +348,7 @@ export const he: ChallengeContent = {
         "אני מזמין אתכם להגיע פתוחים לכל מה שרוצה לעלות. והכי חשוב, בואו ליהנות!",
       ],
       video: {
-        title: "יום 4: מדיטציה בתנועה",
+        title: "להישאר בחיבור, גם בתנועה",
         playbackId: "qc01m3PdqQPqvtbN775agYvU1yYqD400jc8eElNqLOruc",
       },
       meditation: { title: "מדיטציה בתנועה", src: STAND_IN_AUDIO },
@@ -365,7 +369,7 @@ export const he: ChallengeContent = {
         "לפני שנתחיל, מוזמנים לצפות בסרטון ההסבר הקצר, ואז למצוא לעצמכם פינה שקטה ומנח שנוח לכם בו. את המדיטציה של היום נעביר בישיבה, ואם תרצו, תוכלו כמובן להיעזר באוזניות.",
       ],
       video: {
-        title: "יום 5: להרפות",
+        title: "לתת לדברים פשוט להיות",
         playbackId: "xeT3cyDt3UJVPATFYijw01WNmNvPE1Hrx4hOJQJZm3AA",
       },
       meditation: {
@@ -413,7 +417,7 @@ export const he: ChallengeContent = {
       "אז תודה ענקית שהצטרפתם אליי למסע הזה. אני מאוד שמח שהייתם כאן, ומאחל לכם שתמשיכו לגלות, לחקור, ובעיקר ליהנות מהדרך ❤️",
     ],
     video: {
-      title: "מילים לסיום",
+      title: "להמשיך את התנועה",
       playbackId: "WqffablRmnedvWRIBWBuVtO8ex700H02EhryLa2QECrS4",
       thumbnailTime: 147, // 2:27
     },

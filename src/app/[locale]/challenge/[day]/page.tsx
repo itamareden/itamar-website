@@ -74,7 +74,10 @@ export default async function DayPage(props: PageProps<"/[locale]/challenge/[day
         <Flourish />
       </header>
 
-      <VideoPlayer {...day.video} labels={c.practice.player} />
+      <section className={styles.block}>
+        <h2 className={styles.blockTitle}>{c.practice.videoHeading}</h2>
+        <VideoPlayer {...day.video} labels={c.practice.player} />
+      </section>
 
       <section className={styles.block}>
         <h2 className={styles.blockTitle}>{c.practice.meditationHeading}</h2>

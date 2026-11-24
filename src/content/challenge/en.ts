@@ -157,6 +157,8 @@ export const en: ChallengeContent = {
     dayDone: "completed",
     dayNotDone: "not completed yet",
     dayComplete: "Day complete. Well done.",
+    videoHeading: "Before we begin",
+    closingVideoHeading: "Before we part",
     meditationHeading: "Today's meditation",
     forTheDayHeading: "Taking the experience with you for the day",
     untilTomorrow: "Until tomorrow",
@@ -175,8 +177,8 @@ export const en: ChallengeContent = {
       "Before we begin: two short videos. The first is about the challenge, the second shows you how to meditate.",
     ],
     videos: [
-      { title: "Introduction", playbackId: STAND_IN_VIDEO },
-      { title: "How to meditate", playbackId: STAND_IN_VIDEO },
+      { heading: "Introduction", title: "Introduction", playbackId: STAND_IN_VIDEO },
+      { heading: "How to meditate", title: "How to meditate", playbackId: STAND_IN_VIDEO },
     ],
     prepare: {
       heading: "How to prepare for the journey",

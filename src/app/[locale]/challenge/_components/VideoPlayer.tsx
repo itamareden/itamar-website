@@ -1,7 +1,8 @@
 "use client";
 
 import MuxPlayer from "@mux/mux-player-react/lazy";
-import { useRef, type ComponentRef } from "react";
+import Image from "next/image";
+import { useRef, useState, type ComponentRef } from "react";
 import { clearPosition, getPosition, savePosition } from "../_lib/resume";
 import styles from "../practice.module.css";
 import { SkipIcon } from "./SkipIcon";
@@ -26,6 +27,10 @@ export function VideoPlayer({ playbackId, title, thumbnailTime, labels }: VideoP
   // The player element itself, to read and set its position.
   const playerRef = useRef<ComponentRef<typeof MuxPlayer>>(null);
   const positionKey = `video:${playbackId}`;
+  // The title bar shows until the video first plays.
+  const [started, setStarted] = useState(false);
+  // Shown in the corner once the player knows it (e.g. "4:12").
+  const [duration, setDuration] = useState<string | null>(null);
 
   function skip(seconds: number) {
     const player = playerRef.current;
@@ -42,7 +47,7 @@ export function VideoPlayer({ playbackId, title, thumbnailTime, labels }: VideoP
           streamType="on-demand"
           title={title}
           metadata={{ video_title: title }}
-          accentColor="#a54173" /* --color-accent; the player can't read CSS variables */
+          accentColor="#eaa178" /* the clay --color-accent; the player can't read CSS variables */
           forwardSeekOffset={SKIP_SECONDS}
           backwardSeekOffset={SKIP_SECONDS}
           disableCookies /* anonymous viewing statistics, without cookies */
@@ -50,14 +55,27 @@ export function VideoPlayer({ playbackId, title, thumbnailTime, labels }: VideoP
           // Continue where they stopped last time (unless it was the very start or end).
           onLoadedMetadata={() => {
             const player = playerRef.current;
+            if (player && Number.isFinite(player.duration)) setDuration(formatTime(player.duration));
             const saved = getPosition(positionKey);
             if (player && saved > 5 && saved < player.duration - 5) player.currentTime = saved;
           }}
           onTimeUpdate={() => {
             if (playerRef.current) savePosition(positionKey, playerRef.current.currentTime);
           }}
+          onPlay={() => setStarted(true)}
           onEnded={() => clearPosition(positionKey)}
         />
+        {!started && (
+          <span className={styles.videoBar} aria-hidden="true">
+            <Image src="/images/challenge/portrait.jpg" alt="" width={80} height={80} className={styles.videoAvatar} />
+            <span className={styles.videoTitle}>{title}</span>
+          </span>
+        )}
+        {!started && duration && (
+          <span className={styles.videoDuration} dir="ltr" aria-hidden="true">
+            {duration}
+          </span>
+        )}
       </div>
 
       {/*
@@ -75,4 +93,10 @@ export function VideoPlayer({ playbackId, title, thumbnailTime, labels }: VideoP
       </div>
     </div>
   );
+}
+
+// 252.4 seconds → "4:12".
+function formatTime(seconds: number) {
+  const s = Math.round(seconds);
+  return `${Math.floor(s / 60)}:${String(s % 60).padStart(2, "0")}`;
 }

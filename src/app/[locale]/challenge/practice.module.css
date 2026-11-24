@@ -3,6 +3,22 @@
  * phones first (most people open these links from WhatsApp or email).
  */
 
+/* The site's warm clay palette (as on /challenge), set on <html> only while
+   one of these pages is open (`.page` exists only here), so the header and
+   footer follow and other pages are untouched. */
+:global(html):has(.page) {
+  --color-accent: #eaa178; /* warm clay: buttons, bullets, rings */
+  --color-accent-strong: #e08e60; /* hover */
+  --color-on-accent: #33281f; /* dark text on the clay */
+  --color-accent-text: #b8683f; /* deeper clay for small text, so it stays readable */
+  --color-focus: #84401f;
+  --color-on-photo-accent: #f0b48f; /* clay */
+  --color-on-band: #f4e8d9; /* warm cream */
+  --color-wash-rose: #e6d2bc; /* sand-clay */
+  --color-wash-base: #f0e7dc; /* warm, not rosy */
+  --color-sunrise: #efe4d6; /* the "until tomorrow" card: light sand */
+}
+
 .page {
   display: grid;
   gap: clamp(var(--space-8), 5vw, var(--space-12));
@@ -35,8 +51,9 @@
   letter-spacing: -0.02em;
 }
 
+/* The whole title in one colour, as on the rest of the site. */
 .title em {
-  color: var(--color-accent);
+  color: inherit;
 }
 
 /* Body text under a heading: one paragraph (.text) or a day's intro of
@@ -61,29 +78,27 @@
 /* The ornament under the intro, centred, in the accent colour. */
 .flourish {
   display: flex;
-  justify-content: center;
-  margin-block: var(--space-8) var(--space-4);
-  color: var(--color-accent);
+  align-items: center;
+  gap: var(--space-3);
+  inline-size: min(100%, 14rem);
+  margin: var(--space-8) auto var(--space-4);
+  color: var(--color-accent-text, var(--color-accent));
 }
 
-.flourish svg {
-  inline-size: 11.7rem;
-  block-size: auto;
-  overflow: visible;
-  fill: none;
-  stroke: currentColor;
-  stroke-linecap: round;
-  stroke-linejoin: round;
+.flourish::before,
+.flourish::after {
+  content: "";
+  flex: 1;
+  block-size: 1px;
+  background: currentColor;
+  opacity: 0.45;
 }
 
-/* Stroke widths are in the drawing's own units, so they grow with its size. */
-.flourishMain {
-  stroke-width: 1;
-}
-
-.flourishFine {
-  stroke-width: 0.65;
-  opacity: 0.7;
+.flourishDot {
+  inline-size: 6px;
+  block-size: 6px;
+  border-radius: 50%;
+  background: currentColor;
 }
 
 .block {
@@ -137,7 +152,7 @@
   margin-block-start: var(--space-2);
 }
 
-/* Each item behind a small berry ring, aligned with the first line. */
+/* Each item behind a small clay dot, aligned with the first line. */
 .ringList li {
   position: relative;
   padding-inline-start: 1.75rem;
@@ -150,15 +165,15 @@
   inset-block-start: 0.55em;
   inline-size: 0.6rem;
   block-size: 0.6rem;
-  border: 2px solid var(--color-accent);
+  background: var(--color-accent);
   border-radius: 50%;
 }
 
 /* ---------- "Until tomorrow": the close of days 1-4 and the welcome page ---------- */
 
 /*
- * A sunrise card in soft berry, a touch lighter at the bottom centre where
- * the sun comes up. It breaks the page's cream.
+ * A quiet card in light sand, with the sun in clay. It sets the close of
+ * the page apart from the cream around it.
  */
 .next {
   display: grid;
@@ -167,11 +182,7 @@
   margin-block-start: var(--space-8); /* extra room after the list above */
   padding: clamp(var(--space-8), 6vw, var(--space-12)) var(--space-6);
   border-radius: 20px;
-  background: radial-gradient(
-    ellipse 90% 110% at 50% 100%,
-    var(--color-sunrise-glow) 0%,
-    var(--color-sunrise) 55%
-  );
+  background: var(--color-sunrise);
   text-align: center;
 }
 
@@ -186,14 +197,14 @@
   }
 }
 
-/* The sun, with a thin bright line running out to each side. */
+/* The sun, with a thin line running out to each side. */
 .nextMark {
   display: flex;
   align-items: center;
   gap: var(--space-4);
   inline-size: min(100%, 22rem);
   margin-block-end: var(--space-2);
-  color: var(--color-on-sunrise);
+  color: var(--color-accent-text, var(--color-accent));
 }
 
 .nextMark::before,
@@ -202,7 +213,7 @@
   flex: 1;
   block-size: 1.5px;
   background: currentColor;
-  opacity: 0.7;
+  opacity: 0.55;
 }
 
 .nextMark svg {
@@ -212,7 +223,6 @@
   stroke: currentColor;
   stroke-width: 1.75;
   stroke-linecap: round;
-  filter: drop-shadow(0 0 6px rgb(255 250 240 / 0.8));
 }
 
 .nextHeading {
@@ -313,6 +323,7 @@
 }
 
 .video {
+  position: relative; /* for the title bar */
   overflow: hidden;
   border-radius: 14px;
   background: var(--color-band); /* shows while the player loads */
@@ -417,7 +428,7 @@
   block-size: 4.25rem;
   border-radius: 50%;
   background: var(--color-accent);
-  box-shadow: 0 10px 24px -10px rgb(134 50 92 / 0.6);
+  box-shadow: 0 10px 24px -10px rgb(184 104 63 / 0.6);
   transition: background-color var(--transition-fast);
 }
 
@@ -506,7 +517,7 @@
   outline-offset: 4px;
 }
 
-/* The video still, with a berry play mark in the middle. */
+/* The video still, with a clay play mark in the middle. */
 .teaserStill {
   position: relative;
   display: grid;
@@ -828,7 +839,7 @@
 
 /* ---------- closing page: "the journey continues" band ---------- */
 
-/* Deep umber with a berry glow from the top; edge to edge on phones. */
+/* Deep umber with a clay glow from the top; edge to edge on phones. */
 .band {
   display: grid;
   justify-items: center;
@@ -837,7 +848,7 @@
   margin-block-start: var(--space-8); /* about 4rem from the video, with the page's gap */
   border-radius: 24px;
   background:
-    radial-gradient(ellipse 70% 60% at 50% 0%, rgb(165 65 115 / 0.45), transparent 70%),
+    radial-gradient(ellipse 70% 60% at 50% 0%, rgb(234 161 120 / 0.35), transparent 70%),
     var(--color-band);
   color: var(--color-on-band);
   text-align: center;
@@ -851,7 +862,7 @@
 }
 
 .band .flourish {
-  margin: 0;
+  margin: 0 auto;
   color: var(--color-on-photo-accent);
 }
 
@@ -963,4 +974,52 @@
   .bandSecondary {
     transition: none;
   }
+}
+
+/* Before the video plays: a bar across its top, like YouTube's (round
+   portrait, title). It lets clicks through to the player. */
+.videoBar {
+  position: absolute;
+  inset: 0 0 auto;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.9rem 1rem 2.5rem;
+  background: linear-gradient(to bottom, rgb(0 0 0 / 0.6), transparent);
+  color: #fff;
+  pointer-events: none;
+}
+
+.videoAvatar {
+  flex: none;
+  inline-size: 2.5rem;
+  block-size: 2.5rem;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.videoTitle {
+  min-inline-size: 0;
+  overflow: hidden;
+  font-size: 1.1rem;
+  font-weight: 500;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  text-shadow: 0 0 2px rgb(0 0 0 / 0.5);
+}
+
+/* The length, in the bottom corner like YouTube's (left in both languages). */
+.videoDuration {
+  position: absolute;
+  inset-block-end: 0.75rem;
+  left: 0.75rem;
+  z-index: 1;
+  padding: 0.1rem 0.5rem;
+  border-radius: 6px;
+  background: rgb(0 0 0 / 0.7);
+  color: #fff;
+  font-size: 0.85rem;
+  font-variant-numeric: tabular-nums;
+  pointer-events: none;
 }

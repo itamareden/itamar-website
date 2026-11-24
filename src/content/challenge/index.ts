@@ -131,6 +131,8 @@ export type ChallengeContent = {
     dayDone: string; // "completed", read out for each day's dot
     dayNotDone: string;
     dayComplete: string;
+    videoHeading: string; // above each day's video
+    closingVideoHeading: string; // above the video on the closing page
     meditationHeading: string;
     forTheDayHeading: string;
     untilTomorrow: string; // small heading above nextNote
@@ -140,7 +142,8 @@ export type ChallengeContent = {
   welcome: {
     heading: Heading;
     text: string[]; // one entry per paragraph
-    videos: Video[];
+    // heading: shown above the video; the video's own title is on its bar.
+    videos: (Video & { heading: string })[];
     // Under the last video: each item a short title with a paragraph or two below.
     prepare: { heading: string; items: ListItem[] };
     nextNote: string;
