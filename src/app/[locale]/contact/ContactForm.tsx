@@ -39,9 +39,9 @@ export function ContactForm({ text }: { text: ContactContent["form"] }) {
       <button type="submit" className={styles.send} disabled={pending}>
         {text.button}
       </button>
-      {(state.status === "invalid" || state.status === "not-ready") && (
+      {(state.status === "invalid" || state.status === "failed") && (
         <p className={styles.formMessage} role="status">
-          {state.status === "invalid" ? text.invalid : text.notReady}
+          {state.status === "invalid" ? text.invalid : text.failed}
         </p>
       )}
     </form>

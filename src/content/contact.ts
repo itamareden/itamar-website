@@ -25,7 +25,7 @@ export type ContactContent = {
     button: string;
     success: string;
     invalid: string;
-    notReady: string;
+    failed: string;
   };
   details: {
     contactTitle: string;
@@ -55,7 +55,7 @@ export const contact: Record<Locale, ContactContent> = {
       button: "שליחה",
       success: "תודה, ההודעה התקבלה. אחזור אליכם בקרוב.",
       invalid: "חסר משהו: צריך שם, אימייל תקין והודעה.",
-      notReady: "הטופס עוד לא מחובר, כך שההודעה לא נשלחה. בינתיים אפשר לכתוב לי בוואטסאפ.",
+      failed: "משהו השתבש וההודעה לא נשלחה. נסו שוב בעוד רגע, או כתבו לי בוואטסאפ.",
     },
     details: {
       contactTitle: "פרטי קשר",
@@ -81,7 +81,7 @@ export const contact: Record<Locale, ContactContent> = {
       button: "Send",
       success: "Thank you, your message arrived. I'll get back to you soon.",
       invalid: "Something's missing: a name, a valid email and a message.",
-      notReady: "This form isn't connected yet, so your message wasn't sent. Meanwhile, you can write to me on WhatsApp.",
+      failed: "Something went wrong and your message wasn't sent. Please try again in a moment, or write to me on WhatsApp.",
     },
     details: {
       contactTitle: "Contact info",
