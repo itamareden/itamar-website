@@ -43,11 +43,12 @@ export async function sendMessage(_previous: ContactState, formData: FormData): 
       body: JSON.stringify({
         from: { email: SITE_ADDRESS, name: "Website contact form" },
         to: { email: SITE_ADDRESS, name: "Itamar Eden" },
-        // So that pressing Reply answers the visitor, not the site.
-        headers: { "Reply-To": `${name} <${email}>` },
         subject: `New message from ${name}`,
         text: `${name} (${email}) wrote:\n\n${message}`,
-        html: `<p><strong>${escape(name)}</strong> (<a href="mailto:${escape(email)}">${escape(email)}</a>) wrote:</p>
+        // Sender's API has no reply-to, so Reply in the inbox answers the
+        // site's own address. This link starts a reply to the visitor instead.
+        html: `<p><a href="mailto:${escape(email)}" style="display:inline-block;padding:10px 18px;border-radius:999px;background:#eaa178;color:#33281f;font-weight:bold;text-decoration:none">Reply to ${escape(name)}</a></p>
+<p><strong>${escape(name)}</strong> (<a href="mailto:${escape(email)}">${escape(email)}</a>) wrote:</p>
 <p style="white-space: pre-wrap">${escape(message)}</p>`,
       }),
     });
