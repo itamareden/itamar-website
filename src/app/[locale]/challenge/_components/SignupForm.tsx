@@ -1,6 +1,6 @@
 "use client";
 
-import { useActionState } from "react";
+import { useActionState, useEffect, useState } from "react";
 import { subscribe, type SignupState } from "../actions";
 import styles from "../page.module.css";
 
@@ -11,7 +11,7 @@ type SignupFormProps = {
     consent: string;
     button: string;
     success: string;
-    notReady: string;
+    failed: string;
   };
 };
 
@@ -25,6 +25,13 @@ const initialState: SignupState = { status: "idle" };
 export function SignupForm({ text }: SignupFormProps) {
   const [state, formAction, pending] = useActionState(subscribe, initialState);
 
+  // The visitor's time zone (e.g. "Asia/Jerusalem"), so day 1 arrives at
+  // 6:00 their time. Read after the first render: the server can't know it.
+  const [timeZone, setTimeZone] = useState("");
+  useEffect(() => {
+    setTimeZone(Intl.DateTimeFormat().resolvedOptions().timeZone);
+  }, []);
+
   if (state.status === "success") {
     return (
       <p className={styles.message} role="status">
@@ -35,6 +42,7 @@ export function SignupForm({ text }: SignupFormProps) {
 
   return (
     <form action={formAction} className={styles.form}>
+      <input type="hidden" name="timeZone" value={timeZone} />
       <label htmlFor="signup-email">{text.emailLabel}</label>
       <input
         id="signup-email"
@@ -52,9 +60,9 @@ export function SignupForm({ text }: SignupFormProps) {
       <button type="submit" className={styles.button} disabled={pending}>
         {text.button}
       </button>
-      {state.status === "not-ready" && (
+      {state.status === "failed" && (
         <p className={styles.message} role="status">
-          {text.notReady}
+          {text.failed}
         </p>
       )}
     </form>

@@ -83,7 +83,7 @@ export type ChallengeContent = {
     consent: string;
     button: string;
     success: string;
-    notReady: string; // shown until an email service is connected
+    failed: string; // shown if the sign-up could not be sent
     steps: Step[];
   };
   // Right after the hero: a few lines the reader may recognise themselves in.

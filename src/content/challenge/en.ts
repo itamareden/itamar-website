@@ -46,7 +46,7 @@ export const en: ChallengeContent = {
     consent: "Send me the challenge emails and occasional updates from Itamar. You can unsubscribe at any time.",
     button: "Start the free challenge",
     success: "Check your inbox: the welcome email is on its way.",
-    notReady: "Email sign-up isn't open yet. Please try again soon.",
+    failed: "Something went wrong and your sign-up wasn't sent. Please try again in a moment, or if it still doesn't work, write to me at itamar@itamareden.love.",
     steps: [
       { title: "Sign up", text: "Leave your email, and the welcome email arrives right away." },
       { title: "Get ready", text: "Before day 1, two short videos: getting to know each other, and tips for sitting comfortably in meditation." },
