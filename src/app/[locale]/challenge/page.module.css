@@ -105,7 +105,7 @@
 .button:not(.buttonLight) {
   background: var(--color-accent);
   color: var(--color-band);
-  box-shadow: 0 10px 24px -12px color-mix(in srgb, #c47650 70%, transparent);
+  box-shadow: 0 10px 24px -12px color-mix(in srgb, var(--color-title-accent) 70%, transparent);
 }
 
 .button:not(.buttonLight):hover {
