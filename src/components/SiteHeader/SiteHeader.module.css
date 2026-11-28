@@ -116,12 +116,22 @@ body:has([data-hero]) .header[data-instant] {
 .name {
   position: relative;
   z-index: 2; /* stays above the mobile menu backdrop */
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35em;
   font-family: var(--font-heading);
   font-size: var(--text-xl);
   font-weight: var(--weight-heading);
   color: var(--header-text);
   text-decoration: none;
   text-shadow: var(--header-shadow, none);
+}
+
+/* The ring mark before the name, sized with the name's text. */
+.mark {
+  width: 1.6em;
+  height: 1.6em;
+  flex: none;
 }
 
 .name:hover {

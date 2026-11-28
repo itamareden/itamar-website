@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher/LanguageSwitcher";
 import { MobileMenu } from "@/components/MobileMenu/MobileMenu";
@@ -32,6 +33,8 @@ export async function SiteHeader() {
     <ScrollHeader className={styles.header}>
       <div className={styles.inner}>
         <Link href={`/${locale}`} className={styles.name}>
+          {/* The brass ring of Itamar's necklace: the site's mark. */}
+          <Image src="/images/brand/ring-shine.png" alt="" width={64} height={64} sizes="4rem" loading="eager" className={styles.mark} />
           {dict.site.name}
         </Link>
 
