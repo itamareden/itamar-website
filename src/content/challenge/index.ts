@@ -119,7 +119,9 @@ export type ChallengeContent = {
   };
   faq: {
     title: string;
-    items: { question: string; answer: string }[];
+    // mode: shown only in that mode (e.g. a question about the WhatsApp
+    // group); without it, the question shows in both.
+    items: { question: string; answer: string; mode?: ChallengeMode }[];
   };
   closing: { heading: Heading; text: string };
 

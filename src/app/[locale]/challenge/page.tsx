@@ -43,6 +43,7 @@ export default async function ChallengePage() {
   const c = getChallenge(locale);
   const { mode, startDate, whatsappUrl } = c.settings;
   const steps = mode === "group" ? c.group.steps : c.email.steps;
+  const faq = c.faq.items.filter((item) => !item.mode || item.mode === mode);
 
   // The group's start date while it's still ahead (today counts); null when
   // there's no date or it has passed, so the page never shows an old date.
@@ -268,7 +269,7 @@ export default async function ChallengePage() {
       <section className={`${styles.section} ${styles.faqBand}`} data-full-bleed>
         <div className={`${styles.inner} ${styles.faq}`}>
           <h2 className={styles.sectionTitle}>{c.faq.title}</h2>
-          {c.faq.items.map((item) => (
+          {faq.map((item) => (
             <details key={item.question}>
               <summary>{item.question}</summary>
               <p>{item.answer}</p>
@@ -298,7 +299,7 @@ export default async function ChallengePage() {
           {joinOrSignup}
         </div>
       </section>
-      <JsonLd data={challengeData(locale, c.faq.items)} />
+      <JsonLd data={challengeData(locale, faq)} />
     </>
   );
 }

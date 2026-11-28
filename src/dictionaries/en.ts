@@ -50,7 +50,8 @@ export const en = {
     firstName: "First name",
     email: "Email",
     join: "Join",
-    joinSoon: "Sign-up opens soon. Thank you for your patience!",
+    joined: "So glad you joined! Good things are on their way.",
+    joinFailed: "Something went wrong and you weren't signed up. Check your email address and try again in a moment.",
     linksLabel: "Ways to practise together",
     // Empty: no challenge link until the challenge has English.
     challenge: "",
