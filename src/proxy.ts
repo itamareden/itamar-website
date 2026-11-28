@@ -1,5 +1,5 @@
 import { NextResponse, type NextRequest } from "next/server";
-import { defaultLocale, isLocale, localeCookie, type Locale } from "@/i18n/config";
+import { defaultLocale, isHebrewOnly, isLocale, localeCookie, type Locale } from "@/i18n/config";
 
 /*
  * Runs before every page request.
@@ -27,7 +27,10 @@ export function proxy(request: NextRequest) {
   }
 
   const url = request.nextUrl.clone();
-  url.pathname = `/${pickLocale(request)}${pathname === "/" ? "" : pathname}`;
+  // Hebrew-only pages (the challenge, the live course) always open in Hebrew,
+  // so a shared link never lands on an English "not found".
+  const locale = isHebrewOnly(pathname) ? "he" : pickLocale(request);
+  url.pathname = `/${locale}${pathname === "/" ? "" : pathname}`;
   return NextResponse.redirect(url);
 }
 
@@ -36,11 +39,6 @@ export function proxy(request: NextRequest) {
 function pickLocale(request: NextRequest): Locale {
   const saved = request.cookies.get(localeCookie)?.value;
   if (saved && isLocale(saved)) return saved;
-
-  // Until the English pages are translated, everyone starts in Hebrew.
-  // Set to false to go back to following the browser's language.
-  const hebrewFirst = true;
-  if (hebrewFirst) return "he";
 
   return fromAcceptLanguage(request.headers.get("accept-language")) ?? defaultLocale;
 }
