@@ -18,15 +18,17 @@ import { dayOneForSender } from "@/lib/challenge-schedule";
 export type SignupState = { status: "idle" | "success" | "invalid" | "failed" };
 
 const CHALLENGE_GROUP = "e1nZPG"; // "Meditation Challenge" in Sender
+const NEWSLETTER_GROUP = "avzA1r"; // "Newsletter": only those who ticked the updates box
 const DAY_ONE_FIELD = "{$challenge_day_1}";
 
 export async function subscribe(_previous: SignupState, formData: FormData): Promise<SignupState> {
   const email = formData.get("email");
-  const consent = formData.get("consent");
+  // Signing up is the request for the challenge emails; updates are a separate, optional box.
+  const newsletter = formData.get("newsletter") === "on";
   const timeZone = formData.get("timeZone");
 
   // The browser checks these too, but anything can be sent to a server.
-  if (typeof email !== "string" || !/^\S+@\S+\.\S+$/.test(email.trim()) || consent !== "on") {
+  if (typeof email !== "string" || !/^\S+@\S+\.\S+$/.test(email.trim())) {
     return { status: "invalid" };
   }
 
@@ -47,7 +49,7 @@ export async function subscribe(_previous: SignupState, formData: FormData): Pro
       },
       body: JSON.stringify({
         email: email.trim(),
-        groups: [CHALLENGE_GROUP],
+        groups: newsletter ? [CHALLENGE_GROUP, NEWSLETTER_GROUP] : [CHALLENGE_GROUP],
         fields: { [DAY_ONE_FIELD]: dayOneForSender(typeof timeZone === "string" ? timeZone : "") },
         trigger_automation: true,
       }),

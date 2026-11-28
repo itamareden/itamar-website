@@ -90,10 +90,11 @@ export default async function ChallengePage() {
 
   return (
     <>
-      {/* Photo with the headline, and the action card overlapping its bottom
-          edge. In group mode on wide screens the photo fills the screen and
-          the button sits on it, under the text, instead of the card. */}
-      <section data-full-bleed data-hero className={mode === "group" ? styles.heroGroup : undefined}>
+      {/* Photo with the headline. Group mode: the action card overlaps the
+          photo's bottom edge (on wide screens the button sits on the photo
+          instead). Email mode: the sign-up form sits on the photo, in a
+          see-through dark box under the text. */}
+      <section data-full-bleed data-hero className={mode === "group" ? styles.heroGroup : styles.heroEmail}>
         <div className={styles.photo}>
           <HeroImage
             src="/images/challenge/hero.jpg"
@@ -122,27 +123,26 @@ export default async function ChallengePage() {
                 {joinButton(styles.button)}
               </div>
             )}
+            {mode === "email" && (
+              <div className={styles.heroSignup} id="join">
+                <p className={styles.cardTitle}>{c.email.title}</p>
+                <p className={styles.cardMeta}>{c.email.meta}</p>
+                <SignupForm text={c.email} />
+              </div>
+            )}
           </div>
         </div>
 
         <div className={styles.cardRow}>
-          <div className={mode === "group" ? `${styles.card} ${styles.cardInline}` : styles.card} id="join">
-            {mode === "group" ? (
-              <>
-                <div>
-                  <p className={styles.cardTitle}>{groupStart}</p>
-                  <p className={styles.cardMeta}>{c.group.meta}</p>
-                </div>
-                {joinButton(styles.button)}
-              </>
-            ) : (
-              <>
-                <p className={styles.cardTitle}>{c.email.title}</p>
-                <p className={styles.cardMeta}>{c.email.meta}</p>
-                <SignupForm text={c.email} />
-              </>
-            )}
-          </div>
+          {mode === "group" && (
+            <div className={`${styles.card} ${styles.cardInline}`} id="join">
+              <div>
+                <p className={styles.cardTitle}>{groupStart}</p>
+                <p className={styles.cardMeta}>{c.group.meta}</p>
+              </div>
+              {joinButton(styles.button)}
+            </div>
+          )}
 
           <ul className={styles.facts}>
             {c.hero.facts.map((fact) => (

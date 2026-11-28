@@ -507,6 +507,166 @@
   font-weight: var(--weight-bold);
 }
 
+/* ---------- email mode: the sign-up form on the photo ---------- */
+
+/* The photo fills the first screen; the form sits on it under the text, in
+   the same see-through dark box (with a soft white halo) as group mode's
+   bar. The facts follow on a dark strip, as in group mode. */
+.heroEmail .photo {
+  min-block-size: max(40rem, 100svh);
+}
+
+.heroEmail .heroText {
+  padding-block-end: clamp(2rem, 4vw, 2.75rem);
+}
+
+.heroSignup {
+  max-inline-size: calc(30rem - 30px);
+  margin-block-start: calc(var(--space-8) + 48px); /* a little lower, closer to the photo's bottom */
+  padding: clamp(0.75rem, 1.8vw, 0.9rem) clamp(1rem, 2.4vw, 1.4rem);
+  border: 1px solid rgb(251 243 238 / 0.18);
+  border-radius: 12px;
+  /* Lighter than group mode's bar; the slight blur keeps the text readable
+     over the busy leaves. */
+  background: rgb(0 0 0 / 0.2);
+  backdrop-filter: blur(4px);
+  box-shadow: 0 0 64px 14px rgb(255 250 244 / 0.6); /* a stronger white halo than group mode's bar */
+  scroll-margin-block-start: var(--space-8); /* when the buttons further down jump here */
+}
+
+/* Tighter than the form elsewhere, so the box stays compact on the photo. */
+.heroSignup .form {
+  gap: var(--space-2);
+  margin-block-start: 0.6rem;
+}
+
+.heroSignup .cardTitle {
+  color: var(--color-on-photo-accent);
+}
+
+.heroSignup .cardMeta,
+.heroSignup .consent {
+  color: color-mix(in srgb, var(--color-on-photo) 85%, transparent);
+}
+
+/* The field and the button on one row (stacked on narrow phones). */
+.signupRow {
+  display: flex;
+  gap: var(--space-2);
+}
+
+.signupRow .input {
+  flex: 1;
+  min-inline-size: 0;
+  border-color: transparent;
+}
+
+.signupRow .button {
+  flex: none;
+  inline-size: auto;
+  margin-block-start: 0;
+  border-radius: 10px;
+}
+
+.signupNote {
+  font-size: var(--text-sm);
+  color: color-mix(in srgb, var(--color-on-photo) 85%, transparent);
+}
+
+.heroEmail .cardRow {
+  max-inline-size: none;
+  margin-block-start: 0;
+  padding: 1.75rem var(--gutter);
+  background: var(--color-band);
+}
+
+.heroEmail .facts,
+:global([dir="ltr"]) .heroEmail .facts {
+  max-inline-size: 64rem;
+  margin: 0 auto;
+  padding: 0;
+  border-radius: 0;
+  background: none;
+}
+
+.heroEmail .facts li + li {
+  border-color: color-mix(in srgb, var(--color-on-band) 20%, transparent);
+}
+
+.heroEmail .factValue {
+  color: var(--color-on-photo-accent);
+}
+
+.heroEmail .factLabel {
+  color: var(--color-on-band);
+}
+
+.heroEmail + .isThisYouBand {
+  margin-block-start: 0;
+}
+
+/* Phones: a compact box, so the photo (and Itamar) stays visible above it.
+   The field and button stay on one row; they stack only on the narrowest
+   screens, where the button's text wouldn't fit beside the field. */
+@media (max-width: 45rem) {
+  /* A lighter shade at the bottom than in group mode, so the photo shows
+     through the see-through box; still dark enough mid-way for the headline. */
+  .heroEmail .photo::after {
+    background: linear-gradient(
+      to top,
+      color-mix(in srgb, var(--color-band) 55%, transparent) 0%,
+      color-mix(in srgb, var(--color-band) 45%, transparent) 50%,
+      color-mix(in srgb, var(--color-band) 15%, transparent) 100%
+    );
+  }
+
+  /* The box closer to the photo's bottom edge... */
+  .heroEmail .heroText {
+    padding-block-end: 0.75rem;
+  }
+
+  /* ...and more room above it, which lifts the headline. */
+  .heroSignup {
+    margin-block-start: calc(var(--space-6) + 50px);
+    padding: 0.75rem 0.9rem;
+  }
+
+  .heroSignup .cardTitle {
+    font-size: 1.15rem;
+  }
+
+  .heroSignup .cardMeta {
+    margin-block-start: 0.15rem;
+    font-size: 0.85rem;
+  }
+
+  .heroSignup .form {
+    margin-block-start: 0.5rem;
+  }
+
+  .heroSignup .input,
+  .heroSignup .signupRow .button {
+    padding: 0.7rem 0.85rem;
+    font-size: 0.95rem;
+  }
+
+  .heroSignup .signupNote,
+  .heroSignup .consent {
+    font-size: 0.8rem;
+    line-height: 1.4;
+  }
+}
+
+@media (max-width: 21rem) {
+  .signupRow {
+    flex-direction: column;
+  }
+
+  .signupRow .button {
+    inline-size: 100%;
+  }
+}
+
 /* ---------- "sound familiar?": on the wash band, one narrow column;
    the title and closing line centred, the list not ---------- */
 

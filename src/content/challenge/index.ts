@@ -78,10 +78,11 @@ export type ChallengeContent = {
   email: {
     title: string;
     meta: string;
-    emailLabel: string;
+    emailLabel: string; // read out by screen readers; the field shows the placeholder
     emailPlaceholder: string;
-    consent: string;
     button: string;
+    note: string; // the small line under the button: what they'll get
+    newsletter: string; // the optional box for occasional updates (unticked)
     success: string;
     failed: string; // shown if the sign-up could not be sent
     steps: Step[];

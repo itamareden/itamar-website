@@ -8,8 +8,9 @@ type SignupFormProps = {
   text: {
     emailLabel: string;
     emailPlaceholder: string;
-    consent: string;
     button: string;
+    note: string;
+    newsletter: string;
     success: string;
     failed: string;
   };
@@ -43,23 +44,26 @@ export function SignupForm({ text }: SignupFormProps) {
   return (
     <form action={formAction} className={styles.form}>
       <input type="hidden" name="timeZone" value={timeZone} />
-      <label htmlFor="signup-email">{text.emailLabel}</label>
-      <input
-        id="signup-email"
-        name="email"
-        type="email"
-        required
-        autoComplete="email"
-        placeholder={text.emailPlaceholder}
-        className={styles.input}
-      />
+      <div className={styles.signupRow}>
+        <input
+          name="email"
+          type="email"
+          required
+          autoComplete="email"
+          aria-label={text.emailLabel}
+          placeholder={text.emailPlaceholder}
+          className={styles.input}
+        />
+        <button type="submit" className={styles.button} disabled={pending}>
+          {text.button}
+        </button>
+      </div>
+      <p className={styles.signupNote}>{text.note}</p>
+      {/* Optional and unticked: updates are a separate choice from the challenge. */}
       <label className={styles.consent}>
-        <input type="checkbox" name="consent" required />
-        <span>{text.consent}</span>
+        <input type="checkbox" name="newsletter" />
+        <span>{text.newsletter}</span>
       </label>
-      <button type="submit" className={styles.button} disabled={pending}>
-        {text.button}
-      </button>
       {state.status === "failed" && (
         <p className={styles.message} role="status">
           {text.failed}
