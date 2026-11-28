@@ -44,6 +44,9 @@ export function Trailer({
         alt=""
         fill
         sizes="(max-width: 44rem) 100vw, 40rem"
+        // In the hero, and on phones the largest thing on screen: load it at once.
+        loading="eager"
+        fetchPriority="high"
         className={styles.trailerStill}
       />
       <span className={styles.trailerBar} lang="en" dir="ltr" aria-hidden="true">

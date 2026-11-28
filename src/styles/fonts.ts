@@ -35,6 +35,9 @@ export const manrope = Manrope({
 export const frankRuhl = Frank_Ruhl_Libre({
   subsets: ["hebrew", "latin"],
   variable: "--font-frank-ruhl",
+  // Only a fallback for Hebrew letters inside English headings: not worth
+  // downloading up front.
+  preload: false,
 });
 
 // Hebrew headings. Latin subset too, so English words inside a Hebrew
@@ -48,6 +51,9 @@ export const rubik = Rubik({
 export const notoSerifHebrew = Noto_Serif_Hebrew({
   subsets: ["hebrew", "latin"],
   variable: "--font-noto-serif-hebrew",
+  // The quotes sit lower on the page, so this loads when they appear rather
+  // than competing with the first screen's fonts and photo.
+  preload: false,
 });
 
 // Hebrew body text.
