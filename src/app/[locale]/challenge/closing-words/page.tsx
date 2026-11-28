@@ -63,7 +63,7 @@ export default async function ClosingPage() {
       <ContinueBand
         text={c.finale.continue}
         primaryHref={`/${locale}/sessions`}
-        secondaryHref={`/${locale}/events`}
+        secondaryHref={`/${locale}/meditations`}
       />
 
       <ShareForm text={c.finale.share} days={challengeDays.map((d) => c.days[d.slug].title)} />

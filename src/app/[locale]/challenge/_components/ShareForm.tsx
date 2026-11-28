@@ -82,9 +82,15 @@ export function ShareForm({ text, days }: ShareFormProps) {
           <textarea id="share-improve" name="improve" rows={3} />
         </div>
 
-        <div className={styles.shareField}>
-          <label htmlFor="share-contact">{text.contact}</label>
-          <input id="share-contact" name="contact" type="text" autoComplete="name email" />
+        <div className={styles.shareRow}>
+          <div className={styles.shareField}>
+            <label htmlFor="share-email">{text.email}</label>
+            <input id="share-email" name="email" type="email" dir="ltr" autoComplete="email" />
+          </div>
+          <div className={styles.shareField}>
+            <label htmlFor="share-name">{text.name}</label>
+            <input id="share-name" name="name" type="text" autoComplete="name" />
+          </div>
         </div>
 
         <div className={styles.shareActions}>
@@ -97,9 +103,9 @@ export function ShareForm({ text, days }: ShareFormProps) {
         </div>
 
         {/* A blank form ("empty") is quietly ignored: nothing is sent, nothing shown. */}
-        {state.status === "not-ready" && (
+        {state.status === "failed" && (
           <p className={styles.shareMessage} role="status">
-            {text.notReady}
+            {text.failed}
           </p>
         )}
       </form>

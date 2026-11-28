@@ -104,21 +104,72 @@ Reason: ${reason}`,
  * "How was the journey?" on the closing page: every field is optional,
  * but at least one must be filled in (the page also keeps Send disabled
  * until then; this check is for anything sent some other way).
+ * The answers are emailed to Itamar through Sender, like the contact form.
  */
 
-export type ShareState = { status: "idle" | "success" | "empty" | "not-ready" };
+export type ShareState = { status: "idle" | "success" | "empty" | "failed" };
 
 export async function shareExperience(_previous: ShareState, formData: FormData): Promise<ShareState> {
-  const fields = ["day", "takeAway", "improve", "contact"].map((name) => {
-    const value = formData.get(name);
-    return typeof value === "string" ? value.trim() : "";
+  const [day, takeAway, improve, name, email] = ["day", "takeAway", "improve", "name", "email"].map((field) => {
+    const value = formData.get(field);
+    return typeof value === "string" ? value.trim().slice(0, 5000) : "";
   });
 
-  if (fields.every((value) => value === "")) {
+  if ([day, takeAway, improve, name, email].every((value) => value === "")) {
     return { status: "empty" };
   }
 
-  // No email service is connected yet. Once one is chosen, the answers are
-  // emailed to Itamar here and this returns { status: "success" }.
-  return { status: "not-ready" };
+  const token = process.env.SENDER_API_TOKEN?.trim();
+  if (!token) {
+    console.error("Challenge feedback: SENDER_API_TOKEN is not set");
+    return { status: "failed" };
+  }
+
+  // If they left a valid address, the email opens with a button that starts a reply to it.
+  const replyTo = /^\S+@\S+\.\S+$/.test(email) ? email : undefined;
+  const rows: [string, string][] = [
+    ["The day that spoke to them most", day],
+    ["What they take with them", takeAway],
+    ["What they would change or improve", improve],
+    ["Name", name],
+    ["Email", email],
+  ];
+
+  try {
+    const response = await fetch("https://api.sender.net/v2/message/send", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify({
+        from: { email: "itamar@itamareden.love", name: "Challenge feedback" },
+        to: { email: "itamar@itamareden.love", name: "Itamar Eden" },
+        subject: "How was the journey? A new answer",
+        text: rows.map(([label, value]) => `${label}:\n${value || "-"}`).join("\n\n"),
+        html:
+          (replyTo
+            ? `<p><a href="mailto:${escapeHtml(replyTo)}" style="display:inline-block;padding:10px 18px;border-radius:999px;background:#eaa178;color:#33281f;font-weight:bold;text-decoration:none">Reply</a></p>\n`
+            : "") +
+          rows
+            .map(([label, value]) => `<p><strong>${label}</strong><br><span dir="auto" style="white-space: pre-wrap">${escapeHtml(value || "-")}</span></p>`)
+            .join("\n"),
+      }),
+    });
+
+    if (!response.ok) {
+      console.error("Challenge feedback: Sender answered", response.status, await response.text());
+      return { status: "failed" };
+    }
+    return { status: "success" };
+  } catch (error) {
+    console.error("Challenge feedback: could not reach Sender", error);
+    return { status: "failed" };
+  }
+}
+
+// What people typed goes into the email's HTML as text, never as markup.
+function escapeHtml(value: string): string {
+  return value.replace(/[&<>"']/g, (char) => `&#${char.charCodeAt(0)};`);
 }

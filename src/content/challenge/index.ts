@@ -170,12 +170,13 @@ export type ChallengeContent = {
       dayQuestion: string;
       takeAway: string;
       improve: string;
-      contact: string;
+      name: string; // optional
+      email: string; // optional: lets Itamar reply
       button: string;
       close: string; // closes the form without sending
       success: string; // after sending: the card's title
       successText: string; // after sending: the line under it
-      notReady: string; // shown until an email service is connected
+      failed: string; // shown if the answers could not be sent
     };
     // The dark "the journey continues" band: a short note from Itamar
     // and two buttons (a first conversation, then events).

@@ -3,13 +3,12 @@ import Link from "next/link";
 import type { ChallengeContent } from "@/content/challenge";
 import styles from "../practice.module.css";
 import { Emphasis } from "@/components/Emphasis/Emphasis";
-import { Flourish } from "./Flourish";
 import { Heading } from "./Heading";
 
 type ContinueBandProps = {
   text: ChallengeContent["finale"]["continue"];
   primaryHref: string; // a first conversation (sessions)
-  secondaryHref: string; // events
+  secondaryHref: string; // the free meditations
 };
 
 /*
@@ -19,7 +18,6 @@ type ContinueBandProps = {
 export function ContinueBand({ text, primaryHref, secondaryHref }: ContinueBandProps) {
   return (
     <section className={styles.band}>
-      <Flourish />
       <h2 className={styles.bandTitle}>
         <Heading heading={text.heading} />
       </h2>
@@ -29,14 +27,11 @@ export function ContinueBand({ text, primaryHref, secondaryHref }: ContinueBandP
           <Image
             src="/images/challenge/portrait.jpg"
             alt={text.imageAlt}
-            width={72}
-            height={72}
+            width={88}
+            height={88}
             className={styles.noteAvatar}
           />
-          <div>
-            <p className={styles.noteName}>{text.name}</p>
-            <p className={styles.noteRole}>{text.role}</p>
-          </div>
+          <p className={styles.noteName}>{text.name}</p>
         </div>
         <div className={styles.noteText}>
           {text.note.map((paragraph) => (

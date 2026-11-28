@@ -691,7 +691,8 @@
 
 /* Text fields only: the day chips hold radio inputs that must stay hidden. */
 .shareField textarea,
-.shareField input[type="text"] {
+.shareField input[type="text"],
+.shareField input[type="email"] {
   inline-size: 100%;
   padding: 0.7em 0.85em;
   border: 1px solid var(--color-border);
@@ -701,12 +702,20 @@
   font: inherit;
 }
 
+/* Name and email side by side (stacked on phones). */
+.shareRow {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+  gap: var(--space-4);
+}
+
 .shareField textarea {
   resize: vertical;
 }
 
 .shareField textarea:focus-visible,
-.shareField input[type="text"]:focus-visible {
+.shareField input[type="text"]:focus-visible,
+.shareField input[type="email"]:focus-visible {
   outline: 2px solid var(--color-focus);
   outline-offset: 2px;
 }
@@ -843,8 +852,8 @@
 .band {
   display: grid;
   justify-items: center;
-  gap: var(--space-6);
-  padding: clamp(var(--space-8), 7vw, var(--space-12)) clamp(var(--space-6), 5vw, var(--space-12));
+  gap: 1.25rem;
+  padding: clamp(var(--space-6), 5vw, var(--space-8)) clamp(var(--space-6), 5vw, var(--space-12));
   margin-block-start: var(--space-8); /* about 4rem from the video, with the page's gap */
   border-radius: 24px;
   background:
@@ -866,25 +875,22 @@
   color: var(--color-on-photo-accent);
 }
 
+/* The whole title in clay. */
 .bandTitle {
   font-size: clamp(2.2rem, 6vw, 3rem);
   line-height: 1.1;
-  color: var(--color-on-photo);
-}
-
-.bandTitle em {
   color: var(--color-on-photo-accent);
 }
 
-/* The note, in a soft rose frame. */
+.bandTitle em {
+  color: inherit;
+}
+
+/* The note, straight on the band (no frame), so the band stays compact. */
 .note {
   display: grid;
-  gap: var(--space-4);
+  gap: var(--space-3);
   inline-size: 100%;
-  padding: var(--space-6);
-  border: 1px solid var(--color-on-photo-accent);
-  border-radius: 18px;
-  background: rgb(248 242 236 / 0.06);
   font-size: 1.125rem;
   text-align: start;
 }
@@ -895,14 +901,17 @@
   gap: var(--space-2);
 }
 
+/* A small portrait beside the name, on one line. */
 .noteHead {
   display: flex;
   align-items: center;
-  gap: var(--space-4);
+  gap: var(--space-3);
 }
 
 .noteAvatar {
   flex: none;
+  inline-size: 44px;
+  block-size: 44px;
   border-radius: 50%;
   object-fit: cover;
 }
@@ -913,15 +922,18 @@
   color: var(--color-on-photo);
 }
 
-.noteRole {
-  font-size: var(--text-sm);
-  opacity: 0.8;
+/* Side by side where there's room, stacked on phones. */
+.bandButtons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-3);
+  inline-size: 100%;
 }
 
-.bandButtons {
-  display: grid;
-  gap: var(--space-3);
-  inline-size: min(100%, 26rem);
+.bandButtons > * {
+  flex: 1 1 14rem;
+  max-inline-size: 20rem;
 }
 
 .bandPrimary,
